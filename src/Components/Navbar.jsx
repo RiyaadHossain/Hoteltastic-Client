@@ -22,7 +22,6 @@ function Navbar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
-
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -60,6 +59,7 @@ function Navbar() {
             Hoteltastic
           </Typography>
 
+          {/* For Mobile View */}
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -94,6 +94,7 @@ function Navbar() {
             </Menu>
           </Box>
 
+          {/* For Mobile View */}
           <Typography
             variant="h5"
             noWrap
@@ -112,6 +113,7 @@ function Navbar() {
           >
             Hoteltastic
           </Typography>
+
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
@@ -125,9 +127,12 @@ function Navbar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+            <Tooltip>
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar
+                  alt="Remy Sharp"
+                  src="https://mui.com/static/images/avatar/2.jpg"
+                />
               </IconButton>
             </Tooltip>
             <Menu
