@@ -1,10 +1,10 @@
-#Hoteltastic 🏨
+# Hoteltastic 🏨
 
-#####Live Site:
+##### Live Site:
 
-###Features:
+### Features:
 <li>Authentication</li>
 
-###Technologies Used:
+### Technologies Used:
 <li>React</li>
 
