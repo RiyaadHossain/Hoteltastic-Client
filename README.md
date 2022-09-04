@@ -1,4 +1,4 @@
-<h1>Hoteltastic</h1> 🏨 <p>- A Hotel Management site</p>
+# Hoteltastic 🏨
 
 ##### Live Site:
 
