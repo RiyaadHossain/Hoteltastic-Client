@@ -24,10 +24,24 @@ body {
   background-position: center;
   background-size: cover;
   width: 300px;
-  height: 300px;
+  height: 400px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+  filter: blur(4px);
+  background: #d1ebff;
+  border-radius: 10px;
+}
+
+.swiper-slide-active {
+  filter: blur(0px);
+  background: #fff;
 }
 
 .swiper-slide img {
   display: block;
   width: 100%;
+}
+
+.swiper-3d .swiper-slide-shadow-left,
+.swiper-3d .swiper-slide-shadow-right {
+  background-image: none
 }
