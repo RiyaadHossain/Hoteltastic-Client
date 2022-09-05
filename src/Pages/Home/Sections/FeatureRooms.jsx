@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FeatureRoomsSection = () => {
+const FeatureRooms = () => {
      return (
           <div >
                
@@ -8,4 +8,4 @@ const FeatureRoomsSection = () => {
      );
 };
 
-export default FeatureRoomsSection;
+export default FeatureRooms;
