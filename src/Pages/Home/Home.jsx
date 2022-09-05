@@ -1,4 +1,4 @@
-import { Box, MenuItem, TextField, Typography } from "@mui/material";
+import { Box, Button, MenuItem, TextField, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import React, { useState } from "react";
 import BannerImg from "../../Assets/Image/banner-1.jpg";
@@ -94,11 +94,11 @@ function Home() {
             display="inline-block"
             sx={{
               height: {
-                sm: "300px"
+                sm: "330px",
               },
               width: {
-                sm: "600px"
-              }
+                sm: "600px",
+              },
             }}
             p={5}
             borderRadius={3}
@@ -107,18 +107,17 @@ function Home() {
               fullWidth
               id="standard-basic"
               label="Search Room"
-              variant="standard"
+              variant="filled"
             />
             <Box my={3}>
               <TextField
-                multiline
-                fullWidth
-                id="standard-select-currency"
+                id="filled-select-currency"
                 select
+                fullWidth
                 label="Location"
                 value={currency}
                 onChange={(e) => setCurrency(e.target.value)}
-                variant="standard"
+                variant="filled"
               >
                 {currencies.map((option) => (
                   <MenuItem key={option.value} value={option.value}>
@@ -128,21 +127,23 @@ function Home() {
               </TextField>
             </Box>
             <TextField
-                multiline
-                fullWidth
-                id="standard-select-currency"
-                select
-                label="Room Type"
-                value={room}
-                onChange={(e) => setRoom(e.target.value)}
-                variant="standard"
-              >
-                {roomType.map((option) => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>
-                ))}
-              </TextField>
+              id="filled-select-currency"
+              select
+              fullWidth
+              label="Room Type"
+              value={room}
+              onChange={(e) => setRoom(e.target.value)}
+              variant="filled"
+            >
+              {roomType.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
+            <Box mt={2}>
+              <Button variant="contained">Search</Button>
+            </Box>
           </Box>
         </Box>
       </Box>
