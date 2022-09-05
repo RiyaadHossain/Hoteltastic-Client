@@ -38,11 +38,11 @@ function Navbar() {
     setAnchorElUser(null);
   };
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ bgcolor: "white" }} py={4} px={2}>
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
+        <Toolbar disableGutters sx={{height: '100px'}}>
           <HomeRoundedIcon
-            sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+            sx={{ display: { xs: "none", md: "flex" }, mr: 1, color: '#2dbe6c' }}
           />
           <Typography
             variant="h6"
@@ -52,7 +52,7 @@ function Navbar() {
               display: { xs: "none", md: "flex" },
               fontFamily: "monospace",
               fontWeight: 700,
-              color: "inherit",
+              color: "#2dbe6c",
               textDecoration: "none",
             }}
           >
@@ -107,7 +107,7 @@ function Navbar() {
               fontFamily: "monospace",
               fontWeight: 700,
               fontSize: 20,
-              color: "inherit",
+              color: "#2dbe6c",
               textDecoration: "none",
             }}
           >
@@ -119,7 +119,7 @@ function Navbar() {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, color: "black", display: "block" }}
               >
                 {page}
               </Button>
