@@ -5,7 +5,6 @@ function Home() {
   return (
     <div>Home
       <Carousel></Carousel>
-      <h1>Hey</h1>
     </div>
     
   )

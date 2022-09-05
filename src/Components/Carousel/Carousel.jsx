@@ -14,7 +14,7 @@ import "swiper/css/pagination";
 import "./styles.css";
 
 // import required modules
-import { EffectCoverflow, Pagination } from "swiper";
+import {Autoplay, EffectCoverflow, Pagination } from "swiper";
 
 
 
@@ -33,6 +33,10 @@ const Carousel = () => {
     modifier: 1,
     slideShadows: true,
   }}
+  // autoplay={{
+  //   delay: 2500,
+  //   disableOnInteraction: false,
+  // }}
   breakpoints={{
     640: {
       slidesPerView: 2,
@@ -48,7 +52,7 @@ const Carousel = () => {
     },
   }}
   pagination={true}
-  modules={[EffectCoverflow, Pagination]}
+  modules={[Autoplay,EffectCoverflow, Pagination]}
   className="mySwiper"
 >
   <SwiperSlide>
