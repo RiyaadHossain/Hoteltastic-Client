@@ -61,7 +61,8 @@ const FeatureRooms = () => {
                <Box sx={{
                     display: "flex",
                     flexWrap: "wrap",
-                    justifyContent: "center"
+                    justifyContent: "center",
+                    marginTop:"30px"
                }}>
                     {
                          features.map(feature => <FeatureRoom
