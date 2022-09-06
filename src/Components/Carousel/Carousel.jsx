@@ -15,20 +15,21 @@ import "swiper/css/pagination";
 import "./styles.css";
 
 // import required modules
-import {Autoplay, EffectCoverflow, Pagination } from "swiper";
-import { Box } from '@mui/material';
+import {Navigation,Autoplay, EffectCoverflow, Pagination } from "swiper";
+import { Box, Typography } from '@mui/material';
 
 
 
 const Carousel = () => {
   
   return (
-    <div className='' style={{height: '300px'}}>
+    <>
       <Swiper
   effect={"coverflow"}
   grabCursor={true}
   centeredSlides={true}
-  slidesPerView={1}
+  slidesPerView={'auto'}
+  navigation={true}
   // pagination={true}
 
   coverflowEffect={{
@@ -48,7 +49,7 @@ const Carousel = () => {
   breakpoints={{
     640: {
       slidesPerView: 2,
-      spaceBetween: 20,
+      spaceBetween: 50,
     },
     768: {
       slidesPerView: 3,
@@ -60,9 +61,9 @@ const Carousel = () => {
     },
   }}
   loop={true}
-  navigation={true}
+  // navigation={true}
   // pagination={true}
-  modules={[Autoplay,EffectCoverflow, Pagination]}
+  modules={[Navigation,Autoplay,EffectCoverflow, Pagination]}
   className="mySwiper"
 >
   <SwiperSlide>
@@ -93,7 +94,7 @@ const Carousel = () => {
     )}
   </SwiperSlide>
 </Swiper>
-    </div>
+    </>
   )
   
 };
