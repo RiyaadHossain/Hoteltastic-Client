@@ -1,0 +1,44 @@
+[
+     {
+          "id": 1,
+          "featured": "true",
+          "authorThumb": "http://azim.commonsupport.com/Realshed/assets/images/feature/author-1.jpg",
+          "authorName": "Michael Bean",
+          "status": "for buy",
+          "propertyName": "Villa on Grand Avenue",
+          "propertyDesciption": "Lorem ipsum dolor sit amet consectetur adipisicing sed.",
+          "startFrom": "30,000.00",
+          "beds": "3",
+          "baths": "3",
+          "sqFt": "600",
+          "saved": ""
+     },
+     {
+          "id": 2,
+          "featured": "true",
+          "authorThumb": "http://azim.commonsupport.com/Realshed/assets/images/feature/author-2.jpg",
+          "authorName": "Robert Niro",
+          "status": "for rent",
+          "propertyName": "Contemporary Apartment",
+          "propertyDesciption": "Lorem ipsum dolor sit amet consectetur adipisicing sed.",
+          "startFrom": "45,000.00",
+          "beds": "3",
+          "baths": "3",
+          "sqFt": "600",
+          "saved": ""
+     },
+     {
+          "id": 3,
+          "featured": "true",
+          "authorThumb": "http://azim.commonsupport.com/Realshed/assets/images/feature/author-3.jpg",
+          "authorName": "Keira Mel",
+          "status": "sold out",
+          "propertyName": "Luxury Villa With Pool",
+          "propertyDesciption": "Lorem ipsum dolor sit amet consectetur adipisicing sed.",
+          "startFrom": "63,000.00",
+          "beds": "3",
+          "baths": "3",
+          "sqFt": "600",
+          "saved": ""
+     }
+]

@@ -1,7 +1,13 @@
 import { Box, Typography } from '@mui/material';
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import FeatureRoom from './FeatureRoom';
 
 const FeatureRooms = () => {
+     const [features, setFeatures] = useState([])
+     useEffect(() => {
+          axios.get(`features.json`).then(data => setFeatures(data.data))
+     }, [])
      return (
           <Box sx={{
                backgroundColor: "#e5f8ed",
@@ -43,14 +49,27 @@ const FeatureRooms = () => {
 
                <Typography
                     sx={{
-                      maxWidth:"50%",
-                      margin:"0 auto"  
+                         maxWidth: "50%",
+                         margin: "0 auto"
                     }}
                     color="#93959e"
                >
                     Lorem ipsum dolor sit amet consectetur adipisicing sed do eiusmod tempor incididunt
                     labore dolore magna aliqua enim.
                </Typography>
+
+               <Box sx={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "center"
+               }}>
+                    {
+                         features.map(feature => <FeatureRoom
+                              key={feature.id}
+                              feature={feature}
+                         />)
+                    }
+               </Box>
 
 
           </Box>
