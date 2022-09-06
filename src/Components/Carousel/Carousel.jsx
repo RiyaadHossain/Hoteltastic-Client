@@ -29,6 +29,8 @@ const Carousel = () => {
   grabCursor={true}
   centeredSlides={true}
   slidesPerView={1}
+  // pagination={true}
+
   coverflowEffect={{
     rotate: 0,
     // rotate: 50,
@@ -42,6 +44,7 @@ const Carousel = () => {
     delay: 1500,
     disableOnInteraction: false,
   }}
+
   breakpoints={{
     640: {
       slidesPerView: 2,
