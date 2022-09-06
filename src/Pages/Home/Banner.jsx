@@ -6,7 +6,7 @@ import BannerImg from "../../Assets/Image/banner-1.jpg";
 const useStyles = makeStyles((theme) => ({
   root: {
     height: `calc(80vh)`,
-    background: `rgba(4, 59, 100, .40) url(${BannerImg}) no-repeat bottom center`,
+    background: `rgba(4, 59, 100, .55) url(${BannerImg}) no-repeat bottom center`,
     backgroundSize: "cover",
     backgroundBlendMode: "overlay",
     display: "flex",
@@ -145,7 +145,7 @@ function Banner() {
                 ))}
               </TextField>
               <Box mt={2}>
-                <Button variant="contained">Search</Button>
+                <Button variant="contained" size="large">Search</Button>
               </Box>
             </Box>
           </Box>

@@ -40,9 +40,13 @@ function Navbar() {
   return (
     <AppBar position="static" sx={{ bgcolor: "white" }} py={4} px={2}>
       <Container maxWidth="xl">
-        <Toolbar disableGutters sx={{height: '100px'}}>
+        <Toolbar disableGutters sx={{ height: "100px" }}>
           <HomeRoundedIcon
-            sx={{ display: { xs: "none", md: "flex" }, mr: 1, color: '#2dbe6c' }}
+            sx={{
+              display: { xs: "none", md: "flex" },
+              mr: 1,
+              color: "#1565c0",
+            }}
           />
           <Typography
             variant="h6"
@@ -52,7 +56,7 @@ function Navbar() {
               display: { xs: "none", md: "flex" },
               fontFamily: "monospace",
               fontWeight: 700,
-              color: "#2dbe6c",
+              color: "#1565c0",
               textDecoration: "none",
             }}
           >
@@ -107,7 +111,7 @@ function Navbar() {
               fontFamily: "monospace",
               fontWeight: 700,
               fontSize: 20,
-              color: "#2dbe6c",
+              color: "#1565c0",
               textDecoration: "none",
             }}
           >
@@ -127,7 +131,7 @@ function Navbar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title='User Setting'>
+            <Tooltip title="User Setting">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar
                   alt="Remy Sharp"

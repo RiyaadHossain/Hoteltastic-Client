@@ -17,7 +17,7 @@ import styled from "@emotion/styled";
 const Img = styled("img")({
   width: 90,
   height: 90,
-  borderRadius: 10,
+  borderRadius: 4,
   objectFit: "cover",
 });
 
