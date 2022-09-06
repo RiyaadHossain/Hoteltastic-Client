@@ -13,7 +13,7 @@ const FeatureRooms = () => {
                backgroundColor: "#e5f8ed",
                textAlign: "center",
                fontFamily: "'Rubik', sans-serif",
-               padding: "100px 0px 120px 0px"
+               padding: "80px 0px 120px 0px"
           }}>
                <Typography
                     sx={{

@@ -16,6 +16,7 @@ const FeatureRoom = ({ feature }) => {
                     md: 370
                },
                margin: "0 15px",
+               borderRadius:"10px"
           }}
                fontFamily="'Rubik', sans-serif"
           >
