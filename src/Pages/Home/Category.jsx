@@ -33,7 +33,7 @@ function Category() {
                 Residential
               </Typography>
               <Box>
-                <Avatar sx={{ m: "0 auto",bgcolor: green[500] }}>52</Avatar>
+                <Avatar sx={{ m: "0 auto",bgcolor: green[300] }}>52</Avatar>
               </Box>
             </Paper>
           </Grid>
@@ -59,7 +59,7 @@ function Category() {
                 Business
               </Typography>
               <Box>
-                <Avatar sx={{ m: "0 auto",bgcolor: green[500] }}>52</Avatar>
+                <Avatar sx={{ m: "0 auto",bgcolor: green[300] }}>52</Avatar>
               </Box>
             </Paper>
           </Grid>
@@ -85,7 +85,7 @@ function Category() {
                 Store
               </Typography>
               <Box>
-                <Avatar sx={{ m: "0 auto",bgcolor: green[500] }}>52</Avatar>
+                <Avatar sx={{ m: "0 auto",bgcolor: green[300] }}>52</Avatar>
               </Box>
             </Paper>
           </Grid>
