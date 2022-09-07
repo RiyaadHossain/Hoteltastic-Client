@@ -30,6 +30,7 @@ function CallToAction() {
         <Grid item md={4} sm={12}>
           <Button
             sx={{
+              fontWeight: "bold",
               color: "black",
               border: "1px solid #e5e7ec",
               padding: "12px 0px",
@@ -49,17 +50,17 @@ function CallToAction() {
           <Button
             sx={{
               ml: 2,
-              color: "black",
-              border: "1px solid #e5e7ec",
+              fontWeight: "bold",
+              color: "white",
+              border: "1px solid #2dbe6c",
               padding: "12px 0px",
               backgroundColor: "#2dbe6c",
               width: "150px",
-              boxShadow: "inset 0 0 0 0 #2dbe6c",
+              boxShadow: "inset 0 0 0 0 black",
               transition: "ease-out 0.5s",
               "&:hover": {
-                color: "white",
-                boxShadow: "inset 150px 0 0 0 #2dbe6c",
-                backgroundColor: "transparant",
+                color: "#2dbe6c",
+                boxShadow: "inset 150px 0 0 0 black",
                 border: "1px solid #2dbe6c",
               },
             }}
