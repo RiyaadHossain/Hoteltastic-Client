@@ -108,6 +108,7 @@ function NewsArticle() {
                     {news.description}
                   </Typography>
                   <Button
+                    size="large"
                     variant="contained"
                     sx={{
                       mt: 2,
