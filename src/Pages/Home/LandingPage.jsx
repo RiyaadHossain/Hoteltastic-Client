@@ -1,6 +1,7 @@
 import React from "react";
-import AppPromotion from "./AppPromotion";
 import Banner from "./Banner";
+import AppPromotion from "./AppPromotion";
+import CallToAction from "./CallToAction";
 import FeatureRooms from "./FeatureRooms";
 
 function Home() {
@@ -8,6 +9,7 @@ function Home() {
     <>
       <Banner />
       <FeatureRooms />
+      <CallToAction/>
       <AppPromotion />
     </>
   );
