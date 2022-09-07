@@ -5,6 +5,7 @@ import { Grid, makeStyles } from "@mui/material";
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundImage: PromotionBG,
+    backgroundColor: "darkblue"
   },
 }));
 
