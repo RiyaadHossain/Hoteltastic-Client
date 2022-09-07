@@ -1,5 +1,5 @@
 import React from "react";
-import OurAgents from "../../Components/OurAgents";
+import OurAgents from "./OurAgents/OurAgents";
 import Banner from "./Banner";
 import AppPromotion from "./AppPromotion";
 import CallToAction from "./CallToAction";
@@ -15,6 +15,7 @@ function Home() {
       <FeatureRooms />
       <HotProperty/>
       <Testimonials/>
+      <OurAgents></OurAgents>
       <CallToAction />
       <NewsArticle/>
       <AppPromotion />

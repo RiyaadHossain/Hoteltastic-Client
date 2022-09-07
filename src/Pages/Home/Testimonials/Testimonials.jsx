@@ -10,8 +10,8 @@ import "swiper/css/pagination";
 import "./styles.module.css";
 
 // import required modules
-import { Autoplay,Navigation,EffectCoverflow, Pagination } from "swiper";
-import Card from '../../../Components/Carousel/Card';
+import { Autoplay,Navigation,Pagination } from "swiper";
+// import Card from '../OurAgents/Carousel/Card';
 import Testimonial from './Testimonial';
 
 
@@ -41,34 +41,6 @@ const Testimonials = () => {
              navigation={true}
              modules={[Autoplay, Pagination, Navigation]}
              className="mySwiper"
-        // effect={"coverflow"}
-        // grabCursor={true}
-        // centeredSlides={true}
-        // slidesPerView={"auto"}
-        // coverflowEffect={{
-        //   rotate: 50,
-        //   stretch: 0,
-        //   depth: 100,
-        //   modifier: 1,
-        //   slideShadows: true,
-        // }}
-        // breakpoints={{
-        //     640: {
-        //       slidesPerView: 1,
-        //       spaceBetween: 50,
-        //     },
-        //     768: {
-        //       slidesPerView: 2,
-        //       spaceBetween: 40,
-        //     },
-        //     1024: {
-        //       slidesPerView: 3,
-        //       spaceBetween: 50,
-        //     }
-        // }}
-        // pagination={true}
-        // modules={[EffectCoverflow, Pagination]}
-        // className="mySwiper"
       >
         <SwiperSlide>
           <Testimonial></Testimonial>

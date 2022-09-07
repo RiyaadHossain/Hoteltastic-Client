@@ -30,7 +30,7 @@ const Carousel = () => {
   centeredSlides={true}
   slidesPerView={'auto'}
   navigation={true}
-  // pagination={true}
+  pagination={true}
 
   coverflowEffect={{
     rotate: 0,
@@ -67,31 +67,19 @@ const Carousel = () => {
   className="mySwiper"
 >
   <SwiperSlide>
-    <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+    <img src="http://azim.commonsupport.com/Realshed/assets/images/team/team-1.jpg" />
   </SwiperSlide>
   <SwiperSlide>
-    <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+    <img src="http://azim.commonsupport.com/Realshed/assets/images/team/team-2.jpg" />
   </SwiperSlide>
   <SwiperSlide>
-    <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+    <img src="http://azim.commonsupport.com/Realshed/assets/images/team/team-3.jpg" />
   </SwiperSlide>
   <SwiperSlide>
-    <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+    <img src="http://azim.commonsupport.com/Realshed/assets/images/team/team-4.jpg" />
   </SwiperSlide>
   <SwiperSlide>
-    <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-  </SwiperSlide>
-  <SwiperSlide>
-    <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-  </SwiperSlide>
-  <SwiperSlide>
-    <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-  </SwiperSlide>
-  <SwiperSlide>
-    <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-    {({ isActive }) => (
-      <Box>Current slide is {isActive ? 'active' : 'not active'}</Box>
-    )}
+    <img src="http://azim.commonsupport.com/Realshed/assets/images/team/team-5.jpg" />
   </SwiperSlide>
 </Swiper>
     </>
