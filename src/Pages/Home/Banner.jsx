@@ -5,7 +5,7 @@ import BannerImg from "../../Assets/Image/banner-1.jpg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: `calc(80vh)`,
+    minHeight: `calc(80vh)`,
     background: `rgba(4, 59, 100, .55) url(${BannerImg}) no-repeat bottom center`,
     backgroundSize: "cover",
     backgroundBlendMode: "overlay",
