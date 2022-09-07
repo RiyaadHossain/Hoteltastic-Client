@@ -12,7 +12,7 @@ import LocationOnTwoToneIcon from "@mui/icons-material/LocationOnTwoTone";
 import React from "react";
 import FooterImg1 from "../Assets/Image/feature-1.jpg";
 import FooterImg2 from "../Assets/Image/feature-2.jpg";
-import FooterLogo from "../Assets/Icon/footer-logo.png";
+import FooterLogo from "../Assets/Logo/footer-logo.png";
 import styled from "@emotion/styled";
 
 const Img = styled("img")({
