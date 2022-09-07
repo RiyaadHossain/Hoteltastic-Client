@@ -1,10 +1,12 @@
 import React from "react";
-import PromotionBG from "../../Assets/Backgrounds/mobileBg.png";
-import { Grid, makeStyles } from "@mui/material";
+import PromotionBG from "../../Assets/Background/mobileBg.png";
+import { makeStyles } from "@mui/styles";
+import { Grid } from "@mui/material";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundImage: PromotionBG,
+    minHeight: '50vh',
     backgroundColor: "darkblue"
   },
 }));
