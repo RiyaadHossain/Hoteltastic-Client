@@ -7,15 +7,17 @@ import FeatureRooms from "./FeatureRooms";
 import NewsArticle from "./NewsArticle";
 import HotProperty from "./HotProperty/HotProperty";
 import Testimonials from "./Testimonials/Testimonials";
+import Category from "./Category";
 
 function Home() {
   return (
     <>
       <Banner />
+      <Category/>
       <FeatureRooms />
       <HotProperty/>
       <Testimonials/>
-      <OurAgents></OurAgents>
+      <OurAgents/>
       <CallToAction />
       <NewsArticle/>
       <AppPromotion />
