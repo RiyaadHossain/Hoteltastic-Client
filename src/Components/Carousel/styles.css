@@ -25,15 +25,15 @@ body {
   background-size: cover;
   width: 300px;
   height: 400px;
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
-  filter: blur(4px);
-  background: #d1ebff;
+  /* box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2); */
+  /* filter: blur(4px); */
+  /* background: #d1ebff; */
   border-radius: 7px;
 }
 
 .swiper-slide-active {
-  filter: blur(0px);
-  background: #fff;
+  /* filter: blur(0px); */
+  /* background: #fff; */
 }
 
 .swiper-slide img {
