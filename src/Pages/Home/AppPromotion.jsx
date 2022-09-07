@@ -1,5 +1,5 @@
 import React from "react";
-import PromotionBG from "../../Assets/Backgrounds/mobileBg.png";
+import PromotionBG from "../../Assets/Background/mobileBg.png";
 import { Grid, makeStyles } from "@mui/material";
 
 const useStyles = makeStyles((theme) => ({
