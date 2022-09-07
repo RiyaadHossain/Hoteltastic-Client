@@ -12,6 +12,7 @@ import LocationOnTwoToneIcon from "@mui/icons-material/LocationOnTwoTone";
 import React from "react";
 import FooterImg1 from "../Assets/Image/feature-1.jpg";
 import FooterImg2 from "../Assets/Image/feature-2.jpg";
+import FooterLogo from "../Assets/Logo/footer-logo.png";
 import styled from "@emotion/styled";
 
 const Img = styled("img")({
@@ -72,11 +73,11 @@ const Footer = () => {
             <Box display="flex">
               <Img src={FooterImg1} />
               <Box ml={2}>
-                <Typography  color="GrayText" fontWeight="bold" >
+                <Typography color="GrayText" fontWeight="bold">
                   The Added Value Social Worker
                 </Typography>
                 <Typography mt={1} variant="subtitle2" color="GrayText">
-                Mar 25, 2020
+                  Mar 25, 2020
                 </Typography>
               </Box>
             </Box>
@@ -85,11 +86,11 @@ const Footer = () => {
             <Box display="flex">
               <Img src={FooterImg2} />
               <Box ml={2}>
-                <Typography  color="GrayText" fontWeight="bold" >
-                Ways to Increase Trust
+                <Typography color="GrayText" fontWeight="bold">
+                  Ways to Increase Trust
                 </Typography>
                 <Typography mt={1} variant="subtitle2" color="GrayText">
-                Mar 24, 2020
+                  Mar 24, 2020
                 </Typography>
               </Box>
             </Box>
@@ -121,6 +122,30 @@ const Footer = () => {
             </ListItemIcon>
             <Typography color="GrayText">info@example.com</Typography>
           </ListItem>
+        </Grid>
+      </Grid>
+      <Grid
+        bgcolor="#272a2f"
+        textAlign="center"
+        color="white"
+        px={3}
+        py={2}
+        container
+        spacing={4}
+        alignItems='center'
+      >
+        <Grid item xs={12} md={4}>
+          <Typography color="GrayText" variant="subtitle1">
+            Realshed © 2021 All Right Reserved
+          </Typography>
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <img alt="footer-logo" src={FooterLogo} />
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <Typography color="GrayText" variant="subtitle1">
+            Terms of Service | Privacy Policy
+          </Typography>
         </Grid>
       </Grid>
     </Paper>
