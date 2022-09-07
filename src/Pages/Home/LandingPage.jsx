@@ -6,6 +6,7 @@ import CallToAction from "./CallToAction";
 import FeatureRooms from "./FeatureRooms";
 import NewsArticle from "./NewsArticle";
 import HotProperty from "./HotProperty/HotProperty";
+import Testimonials from "./Testimonials/Testimonials";
 
 function Home() {
   return (
@@ -13,6 +14,7 @@ function Home() {
       <Banner />
       <FeatureRooms />
       <HotProperty/>
+      <Testimonials/>
       <CallToAction />
       <NewsArticle/>
       <AppPromotion />
