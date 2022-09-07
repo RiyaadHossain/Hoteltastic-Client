@@ -15,7 +15,7 @@ const FeatureRoom = ({ feature }) => {
                maxWidth: {
                     md: 370
                },
-               margin: "0 15px",
+               margin: "15px 15px",
                borderRadius:"10px"
           }}
                fontFamily="'Rubik', sans-serif"

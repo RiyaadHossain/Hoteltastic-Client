@@ -6,7 +6,7 @@ import CallToActionBg from "../../Assets/Background/callToActionBg.png";
 const useStyles = makeStyles((theme) => ({
   root: {
     background: `rgba(0, 0, 0, .9) url(${CallToActionBg}) no-repeat`,
-    padding: "85px 30px",
+    padding: "105px 30px",
   },
 }));
 
@@ -23,7 +23,11 @@ function CallToAction() {
         m="0 auto"
       >
         <Grid item md={8} sm={12}>
-          <Typography fontSize={40} fontWeight="bold" color="white">
+          <Typography
+            sx={{ fontSize: { xs: 33, md: 40 }, mb: {xs: 5, md: 0} }}
+            fontWeight="bold"
+            color="white"
+          >
             Looking to Buy a New Property or Sell an Existing One?
           </Typography>
         </Grid>
