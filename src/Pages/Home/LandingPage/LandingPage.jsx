@@ -8,6 +8,7 @@ import NewsArticle from "../NewsArticle/NewsArticle";
 import HotProperty from "../HotProperty/HotProperty";
 import Testimonials from "../Testimonials/Testimonials";
 import Category from "../Category/Category";
+import TopPlaces from "../TopPlaces/TopPlaces";
 
 function Home() {
   return (
@@ -17,6 +18,7 @@ function Home() {
       <FeatureRooms />
       <HotProperty/>
       <Testimonials/>
+      <TopPlaces />
       <OurAgents/>
       <CallToAction />
       <NewsArticle/>
