@@ -63,7 +63,6 @@ const TopPlaces = () => {
                     <Box marginRight={5} sx={{
                          position: "relative",
                          overflow: "hidden",
-
                     }}>
                          <Box sx={{
                               transition: "ease-out 0.3s",
@@ -118,6 +117,7 @@ const TopPlaces = () => {
                               <Box sx={{ position: "relative", overflow: "hidden", }}>
                                    <Box sx={{
                                         transition: "ease-out 0.3s",
+
                                         "&:hover": {
                                              transform: "scale(1.1)"
                                         }
@@ -160,6 +160,7 @@ const TopPlaces = () => {
                               <Box sx={{ position: "relative", overflow: "hidden", }}>
                                    <Box sx={{
                                         transition: "ease-out 0.3s",
+
                                         "&:hover": {
                                              transform: "scale(1.1)"
                                         }
@@ -203,6 +204,7 @@ const TopPlaces = () => {
                          <Box sx={{ position: "relative", overflow: "hidden", }}>
                               <Box sx={{
                                    transition: "ease-out 0.3s",
+
                                    "&:hover": {
                                         transform: "scale(1.1)"
                                    }
