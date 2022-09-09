@@ -17,7 +17,7 @@ import "./styles.css";
 
 // import required modules
 import {Navigation,Autoplay, EffectCoverflow, Pagination } from "swiper";
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { NavigationButtonNext, NavigationButtonPrev } from '../../HotProperty/NavigationButton';
 
 
@@ -47,16 +47,16 @@ const Carousel = () => {
 
         breakpoints={{
           640: {
-            slidesPerView: 2,
+            slidesPerView: 1,
             spaceBetween: 50,
           },
           768: {
-            slidesPerView: 3,
+            slidesPerView: 2,
             spaceBetween: 40,
           },
           1024: {
             slidesPerView: 3,
-            spaceBetween: 50,
+            spaceBetween: 70,
           },
         }}
         loop={true}
@@ -86,7 +86,48 @@ const Carousel = () => {
           </Box>
 
               <SwiperSlide>
-                <img src="http://azim.commonsupport.com/Realshed/assets/images/team/team-1.jpg" style={{objectFit: "cover"}} alt=""/>
+                <Box sx={{position:'relative'}}>
+                <Box sx={{
+                              transition: "ease-out 0.3s",
+                              "&:hover": {
+                                   transform: "scale(1.1)"
+                              }
+                         }}>
+                  <img src="http://azim.commonsupport.com/Realshed/assets/images/team/team-1.jpg" style={{objectFit: "cover"}} alt=""/>
+                </Box>
+                <Box sx={{
+                              width: "60%",
+                              marginLeft: "auto",
+                              marginRight: "auto",
+                              left: 0,
+                              right: 0,
+                              textAlign: "center",
+                              position: "absolute",
+                              bottom: "-10%",
+                              backgroundColor: "white",
+                              padding: "14px 30px",
+                              borderRadius: "5px",
+
+                         }}>
+                              <Typography
+                                   sx={{
+                                        fontSize: 20,
+                                        fontWeight: "500",
+                                        cursor: "pointer",
+                                        transition: "ease-out 0.3s",
+                                        "&:hover": {
+                                             color: "#2dbe6c",
+                                        }
+                                   }} >
+                                   Los Angeles
+                              </Typography>
+                              <Typography
+                                   color="#93959e"
+                              >
+                                   10 Properties
+                              </Typography>
+                         </Box>
+                </Box>
               </SwiperSlide>
               <SwiperSlide>
                 <img src="http://azim.commonsupport.com/Realshed/assets/images/team/team-2.jpg" style={{objectFit: "cover"}} alt=""/>
