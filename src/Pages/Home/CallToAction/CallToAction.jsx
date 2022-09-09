@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import CallToActionBg from "../../Assets/Background/callToActionBg.png";
+import CallToActionBg from "../../../Assets/Background/callToActionBg.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { makeStyles } from "@mui/styles";
 import { Box, Button, MenuItem, TextField, Typography } from "@mui/material";
-import BannerImg from "../../Assets/Image/banner-1.jpg";
+import BannerImg from "../../../Assets/Image/banner-1.jpg";
 
 const useStyles = makeStyles((theme) => ({
   root: {

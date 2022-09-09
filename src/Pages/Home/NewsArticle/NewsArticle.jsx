@@ -1,9 +1,9 @@
 import { Box, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import React from "react";
-import New1 from "../../Assets/Image/news-1.jpg";
-import New2 from "../../Assets/Image/news-2.jpg";
-import New3 from "../../Assets/Image/news-3.jpg";
+import New1 from "../../../Assets/Image/news-1.jpg";
+import New2 from "../../../Assets/Image/news-2.jpg";
+import New3 from "../../../Assets/Image/news-3.jpg";
 import CustomCard from "../../../Components/CustomCard";
 
 const useStyles = makeStyles({

@@ -1,9 +1,9 @@
 import React from "react";
 import { makeStyles } from "@mui/styles";
 import { Box, Button, Grid, Typography } from "@mui/material";
-import Mobile1 from "../../Assets/Image/mobile-1.png";
-import Mobile2 from "../../Assets/Image/mobile-2.png";
-import PromotionBG from "../../Assets/Background/mobileBg.png";
+import Mobile1 from "../../../Assets/Image/mobile-1.png";
+import Mobile2 from "../../../Assets/Image/mobile-2.png";
+import PromotionBG from "../../../Assets/Background/mobileBg.png";
 import AppleIcon from "@mui/icons-material/Apple";
 import ShopIcon from "@mui/icons-material/Shop";
 
