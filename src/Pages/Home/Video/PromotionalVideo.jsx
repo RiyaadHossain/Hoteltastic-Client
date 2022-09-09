@@ -1,27 +1,30 @@
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import React from 'react';
-import { DefaultPlayer as Video } from 'react-html5video';
-import 'react-html5video/dist/styles.css';
-import { Time, Seek, Volume, Captions, PlayPause, Fullscreen, Overlay, apiHelpers } from 'react-html5video'
+import ReactPlayer from 'react-player'
+import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+import VideoIcon from './VideoIcon';
 
 const PromotionalVideo = () => {
     return (
         <Box sx={{
-            height:'30rem',
-            background:'#000',
+            height:{
+                xs:'300px',
+                sm:'500px',
+                md:'35rem'  
+            },
+            // background:'#000',
             width:'100%'
         }}>
-            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/fN4f1CZ4GX8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        {/* <Video
-            autoPlay loop muted
-            controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
-            // poster="http://azim.commonsupport.com/Realshed/assets/images/background/video-1.jpg"
-            onCanPlayThrough={() => {
-                // Do stuff
-            }}>
-            <source src="https://youtu.be/q-Bz8FKPQVI" type="video/mp4" />
-            <track label="English" kind="subtitles" srcLang="en" src="https://youtu.be/q-Bz8FKPQVI" default />
-        </Video>        */}
+        <ReactPlayer
+            muted={false}
+            controls={true}
+            light={"https://www.redrockresort.com/wp-content/uploads/2020/04/RR-King-Bedroom-1080x675.jpg"} 
+            playbackRate={1.4}
+            fullscreen={true}
+            playIcon={<VideoIcon/>}
+            width='100%'
+            height='100%'
+            url='https://youtu.be/A-yYTkfrHR0' />
         </Box>
     );
 };
