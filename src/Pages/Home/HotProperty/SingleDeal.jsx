@@ -194,7 +194,7 @@ const SingleDeal = ({deal}) => {
 
             }
           }}>
-            <img style={{borderRadius:10,width:'100%',height:'100%'}}  src="http://azim.commonsupport.com/Realshed/assets/images/resource/deals-1.jpg" alt="" />
+            <img style={{borderRadius:10,width:'100%',height:'100%', objectFit: 'cover'}}  src="http://azim.commonsupport.com/Realshed/assets/images/resource/deals-1.jpg" alt="" />
           </Box>
           </Grid>
             </Grid>

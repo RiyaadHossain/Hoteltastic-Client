@@ -1,4 +1,4 @@
-import { Box, Typography,styled } from '@mui/material';
+import { Box, Typography} from '@mui/material';
 import React from 'react';
 import Carousel from './Carousel/Carousel';
 
