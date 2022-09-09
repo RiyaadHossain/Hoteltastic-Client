@@ -69,8 +69,8 @@ const FeatureRoom = ({ feature }) => {
                                    sx={{
                                         border: "1px solid #e5e7ec",
                                         padding: "3px",
-                                        height: "40px",
-                                        width: "40px",
+                                        height: "33px",
+                                        width: "33px",
                                         color: "#a6a7af",
                                         borderRadius: "4px",
                                    }}
@@ -79,8 +79,8 @@ const FeatureRoom = ({ feature }) => {
                                    sx={{
                                         border: "1px solid #e5e7ec",
                                         padding: "3px",
-                                        height: "40px",
-                                        width: "40px",
+                                        height: "33px",
+                                        width: "33px",
                                         color: "#a6a7af",
                                         borderRadius: "4px",
                                         marginLeft: "5px"
@@ -106,8 +106,6 @@ const FeatureRoom = ({ feature }) => {
 
                     }} >See Details</Button>
                </CardContent>
-               {/* <CardActions>
-               </CardActions> */}
           </Card>
      );
 };
