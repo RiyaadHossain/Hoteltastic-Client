@@ -9,13 +9,13 @@ import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
 
 const FeatureRoom = ({ feature }) => {
-     const { id, featured, authorThumb, authorName, status, propertyName, propertyImage, propertyDesciption, startFrom, beds, baths, sqFt, saved } = feature
+     const { /* id, featured, authorThumb, authorName, status, beds, baths, sqFt, saved, */ propertyName, propertyImage, propertyDesciption, startFrom, } = feature
      return (
           <Card sx={{
                maxWidth: {
                     md: 370
                },
-               margin: "0 15px",
+               margin: "15px 15px",
                borderRadius:"10px"
           }}
                fontFamily="'Rubik', sans-serif"
@@ -69,8 +69,8 @@ const FeatureRoom = ({ feature }) => {
                                    sx={{
                                         border: "1px solid #e5e7ec",
                                         padding: "3px",
-                                        height: "40px",
-                                        width: "40px",
+                                        height: "33px",
+                                        width: "33px",
                                         color: "#a6a7af",
                                         borderRadius: "4px",
                                    }}
@@ -79,8 +79,8 @@ const FeatureRoom = ({ feature }) => {
                                    sx={{
                                         border: "1px solid #e5e7ec",
                                         padding: "3px",
-                                        height: "40px",
-                                        width: "40px",
+                                        height: "33px",
+                                        width: "33px",
                                         color: "#a6a7af",
                                         borderRadius: "4px",
                                         marginLeft: "5px"
@@ -106,8 +106,6 @@ const FeatureRoom = ({ feature }) => {
 
                     }} >See Details</Button>
                </CardContent>
-               {/* <CardActions>
-               </CardActions> */}
           </Card>
      );
 };
