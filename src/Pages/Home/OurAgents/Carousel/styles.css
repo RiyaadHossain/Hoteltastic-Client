@@ -16,7 +16,7 @@ body {
 
 .swiper {
   width: 100%;
-  padding-top: 50px;
+  padding-top: 70px;
   padding-bottom: 50px;
 }
 
@@ -31,10 +31,6 @@ body {
   border-radius: 7px;
 }
 
-.swiper-slide-active {
-  /* filter: blur(0px); */
-  /* background: #fff; */
-}
 
 .swiper-slide img {
   display: block;
