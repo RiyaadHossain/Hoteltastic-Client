@@ -10,6 +10,7 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import BeenhereIcon from '@mui/icons-material/Beenhere';
 import SingleDeal from './SingleDeal';
 import { Swiper, SwiperSlide } from "swiper/react";
+import {NavigationButtonNext, NavigationButtonPrev} from './NavigationButton';
 
 // Import Swiper styles
 import "swiper/css";
@@ -22,12 +23,6 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper";
 
 
-const FlexContainer = styled(Box)`
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin:20px 0
-`
 
 const HotProperty = () => {
     const dealsData = [
@@ -62,10 +57,15 @@ const HotProperty = () => {
         }}}>
             
             <Typography variant='h6' sx={{color:'#2dbe6c'}}>HOT PROPERTY</Typography>
-            <FlexContainer>
+            <Typography variant='h3'>Our Best Deals</Typography>
+            {/* <FlexContainer>
                 <Typography variant='h4'>Our Best Deals</Typography>
                 <Box>
-                    <Button sx={{
+                    <Button
+                         onClick={next} 
+                         // onClick={() => swiper.slideNext()}
+
+                        sx={{
                         border:'1px solid #93959e' ,
                         color: "#fff",
                         background: "#2dbe6c",
@@ -96,7 +96,7 @@ const HotProperty = () => {
                         }
                     }}><ArrowForwardIosIcon/></Button>
                 </Box>
-            </FlexContainer>
+            </FlexContainer> */}
 
                     {/* swipper starts */}
         <Swiper
@@ -113,6 +113,62 @@ const HotProperty = () => {
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
+          {/* <FlexContainer> */}
+                
+                {/* <Box> */}
+                    {/* <NavigationButtonNext></NavigationButtonNext>
+                    <NavigationButtonNext></NavigationButtonNext> */}
+                    {/* <Button
+                         onClick={next} 
+                         // onClick={() => swiper.slideNext()}
+
+                        sx={{
+                        border:'1px solid #93959e' ,
+                        color: "#fff",
+                        background: "#2dbe6c",
+                        padding: "12px 0",
+                        marginRight: "8px",
+                        boxShadow: "inset 0 0 0 0 #000",
+                        transition: "ease-out 0.2s",
+                        borderRadius: "5px",
+                        "&:hover": {
+                             color: "#fff",
+                             boxShadow: "inset 130px 0 0 0 #000",
+                             border: "2px solid #2dbe6c",
+                        }
+                        }}><ArrowBackIosNewIcon/></Button> */}
+                    {/* <Button sx={{
+                        border:'1px solid #93959e' ,
+                        color: "#fff",
+                        background: "#2dbe6c",
+                        padding: "12px 0",
+                        marginRight: "8px",
+                        boxShadow: "inset 0 0 0 0 #000",
+                        transition: "ease-out 0.2s",
+                        borderRadius: "5px",
+                        "&:hover": {
+                             color: "#fff",
+                             boxShadow: "inset 130px 0 0 0 #000",
+                             border: "2px solid #2dbe6c",
+                        }
+                    }}><ArrowForwardIosIcon/></Button> */}
+                {/* </Box> */}
+            
+          {/* navifation button for swipper slide */}
+          <Box sx={{
+               position:'absolute',
+               top : -5,
+               paddingTop : 2,
+               right : 10,
+               zIndex:1
+          }}>    
+          <NavigationButtonPrev>
+               <ArrowBackIosNewIcon/>
+          </NavigationButtonPrev>
+          <NavigationButtonNext>
+               <ArrowForwardIosIcon/>
+          </NavigationButtonNext>
+          </Box>
         <SwiperSlide>
             {/* {
                 dealsData.map(deal=>{

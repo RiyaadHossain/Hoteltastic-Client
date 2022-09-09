@@ -8,6 +8,7 @@ import NewsArticle from "../NewsArticle/NewsArticle";
 import HotProperty from "../HotProperty/HotProperty";
 import Testimonials from "../Testimonials/Testimonials";
 import Category from "../Category/Category";
+import PromotionalVideo from "../Video/PromotionalVideo";
 
 function Home() {
   return (
@@ -15,6 +16,7 @@ function Home() {
       <Banner />
       <Category/>
       <FeatureRooms />
+      <PromotionalVideo/>
       <HotProperty/>
       <Testimonials/>
       <OurAgents/>
