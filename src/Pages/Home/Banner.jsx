@@ -5,13 +5,14 @@ import BannerImg from "../../Assets/Image/banner-1.jpg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    minHeight: `calc(80vh)`,
+    minHeight: `calc(70vh)`,
     background: `rgba(4, 59, 100, .55) url(${BannerImg}) no-repeat bottom center`,
     backgroundSize: "cover",
     backgroundBlendMode: "overlay",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    padding: '70px 0'
     // [theme.breakpoints.down("sm")]: {
     //   height: ''
     // }
@@ -37,29 +38,9 @@ const currencies = [
   },
 ];
 
-const roomType = [
-  {
-    value: "Single Room",
-    label: "Single Room",
-  },
-  {
-    value: "Double Bed",
-    label: "Double Bed",
-  },
-  {
-    value: "Attached WashRoom",
-    label: "Attached WashRoom",
-  },
-  {
-    value: "Wide Room",
-    label: "Wide Room",
-  },
-];
-
 function Banner() {
   const classes = useStyles();
   const [currency, setCurrency] = useState("");
-  const [room, setRoom] = useState("");
   return (
     <div>
       <Box className={classes.root}>
@@ -97,7 +78,7 @@ function Banner() {
               display="inline-block"
               sx={{
                 height: {
-                  sm: "330px",
+                  sm: "260px",
                 },
                 width: {
                   sm: "600px",
@@ -129,21 +110,7 @@ function Banner() {
                   ))}
                 </TextField>
               </Box>
-              <TextField
-                id="filled-select-currency"
-                select
-                fullWidth
-                label="Room Type"
-                value={room}
-                onChange={(e) => setRoom(e.target.value)}
-                variant="filled"
-              >
-                {roomType.map((option) => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>
-                ))}
-              </TextField>
+             
               <Box mt={2}>
                 <Button variant="contained" size="large">Search</Button>
               </Box>

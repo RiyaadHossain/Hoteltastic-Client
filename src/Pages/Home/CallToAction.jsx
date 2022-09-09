@@ -53,7 +53,7 @@ function CallToAction() {
           </Button>
           <Button
             sx={{
-              ml: 2,
+              ml: 1,
               fontWeight: "bold",
               color: "white",
               border: "1px solid #2dbe6c",

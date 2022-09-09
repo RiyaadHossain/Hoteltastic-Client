@@ -1,23 +1,14 @@
-import {
-  Avatar,
-  Box,
-  Button,
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  Grid,
-  Typography,
-} from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import React from "react";
-import New1 from "../../Assets/Image/news-1.jpg"
-import New2 from "../../Assets/Image/news-2.jpg"
-import New3 from "../../Assets/Image/news-3.jpg"
+import New1 from "../../Assets/Image/news-1.jpg";
+import New2 from "../../Assets/Image/news-2.jpg";
+import New3 from "../../Assets/Image/news-3.jpg";
+import CustomCard from "../../Components/CustomCard";
 
 const useStyles = makeStyles({
   root: {
-    padding: "80px 15px",
+    padding: "80px 5px",
     textAlign: "center",
   },
   title1: {
@@ -64,8 +55,10 @@ function NewsArticle() {
   const classes = useStyles();
   return (
     <Box className={classes.root}>
-      <Box>
-        <Typography className={classes.title1} fontWeight="bold">NEWS & ARTICLE</Typography>
+      <Box mb={5}>
+        <Typography className={classes.title1} fontWeight="bold">
+          NEWS & ARTICLE
+        </Typography>
         <Typography variant="h4" my={2} fontWeight="bold">
           Stay Update With Realshed
         </Typography>
@@ -74,58 +67,26 @@ function NewsArticle() {
           tempor incididunt labore dolore magna aliqua enim.
         </Typography>
       </Box>
-      <Grid container mt={4} spacing={5} maxWidth={1150} margin='0 auto'>
-        {/* ======================== Card No ======================== */}
+      <Box
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          marginTop: "30px",
+        }}
+      >
+        {/* ======================== Card Here ======================== */}
         {news.map((news) => (
-          <Grid key={news.author} item md={6} xs={12} lg={4}>
-            <Card sx={{ maxWidth: 345, m: "0 auto" }}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="220"
-                  image={news.media}
-                  alt="green iguana"
-                />
-                <CardContent sx={{ textAlign: "left" }}>
-                  <Typography
-                    gutterBottom
-                    variant="h6"
-                    component="h3"
-                    fontWeight="bold"
-                  >
-                    {news.title}
-                  </Typography>
-                  <Box display="flex" alignItems="center" mb={1}>
-                    <Avatar src={news.avatar} />
-                    <Typography ml={1} fontWeight="bold">
-                      {news.author}
-                    </Typography>
-                    <Typography color="GrayText" ml={1}>
-                      | {news.date}
-                    </Typography>
-                  </Box>
-                  <Typography fontWeight="bold" color="text.secondary">
-                    {news.description}
-                  </Typography>
-                  <Button
-                    size="large"
-                    variant="contained"
-                    sx={{
-                      mt: 2,
-                      backgroundColor: "#2dbe6c",
-                      "&:hover": {
-                        backgroundColor: "#2dbe6c",
-                      },
-                    }}
-                  >
-                    See Details
-                  </Button>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Grid>
+          <CustomCard
+            media={news.media}
+            title={news.title}
+            bodyText={news.description}
+            subtitle1={news.author}
+            avatar={news.avatar}
+            date={news.date}
+          />
         ))}
-      </Grid>
+      </Box>
     </Box>
   );
 }
