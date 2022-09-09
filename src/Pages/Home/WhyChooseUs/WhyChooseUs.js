@@ -79,7 +79,6 @@ const WhyChooseUs = () => {
                               boxShadow: "inset 200px 0 0 0 #1b1d21",
 
                          }
-
                     }} >All Categories</Button>
                </Box>
 
