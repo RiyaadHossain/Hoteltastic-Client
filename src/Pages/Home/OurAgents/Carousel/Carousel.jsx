@@ -67,16 +67,16 @@ const Carousel = () => {
   className="mySwiper"
 >
   <SwiperSlide>
-    <img src="http://azim.commonsupport.com/Realshed/assets/images/team/team-1.jpg" />
+    <img src="http://azim.commonsupport.com/Realshed/assets/images/team/team-1.jpg" style={{objectFit: "cover"}} alt=""/>
   </SwiperSlide>
   <SwiperSlide>
-    <img src="http://azim.commonsupport.com/Realshed/assets/images/team/team-2.jpg" />
+    <img src="http://azim.commonsupport.com/Realshed/assets/images/team/team-2.jpg" style={{objectFit: "cover"}} alt=""/>
   </SwiperSlide>
   <SwiperSlide>
-    <img src="http://azim.commonsupport.com/Realshed/assets/images/team/team-3.jpg" />
+    <img src="http://azim.commonsupport.com/Realshed/assets/images/team/team-3.jpg" style={{objectFit: "cover"}} alt=""/>
   </SwiperSlide>
   <SwiperSlide>
-    <img src="http://azim.commonsupport.com/Realshed/assets/images/team/team-4.jpg" />
+    <img src="http://azim.commonsupport.com/Realshed/assets/images/team/team-4.jpg" style={{objectFit: "cover"}} alt=""/>
   </SwiperSlide>
   <SwiperSlide>
     <img src="http://azim.commonsupport.com/Realshed/assets/images/team/team-5.jpg" />
