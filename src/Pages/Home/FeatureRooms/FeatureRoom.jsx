@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
 
 const FeatureRoom = ({ feature }) => {
-     const { id, featured, authorThumb, authorName, status, propertyName, propertyImage, propertyDesciption, startFrom, beds, baths, sqFt, saved } = feature
+     const { /* id, featured, authorThumb, authorName, status, beds, baths, sqFt, saved, */ propertyName, propertyImage, propertyDesciption, startFrom, } = feature
      return (
           <Card sx={{
                maxWidth: {
