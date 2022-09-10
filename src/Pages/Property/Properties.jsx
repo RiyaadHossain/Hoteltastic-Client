@@ -2,10 +2,12 @@ import { Box, Typography } from '@mui/material';
 import React from 'react';
 import Background from '../../Assets/Background/callToActionBg.png'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ApartmentHeading from './ApartmentHeading';
 
 const Properties = () => {
     return (
-        <Box sx={{height:'100vh',fontFamily: "'Rubik', sans-serif",}}>
+        <Box sx={{fontFamily: "'Rubik', sans-serif",}}>
+            {/* header part */}
             <Box sx={{
                 width:'100%',
                 height:'15rem',
@@ -31,6 +33,19 @@ const Properties = () => {
                 fontWeight:500,
                 }}>Property Details 01</Typography>
                 </Typography>
+            </Box>
+            {/* all other components are showing here */}
+            <Box sx={{
+                padding:{
+                    xs:'30px 20px',
+                    sm:'40px 40px',
+                    md:'100px 60px',
+                    lg:'100px 80px',
+                },
+                maxWidth:'1200px',
+                mx:'auto',
+            }}>
+                <ApartmentHeading/>
             </Box>
         </Box>
     );
