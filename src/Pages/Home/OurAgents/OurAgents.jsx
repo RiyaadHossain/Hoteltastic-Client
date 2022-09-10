@@ -12,14 +12,28 @@ const OurAgents = () => {
     return (
         <Box sx={{
             background:'#e5f8ed',
+            textAlign: "center",
+               fontFamily: "'Rubik', sans-serif",
+            //    padding: "80px 0px 120px 0px"
             padding:{
                 xs:"40px 10px",
                 sm:"60px 20px",
-                md:"100px 80px"
+                md:"80px 80px"
         }
         }}>
-            <Typography variant='h5' style={{textAlign:'center',color:'#2dbe6c',fontWeight:600,marginTop:20}}>OUR AGENTS</Typography>
-            <Typography variant='h3' style={{textAlign:'center',fontWeight:600,color:'#2d2929',marginTop:20}}>Meet Our Excellent Agents</Typography>
+            <Typography variant='h6' sx={{textAlign:'center',color:'#2dbe6c',fontWeight:600,}}>OUR AGENTS</Typography>
+            <Typography variant='h4' sx={{textAlign:'center',fontWeight:600,color:'#2d2929',fontFamily: "'Rubik', sans-serif",marginBottom:2}}>Meet Our Excellent Agents</Typography>
+            <Typography  sx={{
+                textAlign:'center',
+                mx:'auto',
+                color:"#93959e",
+                width:{
+                    xs:'100%',
+                    sm:'97%',
+                    md:'50%',
+                    lg:'50%'
+                }
+            }}>Lorem ipsum dolor sit amet consectetur adipisicing sed do eiusmod tempor incididunt labore dolore magna aliqua enim.</Typography>
             <Box style={{height:'100%'}}>
                 <Carousel></Carousel>
             </Box>
