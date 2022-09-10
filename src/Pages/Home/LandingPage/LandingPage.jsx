@@ -10,6 +10,7 @@ import Testimonials from "../Testimonials/Testimonials";
 import Category from "../Category/Category";
 import PromotionalVideo from "../Video/PromotionalVideo";
 import TopPlaces from "../TopPlaces/TopPlaces";
+import WhyChooseUs from "../WhyChooseUs/WhyChooseUs";
 
 function Home() {
   return (
@@ -20,6 +21,7 @@ function Home() {
       <PromotionalVideo/>
       <HotProperty/>
       <Testimonials/>
+      <WhyChooseUs />
       <TopPlaces />
       <OurAgents/>
       <CallToAction />
