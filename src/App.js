@@ -1,21 +1,23 @@
-import { Route, Routes } from "react-router-dom";
-import Layout from "./Components/Layout";
-import LandingPage from "./Pages/Home/LandingPage"
-import SignIn from "./Pages/Auth/SignIn";
-import SignUp from "./Pages/Auth/SignUp";
+import { Route, Routes } from 'react-router-dom'
+import Layout from './Components/Layout'
+import SignIn from './Pages/Auth/SignIn'
+import SignUp from './Pages/Auth/SignUp'
+import LandingPage from './Pages/Home/LandingPage/LandingPage'
+import Properties from './Pages/Property/Properties'
 
 function App() {
-  return (
-    <>
-      <Layout>
-        <Routes>
-          <Route element={<LandingPage/>} path="/" />
-          <Route element={<SignIn/>} path="/signin" />
-          <Route element={<SignUp/>} path="/signup" />
-        </Routes>
-      </Layout>
-    </>
-  );
+	return (
+		<>
+			<Layout>
+				<Routes>
+					<Route element={<LandingPage />} path="/" />
+					<Route element={<Properties />} path="/property" />
+					<Route element={<SignIn />} path="/signin" />
+					<Route element={<SignUp />} path="/signup" />
+				</Routes>
+			</Layout>
+		</>
+	)
 }
 
-export default App;
+export default App
