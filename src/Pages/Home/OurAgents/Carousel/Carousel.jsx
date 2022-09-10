@@ -32,12 +32,12 @@ const Carousel = () => {
         slidesPerView={'auto'}
 
         coverflowEffect={{
-          rotate: 0,
-          // rotate: 50,
+          // rotate: 0,
+          rotate: 50,
           stretch: 0,
           depth: 100,
-          modifier: 2,
-          // modifier: 1,
+          // modifier: 2,
+          modifier: 1,
           slideShadows: true,
         }}
         autoplay={{
@@ -56,7 +56,7 @@ const Carousel = () => {
           },
           1024: {
             slidesPerView: 3,
-            spaceBetween: 70,
+            spaceBetween: 50,
           },
         }}
         loop={true}
@@ -65,7 +65,7 @@ const Carousel = () => {
     >   
     
 
-      {/* navigation button for swipper js */}
+      {/* navigation button for swipper js this button should be added inside swipper component that's why i had to use these buttons here */}
         <Box sx={{
           display:"flex",
           justifyContent:"space-between",
@@ -84,17 +84,22 @@ const Carousel = () => {
                <ArrowForwardIosIcon/>
           </NavigationButtonNext>
           </Box>
+              
+              {/* single slide starting here */}
 
               <SwiperSlide>
+                {/* main slide box starts here */}
                 <Box sx={{position:'relative'}}>
+                  {/* image box starting from here */}
                 <Box sx={{
                               transition: "ease-out 0.3s",
                               "&:hover": {
                                    transform: "scale(1.1)"
                               }
                          }}>
-                  <img src="http://azim.commonsupport.com/Realshed/assets/images/team/team-1.jpg" style={{objectFit: "cover"}} alt=""/>
+                  <img src="http://azim.commonsupport.com/Realshed/assets/images/team/team-1.jpg" alt=""/>
                 </Box>
+                {/* extra info div box starts here */}
                 <Box sx={{
                               width: "60%",
                               marginLeft: "auto",
@@ -129,6 +134,7 @@ const Carousel = () => {
                          </Box>
                 </Box>
               </SwiperSlide>
+              {/* single slide ending here */}
               <SwiperSlide>
                 <img src="http://azim.commonsupport.com/Realshed/assets/images/team/team-2.jpg" style={{objectFit: "cover"}} alt=""/>
               </SwiperSlide>

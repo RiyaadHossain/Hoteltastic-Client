@@ -17,7 +17,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-// import "./styles.css";
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper";
@@ -50,55 +49,19 @@ const HotProperty = () => {
     ]
     return (
         <Box sx={{
-            margin:{
+          maxWidth:'1200px',
+          mx:'auto',
+            padding:{
             xs:"40px 10px",
             sm:"60px 20px",
-            md:"100px 80px"
+            md:"100px 50px"
         }}}>
             
             <Typography variant='h6' sx={{color:'#2dbe6c'}}>HOT PROPERTY</Typography>
             <Typography variant='h3'>Our Best Deals</Typography>
-            {/* <FlexContainer>
-                <Typography variant='h4'>Our Best Deals</Typography>
-                <Box>
-                    <Button
-                         onClick={next} 
-                         // onClick={() => swiper.slideNext()}
+           
 
-                        sx={{
-                        border:'1px solid #93959e' ,
-                        color: "#fff",
-                        background: "#2dbe6c",
-                        padding: "12px 0",
-                        marginRight: "8px",
-                        boxShadow: "inset 0 0 0 0 #000",
-                        transition: "ease-out 0.2s",
-                        borderRadius: "5px",
-                        "&:hover": {
-                             color: "#fff",
-                             boxShadow: "inset 130px 0 0 0 #000",
-                             border: "2px solid #2dbe6c",
-                        }
-                        }}><ArrowBackIosNewIcon/></Button>
-                    <Button sx={{
-                        border:'1px solid #93959e' ,
-                        color: "#fff",
-                        background: "#2dbe6c",
-                        padding: "12px 0",
-                        marginRight: "8px",
-                        boxShadow: "inset 0 0 0 0 #000",
-                        transition: "ease-out 0.2s",
-                        borderRadius: "5px",
-                        "&:hover": {
-                             color: "#fff",
-                             boxShadow: "inset 130px 0 0 0 #000",
-                             border: "2px solid #2dbe6c",
-                        }
-                    }}><ArrowForwardIosIcon/></Button>
-                </Box>
-            </FlexContainer> */}
-
-                    {/* swipper starts */}
+       {/* swipper starts */}
         <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -106,54 +69,15 @@ const HotProperty = () => {
           delay: 2500,
           disableOnInteraction: false,
         }}
-        pagination={{
-          clickable: true,
-        }}
+     //    pagination={{
+     //      clickable: true,
+     //    }}
         navigation={false}
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
-          {/* <FlexContainer> */}
-                
-                {/* <Box> */}
-                    {/* <NavigationButtonNext></NavigationButtonNext>
-                    <NavigationButtonNext></NavigationButtonNext> */}
-                    {/* <Button
-                         onClick={next} 
-                         // onClick={() => swiper.slideNext()}
 
-                        sx={{
-                        border:'1px solid #93959e' ,
-                        color: "#fff",
-                        background: "#2dbe6c",
-                        padding: "12px 0",
-                        marginRight: "8px",
-                        boxShadow: "inset 0 0 0 0 #000",
-                        transition: "ease-out 0.2s",
-                        borderRadius: "5px",
-                        "&:hover": {
-                             color: "#fff",
-                             boxShadow: "inset 130px 0 0 0 #000",
-                             border: "2px solid #2dbe6c",
-                        }
-                        }}><ArrowBackIosNewIcon/></Button> */}
-                    {/* <Button sx={{
-                        border:'1px solid #93959e' ,
-                        color: "#fff",
-                        background: "#2dbe6c",
-                        padding: "12px 0",
-                        marginRight: "8px",
-                        boxShadow: "inset 0 0 0 0 #000",
-                        transition: "ease-out 0.2s",
-                        borderRadius: "5px",
-                        "&:hover": {
-                             color: "#fff",
-                             boxShadow: "inset 130px 0 0 0 #000",
-                             border: "2px solid #2dbe6c",
-                        }
-                    }}><ArrowForwardIosIcon/></Button> */}
-                {/* </Box> */}
-            
+
           {/* navifation button for swipper slide */}
           <Box sx={{
                position:'absolute',
