@@ -11,98 +11,99 @@ const ApartmentHeading = () => {
     return (
         // main container
         <Box sx={{
-            alignItems:'center',
-            width:'100%',
-            height:'10rem',
-            padding:{
-                xs:'10px 20px',
-                sm:'20px 40px',
-                md:'30px 40px',
+            alignItems: 'center',
+            width: '100%',
+            height: '10rem',
+            padding: {
+                xs: '10px 20px',
+                sm: '20px 40px',
+                md: '30px 40px',
             },
             borderRadius: '10px',
             // boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.2)',
-            boxShadow:'35px 35px 70px #bebebe, -35px -35px 70px #ffffff',
+            boxShadow: "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
+            // boxShadow:'35px 35px 70px #bebebe, -35px -35px 30px #ffffff',
             // boxShadow:  ['-35px -35px 70px #ffffff']
         }}>
             {/* top container */}
             <Box sx={{
-                display:'flex',
-                justifyContent:'space-between',
+                display: 'flex',
+                justifyContent: 'space-between',
             }}>
                 <Box sx={{
-                    display:'flex',
-                    flexWrap:'wrap',
-                    alignItems:'center',
-                    justifyContent:'space-between',
-                    width:'90%'
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    width: '90%'
                 }}>
                     <Typography sx={{
-                            fontSize:{
-                                xs:'15px',
-                                sm:'25px',
-                                md:'30px',
-                            },
+                        fontSize: {
+                            xs: '15px',
+                            sm: '25px',
+                            md: '30px',
+                        },
                     }}>The Citizen Apartment</Typography>
-                    <Box sx={{display:'flex'}}>
+                    <Box sx={{ display: 'flex' }}>
                         <Button sx={{
-                        color:'#fff',
-                        background: ' #f2b241',
-                        padding:'5px 10px',
-                        fontWeight: 'bold',
-                        borderRadius: '5px',
-                        fontSize:'12px',
-                        marginRight:'10px',
-                        '&:hover':{
-                            background:'#f2b241',
-                            color:'#fff'
-                        }
+                            color: '#fff',
+                            background: ' #f2b241',
+                            padding: '5px 10px',
+                            fontWeight: 'bold',
+                            borderRadius: '5px',
+                            fontSize: '12px',
+                            marginRight: '10px',
+                            '&:hover': {
+                                background: '#f2b241',
+                                color: '#fff'
+                            }
                         }}>BUILDING
                         </Button>
                         <Button sx={{
-                        color:'#fff',
-                        background: ' #7360ff',
-                        padding:'5px 10px',
-                        fontWeight: 'bold',
-                        borderRadius: '5px',
-                        fontSize:'12px',
-                        '&:hover':{
-                            background:'#7360ff',
-                            color:'#fff'
-                        }
+                            color: '#fff',
+                            background: ' #7360ff',
+                            padding: '5px 10px',
+                            fontWeight: 'bold',
+                            borderRadius: '5px',
+                            fontSize: '12px',
+                            '&:hover': {
+                                background: '#7360ff',
+                                color: '#fff'
+                            }
                         }}>FOR BUY
-                        </Button>                    
-                        
+                        </Button>
+
                     </Box>
                 </Box>
                 <Box>
                     <Typography component='span' sx={{
-                        color:'#2dbe6c',
-                        marginLeft:'10px',
-                        fontSize:{
-                            xs:'15px',
-                            sm:'25px',
-                            md:'30px',
+                        color: '#2dbe6c',
+                        marginLeft: '10px',
+                        fontSize: {
+                            xs: '15px',
+                            sm: '25px',
+                            md: '30px',
                         },
-                        fontWeight:'bold',
+                        fontWeight: 'bold',
                     }}>$30,000.00</Typography>
                 </Box>
             </Box>
             {/* down ocntainer */}
             <Box sx={{
-                display:'flex',
-                justifyContent:'space-between',
-                alignItems:'center',
-                marginTop:'10px',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                marginTop: '10px',
             }}>
                 <Box sx={{
-                    display:'flex',
-                    alignItems:'center',
+                    display: 'flex',
+                    alignItems: 'center',
                 }}>
                     {/* <Box> */}
-                        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                    <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
                     {/* </Box> */}
                     <Typography sx={{
-                        margin:'0px 10px',
+                        margin: '0px 10px',
                     }}>Jubin Nautiyal</Typography>
                     {/* <Box> */}
                     <Rating
@@ -112,7 +113,7 @@ const ApartmentHeading = () => {
                         readOnly
                         precision={0.5}
                         emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
-                        />
+                    />
                     {/* <Box sx={{ ml: 2 }}>{labels[value]}</Box> */}
                     {/* </Box> */}
                 </Box>
@@ -124,16 +125,16 @@ const ApartmentHeading = () => {
                         width: "33px",
                         color: "#a6a7af",
                         borderRadius: "4px",
-                        marginRight:'10px',
+                        marginRight: '10px',
                         "&:hover": {
-                            color:"#fff",
+                            color: "#fff",
                             background: "#2dbe6c",
                             boxShadow: "inset 130px 0 0 0 #2dbe6c",
                             border: "2px solid #2dbe6c",
                             cursor: "pointer",
                             transition: "all 0.3s ease-in-out"
-                       }
-                    }}/>
+                        }
+                    }} />
                     <PrintIcon sx={{
                         border: "1px solid #e5e7ec",
                         padding: "3px",
@@ -141,16 +142,16 @@ const ApartmentHeading = () => {
                         width: "33px",
                         color: "#a6a7af",
                         borderRadius: "4px",
-                        marginRight:'10px',
+                        marginRight: '10px',
                         "&:hover": {
-                            color:"#fff",
+                            color: "#fff",
                             background: "#2dbe6c",
                             boxShadow: "inset 130px 0 0 0 #2dbe6c",
                             border: "2px solid #2dbe6c",
                             cursor: "pointer",
                             transition: "all 0.3s ease-in-out"
-                       }
-                    }}/>
+                        }
+                    }} />
                     <SyncAltIcon sx={{
                         border: "1px solid #e5e7ec",
                         padding: "3px",
@@ -158,16 +159,16 @@ const ApartmentHeading = () => {
                         width: "33px",
                         color: "#a6a7af",
                         borderRadius: "4px",
-                        marginRight:'10px',
+                        marginRight: '10px',
                         "&:hover": {
-                            color:"#fff",
+                            color: "#fff",
                             background: "#2dbe6c",
                             boxShadow: "inset 130px 0 0 0 #2dbe6c",
                             border: "2px solid #2dbe6c",
                             cursor: "pointer",
                             transition: "all 0.3s ease-in-out"
-                       }
-                    }}/>
+                        }
+                    }} />
                     <FavoriteBorderIcon sx={{
                         border: "1px solid #e5e7ec",
                         padding: "3px",
@@ -175,16 +176,16 @@ const ApartmentHeading = () => {
                         width: "33px",
                         color: "#a6a7af",
                         borderRadius: "4px",
-                        marginRight:'10px',
+                        marginRight: '10px',
                         "&:hover": {
-                            color:"#fff",
+                            color: "#fff",
                             background: "#2dbe6c",
                             boxShadow: "inset 130px 0 0 0 #2dbe6c",
                             border: "2px solid #2dbe6c",
                             cursor: "pointer",
                             transition: "all 0.3s ease-in-out"
-                       }
-                    }}/>
+                        }
+                    }} />
                 </Box>
             </Box>
         </Box>

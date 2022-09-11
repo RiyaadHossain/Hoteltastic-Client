@@ -4,6 +4,8 @@ import Background from '../../Assets/Background/callToActionBg.png'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ApartmentHeading from './ApartmentHeading';
 import PropertySideBar from './PropertySideBar';
+import PropertyDescription from './PropertyDescription';
+import PropertyDetails from './PropertyDetails';
 
 const Properties = () => {
     return (
@@ -34,7 +36,7 @@ const Properties = () => {
                         fontWeight: 500,
                     }}>Property Details 01</Typography>
                 </Typography>
-            </Box>
+            </Box>  
             {/* all other components are showing here */}
             <Box sx={{
                 padding: {
@@ -44,23 +46,29 @@ const Properties = () => {
                     lg: '100px 80px',
                 },
                 maxWidth: {
-                    md: "90%",
-                    xl: "80%"
+                    md: "95%",
+                    xl: "70%"
                 },
                 mx: 'auto',
             }}>
                 <ApartmentHeading />
+
                 <Box sx={{
                     display: "flex",
                     marginTop: "30px"
                 }}>
+
+                    {/* Property Main */}
                     <Box sx={{
                         width: {
                             md: "67%",
                         },
                     }}>
-
+                       <PropertyDescription /> 
+                       <PropertyDetails /> 
                     </Box>
+
+                    {/* Property Side Bar */}
                     <Box sx={{
                         width: {
                             md: "33%",
@@ -68,6 +76,7 @@ const Properties = () => {
                     }}>
                         <PropertySideBar />
                     </Box>
+
                 </Box>
 
             </Box>

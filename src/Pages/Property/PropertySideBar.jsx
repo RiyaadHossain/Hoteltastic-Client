@@ -16,7 +16,7 @@ const PropertySideBar = () => {
 				}}
 				fontWeight="bold"
 			>
-				Slide BAR
+				Side BAR
 			</Typography>
           </Box>
      );
