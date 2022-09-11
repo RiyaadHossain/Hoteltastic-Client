@@ -69,10 +69,8 @@ const HotProperty = () => {
           delay: 2500,
           disableOnInteraction: false,
         }}
-     //    pagination={{
-     //      clickable: true,
-     //    }}
         navigation={false}
+        loop={true}
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
@@ -214,6 +212,7 @@ const HotProperty = () => {
                          {/* {description}/ */}
                          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum cum sint reiciendis rerum itaque autem! Pariatur amet cum dolore voluptates!
                     </Typography>
+                    {/* icon flex section */}
                     <Box sx={{
                         display:'flex',
                         justifyContent:'space-between',
@@ -221,6 +220,7 @@ const HotProperty = () => {
                         padding : '15px 0',
                         marginBottom:'10px',
                         height:'50px',
+                        width:'50%',
                     }}>
                         <Box sx={{display:'flex',alignItems:'center'}}>
                             <Box component='span' sx={{marginRight:'6px'}}>

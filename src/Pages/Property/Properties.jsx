@@ -6,6 +6,8 @@ import ApartmentHeading from './ApartmentHeading';
 import PropertySideBar from './PropertySideBar';
 import PropertyDescription from './PropertyDescription';
 import PropertyDetails from './PropertyDetails';
+import Carousel from '../Home/OurAgents/Carousel/Carousel';
+import PropertyCarousel from './PropertyCarousel/PropertyCarousel';
 
 const Properties = () => {
     return (
@@ -64,6 +66,7 @@ const Properties = () => {
                             md: "67%",
                         },
                     }}>
+                       <PropertyCarousel/>
                        <PropertyDescription /> 
                        <PropertyDetails /> 
                     </Box>
