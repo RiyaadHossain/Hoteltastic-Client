@@ -8,6 +8,7 @@ import PropertyDescription from './PropertyDescription';
 import PropertyDetails from './PropertyDetails';
 import Carousel from '../Home/OurAgents/Carousel/Carousel';
 import PropertyCarousel from './PropertyCarousel/PropertyCarousel';
+import Location from './Location/Location';
 
 const Properties = () => {
     return (
@@ -69,6 +70,7 @@ const Properties = () => {
                        <PropertyCarousel/>
                        <PropertyDescription /> 
                        <PropertyDetails /> 
+                       <Location/>
                     </Box>
 
                     {/* Property Side Bar */}

@@ -516,25 +516,7 @@ const HotProperty = () => {
             </Grid>
                     </SwiperSlide>
         
-{/*                    
-                })
-            } */}
-        {/* </SwiperSlide> */}
-        {/* <SwiperSlide>
-            <SingleDeal deal={dealsData[0]}></SingleDeal>
-        </SwiperSlide> */}
-        
       </Swiper>
-
-
-
-
-
-           {/* {
-                dealsData.map(deal=>{
-                    <SingleDeal deal={deal}></SingleDeal>
-                })
-           } */}
         </Box>
     );
 };
