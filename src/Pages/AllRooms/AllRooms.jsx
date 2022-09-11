@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Paper, Slider, Typography } from "@mui/material";
+import { Box, Container, FormControl, FormHelperText, Grid, InputLabel, MenuItem, Paper, Select, Slider, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import React from "react";
 import CustomHeader from "../../Components/CustomHeader";
@@ -40,10 +40,9 @@ function valueText(value) {
   return `${value}k`;
 }
 
-console.log(valueText());
-
 function AllRooms() {
   const classes = useStyles();
+  const [age, setAge] = React.useState('');
 
   return (
     <Box className={classes.root}>
@@ -65,10 +64,10 @@ function AllRooms() {
           <Grid container spacing={3}>
             <Grid item xs={12} lg={4} mt={4}>
               <Paper sx={{ p: 5 }}>
-                <Box sx={{ maxWidth: 500, margin: '0 auto' }}>
-                <Typography gutterBottom>
-                  Price Range
-                </Typography>
+                <Box sx={{ maxWidth: 500, margin: "0 auto" }}>
+                  <Typography gutterBottom fontWeight="bold">
+                    Price Range
+                  </Typography>
                   <Slider
                     aria-label="Always visible"
                     defaultValue={80}
@@ -81,6 +80,27 @@ function AllRooms() {
                     size="md"
                   />
                 </Box>
+              </Paper>
+              <Paper sx={{ p: 5, mt: 3, }}>
+              <Typography gutterBottom fontWeight="bold" mb={2}>
+                    Select your Room Type
+                  </Typography>
+                <FormControl sx={{ m: 1, minWidth: '90%', margin: '0 auto' }}>
+                  <InputLabel id="demo-simple-select-helper-label">
+                    Room
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-helper-label"
+                    id="demo-simple-select-helper"
+                    value={age}
+                    label="Room"
+                    onChange={e => setAge(e.target.value)}
+                  >
+                    <MenuItem value={10}>Ten</MenuItem>
+                    <MenuItem value={20}>Twenty</MenuItem>
+                    <MenuItem value={30}>Thirty</MenuItem>
+                  </Select>
+                </FormControl>
               </Paper>
             </Grid>
             <Grid item xs={12} lg={8}>
