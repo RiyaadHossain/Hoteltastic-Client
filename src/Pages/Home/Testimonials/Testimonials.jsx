@@ -22,7 +22,7 @@ const Testimonials = () => {
                 padding:{
                     xs:"40px 10px",
                     sm:"60px 20px",
-                    md:"100px 80px"
+                    md:"80px 80px"
             }}}>
             <Typography sx={{textAlign:'center',color:'#2dbe6c',fontWeight:'bold',marginBottom:'10px'}}>TESTIMONIALS</Typography>
             <Typography variant='h4' sx={{textAlign:'center',fontWeight:'bold'}}>What They Say About Us</Typography>
@@ -35,9 +35,9 @@ const Testimonials = () => {
                delay: 2500,
                disableOnInteraction: false,
              }}
-             pagination={{
-               clickable: true,
-             }}
+            //  pagination={{
+            //    clickable: true,
+            //  }}
              navigation={true}
              modules={[Autoplay, Pagination, Navigation]}
              className="mySwiper"

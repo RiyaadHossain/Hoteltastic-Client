@@ -13,8 +13,9 @@ const VideoIcon = () => {
                 borderRadius: "50%",
                 // color:'red',
                 padding: "15px",
-                transition: "ease-out 0.8s",
-                transform: "scale(1.2)",
+                transition: "ease-in-out 0.4s",
+                // transform: "scale(1.2)",
+                transforn:'rotate(360deg)'
             }
         }}>
             <PlayCircleOutlineIcon sx={{
@@ -23,7 +24,7 @@ const VideoIcon = () => {
                 cursor:'pointer',
                 "&:hover": {
                     // color:'red',
-                    transition: "ease-out 0.8s",
+                    transition: "ease-in-out 0.8s",
                     transform: "scale(1.2)",
                 }
             }}/>

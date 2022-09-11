@@ -5,9 +5,14 @@
 }
 
 body {
+<<<<<<< HEAD
   font-family: "Roboto", serif;
 }
 
 a {
   text-decoration: none;
+=======
+  font-family: 'Roboto', serif;
+  scroll-behavior: smooth;
+>>>>>>> a320c0d9dcbed935f79a7dc778a0b28bce59c0e6
 }
