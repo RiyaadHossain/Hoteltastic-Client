@@ -14,7 +14,7 @@
   
   .swiper-slide img {
     display: block;
-    /* width: 0%; */
+    width: 100%;
   }
   /* .swiper-button-next{
     color:'red' ;
