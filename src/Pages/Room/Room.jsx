@@ -1,22 +1,40 @@
 import {
+  Avatar,
   Box,
   Button,
   Card,
   CardContent,
   CardMedia,
+  Divider,
+  Tooltip,
   Typography,
+  Zoom,
 } from "@mui/material";
 import React from "react";
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import SyncAltIcon from '@mui/icons-material/SyncAlt';
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import SyncAltIcon from "@mui/icons-material/SyncAlt";
+import SquareTwoToneIcon from "@mui/icons-material/SquareTwoTone";
+import BathroomTwoToneIcon from "@mui/icons-material/BathroomTwoTone";
+import BedTwoToneIcon from "@mui/icons-material/BedTwoTone";
 
 function Room() {
   return (
-    <Card sx={{ display: "flex", maxWidth: 650, maxHeight: 300, margin: "0 auto" }}>
+    <Card
+      sx={{
+        display: "flex",
+        maxWidth: 680,
+        minHeight: 350,
+        margin: "0 auto",
+        flexDirection: { xs: "column", md: "row" },
+      }}
+    >
       <CardMedia
         component="img"
-        sx={{ width: "50%" }}
-        image="https://mui.com/static/images/cards/live-from-space.jpg"
+        sx={{
+          maxWidth: { xs: "100%" },
+          height: { xs: "350px", md: "inherit" },
+        }}
+        image="http://azim.commonsupport.com/Realshed/assets/images/resource/deals-4.jpg"
         alt="Live from space album cover"
       />
       <Box sx={{ display: "flex", flexDirection: "column" }}>
@@ -36,10 +54,16 @@ function Room() {
             }}
             fontWeight="500"
           >
-          Full Name  {/* {propertyName} */}
+            Full Name {/* {propertyName} */}
           </Typography>
-          <Box sx={{ display: "flex" }}>
-            <Box sx={{ width: "50%" }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <Box sx={{ width: "50%", my: 2 }}>
               <Typography
                 sx={{
                   fontWeight: 500,
@@ -57,9 +81,79 @@ function Room() {
                   },
                 }}
               >
-                $ 977{/* {startFrom} */}
+                $ 977
               </Typography>
             </Box>
+            <Tooltip
+              open={true}
+              placement="left"
+              title="John Smith"
+              TransitionComponent={Zoom}
+              arrow
+            >
+              <Avatar src="https://mui.com/static/images/avatar/2.jpg" />
+            </Tooltip>
+          </Box>
+          <Typography variant="body2" color="#93959e" margin="10px 0">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste,
+            accusamus animi. Deserunt modi nesciunt dolorum!
+          </Typography>
+
+          {/* ================ Shoriful Vaiya Copy from here ================ */}
+          <Box
+            display="flex"
+            my={3}
+            alignItems="center"
+            justifyContent="space-between"
+            maxWidth="380px"
+          >
+            <Box>
+              <Button
+                sx={{ textTransform: "capitalize" }}
+                startIcon={<BedTwoToneIcon />}
+              >
+                3 Beds
+              </Button>
+            </Box>
+            <Divider orientation="vertical" flexItem />
+            <Box>
+              <Button
+                sx={{ textTransform: "capitalize" }}
+                startIcon={<BathroomTwoToneIcon />}
+              >
+                1 Bathroom
+              </Button>
+            </Box>
+            <Divider orientation="vertical" flexItem />
+            <Box>
+              <Button
+                sx={{ textTransform: "lowercase" }}
+                startIcon={<SquareTwoToneIcon />}
+              >
+                1200 sq
+              </Button>
+            </Box>
+          </Box>
+          {/* ============= Shoriful Vaiya Copy from here to here ============= */}
+
+          <Box display="flex" alignItems="center" mt={3}>
+            <Button
+              sx={{
+                color: "#93959e",
+                border: "1px solid #e5e7ec",
+                padding: "8px 0px",
+                width: "130px",
+                boxShadow: "inset 0 0 0 0 #2dbe6c",
+                transition: "ease-out 0.5s",
+                "&:hover": {
+                  color: "white",
+                  boxShadow: "inset 130px 0 0 0 #2dbe6c",
+                  border: "1px solid #2dbe6c",
+                },
+              }}
+            >
+              See Details
+            </Button>
             <Box sx={{ width: "50%", textAlign: "right" }}>
               <SyncAltIcon
                 sx={{
@@ -84,26 +178,6 @@ function Room() {
               />
             </Box>
           </Box>
-          <Typography variant="body2" color="#93959e" margin="10px 0">
-            {/* {propertyDesciption} */} Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, accusamus animi. Deserunt modi nesciunt dolorum!
-          </Typography>
-          <Button
-            sx={{
-              color: "#93959e",
-              border: "1px solid #e5e7ec",
-              padding: "8px 0px",
-              width: "130px",
-              boxShadow: "inset 0 0 0 0 #2dbe6c",
-              transition: "ease-out 0.5s",
-              "&:hover": {
-                color: "white",
-                boxShadow: "inset 130px 0 0 0 #2dbe6c",
-                border: "1px solid #2dbe6c",
-              },
-            }}
-          >
-            See Details
-          </Button>
         </CardContent>
       </Box>
     </Card>
