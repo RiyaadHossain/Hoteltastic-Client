@@ -16,7 +16,7 @@ body {
 
 .swiper {
   width: 100%;
-  padding-top: 50px;
+  padding-top: 70px;
   padding-bottom: 50px;
 }
 
@@ -31,19 +31,22 @@ body {
   border-radius: 7px;
 }
 
-.swiper-slide-active {
-  /* filter: blur(0px); */
-  /* background: #fff; */
-}
 
 .swiper-slide img {
   display: block;
   width: 100%;
   height: 100%;
-  border-radius: 7px;
+  border-radius: 10px;
+  object-fit:cover;
 }
 
 .swiper-3d .swiper-slide-shadow-left,
 .swiper-3d .swiper-slide-shadow-right {
   background-image: none
 }
+/* .swiper-slide img:hover {
+  transform: scale(1.1);
+  opacity: .8;
+  transition: all 0.7s ease-in-out;
+} */
+

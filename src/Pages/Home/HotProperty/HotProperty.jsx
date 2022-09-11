@@ -10,24 +10,18 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import BeenhereIcon from '@mui/icons-material/Beenhere';
 import SingleDeal from './SingleDeal';
 import { Swiper, SwiperSlide } from "swiper/react";
+import {NavigationButtonNext, NavigationButtonPrev} from './NavigationButton';
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-// import "./styles.css";
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper";
 
 
-const FlexContainer = styled(Box)`
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin:20px 0
-`
 
 const HotProperty = () => {
     const dealsData = [
@@ -55,50 +49,19 @@ const HotProperty = () => {
     ]
     return (
         <Box sx={{
-            margin:{
+          maxWidth:'1200px',
+          mx:'auto',
+            padding:{
             xs:"40px 10px",
             sm:"60px 20px",
-            md:"100px 80px"
+            md:"100px 50px"
         }}}>
             
             <Typography variant='h6' sx={{color:'#2dbe6c'}}>HOT PROPERTY</Typography>
-            <FlexContainer>
-                <Typography variant='h4'>Our Best Deals</Typography>
-                <Box>
-                    <Button sx={{
-                        border:'1px solid #93959e' ,
-                        color: "#fff",
-                        background: "#2dbe6c",
-                        padding: "12px 0",
-                        marginRight: "8px",
-                        boxShadow: "inset 0 0 0 0 #000",
-                        transition: "ease-out 0.2s",
-                        borderRadius: "5px",
-                        "&:hover": {
-                             color: "#fff",
-                             boxShadow: "inset 130px 0 0 0 #000",
-                             border: "2px solid #2dbe6c",
-                        }
-                        }}><ArrowBackIosNewIcon/></Button>
-                    <Button sx={{
-                        border:'1px solid #93959e' ,
-                        color: "#fff",
-                        background: "#2dbe6c",
-                        padding: "12px 0",
-                        marginRight: "8px",
-                        boxShadow: "inset 0 0 0 0 #000",
-                        transition: "ease-out 0.2s",
-                        borderRadius: "5px",
-                        "&:hover": {
-                             color: "#fff",
-                             boxShadow: "inset 130px 0 0 0 #000",
-                             border: "2px solid #2dbe6c",
-                        }
-                    }}><ArrowForwardIosIcon/></Button>
-                </Box>
-            </FlexContainer>
+            <Typography variant='h3'>Our Best Deals</Typography>
+           
 
-                    {/* swipper starts */}
+       {/* swipper starts */}
         <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -106,13 +69,30 @@ const HotProperty = () => {
           delay: 2500,
           disableOnInteraction: false,
         }}
-        pagination={{
-          clickable: true,
-        }}
+     //    pagination={{
+     //      clickable: true,
+     //    }}
         navigation={false}
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
+
+
+          {/* navifation button for swipper slide */}
+          <Box sx={{
+               position:'absolute',
+               top : -5,
+               paddingTop : 2,
+               right : 10,
+               zIndex:1
+          }}>    
+          <NavigationButtonPrev>
+               <ArrowBackIosNewIcon/>
+          </NavigationButtonPrev>
+          <NavigationButtonNext>
+               <ArrowForwardIosIcon/>
+          </NavigationButtonNext>
+          </Box>
         <SwiperSlide>
             {/* {
                 dealsData.map(deal=>{
@@ -1017,7 +997,7 @@ const HotProperty = () => {
                         padding : '15px 0',
                         marginBottom:'10px',
                         height:'50px',
-                    }}>
+                    }} >
                         <Box sx={{display:'flex',alignItems:'center'}}>
                             <Box component='span' sx={{marginRight:'6px'}}>
                                 <HotelIcon/>

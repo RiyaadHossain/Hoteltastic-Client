@@ -14,8 +14,14 @@ import {
   Tooltip,
   Avatar,
 } from "@mui/material";
+import { Link } from "react-router-dom";
 
-const pages = ["Home", "Rooms", "About", "Contact"];
+const pages = [
+  { name: "Home", path: "/" },
+  { name: "Rooms", path: "/allRooms" },
+  { name: "About Project", path: "/aboutProject" },
+  { name: "Contact", path: "/contact" },
+];
 const settings = ["Profile", "Dashboard", "Logout"];
 
 function Navbar() {
@@ -91,8 +97,8 @@ function Navbar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -120,13 +126,19 @@ function Navbar() {
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "black", display: "block" }}
-              >
-                {page}
-              </Button>
+              <Link to={page.path} key={page.name}>
+                <Button
+                  onClick={handleCloseNavMenu}
+                  sx={{
+                    my: 2,
+                    color: "black",
+                    display: "block",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {page.name}
+                </Button>
+              </Link>
             ))}
           </Box>
 
