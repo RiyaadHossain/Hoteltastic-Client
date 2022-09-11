@@ -41,7 +41,7 @@ const Carousel = () => {
           slideShadows: true,
         }}
         autoplay={{
-          delay: 1500,
+          delay: 2000,
           disableOnInteraction: false,
         }}
 
@@ -98,7 +98,7 @@ const Carousel = () => {
                 <img src="http://azim.commonsupport.com/Realshed/assets/images/team/team-4.jpg" style={{objectFit: "cover"}} alt=""/>
               </SwiperSlide>
               <SwiperSlide>
-                <img src="http://azim.commonsupport.com/Realshed/assets/images/team/team-5.jpg" />
+                <img src="http://azim.commonsupport.com/Realshed/assets/images/team/team-5.jpg" style={{objectFit: "cover"}} alt=""/>
               </SwiperSlide>
             </Swiper>
     </>

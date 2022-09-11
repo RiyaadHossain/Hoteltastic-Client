@@ -5,5 +5,9 @@
 }
 
 body {
-  font-family: 'Roboto', serif;
+  font-family: "Roboto", serif;
+}
+
+a {
+  text-decoration: none;
 }

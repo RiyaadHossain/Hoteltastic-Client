@@ -1073,7 +1073,7 @@ const HotProperty = () => {
                         padding : '15px 0',
                         marginBottom:'10px',
                         height:'50px',
-                    }}>
+                    }} >
                         <Box sx={{display:'flex',alignItems:'center'}}>
                             <Box component='span' sx={{marginRight:'6px'}}>
                                 <HotelIcon/>
