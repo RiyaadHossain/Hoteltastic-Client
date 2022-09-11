@@ -190,7 +190,7 @@ function SignIn() {
             </Box>
           </form>
 
-          {/* social signin */}
+          {/* social signin with google */}
           <Box>
             <Button
               sx={{
