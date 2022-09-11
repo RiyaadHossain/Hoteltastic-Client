@@ -17,7 +17,7 @@ import SquareTwoToneIcon from "@mui/icons-material/SquareTwoTone";
 import BathroomTwoToneIcon from "@mui/icons-material/BathroomTwoTone";
 import BedTwoToneIcon from "@mui/icons-material/BedTwoTone";
 
-function Room() {
+function Room({ room}) {
   return (
     <Card
       sx={{
@@ -25,6 +25,7 @@ function Room() {
         maxWidth: 680,
         minHeight: 350,
         margin: "0 auto",
+        mt: 4,
         flexDirection: { xs: "column", md: "row" },
       }}
     >
@@ -54,7 +55,7 @@ function Room() {
             }}
             fontWeight="500"
           >
-            Full Name {/* {propertyName} */}
+            {room.title || "Family Home For Sale"}
           </Typography>
           <Box
             sx={{
@@ -70,7 +71,7 @@ function Room() {
                   color: "#93959e",
                 }}
               >
-                Family Home For Sale
+                Start From
               </Typography>
               <Typography
                 sx={{
@@ -81,7 +82,7 @@ function Room() {
                   },
                 }}
               >
-                $ 977
+                {room.price || "$ 977"}
               </Typography>
             </Box>
             <Tooltip
@@ -95,8 +96,8 @@ function Room() {
             </Tooltip>
           </Box>
           <Typography variant="body2" color="#93959e" margin="10px 0">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste,
-            accusamus animi. Deserunt modi nesciunt dolorum!
+            {room.description ||
+              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste,accusamus animi. Deserunt modi nesciunt dolorum!"}
           </Typography>
 
           {/* ================ Shoriful Vaiya Copy from here ================ */}
