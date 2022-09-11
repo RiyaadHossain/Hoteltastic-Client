@@ -12,11 +12,8 @@ function App() {
 			<Layout>
 				<Routes>
 					<Route element={<LandingPage />} path="/" />
-<<<<<<< HEAD
 					<Route element={<AllRooms />} path="/allrooms" />
-=======
 					<Route element={<Properties />} path="/property" />
->>>>>>> a320c0d9dcbed935f79a7dc778a0b28bce59c0e6
 					<Route element={<SignIn />} path="/signin" />
 					<Route element={<SignUp />} path="/signup" />
 				</Routes>
