@@ -1,7 +1,8 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Breadcrumbs, Link, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import React from "react";
 import CommonBg from "../Assets/Background/callToActionBg.png";
+import HomeIcon from '@mui/icons-material/Home';
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -10,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
     padding: "65px 0",
+    flexDirection: 'column'
   },
 }));
 
@@ -18,6 +20,22 @@ function CustomHeader({ children }) {
   return (
     <Box className={classes.header}>
       <Typography sx={{ fontSize: 40, fontWeight: 500 }}>{children}</Typography>
+      <Breadcrumbs separator="›" aria-label="breadcrumbs">
+      <Link
+
+        onClick={(event) => event.preventDefault()}
+        underline="hover"
+        color="primary"
+        fontSize="inherit"
+        href="/"
+      >
+        <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+        Home
+      </Link>
+
+        <Typography fontSize="inherit">{ children}</Typography>
+    </Breadcrumbs>
+    
     </Box>
   );
 }
