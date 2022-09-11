@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 function SignIn() {
   const navigate = useNavigate();
   return (
-    <Box>
+    <Box sx={{mx: {xs: 2, md: 0}}}>
       <Box
         sx={{
           width: "100%",
@@ -88,7 +88,12 @@ function SignIn() {
         {/* sign In form */}
         <Box
           sx={{
-            width: "50%",
+            maxWidth: {
+              xs: "100%",
+              sm: "80%",
+              md: "50%",
+              lg: "40%",
+            },
             margin: "auto",
             padding: "60px 40px",
             borderRadius: "10px",

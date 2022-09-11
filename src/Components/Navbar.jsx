@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
-import MenuIcon from "@mui/icons-material/Menu";
 import {
   AppBar,
   Container,
@@ -14,7 +12,8 @@ import {
   Tooltip,
   Avatar,
 } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Logo from "../Assets/Logo/logo.png";
 
 const pages = [
   { name: "Home", path: "/" },
@@ -28,6 +27,8 @@ function Navbar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
+  const navigate = useNavigate()
+
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -36,7 +37,9 @@ function Navbar() {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (path) => {
+     console.log(path);
+    navigate(path)
     setAnchorElNav(null);
   };
 
@@ -47,28 +50,9 @@ function Navbar() {
     <AppBar position="static" sx={{ bgcolor: "white" }} py={4} px={2}>
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ height: "100px" }}>
-          <HomeRoundedIcon
-            sx={{
-              display: { xs: "none", md: "flex" },
-              mr: 1,
-              color: "#1565c0",
-            }}
-          />
-          <Typography
-            variant="h6"
-            component="p"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              color: "#1565c0",
-              textDecoration: "none",
-            }}
-          >
-            Hoteltastic
-          </Typography>
-
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            <img src={Logo} alt="" width={150} />
+          </Box>
           {/* For Mobile View */}
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -76,7 +60,7 @@ function Navbar() {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-              <MenuIcon />
+              <img src={Logo} alt="" width={150} />
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -97,32 +81,12 @@ function Navbar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                <MenuItem key={page.name} onClick={() => handleCloseNavMenu(page.path)}>
                   <Typography textAlign="center">{page.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-
-          {/* For Mobile View */}
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              fontSize: 20,
-              color: "#1565c0",
-              textDecoration: "none",
-            }}
-          >
-            Hoteltastic
-          </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (

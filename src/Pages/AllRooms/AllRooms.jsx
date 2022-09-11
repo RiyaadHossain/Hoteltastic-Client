@@ -143,8 +143,8 @@ function AllRooms() {
               </Paper>
             </Grid>
             <Grid item xs={12} lg={8}>
-              {rooms.map((room) => (
-                <Room room={room} />
+              {rooms.map((room, i) => (
+                <Room key={i} room={room} />
               ))}
             </Grid>
           </Grid>
