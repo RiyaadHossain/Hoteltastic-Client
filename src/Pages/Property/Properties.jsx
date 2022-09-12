@@ -3,12 +3,12 @@ import React from 'react';
 import Background from '../../Assets/Background/callToActionBg.png'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ApartmentHeading from './ApartmentHeading';
-import PropertySideBar from './PropertySideBar';
 import PropertyDescription from './PropertyDescription';
 import PropertyDetails from './PropertyDetails';
 import Carousel from '../Home/OurAgents/Carousel/Carousel';
 import PropertyCarousel from './PropertyCarousel/PropertyCarousel';
 import Location from './Location/Location';
+import PropertyContact from './PropertySideBar/PropertyContact';
 
 const Properties = () => {
     return (
@@ -39,7 +39,7 @@ const Properties = () => {
                         fontWeight: 500,
                     }}>Property Details 01</Typography>
                 </Typography>
-            </Box>  
+            </Box>
             {/* all other components are showing here */}
             <Box sx={{
                 padding: {
@@ -58,32 +58,33 @@ const Properties = () => {
 
                 <Box sx={{
                     display: "flex",
-                    marginTop: "30px"
+                    justifyContent: "space-between"
                 }}>
 
                     {/* Property Main */}
                     <Box sx={{
                         width: {
-                            md: "67%",
+                            md: "65%",
+
                         },
                     }}>
-                       <PropertyCarousel/>
-                       <PropertyDescription /> 
-                       <PropertyDetails /> 
-                       <Location/>
+                        <PropertyCarousel />
+                        <PropertyDescription />
+                        <PropertyDetails />
+                        <Location />
                     </Box>
 
                     {/* Property Side Bar */}
                     <Box sx={{
                         width: {
                             md: "33%",
+                            marginTop: "70px",
+
                         },
                     }}>
-                        <PropertySideBar />
+                        <PropertyContact />
                     </Box>
-
                 </Box>
-
             </Box>
         </Box>
     );
