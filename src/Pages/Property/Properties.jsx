@@ -11,6 +11,7 @@ import Location from './Location/Location';
 import PropertyContact from './PropertySideBar/PropertyContact';
 import PropertyCalculate from './PropertySideBar/PropertyCalculate';
 import PropertyRating from './PropertyRating/PropertyRating';
+import PageStatistics from './Chart/PageStatistics';
 
 const Properties = () => {
     return (
@@ -75,6 +76,7 @@ const Properties = () => {
                         <PropertyDetails />
                         <Location />
                         <PropertyRating />
+                        <PageStatistics/>
                     </Box>
 
                     {/* Property Side Bar */}
