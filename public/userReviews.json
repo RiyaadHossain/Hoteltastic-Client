@@ -7,7 +7,13 @@
      },
      {
           "rate": 3.5,
-          "userName": "Riyad",
+          "userName": "Riyad Khan",
+          "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. In quas nisi at asperiores incidunt nemo. Sapiente illo repudiandae provident incidunt.",
+          "userImg": "https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg"
+     },
+     {
+          "rate": 1,
+          "userName": "Shariful Islam",
           "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. In quas nisi at asperiores incidunt nemo. Sapiente illo repudiandae provident incidunt.",
           "userImg": "https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg"
      },
