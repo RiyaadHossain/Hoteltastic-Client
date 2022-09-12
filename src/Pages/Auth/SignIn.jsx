@@ -4,11 +4,21 @@ import Background from "../../Assets/Background/callToActionBg.png";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import GoogleIcon from "@mui/icons-material/Google";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 function SignIn() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
   const navigate = useNavigate();
   return (
-    <Box>
+    <Box sx={{ mx: { xs: 2, md: 0 } }}>
       <Box
         sx={{
           width: "100%",
@@ -88,7 +98,12 @@ function SignIn() {
         {/* sign In form */}
         <Box
           sx={{
-            width: "50%",
+            maxWidth: {
+              xs: "100%",
+              sm: "80%",
+              md: "50%",
+              lg: "40%",
+            },
             margin: "auto",
             padding: "60px 40px",
             borderRadius: "10px",
@@ -98,7 +113,7 @@ function SignIn() {
               "rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px",
           }}
         >
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <Typography
               sx={{
                 fontSize: {
@@ -116,7 +131,12 @@ function SignIn() {
             >
               Sign In
             </Typography>
+            {/* ====== Email ====== */}
             <TextField
+              {...register("email", {
+                required: true,
+                pattern: /\S+@\S+\.\S+/i,
+              })}
               sx={{
                 background: "none",
                 width: "100%",
@@ -124,12 +144,20 @@ function SignIn() {
                 margin: "8px 0px 10px 0px",
               }}
               id="standard-textarea"
-              label="Name"
-              placeholder="Enter Your Name"
+              label="Email"
+              placeholder="Enter Your Email"
               multiline
               variant="standard"
             />
+            {errors.email && (
+              <Typography color="error">Valid Email is required</Typography>
+            )}
+            {/* ====== Password ====== */}
             <TextField
+              {...register("password", {
+                required: true,
+                minLength: 6,
+              })}
               sx={{
                 background: "none",
                 width: "100%",
@@ -137,12 +165,19 @@ function SignIn() {
                 marginBottom: "10px",
               }}
               id="standard-textarea"
-              label="Email"
-              placeholder="Enter Your Email"
+              label="Password"
+              placeholder="Enter Your Password"
               multiline
               variant="standard"
             />
-            <button className="signInBtn">Sign In</button>
+            {errors.password && (
+              <Typography color="error">
+                Password must be 6 characters long
+              </Typography>
+            )}
+            <button type="submit" className="signInBtn">
+              Sign In
+            </button>
             <Box
               sx={{
                 textAlign: "center",

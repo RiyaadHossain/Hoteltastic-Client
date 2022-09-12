@@ -78,6 +78,7 @@ function NewsArticle() {
         {/* ======================== Card Here ======================== */}
         {news.map((news) => (
           <CustomCard
+            key={news.title}
             media={news.media}
             title={news.title}
             bodyText={news.description}
