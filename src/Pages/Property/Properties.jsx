@@ -10,6 +10,7 @@ import PropertyCarousel from './PropertyCarousel/PropertyCarousel';
 import Location from './Location/Location';
 import PropertyContact from './PropertySideBar/PropertyContact';
 import PropertyCalculate from './PropertySideBar/PropertyCalculate';
+import PropertyRating from './PropertyRating/PropertyRating';
 
 const Properties = () => {
     return (
@@ -73,6 +74,7 @@ const Properties = () => {
                         <PropertyDescription />
                         <PropertyDetails />
                         <Location />
+                        <PropertyRating />
                     </Box>
 
                     {/* Property Side Bar */}

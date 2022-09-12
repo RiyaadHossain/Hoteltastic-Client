@@ -5,6 +5,7 @@ import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
 import React from 'react';
 
 const PropertyContact = () => {
+    
      return (
           <Box sx={{
                boxShadow: "0 15px 25px 0px rgb(0 0 0 / 8%)",
