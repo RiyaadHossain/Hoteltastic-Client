@@ -4,11 +4,22 @@ import Background from "../../Assets/Background/callToActionBg.png";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import GoogleIcon from "@mui/icons-material/Google";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 function SignUp() {
   const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
-    <Box>
+    <Box sx={{ mx: { xs: 2, md: 0 } }}>
       <Box
         sx={{
           width: "100%",
@@ -88,7 +99,12 @@ function SignUp() {
         {/* sign up form */}
         <Box
           sx={{
-            width: "50%",
+            maxWidth: {
+              xs: "100%",
+              sm: "80%",
+              md: "50%",
+              lg: "40%",
+            },
             margin: "auto",
             padding: "60px 40px",
             borderRadius: "10px",
@@ -98,7 +114,7 @@ function SignUp() {
               "rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px",
           }}
         >
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <Typography
               sx={{
                 fontSize: {
@@ -116,7 +132,13 @@ function SignUp() {
             >
               Sign Up
             </Typography>
+            {/* ====== Name ====== */}
             <TextField
+              {...register("name", {
+                required: true,
+                minLength: 3,
+                maxLminLength: 20,
+              })}
               sx={{
                 background: "none",
                 width: "100%",
@@ -129,7 +151,17 @@ function SignUp() {
               multiline
               variant="standard"
             />
+            {errors.name && (
+              <Typography color="error">
+                Name should be 3 to 20 letters
+              </Typography>
+            )}
+            {/* ====== Email ====== */}
             <TextField
+              {...register("email", {
+                required: true,
+                pattern: /\S+@\S+\.\S+/i,
+              })}
               sx={{
                 background: "none",
                 width: "100%",
@@ -142,7 +174,12 @@ function SignUp() {
               multiline
               variant="standard"
             />
+            {errors.email && (
+              <Typography color="error">Valid Email is required</Typography>
+            )}
+            {/* ====== Password ====== */}
             <TextField
+              {...register("password", { required: true, minLength: 6 })}
               sx={{
                 background: "none",
                 width: "100%",
@@ -155,7 +192,14 @@ function SignUp() {
               multiline
               variant="standard"
             />
-            <button className="signInBtn">Sign Up</button>
+            {errors.password && (
+              <Typography color="error">
+                Must be at least 6 characters
+              </Typography>
+            )}
+            <button type="submit" className="signInBtn">
+              Sign Up
+            </button>
             <Box
               sx={{
                 textAlign: "center",
