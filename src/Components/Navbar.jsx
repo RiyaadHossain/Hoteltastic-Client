@@ -27,7 +27,7 @@ function Navbar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -38,8 +38,8 @@ function Navbar() {
   };
 
   const handleCloseNavMenu = (path) => {
-     console.log(path);
-    navigate(path)
+    console.log(path);
+    navigate(path);
     setAnchorElNav(null);
   };
 
@@ -51,7 +51,13 @@ function Navbar() {
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ height: "100px" }}>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <img src={Logo} alt="" width={150} />
+            <img
+              src={Logo}
+              alt=""
+              width={150}
+              onClick={() => navigate("/")}
+              style={{ cursor: "pointer" }}
+            />
           </Box>
           {/* For Mobile View */}
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -60,7 +66,13 @@ function Navbar() {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-              <img src={Logo} alt="" width={150} />
+              <img
+                src={Logo}
+                alt=""
+                width={150}
+                onClick={() => navigate("/")}
+                style={{ cursor: "pointer" }}
+              />
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -81,7 +93,10 @@ function Navbar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page.name} onClick={() => handleCloseNavMenu(page.path)}>
+                <MenuItem
+                  key={page.name}
+                  onClick={() => handleCloseNavMenu(page.path)}
+                >
                   <Typography textAlign="center">{page.name}</Typography>
                 </MenuItem>
               ))}

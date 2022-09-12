@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: '70px 0'
+    padding: "70px 0",
     // [theme.breakpoints.down("sm")]: {
     //   height: ''
     // }
@@ -110,9 +110,18 @@ function Banner() {
                   ))}
                 </TextField>
               </Box>
-             
+
               <Box mt={2}>
-                <Button variant="contained" size="large">Search</Button>
+                <Button
+                  variant="contained"
+                  sx={{
+                    backgroundColor: "#2dbe6c",
+                    "&:hover": { backgroundColor: "#109349" },
+                  }}
+                  size="large"
+                >
+                  Search
+                </Button>
               </Box>
             </Box>
           </Box>
