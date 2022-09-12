@@ -1,0 +1,47 @@
+/* 
+.why-img{
+    position: relative;
+  } */
+  /* .why-img span{
+    position: absolute;
+    right: 120px;
+    bottom: 32px;
+    font-size: 45px;
+    color: #e73a3e;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    line-height: 63px;
+    background-color: white;
+    text-align: center;
+    
+  } */
+  
+  /* .react-player__preview button .playButton:after{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #e73a3e;
+    border-radius: 50%;
+    animation: plyanimation 1.6s ease-out infinite;
+  }
+   */
+  @keyframes plyanimation{
+   0%,30% {
+     opacity: 1;
+     transform: scale(0);
+   }
+   50% {
+     opacity: .7; 
+     transform: scale(1.5);
+   }
+   100% {
+     opacity: 0; 
+     transform: scale(2);
+     
+   }
+  
+  }
