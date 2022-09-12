@@ -64,7 +64,6 @@ const PropertyRating = () => {
                                                        // md: "18px",
                                                   },
                                                   fontFamily: "'Rubik', sans-serif",
-
                                              }}
                                         >
                                              {review.comment}
