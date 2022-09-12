@@ -89,6 +89,7 @@ function Banner() {
             >
               <TextField
                 fullWidth
+                size="small"
                 id="standard-basic"
                 label="Search Room"
                 variant="filled"
@@ -97,6 +98,7 @@ function Banner() {
                 <TextField
                   id="filled-select-currency"
                   select
+                  size="small"
                   fullWidth
                   label="Location"
                   value={currency}
