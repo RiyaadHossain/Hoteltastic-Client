@@ -59,6 +59,7 @@ const Carousel = () => {
             spaceBetween: 50,
           },
         }}
+        // isActive={true}
         loop={true}
         modules={[Navigation,Autoplay,EffectCoverflow, Pagination]}
         className="mySwiper"
@@ -91,47 +92,54 @@ const Carousel = () => {
                 {/* main slide box starts here */}
                 <Box sx={{position:'relative'}}>
                   {/* image box starting from here */}
-                <Box sx={{
-                              transition: "ease-out 0.3s",
-                              "&:hover": {
-                                   transform: "scale(1.1)"
-                              }
-                         }}>
+                <Box>
                   <img src="http://azim.commonsupport.com/Realshed/assets/images/team/team-1.jpg" alt=""/>
                 </Box>
                 {/* extra info div box starts here */}
-                <Box sx={{
-                              width: "60%",
-                              marginLeft: "auto",
-                              marginRight: "auto",
-                              left: 0,
-                              right: 0,
-                              textAlign: "center",
-                              position: "absolute",
-                              bottom: "-10%",
-                              backgroundColor: "white",
-                              padding: "14px 30px",
-                              borderRadius: "5px",
+                {
+                  ({isActive})=>(
+                    // isActive && 
+                    <Box sx={{
+                      width: "60%",
+                      marginLeft: "auto",
+                      marginRight: "auto",
+                      left: 0,
+                      right: 0,
+                      textAlign: "center",
+                      position: "absolute",
+                      bottom: "-10%",
+                      backgroundColor: "white",
+                      padding: "14px 30px",
+                      borderRadius: "5px",
 
-                         }}>
-                              <Typography
-                                   sx={{
-                                        fontSize: 20,
-                                        fontWeight: "500",
-                                        cursor: "pointer",
-                                        transition: "ease-out 0.3s",
-                                        "&:hover": {
-                                             color: "#2dbe6c",
-                                        }
-                                   }} >
-                                   Los Angeles
-                              </Typography>
-                              <Typography
-                                   color="#93959e"
-                              >
-                                   10 Properties
-                              </Typography>
-                         </Box>
+                 }}>
+                      {
+                        isActive ?
+                        <>
+                          <Typography
+                           sx={{
+                                fontSize: 20,
+                                fontWeight: "500",
+                                cursor: "pointer",
+                                transition: "ease-out 0.3s",
+                                "&:hover": {
+                                     color: "#2dbe6c",
+                                }
+                           }} >
+                           Los Angeles
+                      </Typography>
+                      <Typography
+                           color="#93959e"
+                      >
+                           10 Properties
+                      </Typography>
+                        </>
+                        :
+                        ''
+                      }
+                 </Box>
+                  )
+                }
                 </Box>
               </SwiperSlide>
               {/* single slide ending here */}

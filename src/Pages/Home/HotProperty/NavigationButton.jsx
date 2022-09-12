@@ -10,13 +10,14 @@ export const NavigationButtonNext = ({children}) => {
             <Button 
              onClick={() => swiper.slideNext()}
                     sx={{
-                        border:'1px solid #93959e' ,
+                        // border:'1px solid #93959e' ,
                         color: "#fff",
                         background: "#2dbe6c",
-                        // padding: "10px 20px",
+                        padding: "15px 6px",
+                        // borderRadius:'50%',
                         // marginRight: "8px",
                         boxShadow: "inset 0 0 0 0 #000",
-                        transition: "ease-out 0.2s",
+                        transition: "ease-out 0.3s",
                         borderRadius: "5px",
                         cursor:'pointer',
                         "&:hover": {
@@ -36,13 +37,13 @@ export const NavigationButtonPrev = ({children}) => {
             <Button 
              onClick={() => swiper.slidePrev()}
                     sx={{
-                        border:'1px solid #93959e' ,
+                        // border:'1px solid #93959e' ,
                         color: "#fff",
                         background: "#2dbe6c",
-                        // padding: "10px 20px",
+                        padding: "15px 6px",
                         marginRight: "10px",
                         boxShadow: "inset 0 0 0 0 #000",
-                        transition: "ease-out 0.2s",
+                        transition: "ease-out 0.3s",
                         borderRadius: "5px",
                         cursor:'pointer',
                         "&:hover": {
