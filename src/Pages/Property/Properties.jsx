@@ -9,6 +9,7 @@ import Carousel from '../Home/OurAgents/Carousel/Carousel';
 import PropertyCarousel from './PropertyCarousel/PropertyCarousel';
 import Location from './Location/Location';
 import PropertyContact from './PropertySideBar/PropertyContact';
+import PropertyCalculate from './PropertySideBar/PropertyCalculate';
 
 const Properties = () => {
     return (
@@ -83,6 +84,7 @@ const Properties = () => {
                         },
                     }}>
                         <PropertyContact />
+                        <PropertyCalculate />
                     </Box>
                 </Box>
             </Box>

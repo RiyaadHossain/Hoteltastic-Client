@@ -1,4 +1,4 @@
-import { Button, createTheme, List, ListItemText, TextareaAutosize, TextField, Typography } from '@mui/material';
+import { Button, List, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import RoomIcon from '@mui/icons-material/Room';
 import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
@@ -133,7 +133,7 @@ const PropertyContact = () => {
                               color: "white",
                               border: "1px solid #2dbe6c",
                               margin: "8px 0px 10px 0px",
-                              fontWeight: "500",
+                              fontWeight: "600",
                               padding:"10px 0",
                               width:"100%",
                               ":hover": {
