@@ -63,8 +63,7 @@ function NewsArticle() {
           Stay Update With Realshed
         </Typography>
         <Typography color="#93959e">
-          Lorem ipsum dolor sit amet consectetur adipisicing sed do eiusmod
-          tempor incididunt labore dolore magna aliqua enim.
+          SUBSCRIBE Sign Up To Our Newsletter To Get The Latest News And Offers.
         </Typography>
       </Box>
       <Box

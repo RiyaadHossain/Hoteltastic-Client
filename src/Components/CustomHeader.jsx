@@ -6,7 +6,7 @@ import HomeIcon from '@mui/icons-material/Home';
 
 const useStyles = makeStyles((theme) => ({
   header: {
-    background: `#c1edd4 url(${CommonBg}) center left`,
+    background: ` url(${CommonBg}) center left`,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
