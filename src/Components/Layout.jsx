@@ -14,6 +14,7 @@ function Layout({ children }) {
       <MessengerCustomerChat
         pageId="108135362043823"
         appId="1249936149090301"
+        themeColor={'#2dbe6c'}
       />
     </>
   );

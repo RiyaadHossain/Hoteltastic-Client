@@ -1,4 +1,16 @@
-import { Box, Container, FormControl, Grid, InputLabel, MenuItem, Paper, Select, Slider, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Paper,
+  Select,
+  Slider,
+  Typography,
+} from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import React from "react";
 import CustomHeader from "../../Components/CustomHeader";
@@ -12,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 const marks = [
   {
     value: 0,
-    label: "0k",
+    label: "0",
   },
   {
     value: 20,
@@ -42,7 +54,8 @@ function valueText(value) {
 
 function AllRooms() {
   const classes = useStyles();
-  const [age, setAge] = React.useState('');
+  const [room, setRoom] = React.useState("");
+  const [location, setLocation] = React.useState("");
 
   return (
     <Box className={classes.root}>
@@ -79,37 +92,62 @@ function AllRooms() {
                     orientation="horizontal"
                     size="md"
                   />
-                </Box>
-              </Paper>
-              <Paper sx={{ p: 5, mt: 3, }}>
-              <Typography gutterBottom fontWeight="bold" mb={2}>
+                  <Typography gutterBottom fontWeight="bold" mt={4}>
                     Select your Room Type
                   </Typography>
-                <FormControl sx={{ m: 1, minWidth: '90%', margin: '0 auto' }}>
-                  <InputLabel id="demo-simple-select-helper-label">
-                    Room
-                  </InputLabel>
-                  <Select
-                    labelId="demo-simple-select-helper-label"
-                    id="demo-simple-select-helper"
-                    value={age}
-                    label="Room"
-                    onChange={e => setAge(e.target.value)}
+                  <FormControl
+                    sx={{ mt: 1, minWidth: "100%", margin: "0 auto" }}
                   >
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
-                  </Select>
-                </FormControl>
+                    <InputLabel id="demo-simple-select-helper-label">
+                      Room
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-helper-label"
+                      id="demo-simple-select-helper"
+                      value={room}
+                      label="Room"
+                      onChange={(e) => setRoom(e.target.value)}
+                    >
+                      <MenuItem value={10}>Ten</MenuItem>
+                      <MenuItem value={20}>Twenty</MenuItem>
+                      <MenuItem value={30}>Thirty</MenuItem>
+                    </Select>
+                  </FormControl>
+                  <Typography gutterBottom fontWeight="bold" mt={4}>
+                    Select your Location
+                  </Typography>
+                  <FormControl
+                    sx={{ mt: 1, minWidth: "100%", margin: "0 auto" }}
+                  >
+                    <InputLabel id="demo-simple-select-helper-label">
+                      Location
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-helper-label"
+                      id="demo-simple-select-helper"
+                      value={location}
+                      label="Location"
+                      onChange={(e) => setLocation(e.target.value)}
+                    >
+                      <MenuItem value={10}>Ten</MenuItem>
+                      <MenuItem value={20}>Twenty</MenuItem>
+                      <MenuItem value={30}>Thirty</MenuItem>
+                    </Select>
+                  </FormControl>
+                  <Box mt={2} textAlign='center'>
+                    <Button variant="contained" size="large">
+                      Filter
+                    </Button>
+                  </Box>
+                </Box>
               </Paper>
             </Grid>
             <Grid item xs={12} lg={8}>
-              {rooms.map((room) => (
-                <Room room={room} />
+              {rooms.map((room, i) => (
+                <Room key={i} room={room} />
               ))}
             </Grid>
           </Grid>
-          {/* <Room /> */}
         </Container>
       </Box>
     </Box>
