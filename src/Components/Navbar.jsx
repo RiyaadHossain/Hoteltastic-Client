@@ -14,19 +14,21 @@ import {
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../Assets/Logo/logo.png";
+import { useSelector } from "react-redux";
+import Setting from "./Setting";
 
 const pages = [
   { name: "Home", path: "/" },
   { name: "Rooms", path: "/allRooms" },
-  { name: "About Project", path: "/aboutProject" },
+  { name: "About ", path: "/about" },
   { name: "Contact", path: "/contact" },
 ];
-const settings = ["Profile", "Dashboard", "Logout"];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
-
+  const auth = useSelector((state) => state.auth);
+  console.log(auth);
   const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
@@ -54,7 +56,7 @@ function Navbar() {
             <img
               src={Logo}
               alt=""
-              width={150}
+              width={170}
               onClick={() => navigate("/")}
               style={{ cursor: "pointer" }}
             />
@@ -122,14 +124,28 @@ function Navbar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="User Setting">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar
-                  alt="Remy Sharp"
-                  src="https://mui.com/static/images/avatar/2.jpg"
-                />
-              </IconButton>
-            </Tooltip>
+            {!auth.isLoggedIn ? (
+              <Button
+                sx={{
+                  color: "#2dbe6c",
+                  border: "1px solid #2dbe6c",
+                  "&:hover": { border: "1px solid #2dbe6c" },
+                }}
+                onClick={() => navigate("/signin")}
+                variant="outlined"
+              >
+                Log In
+              </Button>
+            ) : (
+              <Tooltip title="User Setting">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar
+                    alt="Remy Sharp"
+                    src="https://mui.com/static/images/avatar/2.jpg"
+                  />
+                </IconButton>
+              </Tooltip>
+            )}
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
@@ -143,14 +159,36 @@ function Navbar() {
                 vertical: "top",
                 horizontal: "right",
               }}
+              PaperProps={{
+                elevation: 0,
+                sx: {
+                  overflow: "visible",
+                  filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                  mt: 1.5,
+                  "& .MuiAvatar-root": {
+                    width: 32,
+                    height: 32,
+                    ml: -0.5,
+                    mr: 1,
+                  },
+                  "&:before": {
+                    content: '""',
+                    display: "block",
+                    position: "absolute",
+                    top: 0,
+                    right: 14,
+                    width: 10,
+                    height: 10,
+                    bgcolor: "background.paper",
+                    transform: "translateY(-50%) rotate(45deg)",
+                    zIndex: 0,
+                  },
+                },
+              }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              <Setting />
             </Menu>
           </Box>
         </Toolbar>
