@@ -11,8 +11,7 @@ import LandingPage from './Pages/Home/LandingPage/LandingPage'
 import NotFound from './Pages/NotFound404/NotFound'
 import Properties from './Pages/Property/Properties'
 import { initialUser } from './Store/auth/authAction'
-import { getRooms } from './Store/room/roomAction'
-
+import getRooms from './Store/room/roomAction'
 
 
 function App() {
@@ -32,7 +31,7 @@ function App() {
 					<Route element={<SignIn />} path="/signin" />
 					<Route element={<SignUp />} path="/signup" />
 					<Route element={<Contact />} path="/contact" />
-					<Route element={<NotFound/>} path="*" />
+					<Route element={<NotFound />} path="*" />
 
 				</Routes>
 			</Layout>

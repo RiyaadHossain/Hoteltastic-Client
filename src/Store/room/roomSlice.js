@@ -13,8 +13,16 @@ const roomSlice = createSlice({
     reducers: {
         getRooms: (state, actions) => {
             state.rooms = actions.payload
-         },
-        postRooms: state => { }
+        },
+        postRoom: state => {
+            state.message = 'New Room added Successfully'
+        },
+        updateRoom: state => {
+            state.message = "Room Details updated Successfully"
+        },
+        deleteRoom: state => {
+            state.message = "Room deleted Successfully"
+        }
     }
 })
 
