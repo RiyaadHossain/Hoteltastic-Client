@@ -16,6 +16,7 @@ import CustomHeader from '../../Components/CustomHeader';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import getReviews from '../../Store/review/reviewAction';
+import Spinner from '../../Components/Loaders/Spinner/Spinner';
 
 const Properties = () => {
     const dispatch = useDispatch()
@@ -60,6 +61,7 @@ const Properties = () => {
                         <Location />
                         <PropertyRating />
                         <PageStatistics/>
+                        <Spinner></Spinner>
                     </Box>
 
                     {/* Property Side Bar */}
