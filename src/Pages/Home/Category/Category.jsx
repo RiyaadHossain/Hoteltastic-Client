@@ -5,7 +5,7 @@ import EmojiTransportationIcon from "@mui/icons-material/EmojiTransportation";
 import BusinessIcon from "@mui/icons-material/Business";
 import StoreIcon from "@mui/icons-material/Store";
 import ApartmentIcon from "@mui/icons-material/Apartment";
-import {  grey } from "@mui/material/colors";
+import {  blue, green, grey, purple, red } from "@mui/material/colors";
 
 function Category() {
   return (
@@ -26,7 +26,7 @@ function Category() {
             >
               <EmojiTransportationIcon
                 fontSize="large"
-                sx={{ color: "#2d2e34" }}
+                sx={{ color: blue[600] }}
               />
 
               <Typography variant="h6" my={1}>
@@ -34,9 +34,9 @@ function Category() {
               </Typography>
               <Box>
                 <Avatar
-                  sx={{ m: "0 auto", bgcolor: grey[300], color: "black" }}
+                  sx={{ m: "0 auto", bgcolor: grey[300], color: blue[600] }}
                 >
-                  52
+                  12
                 </Avatar>
               </Box>
             </Paper>
@@ -54,16 +54,16 @@ function Category() {
               }}
               elevation={5}
             >
-              <BusinessIcon fontSize="large" sx={{ color: "#2d2e34" }} />
+              <BusinessIcon fontSize="large" sx={{ color: green[600] }} />
 
               <Typography variant="h6" my={1}>
                 Business
               </Typography>
               <Box>
                 <Avatar
-                  sx={{ m: "0 auto", bgcolor: grey[300], color: "black" }}
+                  sx={{ m: "0 auto", bgcolor: grey[300], color: green[600] }}
                 >
-                  52
+                  8
                 </Avatar>
               </Box>
             </Paper>
@@ -81,16 +81,16 @@ function Category() {
               }}
               elevation={5}
             >
-              <StoreIcon fontSize="large" sx={{ color: "#2d2e34" }} />
+              <StoreIcon fontSize="large" sx={{ color: red[600] }} />
 
               <Typography variant="h6" my={1}>
                 Store
               </Typography>
               <Box>
                 <Avatar
-                  sx={{ m: "0 auto", bgcolor: grey[300], color: "black" }}
+                  sx={{ m: "0 auto", bgcolor: grey[300], color: red[600] }}
                 >
-                  52
+                  32
                 </Avatar>
               </Box>
             </Paper>
@@ -108,16 +108,16 @@ function Category() {
               }}
               elevation={5}
             >
-              <ApartmentIcon fontSize="large" sx={{ color: "#2d2e34" }} />
+              <ApartmentIcon fontSize="large" sx={{ color: purple[600] }} />
 
               <Typography variant="h6" my={1}>
                 Apartment
               </Typography>
               <Box>
                 <Avatar
-                  sx={{ m: "0 auto", bgcolor: grey[300], color: "black" }}
+                  sx={{ m: "0 auto", bgcolor: grey[300], color: purple[600] }}
                 >
-                  52
+                  18
                 </Avatar>
               </Box>
             </Paper>

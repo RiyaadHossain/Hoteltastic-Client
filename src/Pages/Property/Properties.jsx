@@ -12,37 +12,20 @@ import PropertyContact from './PropertySideBar/PropertyContact';
 import PropertyCalculate from './PropertySideBar/PropertyCalculate';
 import PropertyRating from './PropertyRating/PropertyRating';
 import PageStatistics from './Chart/PageStatistics';
+import CustomHeader from '../../Components/CustomHeader';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import getReviews from '../../Store/review/reviewAction';
 
 const Properties = () => {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getReviews())
+    }, [dispatch])
     return (
         <Box sx={{ fontFamily: "'Rubik', sans-serif", }}>
             {/* header part */}
-            <Box sx={{
-                width: '100%',
-                height: '15rem',
-                background: `rgba(229, 248, 237,0.9) url(${Background}) no-repeat`,
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-            }}>
-                <Typography sx={{
-                    fontSize: {
-                        xs: '20px',
-                        sm: '30px',
-                        md: '40px',
-                    },
-                    marginBottom: '10px',
-                    fontWeight: 500,
-                }}>Property Details 01</Typography>
-                <Typography>Home
-                    <ChevronRightIcon sx={{ fontSize: 14, mx: 1 }} />
-                    <Typography component='span' sx={{
-                        color: '#2dbe6c',
-                        fontWeight: 500,
-                    }}>Property Details 01</Typography>
-                </Typography>
-            </Box>
+           <CustomHeader nested>Property Detials 01</CustomHeader>
             {/* all other components are showing here */}
             <Box sx={{
                 padding: {
