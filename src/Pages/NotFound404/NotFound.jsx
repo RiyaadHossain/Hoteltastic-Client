@@ -1,5 +1,6 @@
 import { Box } from "@mui/material";
 import React from "react";
+import NotFoundImage from "../../Assets/Background/notFound.gif";
 
 const NotFound = () => {
   return (
@@ -7,11 +8,18 @@ const NotFound = () => {
       sx={{
         textAlign: "center",
         fontFamily: "'Rubik', sans-serif",
-        padding: "80px 0px 120px 0px",
+        // padding: "80px 0px 0px 0px",
+        width: "100%",
+        minHeight: "100vh",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        background: ` url(${NotFoundImage}) center center no-repeat`,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
       }}
-    >
-      Not Found
-    </Box>
+    ></Box>
   );
 };
 
