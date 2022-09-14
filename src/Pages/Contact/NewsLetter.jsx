@@ -20,7 +20,7 @@ const NewsLetter = () => {
         alignItems="center"
         justifyContent="space-between"
         maxWidth={1000}
-        // mx="auto"
+        m="0 auto"
         spacing={4}
       >
         <Grid item md={8} sm={12}>
