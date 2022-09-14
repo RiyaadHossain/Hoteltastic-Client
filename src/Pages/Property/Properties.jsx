@@ -62,8 +62,6 @@ const Properties = () => {
                         <Location />
                         <PropertyRating />
                         <PageStatistics/>
-                        <Spinner></Spinner>
-                        <Preloader></Preloader>
                     </Box>
 
                     {/* Property Side Bar */}
