@@ -12,8 +12,8 @@ const Contact = () => {
       <Box
         sx={{
           width: "100%",
-          height: "15rem",
-          padding: "123px 0px 125px 0px",
+          height: "20rem",
+          padding: "130px 0px 130px 0px",
           backgroundSize: "cover",
           backgroundPosition: "center",
           background: `#5b5b5b url(${Background}) no-repeat`,

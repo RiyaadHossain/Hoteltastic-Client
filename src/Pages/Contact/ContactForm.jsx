@@ -65,7 +65,7 @@ const ContactForm = () => {
 
                 m: "10px 10px 10px 0px ",
               }}
-              defaultValue="Your Name"
+              placeholder="Your Name"
               inputProps={ariaLabel}
             />
             <Input
@@ -73,7 +73,7 @@ const ContactForm = () => {
                 width: "45%",
                 m: "10px",
               }}
-              defaultValue="Email Address"
+              placeholder="Email Address"
               inputProps={ariaLabel}
             />
           </Box>
@@ -89,7 +89,7 @@ const ContactForm = () => {
                 width: "45%",
                 m: "10px 10px 10px 0px ",
               }}
-              defaultValue="Phone"
+              placeholder="Phone"
               inputProps={ariaLabel}
             />
             <Input
@@ -97,7 +97,7 @@ const ContactForm = () => {
                 width: "45%",
                 m: "10px",
               }}
-              defaultValue="Subject"
+              placeholder="Subject"
               inputProps={ariaLabel}
             />
           </Box>
@@ -110,7 +110,7 @@ const ContactForm = () => {
             id="standard-multiline-static"
             multiline
             rows={4}
-            defaultValue="Message"
+            placeholder="Message"
             variant="standard"
           />
           <Button

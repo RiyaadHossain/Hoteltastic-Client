@@ -56,7 +56,7 @@ const GetInTouch = () => {
           sx={{
             padding: "65px 55px 65px 55px",
             m: "20px",
-            width: "300px",
+            width: "350px",
             boxShadow: "0 10px 30px 0px rgb(0 0 0 / 10%)",
             transition: "all 500ms ease",
             borderRadius: "10px",
@@ -105,7 +105,7 @@ const GetInTouch = () => {
           sx={{
             padding: "65px 55px 65px 55px",
             m: "20px",
-            width: "300px",
+            width: "350px",
             boxShadow: "0 10px 30px 0px rgb(0 0 0 / 10%)",
             transition: "all 500ms ease",
             borderRadius: "10px",
@@ -113,7 +113,7 @@ const GetInTouch = () => {
         >
           <RingVolumeOutlinedIcon
             sx={{
-              color: "#f2b241",
+              color: "#2dbe6c",
               fontSize: "50px",
             }}
           />
@@ -130,7 +130,7 @@ const GetInTouch = () => {
             }}
             color="#000000"
           >
-            Email Address
+            Phone Number
           </Typography>
           <Typography
             sx={{
@@ -138,7 +138,7 @@ const GetInTouch = () => {
             }}
             color="#a0a1a8"
           >
-            info@example.com
+            +2(305) 587-3407
           </Typography>
           <Typography
             sx={{
@@ -147,14 +147,14 @@ const GetInTouch = () => {
             }}
             color="#a0a1a8"
           >
-            info@example.com
+            +2(305) 587-3408
           </Typography>
         </Box>
         <Box
           sx={{
             padding: "65px 55px 65px 55px",
             m: "20px",
-            width: "300px",
+            width: "350px",
             boxShadow: "0 10px 30px 0px rgb(0 0 0 / 10%)",
             transition: "all 500ms ease",
             borderRadius: "10px",
@@ -162,7 +162,7 @@ const GetInTouch = () => {
         >
           <BroadcastOnHomeOutlinedIcon
             sx={{
-              color: "#f2b241",
+              color: "#f94c4c",
               fontSize: "50px",
             }}
           />
@@ -179,7 +179,7 @@ const GetInTouch = () => {
             }}
             color="#000000"
           >
-            Email Address
+            Office Address
           </Typography>
           <Typography
             sx={{
@@ -187,7 +187,7 @@ const GetInTouch = () => {
             }}
             color="#a0a1a8"
           >
-            info@example.com
+            214 West Arnold St. New York,
           </Typography>
           <Typography
             sx={{
@@ -196,7 +196,7 @@ const GetInTouch = () => {
             }}
             color="#a0a1a8"
           >
-            info@example.com
+            NY 10002
           </Typography>
         </Box>
       </Box>
