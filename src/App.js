@@ -1,8 +1,10 @@
+import { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { Route, Routes } from 'react-router-dom'
 
 import Layout from './Components/Layout'
+import Preloader from './Components/Loaders/Preloader/Preloader'
 import AllRooms from './Pages/AllRooms/AllRooms'
 import SignIn from './Pages/Auth/SignIn'
 import SignUp from './Pages/Auth/SignUp'
@@ -13,28 +15,38 @@ import Properties from './Pages/Property/Properties'
 import { initialUser } from './Store/auth/authAction'
 import getRooms from './Store/room/roomAction'
 
-
 function App() {
 	const dispatch = useDispatch()
+	const [loading, setLoading] = useState(true)
 	useEffect(() => {
 		dispatch(initialUser())
 		dispatch(getRooms())
 	}, [dispatch])
 
+	// ----------------preloader----------------//
+	useEffect(() => {
+		setTimeout(() => {
+			setLoading(false)
+		}, 3000)
+	}, [])
+
 	return (
 		<>
-			<Layout>
-				<Routes>
-					<Route element={<LandingPage />} path="/" />
-					<Route element={<AllRooms />} path="/allrooms" />
-					<Route element={<Properties />} path="/property" />
-					<Route element={<SignIn />} path="/signin" />
-					<Route element={<SignUp />} path="/signup" />
-					<Route element={<Contact />} path="/contact" />
-					<Route element={<NotFound />} path="*" />
-
-				</Routes>
-			</Layout>
+			{loading ? (
+				<Preloader />
+			) : (
+				<Layout>
+					<Routes>
+						<Route element={<LandingPage />} path="/" />
+						<Route element={<AllRooms />} path="/allrooms" />
+						<Route element={<Properties />} path="/property" />
+						<Route element={<SignIn />} path="/signin" />
+						<Route element={<SignUp />} path="/signup" />
+						<Route element={<Contact />} path="/contact" />
+						<Route element={<NotFound />} path="*" />
+					</Routes>
+				</Layout>
+			)}
 		</>
 	)
 }

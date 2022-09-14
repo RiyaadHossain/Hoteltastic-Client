@@ -45,84 +45,74 @@
 
   /* -----------------preloader text animation or css ----------------------- */
 
-  /* .preloader-text {
-    position: relative;
-  }
   
-  .preloader-text span {
-    position: absolute;
-    color: #fff;
-    transform: translate(-50%, -50%);
-    font-size: 42px;
-    letter-spacing: 5px;
-  }
-  
-  .preloader-text span:nth-child(1) {
-    color: transparent;
-    -webkit-text-stroke: 0.3px rgb(128, 198, 255);
-  }
-  
-  .preloader-text span:nth-child(2) {
-    color: rgb(128, 198, 255);
-    -webkit-text-stroke: 1px rgb(128, 198, 255);
-    animation: uiverse723 3s ease-in-out infinite;
-  }
-  
-  @keyframes uiverse723 {
-    0%, 100% {
-      clip-path: polygon(0% 45%, 15% 44%, 32% 50%, 
-       54% 60%, 70% 61%, 84% 59%, 100% 52%, 100% 100%, 0% 100%);
-    }
-  
-    50% {
-      clip-path: polygon(0% 60%, 16% 65%, 34% 66%, 
-       51% 62%, 67% 50%, 84% 45%, 100% 46%, 100% 100%, 0% 100%);
-    }
-  } */
 
   .spinner {
     height: 50px;
     width: max-content;
-    font-size: 50px;
+    /* font-size: 50px; */
     font-weight: 600;
     font-family: monospace;
     letter-spacing: 1em;
-    /* color: #f5f5f5; */
     color: #fff;
-    /* color: red; */
     filter: drop-shadow(0 0 10px);
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 3rem;
    }
    
    .spinner span {
-    animation: loading6454 1.75s ease infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: loading6454 2.2s ease infinite;
    }
    
    .spinner span:nth-child(2) {
     animation-delay: 0.25s;
+    -webkit-text-stroke: 0.3px rgb(128, 198, 255);
    }
    
    .spinner span:nth-child(3) {
     animation-delay: 0.5s;
+    -webkit-text-stroke: 0.3px rgb(128, 198, 255);
    }
    
    .spinner span:nth-child(4) {
     animation-delay: 0.75s;
+    -webkit-text-stroke: 0.3px rgb(128, 198, 255);
    }
    
    .spinner span:nth-child(5) {
     animation-delay: 1s;
+    -webkit-text-stroke: 0.3px rgb(128, 198, 255);
    }
    
    .spinner span:nth-child(6) {
     animation-delay: 1.25s;
+    -webkit-text-stroke: 0.3px rgb(128, 198, 255);
    }
    
    .spinner span:nth-child(7) {
     animation-delay: 1.5s;
+    -webkit-text-stroke: 0.3px rgb(128, 198, 255);
+   }
+   .spinner span:nth-child(8) {
+    animation-delay: 1.7s;
+    -webkit-text-stroke: 0.3px rgb(128, 198, 255);
+   }
+   .spinner span:nth-child(9) {
+    animation-delay: 1.9s;
+    -webkit-text-stroke: 0.3px rgb(128, 198, 255);
+   }
+   .spinner span:nth-child(10) {
+    animation-delay: 2.1s;
+    -webkit-text-stroke: 0.3px rgb(128, 198, 255);
+   }
+   .spinner span:nth-child(11) {
+    animation-delay: 2.2s;
+    -webkit-text-stroke: 0.3px rgb(128, 198, 255);
    }
    
    @keyframes loading6454 {

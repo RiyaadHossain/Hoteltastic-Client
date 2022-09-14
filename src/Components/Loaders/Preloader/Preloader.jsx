@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box} from '@mui/material';
 import React from 'react';
 import './Preloader.css'
 
@@ -6,49 +6,39 @@ const Preloader = () => {
     return (
         <Box sx={{
             fontFamily: "'Rubik', sans-serif",
-            // fontWeight: '600',
             width: '100%',
             height: '100vh',
             backgroundColor: '#000',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            flexDirection: 'column'
+            flexDirection: 'column',
         }}>
             {/* -------------------preloader circle--------------------- */}
             <Box className="preloader">
                 <Box className="circle"></Box>
             </Box>
             {/* -------------------preloader text----------------------- */}
-            <Box className='spinner'>
-                {/* <Typography component='span'
-                sx={{
+            <Box className='spinner' sx={{
                 fontSize : {
-                    xs: '20px',
+                    xs: '12px',
                     sm: '25px',
-                    md: '80px',
-                    lg: '100px',
+                    md: '60px',
+                    lg: '70px',
                 },
-                padding:{
-                    xs : '10px',
-                    sm : '20px',
-                    md : '30px',
-                    lg : '40px',
-                },
-                color: '#fff',
-                fontWeight: '600',
-                }}>HOTELTASTIC
-                </Typography> */}
-                <Typography component='span'>H</Typography>
-                <Typography component='span'>O</Typography>
-                <Typography component='span'>T</Typography>
-                <Typography component='span'>E</Typography>
-                <Typography component='span'>T</Typography>
-                <Typography component='span'>A</Typography>
-                <Typography component='span'>S</Typography>
-                <Typography component='span'>T</Typography>
-                <Typography component='span'>I</Typography>
-                <Typography component='span'>C</Typography>
+                mx:'auto'
+            }}>
+                <span>H</span>
+                <span>O</span>
+                <span>T</span>
+                <span>E</span>
+                <span>L</span>
+                <span>T</span>
+                <span>A</span>
+                <span>S</span>
+                <span>T</span>
+                <span>I</span>
+                <span>C</span>
             </Box>
         </Box>
     );
