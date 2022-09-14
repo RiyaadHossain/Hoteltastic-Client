@@ -10,7 +10,8 @@ import Contact from './Pages/Contact/Contact'
 import LandingPage from './Pages/Home/LandingPage/LandingPage'
 import NotFound from './Pages/NotFound404/NotFound'
 import Properties from './Pages/Property/Properties'
-import { initialUser } from './Store/authAction'
+import { initialUser } from './Store/auth/authAction'
+import { getRooms } from './Store/room/roomAction'
 
 
 
@@ -18,6 +19,7 @@ function App() {
 	const dispatch = useDispatch()
 	useEffect(() => {
 		dispatch(initialUser())
+		dispatch(getRooms())
 	}, [dispatch])
 
 	return (

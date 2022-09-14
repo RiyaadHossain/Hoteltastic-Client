@@ -1,4 +1,4 @@
-import client from "../Helper/axios"
+import client from "../../Helper/axios"
 import { authAction } from "./authSlice"
 
 export const signIn = (userData) => {

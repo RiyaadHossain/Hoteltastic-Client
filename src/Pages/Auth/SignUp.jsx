@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import CustomHeader from "../../Components/CustomHeader";
 import { useDispatch, useSelector } from "react-redux";
-import { signUp } from "../../Store/authAction";
+import { signUp } from "../../Store/auth/authAction";
 import { useEffect } from "react";
 
 function SignUp() {

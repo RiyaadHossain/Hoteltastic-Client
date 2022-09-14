@@ -2,7 +2,7 @@ import { Logout, PersonAdd, Settings } from "@mui/icons-material";
 import { Avatar, Divider, ListItemIcon, MenuItem } from "@mui/material";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { authAction } from "../Store/authSlice";
+import { authAction } from "../Store/auth/authSlice";
 
 function Setting() {
   const dispatch = useDispatch();

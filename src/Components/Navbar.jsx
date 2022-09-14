@@ -28,7 +28,7 @@ function Navbar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const auth = useSelector((state) => state.auth);
-  console.log(auth);
+
   const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {

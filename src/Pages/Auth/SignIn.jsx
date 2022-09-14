@@ -4,7 +4,7 @@ import GoogleIcon from "@mui/icons-material/Google";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { signIn } from "../../Store/authAction";
+import { signIn } from "../../Store/auth/authAction";
 import CustomHeader from "../../Components/CustomHeader";
 import { useEffect } from "react";
 
