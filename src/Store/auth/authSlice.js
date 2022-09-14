@@ -4,7 +4,8 @@ const initialState = {
     isLoggedIn: false,
     message: '',
     user: {},
-    token: ''
+    token: '',
+    loading: false
 }
 
 const authSlice = createSlice({
@@ -12,14 +13,14 @@ const authSlice = createSlice({
     initialState,
     reducers: {
         initialSignIn: {
-            
+
         },
         signIn: (state, actions) => {
             state.isLoggedIn = true
             state.user = actions.payload
         },
         signUp: (state, actions) => {
-            state.isLoggedIn = true 
+            state.isLoggedIn = true
             state.user = actions.payload
         },
         signOut: (state) => {

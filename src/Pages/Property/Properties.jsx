@@ -13,8 +13,15 @@ import PropertyCalculate from './PropertySideBar/PropertyCalculate';
 import PropertyRating from './PropertyRating/PropertyRating';
 import PageStatistics from './Chart/PageStatistics';
 import CustomHeader from '../../Components/CustomHeader';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import getReviews from '../../Store/review/reviewAction';
 
 const Properties = () => {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getReviews())
+    }, [dispatch])
     return (
         <Box sx={{ fontFamily: "'Rubik', sans-serif", }}>
             {/* header part */}

@@ -40,7 +40,6 @@ function Navbar() {
   };
 
   const handleCloseNavMenu = (path) => {
-    console.log(path);
     navigate(path);
     setAnchorElNav(null);
   };
