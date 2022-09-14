@@ -6,7 +6,8 @@ import NewsLetterImage from "../../Assets/Background/newsLetter.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    background: `#2dbe6c url(${NewsLetterImage}) center center no-repeat`,
+    background: `#2dbe6c url(${NewsLetterImage}) no-repeat center center `,
+    backgroundSize:'cover',
     padding: "105px 30px",
   },
 }));

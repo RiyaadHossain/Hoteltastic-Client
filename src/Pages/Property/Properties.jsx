@@ -16,6 +16,8 @@ import CustomHeader from '../../Components/CustomHeader';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import getReviews from '../../Store/review/reviewAction';
+import Spinner from '../../Components/Loaders/Spinner/Spinner';
+import Preloader from '../../Components/Loaders/Preloader/Preloader';
 
 const Properties = () => {
     const dispatch = useDispatch()
