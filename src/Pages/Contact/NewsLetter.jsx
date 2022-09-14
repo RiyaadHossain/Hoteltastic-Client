@@ -1,4 +1,4 @@
-import { Button, Grid, Typography } from "@mui/material";
+import { Button, Grid, InputBase, Paper, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import { makeStyles } from "@mui/styles";
@@ -18,59 +18,62 @@ const NewsLetter = () => {
       <Grid
         container
         alignItems="center"
-        justifyContent="center"
+        justifyContent="space-between"
         maxWidth={1000}
-        m="0 auto"
+        m="auto"
       >
         <Grid item md={8} sm={12}>
+          <Button
+            sx={{
+              p: "3px 10px",
+              fontSize: "12px",
+              cursor: "pointer",
+              color: "#fff",
+              backgroundColor: "#F94C4C",
+            }}
+            variant="contained"
+            color="success"
+            backgroundColor="#F94C4C"
+          >
+            Subscribe
+          </Button>
+
           <Typography
-            sx={{ fontSize: { xs: 33, md: 40 }, mb: { xs: 5, md: 0 } }}
+            sx={{ fontSize: { xs: 30, md: 38 }, mb: { xs: 5, md: 0 } }}
             fontWeight="bold"
             color="white"
           >
-            Looking to Buy a New Property or Sell an Existing One?
+            Sign Up To Our Newsletter To Get The Latest News And Offers.
           </Typography>
         </Grid>
         <Grid item md={4} sm={12}>
-          <Button
+          <Paper
+            component="form"
             sx={{
-              fontWeight: "bold",
-              color: "black",
-              border: "1px solid #e5e7ec",
-              padding: "12px 0px",
-              backgroundColor: "white",
-              width: "150px",
-              boxShadow: "inset 0 0 0 0 #2dbe6c",
-              transition: "ease-out 0.5s",
-              "&:hover": {
-                color: "white",
-                boxShadow: "inset 150px 0 0 0 #2dbe6c",
-                border: "1px solid #2dbe6c",
-              },
+              display: "flex",
+              alignItems: "center",
+              width: 500,
             }}
           >
-            Rent Properties
-          </Button>
-          <Button
-            sx={{
-              ml: 1,
-              fontWeight: "bold",
-              color: "white",
-              border: "1px solid #2dbe6c",
-              padding: "12px 0px",
-              backgroundColor: "#2dbe6c",
-              width: "150px",
-              boxShadow: "inset 0 0 0 0 black",
-              transition: "ease-out 0.5s",
-              "&:hover": {
-                color: "#2dbe6c",
-                boxShadow: "inset 150px 0 0 0 black",
-                border: "1px solid #2dbe6c",
-              },
-            }}
-          >
-            Buy Properties
-          </Button>
+            <InputBase
+              sx={{ ml: 1, flex: 1 }}
+              placeholder="Enter Your Email"
+              inputProps={{ "aria-label": "Enter Your Email" }}
+            />
+            <Box
+              color="primary"
+              sx={{
+                p: "20px 30px",
+                cursor: "pointer",
+                color: "#fff",
+                backgroundColor: "#2D2929",
+                borderRadius: "0px 5px 5px 0px",
+              }}
+              aria-label="directions"
+            >
+              Subscribe Now
+            </Box>
+          </Paper>
         </Grid>
       </Grid>
     </Box>
