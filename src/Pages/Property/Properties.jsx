@@ -17,6 +17,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import getReviews from '../../Store/review/reviewAction';
 import Spinner from '../../Components/Loaders/Spinner/Spinner';
+import Preloader from '../../Components/Loaders/Preloader/Preloader';
 
 const Properties = () => {
     const dispatch = useDispatch()
@@ -62,6 +63,7 @@ const Properties = () => {
                         <PropertyRating />
                         <PageStatistics/>
                         <Spinner></Spinner>
+                        <Preloader></Preloader>
                     </Box>
 
                     {/* Property Side Bar */}
