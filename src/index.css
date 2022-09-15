@@ -73,4 +73,8 @@ a {
  .signInBtn:active {
   filter: brightness(.8);
  }
+
+ .css-12i7wg6-MuiPaper-root-MuiDrawer-paper{
+  position: static !important;
+ }
  
