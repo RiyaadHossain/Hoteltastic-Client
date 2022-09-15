@@ -6,7 +6,8 @@ import NewsLetterImage from "../../Assets/Background/newsLetter.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    background: `#2dbe6c url(${NewsLetterImage}) center center no-repeat`,
+    background: `#2dbe6c url(${NewsLetterImage}) no-repeat center center `,
+    backgroundSize:'cover',
     padding: "105px 30px",
   },
 }));
@@ -20,7 +21,7 @@ const NewsLetter = () => {
         alignItems="center"
         justifyContent="space-between"
         maxWidth={1000}
-        margin="0 auto"
+        m="0 auto"
         spacing={4}
       >
         <Grid item md={8} sm={12}>

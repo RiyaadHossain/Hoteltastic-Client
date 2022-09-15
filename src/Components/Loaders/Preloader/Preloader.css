@@ -1,0 +1,126 @@
+/* -------------------preloader circle styling--------------------- */
+.preloader {
+    background: transparent;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .circle {
+    width: 80px;
+    height: 80px;
+    border: 2px solid #ccc;
+    position: absolute;
+    border-radius: 50%;
+    animation: circle14512 2s linear infinite;
+  }
+  
+  .circle::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #9ae932;
+    box-shadow: 0 0 20px #9ae932, 0 0 60px #9ae932;
+  }
+  
+  @keyframes circle14512 {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+
+  /* -----------------preloader text animation or css ----------------------- */
+
+  
+
+  .spinner {
+    height: 50px;
+    width: max-content;
+    /* font-size: 50px; */
+    font-weight: 600;
+    font-family: monospace;
+    letter-spacing: 1em;
+    color: #fff;
+    filter: drop-shadow(0 0 10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+   }
+   
+   .spinner span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: loading6454 2.2s ease infinite;
+   }
+   
+   .spinner span:nth-child(2) {
+    animation-delay: 0.25s;
+    -webkit-text-stroke: 0.3px rgb(128, 198, 255);
+   }
+   
+   .spinner span:nth-child(3) {
+    animation-delay: 0.5s;
+    -webkit-text-stroke: 0.3px rgb(128, 198, 255);
+   }
+   
+   .spinner span:nth-child(4) {
+    animation-delay: 0.75s;
+    -webkit-text-stroke: 0.3px rgb(128, 198, 255);
+   }
+   
+   .spinner span:nth-child(5) {
+    animation-delay: 1s;
+    -webkit-text-stroke: 0.3px rgb(128, 198, 255);
+   }
+   
+   .spinner span:nth-child(6) {
+    animation-delay: 1.25s;
+    -webkit-text-stroke: 0.3px rgb(128, 198, 255);
+   }
+   
+   .spinner span:nth-child(7) {
+    animation-delay: 1.5s;
+    -webkit-text-stroke: 0.3px rgb(128, 198, 255);
+   }
+   .spinner span:nth-child(8) {
+    animation-delay: 1.7s;
+    -webkit-text-stroke: 0.3px rgb(128, 198, 255);
+   }
+   .spinner span:nth-child(9) {
+    animation-delay: 1.9s;
+    -webkit-text-stroke: 0.3px rgb(128, 198, 255);
+   }
+   .spinner span:nth-child(10) {
+    animation-delay: 2.1s;
+    -webkit-text-stroke: 0.3px rgb(128, 198, 255);
+   }
+   .spinner span:nth-child(11) {
+    animation-delay: 2.2s;
+    -webkit-text-stroke: 0.3px rgb(128, 198, 255);
+   }
+   
+   @keyframes loading6454 {
+    0%, 100% {
+     transform: translateY(0);
+    }
+   
+    50% {
+     transform: translateY(-10px);
+    }
+   }
