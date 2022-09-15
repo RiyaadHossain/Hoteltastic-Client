@@ -16,7 +16,8 @@ import Properties from './Pages/Property/Properties'
 import { initialUser } from './Store/auth/authAction'
 import getRooms from './Store/room/roomAction'
 import { socialSignIn } from "./Store/auth/authAction";
-import UserLayout from './Pages/Dashboard/User/UserLayout';
+import UserLayout from './Pages/Dashboard/User/UserLayout'
+import MyProfile from './Pages/MyProfile/MyProfile'
 import Demo from "./Pages/Dashboard/User/Demo"
 
 function App() {
@@ -71,6 +72,7 @@ function App() {
 						<Route element path='' />
 						<Route element path='' />
 						<Route element path='' />
+						<Route element={<MyProfile />} path='/myprofile' />
 						<Route element={<NotFound />} path="*" />
 
 					</Routes>
