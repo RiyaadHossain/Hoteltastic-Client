@@ -16,7 +16,8 @@ import Properties from './Pages/Property/Properties'
 import { initialUser } from './Store/auth/authAction'
 import getRooms from './Store/room/roomAction'
 import { socialSignIn } from "./Store/auth/authAction";
-import UserLayout from './Pages/Dashboard/User/UserLayout'
+import UserLayout from './Pages/Dashboard/User/UserLayout';
+import Demo from "./Pages/Dashboard/User/Demo"
 
 function App() {
 	const dispatch = useDispatch()
@@ -64,7 +65,7 @@ function App() {
 						<Route element={<SignUp />} path="/signup" />
 						<Route element={<Contact />} path="/contact" />
 						<Route element={<UserLayout />} path='/Userdashboard' />
-						<Route element path='' />
+						<Route element={<Demo />} path='/demo' />
 						<Route element path='' />
 						<Route element path='' />
 						<Route element path='' />
