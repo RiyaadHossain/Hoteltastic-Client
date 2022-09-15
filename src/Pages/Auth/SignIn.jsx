@@ -11,37 +11,34 @@ import { useEffect } from "react";
 function SignIn() {
   const dispath = useDispatch();
   const navigate = useNavigate();
-  const auth = useSelector(state => state.auth)
-
+  const auth = useSelector((state) => state.auth);
 
   const googleSignIn = () => {
-    window.open(`http://localhost:5001/api/auth/google/callback`, "_self");
-
-  }
+    window.open(`http://localhost:5001/auth/google/callback`, "_self");
+  };
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  
+
   const onSubmit = (data) => {
     dispath(signIn(data));
   };
 
   useEffect(() => {
     if (auth.isLoggedIn) {
-      navigate("/")
+      navigate("/");
     }
-  }, [auth, navigate])
+  }, [auth, navigate]);
 
   return (
     <Box sx={{ mx: { xs: 2, md: 0 } }}>
+      <CustomHeader>Sign In</CustomHeader>
 
-        <CustomHeader>Sign In</CustomHeader>
-    
       <Box
-        sx={{
+        sx={{ 
           textAlign: "center",
           fontFamily: "'Rubik', sans-serif",
           padding: "80px 0px 120px 0px",
@@ -106,7 +103,7 @@ function SignIn() {
                 },
                 fontFamily: "'Rubik', sans-serif",
               }}
-              textAlign='center'
+              textAlign="center"
               fontWeight="bold"
             >
               Sign In

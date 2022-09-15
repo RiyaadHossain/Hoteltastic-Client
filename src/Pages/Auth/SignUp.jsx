@@ -10,8 +10,8 @@ import { useEffect } from "react";
 
 function SignUp() {
   const navigate = useNavigate();
-  const dispath = useDispatch()
-  const auth = useSelector(state => state.auth)
+  const dispath = useDispatch();
+  const auth = useSelector((state) => state.auth);
   const {
     register,
     handleSubmit,
@@ -19,17 +19,18 @@ function SignUp() {
   } = useForm();
 
   const onSubmit = (data) => {
-    dispath(signUp(data))
+    dispath(signUp(data));
   };
 
   useEffect(() => {
     if (auth.isLoggedIn) {
-      navigate("/signin")
+      navigate("/signin");
     }
-  }, [auth, navigate])
+  }, [auth, navigate]);
   const googleSignIn = () => {
     window.open(`http://localhost:5001/auth/google/callback`, "_self");
-  }
+  };
+  googleSignIn()
   return (
     <Box sx={{ mx: { xs: 2, md: 0 } }}>
       <CustomHeader>Sign Up</CustomHeader>
@@ -101,7 +102,7 @@ function SignUp() {
                 textTransform: "capitalize",
                 fontFamily: "'Rubik', sans-serif",
               }}
-              textAlign= 'center'
+              textAlign="center"
               fontWeight="bold"
               color="#00000"
             >
@@ -224,8 +225,8 @@ function SignUp() {
 
           {/* social signup */}
           <Box>
-            <Button 
-            onClick={googleSignIn}
+            <Button
+              onClick={googleSignIn}
               sx={{
                 width: "100%",
                 color: "#2dbe6c",
