@@ -56,7 +56,7 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="static" sx={{ bgcolor: "white" }} py={4} px={2}>
+    <AppBar position="sticky" sx={{ bgcolor: "white" }} py={4} px={2}>
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ height: "100px" }}>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
