@@ -31,7 +31,7 @@ function Navbar() {
   const auth = useSelector((state) => state.auth);
   const navigate = useNavigate();
   if (auth.user.user && !auth.user.user?.name) {
-    return <p>Loading...</p>
+    // return <Spinner></Spinner>
   }
   const profileImg = auth.user.user?.avatar;
   const userName = auth.user.user?.name?.slice(0, 1)?.toUpperCase();
@@ -56,7 +56,7 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="static" sx={{ bgcolor: "white" }} py={4} px={2}>
+    <AppBar position="sticky" sx={{ bgcolor: "white" }} py={4} px={2}>
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ height: "100px" }}>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>

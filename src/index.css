@@ -12,7 +12,9 @@ a {
   text-decoration: none;
   scroll-behavior: smooth;
 }
-
+.css-12i7wg6-MuiPaper-root-MuiDrawer-paper{
+  position: inherit !important
+}
 
 /* From uiverse.io by @nikk7007 */
 /* From uiverse.io by @nikk7007 */
@@ -65,11 +67,14 @@ a {
  }
  
  .signInBtn:hover {
-
   color: #ffffff;
  }
  
  .signInBtn:active {
   filter: brightness(.8);
+ }
+
+ .css-12i7wg6-MuiPaper-root-MuiDrawer-paper{
+  position: static !important;
  }
  

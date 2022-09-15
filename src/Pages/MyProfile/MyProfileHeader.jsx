@@ -13,13 +13,20 @@ const MyProfileHeader = () => {
     >
       <Box
         sx={{
-          width: "40%",
           p: "20px",
+          mt: "-100px",
         }}
       >
         <img
-          style={{ width: "100%", borderRadius: "40%" }}
-          src="http://azim.commonsupport.com/Realshed/assets/images/resource/testimonial-1.jpg"
+          style={{
+            width: "200px",
+            height: "200px",
+            padding: "5px",
+            background: "#fff",
+            borderRadius: "50%",
+            boxShadow: "rgba(0, 0, 0, 0.25) 0px 25px 50px -12px",
+          }}
+          src="https://i.ibb.co/TtcvWfH/profile-Photo.jpg"
           alt=""
         />
       </Box>

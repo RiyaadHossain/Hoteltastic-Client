@@ -64,7 +64,7 @@ const ApartmentHeading = () => {
                 fontWeight: "bold",
                 borderRadius: "5px",
                 fontSize: "12px",
-                marginright: "10px",
+                marginRight: "10px",
                 "&:hover": {
                   background: "#f2b241",
                   color: "#fff",
@@ -157,7 +157,7 @@ const ApartmentHeading = () => {
               width: "33px",
               color: "#a6a7af",
               borderRadius: "4px",
-              marginright: "10px",
+              marginRight: "10px",
               "&:hover": {
                 color: "#fff",
                 background: "#2dbe6c",
@@ -176,7 +176,7 @@ const ApartmentHeading = () => {
               width: "33px",
               color: "#a6a7af",
               borderRadius: "4px",
-              marginright: "10px",
+              marginRight: "10px",
               "&:hover": {
                 color: "#fff",
                 background: "#2dbe6c",
@@ -195,7 +195,7 @@ const ApartmentHeading = () => {
               width: "33px",
               color: "#a6a7af",
               borderRadius: "4px",
-              marginright: "10px",
+              marginRight: "10px",
               "&:hover": {
                 color: "#fff",
                 background: "#2dbe6c",
@@ -214,7 +214,7 @@ const ApartmentHeading = () => {
               width: "33px",
               color: "#a6a7af",
               borderRadius: "4px",
-              marginright: "10px",
+              marginRight: "10px",
               "&:hover": {
                 color: "#fff",
                 background: "#2dbe6c",
