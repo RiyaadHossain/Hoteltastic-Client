@@ -16,6 +16,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Logo from "../Assets/Logo/logo.png";
 import { useSelector } from "react-redux";
 import Setting from "./Setting";
+import { deepOrange } from "@mui/material/colors";
 
 const pages = [
   { name: "Home", path: "/" },
@@ -28,8 +29,14 @@ function Navbar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const auth = useSelector((state) => state.auth);
-
   const navigate = useNavigate();
+  if (auth.user.user && !auth.user.user?.name) {
+    return <p>Loading...</p>
+  }
+  const profileImg = auth.user.user?.avatar;
+  const userName = auth.user.user?.name?.slice(0, 1)?.toUpperCase();
+  console.log(userName);
+  console.log(profileImg);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -47,6 +54,7 @@ function Navbar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
   return (
     <AppBar position="static" sx={{ bgcolor: "white" }} py={4} px={2}>
       <Container maxWidth="xl">
@@ -140,8 +148,11 @@ function Navbar() {
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar
                     alt="Remy Sharp"
-                    src="https://mui.com/static/images/avatar/2.jpg"
-                  />
+                      src={profileImg}
+                      sx={{ bgcolor: deepOrange[500] }}
+                    >
+                      {!profileImg && userName}
+                  </Avatar>
                 </IconButton>
               </Tooltip>
             )}
@@ -187,7 +198,7 @@ function Navbar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <Setting />
+              <Setting userName={userName} auth={auth} profileImg={profileImg} />
             </Menu>
           </Box>
         </Toolbar>
