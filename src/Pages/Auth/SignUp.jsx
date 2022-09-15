@@ -27,10 +27,11 @@ function SignUp() {
       navigate("/signin");
     }
   }, [auth, navigate]);
+  
   const googleSignIn = () => {
     window.open(`http://localhost:5001/auth/google/callback`, "_self");
   };
-  googleSignIn()
+ 
   return (
     <Box sx={{ mx: { xs: 2, md: 0 } }}>
       <CustomHeader>Sign Up</CustomHeader>

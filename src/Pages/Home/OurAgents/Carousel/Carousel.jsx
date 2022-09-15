@@ -102,7 +102,7 @@ const Carousel = () => {
                 sx={{
                   width: "60%",
                   marginLeft: "auto",
-                  marginright: "auto",
+                  marginRight: "auto",
                   left: 0,
                   right: 0,
                   textAlign: "center",

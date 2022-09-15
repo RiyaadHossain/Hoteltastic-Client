@@ -31,7 +31,7 @@ function Navbar() {
   const auth = useSelector((state) => state.auth);
   const navigate = useNavigate();
   if (auth.user.user && !auth.user.user?.name) {
-    return <p>Loading...</p>
+    // return <Spinner></Spinner>
   }
   const profileImg = auth.user.user?.avatar;
   const userName = auth.user.user?.name?.slice(0, 1)?.toUpperCase();

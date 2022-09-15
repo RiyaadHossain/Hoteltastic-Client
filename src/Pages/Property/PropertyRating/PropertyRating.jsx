@@ -145,7 +145,7 @@ const PropertyRating = () => {
                 height: "40px",
                 width: "40px",
                 borderRadius: "50%",
-                marginright: "12px",
+                marginRight: "12px",
               }}
               src={review.userImg}
               alt=""
