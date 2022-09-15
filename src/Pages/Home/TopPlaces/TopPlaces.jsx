@@ -62,7 +62,7 @@ const TopPlaces = () => {
         }}
       >
         <Box
-          marginright={5}
+          marginRight={5}
           sx={{
             position: "relative",
             overflow: "hidden",
@@ -82,7 +82,7 @@ const TopPlaces = () => {
             sx={{
               width: "80%",
               marginLeft: "auto",
-              marginright: "auto",
+              marginRight: "auto",
               left: 0,
               right: 0,
               textAlign: "center",
@@ -132,7 +132,7 @@ const TopPlaces = () => {
                 }}
               >
                 <img
-                  marginright={5}
+                  marginRight={5}
                   src="https://i.ibb.co/nmY9HnJ/place-2.jpg"
                   alt=""
                 />
@@ -141,7 +141,7 @@ const TopPlaces = () => {
                 sx={{
                   width: "80%",
                   marginLeft: "auto",
-                  marginright: "auto",
+                  marginRight: "auto",
                   left: 0,
                   right: 0,
                   textAlign: "center",
@@ -183,7 +183,7 @@ const TopPlaces = () => {
                 sx={{
                   width: "80%",
                   marginLeft: "auto",
-                  marginright: "auto",
+                  marginRight: "auto",
                   left: 0,
                   right: 0,
                   textAlign: "center",
@@ -226,7 +226,7 @@ const TopPlaces = () => {
               sx={{
                 width: "80%",
                 marginLeft: "auto",
-                marginright: "auto",
+                marginRight: "auto",
                 left: 0,
                 right: 0,
                 textAlign: "center",

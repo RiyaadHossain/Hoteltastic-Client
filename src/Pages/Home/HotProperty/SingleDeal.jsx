@@ -167,21 +167,21 @@ const SingleDeal = ({ deal }) => {
                 }}
               >
                 <Box sx={{ display: "flex", alignItems: "center" }}>
-                  <Box component="span" sx={{ marginright: "6px" }}>
+                  <Box component="span" sx={{ marginRight: "6px" }}>
                     <HotelIcon />
                   </Box>
                   <Typography>{bed} Beds</Typography>
                 </Box>
                 <Typography>|</Typography>
                 <Box sx={{ display: "flex", alignItems: "center" }}>
-                  <Box component="span" sx={{ marginright: "6px" }}>
+                  <Box component="span" sx={{ marginRight: "6px" }}>
                     <BathtubIcon />
                   </Box>
                   <Typography>{bath} Baths</Typography>
                 </Box>
                 <Typography>|</Typography>
                 <Box sx={{ display: "flex", alignItems: "center" }}>
-                  <Box component="span" sx={{ marginright: "6px" }}>
+                  <Box component="span" sx={{ marginRight: "6px" }}>
                     <Grid3x3Icon />
                   </Box>
                   <Typography>{area} Sq Ft</Typography>
