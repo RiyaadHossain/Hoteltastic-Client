@@ -18,6 +18,22 @@ export const signIn = (userData) => {
     }
 }
 
+export const socialSignIn = (email) => {
+    return async dispatch => {
+
+        try {
+            const { data } = await client.post("/api/user/socialLogin", {email})
+            if (data) {
+                const user = JSON.stringify({ token: data.token, email: data.user.email })
+                localStorage.setItem("user", user)
+                dispatch(authAction.signIn(data))
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
 export const signUp = (userData) => {
     return async dispatch => {
 
