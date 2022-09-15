@@ -14,7 +14,7 @@ import React from "react";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import SyncAltIcon from "@mui/icons-material/SyncAlt";
 import HotelTwoToneIcon from "@mui/icons-material/HotelTwoTone";
-import BathtubTwoToneIcon from '@mui/icons-material/BathtubTwoTone';
+import BathtubTwoToneIcon from "@mui/icons-material/BathtubTwoTone";
 import Grid3x3Icon from "@mui/icons-material/Grid3x3";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
@@ -300,7 +300,7 @@ const HotProperty = () => {
                         width:'50%',
                     }}>
                         <Box sx={{display:'flex',alignItems:'center'}}>
-                            <Box component='span' sx={{marginright:'6px'}}>
+                            <Box component='span' sx={{marginRight:'6px'}}>
                                 <HotelTwoToneIcon/>
                             </Box>
                             <Typography>
@@ -310,7 +310,7 @@ const HotProperty = () => {
                         </Box>
                         <Typography>|</Typography>
                         <Box sx={{display:'flex',alignItems:'center'}}>
-                            <Box component='span' sx={{marginright:'6px'}}>
+                            <Box component='span' sx={{marginRight:'6px'}}>
                                 <BathtubTwoToneIcon/>
                             </Box>
                             <Typography>
@@ -320,7 +320,7 @@ const HotProperty = () => {
                         </Box>
                         <Typography>|</Typography>
                         <Box sx={{display:'flex',alignItems:'center'}}>
-                            <Box component='span' sx={{marginright:'6px'}}>
+                            <Box component='span' sx={{marginRight:'6px'}}>
                                 <Grid3x3Icon/>
                             </Box>
                             <Typography>
