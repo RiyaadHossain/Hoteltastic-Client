@@ -178,9 +178,9 @@ function SignIn() {
                 color="#999999"
               >
                 Have not any account?
-                <Button>
+                <Button onClick={() => navigate("/signup")}>
                   <Typography
-                    onClick={() => navigate("/signup")}
+                   
                     sx={{
                       cursor: "pointer",
                       fontSize: {

@@ -15,6 +15,8 @@ const FeatureRoom = ({ feature }) => {
      return (
           <Card sx={{
                maxWidth: {
+                    xs:"80%",
+                    sm:300,
                     md: 370
                },
                margin: "15px 15px",

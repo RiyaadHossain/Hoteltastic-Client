@@ -27,7 +27,7 @@ function AppPromotion() {
         alignSelf="flex-end"
         textAlign="center"
       >
-        <Box overflow="hidden" sx={{ marginBottom: "-1.1%" }}>
+        <Box overflow="hidden" sx={{ marginBottom: "-4.8%" }}>
           <img alt="" sx={{ overFlow: "hidden" }} src={Mobile1} />
           <img alt="" src={Mobile2} />
         </Box>

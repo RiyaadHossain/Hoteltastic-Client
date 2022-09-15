@@ -18,8 +18,6 @@ const FeatureRooms = () => {
                <Typography
                     sx={{
                          fontSize: {
-                              xs: "38px",
-                              sm: "45px",
                               md: "18px",
                          },
                          textTransform: "uppercase",
@@ -37,8 +35,8 @@ const FeatureRooms = () => {
                          fontWeight: "500",
                          fontFamily: "'Rubik', sans-serif",
                          fontSize: {
-                              xs: "38px",
-                              sm: "45px",
+                              xs: "25px",
+                              sm: "30px",
                               md: "40px",
                          },
                     }}
@@ -49,10 +47,14 @@ const FeatureRooms = () => {
 
                <Typography
                     sx={{
-                         maxWidth: "50%",
+                         maxWidth: {
+                              xs: "80%",
+                              sm: "70%",
+                              md: "50%"
+                         },
                          margin: "0 auto"
                     }}
-                    color="#93959e"
+                    color="#93959e"     
                >
                     Lorem ipsum dolor sit amet consectetur adipisicing sed do eiusmod tempor incididunt
                     labore dolore magna aliqua enim.
@@ -62,7 +64,7 @@ const FeatureRooms = () => {
                     display: "flex",
                     flexWrap: "wrap",
                     justifyContent: "center",
-                    marginTop:"30px"
+                    marginTop: "30px"
                }}>
                     {
                          features.map(feature => <FeatureRoom
