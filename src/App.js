@@ -17,6 +17,7 @@ import { initialUser } from './Store/auth/authAction'
 import getRooms from './Store/room/roomAction'
 import { socialSignIn } from "./Store/auth/authAction";
 import UserLayout from './Pages/Dashboard/User/UserLayout'
+import MyProfile from './Pages/MyProfile/MyProfile'
 
 function App() {
 	const dispatch = useDispatch()
@@ -70,6 +71,7 @@ function App() {
 						<Route element path='' />
 						<Route element path='' />
 						<Route element path='' />
+						<Route element={<MyProfile />} path='/myprofile' />
 						<Route element={<NotFound />} path="*" />
 
 					</Routes>
