@@ -18,7 +18,8 @@ import getRooms from './Store/room/roomAction'
 import { socialSignIn } from "./Store/auth/authAction";
 import UserLayout from './Pages/Dashboard/User/UserLayout'
 import MyProfile from './Pages/MyProfile/MyProfile'
-import Demo from "./Pages/Dashboard/User/Demo"
+import AdminLayout from './Pages/Dashboard/Admin/AdminLayout'
+import AdminHome from './Pages/Dashboard/Admin/AdminHome'
 
 function App() {
 	const dispatch = useDispatch()
@@ -57,26 +58,30 @@ function App() {
 			{loading ? (
 				<Preloader />
 			) : (
-				<Layout>
+				<>
 					<Routes>
-						<Route element={<LandingPage />} path="/" />
-						<Route element={<AllRooms />} path="/allrooms" />
-						<Route element={<Properties />} path="/property" />
-						<Route element={<SignIn />} path="/signin" />
-						<Route element={<SignUp />} path="/signup" />
-						<Route element={<Contact />} path="/contact" />
-						<Route element={<UserLayout />} path='/Userdashboard' />
-						<Route element={<Demo />} path='/demo' />
-						<Route element path='' />
-						<Route element path='' />
-						<Route element path='' />
-						<Route element path='' />
-						<Route element path='' />
-						<Route element={<MyProfile />} path='/myprofile' />
+						<Route element={<Layout />} path="/" >
+							<Route index element={<LandingPage />} path="" />
+							<Route element={<AllRooms />} path="allrooms" />
+							<Route element={<Properties />} path="property" />
+							<Route element={<SignIn />} path="signin" />
+							<Route element={<SignUp />} path="signup" />
+							<Route element={<Contact />} path="/contact" />
+							<Route element={<UserLayout />} path='/Userdashboard' />
+							<Route element={<MyProfile />} path='/profile' />
+							<Route element path='' />
+							<Route element path='' />
+							<Route element={<MyProfile />} path='/myprofile' />
+						</Route>
+						<Route element={<AdminLayout />} path="/admin/">
+							<Route element={<AdminHome/>} path='dashboard' />
+						</Route>
+						<Route element={<UserLayout />} path="/user/">
+							<Route element={<AdminHome/>} path='dashboard' />
+						</Route>
 						<Route element={<NotFound />} path="*" />
-
 					</Routes>
-				</Layout>
+				</>
 			)}
 		</>
 	)

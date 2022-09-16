@@ -27,7 +27,7 @@ function Setting({ userName, profileImg, auth }) {
         </Avatar>
         My Profile
       </MenuItem>
-      <MenuItem onClick={() => navigate(`/${role}dashboard`)}>
+      <MenuItem onClick={() => navigate(`/${role.toLowerCase()}/dashboard`)}>
         <ListItemIcon>
           <DashboardIcon fontSize="medium" />
         </ListItemIcon>

@@ -16,6 +16,10 @@ a {
   position: inherit !important
 }
 
+.css-1u2w381-MuiModal-root-MuiDrawer-root {
+  z-index: inherit!important
+}
+
 /* From uiverse.io by @nikk7007 */
 /* From uiverse.io by @nikk7007 */
 .signInBtn {
