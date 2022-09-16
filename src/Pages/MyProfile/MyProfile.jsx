@@ -2,6 +2,7 @@ import { Box } from "@mui/system";
 import React from "react";
 import Background from "../../Assets/Background/myProfile.jpg";
 import MyProfileHeader from "./MyProfileHeader";
+import ProfileUpdateForm from "./ProfileUpdateForm";
 
 const MyProfile = () => {
   return (
@@ -23,6 +24,7 @@ const MyProfile = () => {
         }}
       ></Box>
       <MyProfileHeader></MyProfileHeader>
+      <ProfileUpdateForm></ProfileUpdateForm>
     </Box>
   );
 };
