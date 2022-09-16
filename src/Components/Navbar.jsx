@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
-import MenuIcon from "@mui/icons-material/Menu";
 import {
   AppBar,
   Container,
@@ -14,13 +12,31 @@ import {
   Tooltip,
   Avatar,
 } from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
+import Logo from "../Assets/Logo/logo.png";
+import { useSelector } from "react-redux";
+import Setting from "./Setting";
+import { deepOrange } from "@mui/material/colors";
 
-const pages = ["Home", "Rooms", "About", "Contact"];
-const settings = ["Profile", "Dashboard", "Logout"];
+const pages = [
+  { name: "Home", path: "/" },
+  { name: "Rooms", path: "/allRooms" },
+  { name: "About ", path: "/about" },
+  { name: "Contact", path: "/contact" },
+];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const auth = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+  if (auth.user.user && !auth.user.user?.name) {
+    // return <Spinner></Spinner>
+  }
+  const profileImg = auth.user.user?.avatar;
+  const userName = auth.user.user?.name?.slice(0, 1)?.toUpperCase();
+  console.log(userName);
+  console.log(profileImg);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -30,39 +46,28 @@ function Navbar() {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (path) => {
+    navigate(path);
     setAnchorElNav(null);
   };
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
   return (
-    <AppBar position="static" sx={{ bgcolor: "white" }} py={4} px={2}>
+    <AppBar position="sticky" sx={{ bgcolor: "white" }} py={4} px={2}>
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ height: "100px" }}>
-          <HomeRoundedIcon
-            sx={{
-              display: { xs: "none", md: "flex" },
-              mr: 1,
-              color: "#1565c0",
-            }}
-          />
-          <Typography
-            variant="h6"
-            component="p"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              color: "#1565c0",
-              textDecoration: "none",
-            }}
-          >
-            Hoteltastic
-          </Typography>
-
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            <img
+              src={Logo}
+              alt=""
+              width={170}
+              onClick={() => navigate("/")}
+              style={{ cursor: "pointer" }}
+            />
+          </Box>
           {/* For Mobile View */}
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -70,7 +75,13 @@ function Navbar() {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-              <MenuIcon />
+              <img
+                src={Logo}
+                alt=""
+                width={150}
+                onClick={() => navigate("/")}
+                style={{ cursor: "pointer" }}
+              />
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -91,54 +102,60 @@ function Navbar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem
+                  key={page.name}
+                  onClick={() => handleCloseNavMenu(page.path)}
+                >
+                  <Typography textAlign="center">{page.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
 
-          {/* For Mobile View */}
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              fontSize: 20,
-              color: "#1565c0",
-              textDecoration: "none",
-            }}
-          >
-            Hoteltastic
-          </Typography>
-
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "black", display: "block" }}
-              >
-                {page}
-              </Button>
+              <Link to={page.path} key={page.name}>
+                <Button
+                  onClick={handleCloseNavMenu}
+                  sx={{
+                    my: 2,
+                    color: "black",
+                    display: "block",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {page.name}
+                </Button>
+              </Link>
             ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="User Setting">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar
-                  alt="Remy Sharp"
-                  src="https://mui.com/static/images/avatar/2.jpg"
-                />
-              </IconButton>
-            </Tooltip>
+            {!auth.isLoggedIn ? (
+              <Button
+                sx={{
+                  color: "#2dbe6c",
+                  border: "1px solid #2dbe6c",
+                  "&:hover": { border: "1px solid #2dbe6c" },
+                }}
+                onClick={() => navigate("/signin")}
+                variant="outlined"
+              >
+                Log In
+              </Button>
+            ) : (
+              <Tooltip title="User Setting">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar
+                    alt="Remy Sharp"
+                      src={profileImg}
+                      sx={{ bgcolor: deepOrange[500] }}
+                    >
+                      {!profileImg && userName}
+                  </Avatar>
+                </IconButton>
+              </Tooltip>
+            )}
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
@@ -152,14 +169,36 @@ function Navbar() {
                 vertical: "top",
                 horizontal: "right",
               }}
+              PaperProps={{
+                elevation: 0,
+                sx: {
+                  overflow: "visible",
+                  filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                  mt: 1.5,
+                  "& .MuiAvatar-root": {
+                    width: 32,
+                    height: 32,
+                    ml: -0.5,
+                    mr: 1,
+                  },
+                  "&:before": {
+                    content: '""',
+                    display: "block",
+                    position: "absolute",
+                    top: 0,
+                    right: 14,
+                    width: 10,
+                    height: 10,
+                    bgcolor: "background.paper",
+                    transform: "translateY(-50%) rotate(45deg)",
+                    zIndex: 0,
+                  },
+                },
+              }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              <Setting userName={userName} auth={auth} profileImg={profileImg} />
             </Menu>
           </Box>
         </Toolbar>

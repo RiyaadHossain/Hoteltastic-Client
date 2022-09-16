@@ -34,7 +34,7 @@ const OurAgents = () => {
                     lg:'50%'
                 }
             }}>Lorem ipsum dolor sit amet consectetur adipisicing sed do eiusmod tempor incididunt labore dolore magna aliqua enim.</Typography>
-            <Box style={{height:'100%'}}>
+            <Box sx={{height:'100%',maxWidth:1400,mx:'auto'}}>
                 <Carousel></Carousel>
             </Box>
         </Box>

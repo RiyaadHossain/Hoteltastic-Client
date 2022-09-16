@@ -5,6 +5,80 @@
 }
 
 body {
-  font-family: 'Roboto', serif;
+  font-family: "Roboto", serif;
+}
+
+a {
+  text-decoration: none;
   scroll-behavior: smooth;
 }
+.css-12i7wg6-MuiPaper-root-MuiDrawer-paper{
+  position: inherit !important
+}
+
+.css-1u2w381-MuiModal-root-MuiDrawer-root {
+  z-index: inherit!important
+}
+
+/* From uiverse.io by @nikk7007 */
+/* From uiverse.io by @nikk7007 */
+.signInBtn {
+  --color: #2dbe6c;
+  width: 100%;
+  padding: 0.8em 0em;
+  background-color: transparent;
+  border-radius: 10px;
+  margin-top: 15px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: .5s;
+  font-weight: 400;
+  font-size: 17px;
+  border: 1px solid;
+  font-family: inherit;
+  text-transform: uppercase;
+  color: var(--color);
+  z-index: 1;
+ }
+ 
+ .signInBtn::before, .signInBtn::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+  background-color: var(--color);
+  transition: 1s ease;
+ }
+ 
+ .signInBtn::before {
+  top: -1em;
+  left: -1em;
+ }
+ 
+ .signInBtn::after {
+  left: calc(100% + 1em);
+  top: calc(100% + 1em);
+ }
+ 
+ .signInBtn:hover::before, .signInBtn:hover::after {
+  height: 410px;
+  width: 800px;
+ }
+ 
+ .signInBtn:hover {
+  color: #ffffff;
+ }
+ 
+ .signInBtn:active {
+  filter: brightness(.8);
+ }
+
+ .css-12i7wg6-MuiPaper-root-MuiDrawer-paper{
+  position: static !important;
+ }
+ 

@@ -26,6 +26,9 @@ const WhyChooseUs = () => {
           }}>
                <Box sx={{
                     display: "flex",
+                    flexDirection:{
+                         
+                    },
                     justifyContent: "space-between",
                     alignItems: "center",
                     paddingBottom: "30px",

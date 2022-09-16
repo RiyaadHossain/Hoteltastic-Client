@@ -7,12 +7,16 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
+import { useNavigate } from 'react-router-dom';
 
 const FeatureRoom = ({ feature }) => {
-     const { /* id, featured, authorThumb, authorName, status, beds, baths, sqFt, saved, */ propertyName, propertyImage, propertyDesciption, startFrom, } = feature
+     const { /* id, featured, authorThumb, authorName, status, beds, baths, sqFt, saved, */ propertyName, propertyImage, propertyDesciption, startFrom, } = feature;
+     const navigate = useNavigate();
      return (
           <Card sx={{
                maxWidth: {
+                    xs:"80%",
+                    sm:300,
                     md: 370
                },
                margin: "15px 15px",
@@ -73,6 +77,12 @@ const FeatureRoom = ({ feature }) => {
                                         width: "33px",
                                         color: "#a6a7af",
                                         borderRadius: "4px",
+                                        transition: "ease-out 0.2s",
+                                        "&:hover": {
+                                             color:"#fff",
+                                             background: "#2dbe6c",
+                                             cursor: "pointer"
+                                        }
                                    }}
                               />
                               <FavoriteBorderIcon
@@ -83,7 +93,13 @@ const FeatureRoom = ({ feature }) => {
                                         width: "33px",
                                         color: "#a6a7af",
                                         borderRadius: "4px",
-                                        marginLeft: "5px"
+                                        marginLeft: "5px",
+                                        transition: "ease-out 0.2s",
+                                        "&:hover": {
+                                             color:"#fff",
+                                             background: "#2dbe6c",
+                                             cursor: "pointer"
+                                        }
                                    }}
                               />
                          </Box>
@@ -91,7 +107,9 @@ const FeatureRoom = ({ feature }) => {
                     <Typography variant="body2" color="#93959e" margin="10px 0">
                          {propertyDesciption}
                     </Typography>
-                    <Button sx={{
+                    <Button
+                     onClick={()=> navigate("/property")}
+                     sx={{
                          color: "#93959e",
                          border: "1px solid #e5e7ec",
                          padding: "8px 0px",

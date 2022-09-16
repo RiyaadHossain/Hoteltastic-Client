@@ -3,7 +3,6 @@ import {
   Grid,
   ListItem,
   ListItemIcon,
-  Paper,
   Typography,
 } from "@mui/material";
 import PhoneForwardedTwoToneIcon from "@mui/icons-material/PhoneForwardedTwoTone";
@@ -24,7 +23,7 @@ const Img = styled("img")({
 
 const Footer = () => {
   return (
-    <Paper>
+    <Box pt={4}>
       <Grid bgcolor="#131314" color="white" px={5} py={7} container spacing={4}>
         {/* =================== Box - 1 =================== */}
         <Grid item xs={12} md={6} lg={3}>
@@ -148,7 +147,7 @@ const Footer = () => {
           </Typography>
         </Grid>
       </Grid>
-    </Paper>
+    </Box>
   );
 };
 
