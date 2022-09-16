@@ -17,7 +17,20 @@ export default function TemporaryDrawer() {
     <div>
       <React.Fragment key="left">
         <Button onClick={() => setOpen(true)}>Left</Button>
-        <Drawer anchor="left" open={open} onClose={() => setOpen(false)}>
+        <Drawer
+          anchor="left"
+          open={open}
+          onClose={() => setOpen(false)}
+          variant="permanent"
+          sx={{
+            width: 240,
+            flexShrink: 0,
+            [`& .MuiDrawer-paper`]: {
+              width: 260,
+              boxSizing: "border-box",
+            },
+          }}
+        >
           <Box sx={{ width: 250 }}>
             <List>
               {["Inbox", "Starred", "Send email", "Drafts"].map(
