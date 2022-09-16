@@ -13,10 +13,10 @@ function Setting({ userName, profileImg, auth }) {
   const navigate = useNavigate()
   const role = auth?.user?.user?.role
   const signOut = () => {
-    window.location.reload();
-
+    
     window.open(`http://localhost:5001/auth/logout`, "_self");
     dispatch(authAction.signOut());
+    window.location.reload();
   };
 
   return (
