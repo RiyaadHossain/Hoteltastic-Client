@@ -42,6 +42,7 @@ const MyProfileHeader = () => {
           mx: "auto",
           display: "flex",
           alignItems: "center",
+          justifyContent:"space-between"
         }}
       >
         <Box>
