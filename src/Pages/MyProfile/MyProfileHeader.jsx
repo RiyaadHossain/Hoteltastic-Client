@@ -2,8 +2,10 @@ import { Button, Divider, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import SquareTwoToneIcon from "@mui/icons-material/SquareTwoTone";
-import BathroomTwoToneIcon from "@mui/icons-material/BathroomTwoTone";
-import BedTwoToneIcon from "@mui/icons-material/BedTwoTone";
+import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
+import TwitterIcon from "@mui/icons-material/Twitter";
 
 const MyProfileHeader = () => {
   return (
@@ -64,41 +66,78 @@ const MyProfileHeader = () => {
 
           <Box
             display="flex"
-            my={3}
+            my={1}
             alignItems="center"
             justifyContent="space-between"
-            maxWidth="380px"
+            maxWidth="700px"
           >
             <Box>
               <Button
-                sx={{ textTransform: "capitalize" }}
-                startIcon={<BedTwoToneIcon />}
+                sx={{ textTransform: "capitalize", color: "#888" }}
+                startIcon={<LocationOnOutlinedIcon />}
               >
-                3 Beds
+                Multan, Punjab, Pakistan
               </Button>
             </Box>
             <Divider orientation="vertical" flexItem />
-            <Box>
+            <Box
+              sx={{
+                mx: "5px",
+              }}
+            >
               <Button
-                sx={{ textTransform: "capitalize" }}
-                startIcon={<BathroomTwoToneIcon />}
+                sx={{ textTransform: "lowercase", color: "#888" }}
+                startIcon={<FacebookOutlinedIcon />}
               >
-                1 Bathroom
+                daniyalbhatti.28
               </Button>
             </Box>
             <Divider orientation="vertical" flexItem />
-            <Box>
+            <Box
+              sx={{
+                mx: "5px",
+              }}
+            >
               <Button
-                sx={{ textTransform: "lowercase" }}
-                startIcon={<SquareTwoToneIcon />}
+                sx={{ textTransform: "lowercase", color: "#888" }}
+                startIcon={<LinkedInIcon />}
               >
-                1200 sq
+                daniyal_bhatti
+              </Button>
+            </Box>
+            <Divider orientation="vertical" flexItem />
+            <Box
+              sx={{
+                mx: "5px",
+              }}
+            >
+              <Button
+                sx={{ textTransform: "lowercase", color: "#888" }}
+                startIcon={<TwitterIcon />}
+              >
+                daniyal_bhatti
               </Button>
             </Box>
           </Box>
         </Box>
-        <Box display="flex" alignItems="center" justifyContent="end">
-          <Button variant="contained">Sign Out</Button>
+        <Box>
+          <Button
+            sx={{
+              color: "#93959e",
+              border: "1px solid #e5e7ec",
+              padding: "8px 0px",
+              width: "130px",
+              boxShadow: "inset 0 0 0 0 #2dbe6c",
+              transition: "ease-out 0.5s",
+              "&:hover": {
+                color: "white",
+                boxShadow: "inset 130px 0 0 0 #2dbe6c",
+                border: "1px solid #2dbe6c",
+              },
+            }}
+          >
+            Sign Out
+          </Button>
         </Box>
       </Box>
     </Box>
