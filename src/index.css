@@ -81,4 +81,37 @@ a {
  .css-12i7wg6-MuiPaper-root-MuiDrawer-paper{
   position: static !important;
  }
+
+ /* profile update button css  */
+ /* From uiverse.io by @barisdogansutcu */
+ .profileUpdateBtn{
+  width: 100%;
+  padding: 1em 0em;
+  border-radius: 10px;
+  border: 0;
+  font-weight: 700;
+  margin: 20px 0px ;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.425) 0 0 8px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 15px;
+  transition: all .5s ease;
+ }
  
+ .profileUpdateBtn:hover {
+  letter-spacing: 3px;
+  cursor: pointer;
+  background-color: rgb(17, 219, 142);
+  color: hsl(0, 0%, 0%);
+  box-shadow: rgb(37, 202, 153) 0px 7px 29px 0px;
+ }
+ 
+ .profileUpdateBtn:active {
+  letter-spacing: 2px;
+  background-color: rgb(24, 220, 155);
+  color: hsl(0, 0%, 100%);
+  box-shadow: rgb(24, 220, 171) 0px 0px 0px 0px;
+  transform: translateY(10px);
+  transition: 100ms;
+ }
