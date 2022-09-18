@@ -7,6 +7,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import CancelIcon from "@mui/icons-material/Cancel";
 
 const style = {
   position: "absolute",
@@ -51,17 +52,22 @@ function UpdateRoomModal({ openUpdate, setOpenUpdate }) {
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
-        <Typography
-          id="modal-modal-title"
-          variant="h5"
-          fontWeight="bold"
-          component="h2"
-          mb={3}
-        >
-          Update Room Info
-        </Typography>
+        <Box display="flex" justifyContent="space-between" alignItems="flex-start">
+          <Typography
+            id="modal-modal-title"
+            variant="h5"
+            fontWeight="bold"
+            component="h2"
+            mb={3}
+          >
+            Update Room Info
+          </Typography>
+          <Button onClick={() => setOpenUpdate(false)}>
+            <CancelIcon sx={{ fontSize: 30 }} />
+          </Button>
+        </Box>
         <Box>
-          <form onClick={submitForm}>
+          <form onSubmit={submitForm}>
             <TextField
               fullWidth
               id="outlined-basic"

@@ -7,6 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import CancelIcon from "@mui/icons-material/Cancel";
 
 const style = {
   position: "absolute",
@@ -38,8 +39,8 @@ const currencies = [
 
 function AddRoomModal({ open, setOpen }) {
   const [currency, setCurrency] = React.useState("Two Room");
-    const submitForm = (e) => {
-      e.preventDefault()
+  const submitForm = (e) => {
+    e.preventDefault();
     setOpen(false);
   };
 
@@ -51,17 +52,22 @@ function AddRoomModal({ open, setOpen }) {
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
-        <Typography
-          id="modal-modal-title"
-          variant="h5"
-          fontWeight="bold"
-          component="h2"
-          mb={3}
-        >
-          Add New Room
-        </Typography>
+        <Box display="flex" justifyContent="space-between" alignItems="flex-start">
+          <Typography
+            id="modal-modal-title"
+            variant="h5"
+            fontWeight="bold"
+            component="h2"
+            mb={3}
+          >
+            Add New Room
+          </Typography>
+          <Button onClick={() => setOpen(false)}>
+            <CancelIcon sx={{ fontSize: 30 }} />
+          </Button>
+        </Box>
         <Box>
-          <form onClick={submitForm}>
+          <form onSubmit={submitForm}>
             <TextField
               fullWidth
               id="outlined-basic"

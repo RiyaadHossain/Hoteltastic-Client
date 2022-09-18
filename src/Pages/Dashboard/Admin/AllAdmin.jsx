@@ -140,18 +140,18 @@ export default function AllAdmin() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row) => {
+              {rows.map((row, i) => {
                 return (
                   <StyledTableRow
                     hover
                     role="checkbox"
                     tabIndex={-1}
-                    key={row.price}
+                    key={i}
                   >
-                    {columns.map((column) => {
+                    {columns.map((column, i) => {
                       const value = row[column.id];
                       return (
-                        <TableCell key={column.id} align={column.align}>
+                        <TableCell key={i} align={column.align}>
                           {value}
                         </TableCell>
                       );

@@ -6,6 +6,7 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import CancelIcon from "@mui/icons-material/Cancel";
 
 const style = {
   position: "absolute",
@@ -23,7 +24,7 @@ const style = {
 function AddAdminModal({ open, setOpen }) {
   const submitForm = (e) => {
     e.preventDefault();
-    setOpen(false);
+    // setOpen(false);
   };
 
   return (
@@ -34,17 +35,22 @@ function AddAdminModal({ open, setOpen }) {
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
-        <Typography
-          id="modal-modal-title"
-          variant="h5"
-          fontWeight="bold"
-          component="h2"
-          mb={3}
-        >
-          Add New Admin
-        </Typography>
+      <Box display="flex" justifyContent="space-between" alignItems="flex-start">
+          <Typography
+            id="modal-modal-title"
+            variant="h5"
+            fontWeight="bold"
+            component="h2"
+            mb={3}
+          >
+            Add New Admin
+          </Typography>
+          <Button onClick={() => setOpen(false)}>
+            <CancelIcon sx={{ fontSize: 30 }} />
+          </Button>
+        </Box>
         <Box>
-          <form onClick={submitForm}>
+          <form onSubmit={submitForm}>
             <TextField
               fullWidth
               id="outlined-basic"
