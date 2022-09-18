@@ -26,6 +26,7 @@ import AllAdmin from './Pages/Dashboard/Admin/AllAdmin'
 import UserHome from './Pages/Dashboard/User/UserHome'
 import UserRooms from './Pages/Dashboard/User/UserRooms'
 import FavouriteRoom from './Pages/Dashboard/User/FavouriteRoom'
+import AboutProject from './Pages/AboutProject/AboutProject'
 
 function App() {
 	const dispatch = useDispatch()
@@ -71,6 +72,7 @@ function App() {
 							<Route element={<Properties />} path="property" />
 							<Route element={<SignIn />} path="signin" />
 							<Route element={<SignUp />} path="signup" />
+							<Route element={<AboutProject/>} path="aboutproject"/>
 							<Route element={<Contact />} path="/contact" />
 							<Route element={<UserLayout />} path='/Userdashboard' />
 							<Route element={<MyProfile />} path='/profile' />
