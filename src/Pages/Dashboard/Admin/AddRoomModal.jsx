@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import CancelIcon from "@mui/icons-material/Cancel";
+import { useForm } from "react-hook-form";
 
 const style = {
   position: "absolute",
@@ -39,9 +40,16 @@ const currencies = [
 
 function AddRoomModal({ open, setOpen }) {
   const [currency, setCurrency] = React.useState("Two Room");
-  const submitForm = (e) => {
-    e.preventDefault();
-    setOpen(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+    // dispath(signIn(data));
   };
 
   return (
@@ -52,7 +60,11 @@ function AddRoomModal({ open, setOpen }) {
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
-        <Box display="flex" justifyContent="space-between" alignItems="flex-start">
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          alignItems="flex-start"
+        >
           <Typography
             id="modal-modal-title"
             variant="h5"
@@ -62,19 +74,24 @@ function AddRoomModal({ open, setOpen }) {
           >
             Add New Room
           </Typography>
-          <Button onClick={() => setOpen(false)}>
+          <Button sx={{bgColor: 'darkred'}} onClick={() => setOpen(false)}>
             <CancelIcon sx={{ fontSize: 30 }} />
           </Button>
         </Box>
         <Box>
-          <form onSubmit={submitForm}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <TextField
               fullWidth
               id="outlined-basic"
               label="Room Name"
               variant="outlined"
-              sx={{ mb: 2 }}
+              {...register("name", {
+                required: true,
+              })}
             />
+            {errors.name && (
+              <Typography color="error">Room Name is required</Typography>
+            )}
             <TextField
               id="outlined-select-currency"
               select
@@ -82,7 +99,7 @@ function AddRoomModal({ open, setOpen }) {
               label="Category"
               value={currency}
               onChange={(e) => setCurrency(e.target.value)}
-              sx={{ mb: 2 }}
+              sx={{ mt: 2 }}
             >
               {currencies.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
@@ -95,22 +112,43 @@ function AddRoomModal({ open, setOpen }) {
               id="outlined-basic"
               label="Price"
               variant="outlined"
-              sx={{ mb: 2 }}
+              sx={{ mt: 2 }}
+              {...register("price", {
+                required: true,
+              })}
             />
+            {errors.price && (
+              <Typography color="error">Room Price is required</Typography>
+            )}
             <TextField
               fullWidth
               id="outlined-basic"
               variant="outlined"
               type="file"
-              sx={{ mb: 2 }}
+              sx={{ mt: 2 }}
+              {...register("picture", {
+                required: true,
+              })}
             />
+            {errors.picture && (
+              <Typography color="error">Room Picture is required</Typography>
+            )}
             <TextField
               fullWidth
               id="outlined-multiline-static"
               label="Description"
               multiline
               rows={4}
+              sx={{ mt: 2 }}
+              {...register("description", {
+                required: true,
+              })}
             />
+            {errors.description && (
+              <Typography color="error">
+                Room Description is required
+              </Typography>
+            )}
             <Box textAlign="center" mt={2}>
               <Button type="submit" variant="contained">
                 Add
