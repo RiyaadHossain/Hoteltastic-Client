@@ -9,6 +9,8 @@ import {
 import React from "react";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { postRoom } from "../../../Store/room/roomAction";
 
 const style = {
   position: "absolute",
@@ -40,6 +42,7 @@ const currencies = [
 
 function AddRoomModal({ open, setOpen }) {
   const [currency, setCurrency] = React.useState("Two Room");
+  const dispatch = useDispatch();
 
   const {
     register,
@@ -48,8 +51,9 @@ function AddRoomModal({ open, setOpen }) {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
-    // dispath(signIn(data));
+    const picture = data.picture[0];
+
+    dispatch(postRoom({ ...data, picture }));
   };
 
   return (
@@ -74,7 +78,7 @@ function AddRoomModal({ open, setOpen }) {
           >
             Add New Room
           </Typography>
-          <Button sx={{bgColor: 'darkred'}} onClick={() => setOpen(false)}>
+          <Button sx={{ color: "darkred" }} onClick={() => setOpen(false)}>
             <CancelIcon sx={{ fontSize: 30 }} />
           </Button>
         </Box>
@@ -100,6 +104,7 @@ function AddRoomModal({ open, setOpen }) {
               value={currency}
               onChange={(e) => setCurrency(e.target.value)}
               sx={{ mt: 2 }}
+              {...register("category")}
             >
               {currencies.map((option) => (
                 <MenuItem key={option.value} value={option.value}>

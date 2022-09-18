@@ -38,10 +38,9 @@ function App() {
 	useEffect(() => {
 		const user = async () => {
 			try {
-				const URL = "http://localhost:5001/auth/login/success";
+				const URL = "https://hoteltastic-server.vercel.app/auth/login/success";
 				const { data } = await client.get(URL, { withCredentials: true });
 				if (data) {
-					console.log(data.user._json.email)
 					dispatch(socialSignIn(data.user._json.email));
 				}
 			} catch (error) {
@@ -68,7 +67,7 @@ function App() {
 					<Routes>
 						<Route element={<Layout />} path="/" >
 							<Route index element={<LandingPage />} path="" />
-							<Route element={<AllRooms />} path="allrooms" />
+							<Route element={<AllRooms />} path="allRooms" />
 							<Route element={<Properties />} path="property" />
 							<Route element={<SignIn />} path="signin" />
 							<Route element={<SignUp />} path="signup" />

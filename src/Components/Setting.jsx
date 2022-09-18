@@ -10,11 +10,10 @@ import { useNavigate } from "react-router-dom";
 
 function Setting({ userName, profileImg, auth }) {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
-  const role = auth?.user?.user?.role
+  const navigate = useNavigate();
+  const role = auth?.user?.user?.role;
   const signOut = () => {
-    
-    window.open(`http://localhost:5001/auth/logout`, "_self");
+    window.open(`https://hoteltastic-server.vercel.app/auth/logout`, "_self");
     dispatch(authAction.signOut());
     window.location.reload();
   };
@@ -23,7 +22,7 @@ function Setting({ userName, profileImg, auth }) {
     <>
       <MenuItem>
         <Avatar src={profileImg} sx={{ bgcolor: deepOrange[500] }}>
-        {!profileImg && userName}
+          {!profileImg && userName}
         </Avatar>
         My Profile
       </MenuItem>
