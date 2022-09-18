@@ -115,3 +115,17 @@ a {
   transform: translateY(10px);
   transition: 100ms;
  }
+
+ /* about project divider */
+ .dividerBox {
+  display: flex;
+  margin-top: 5px;
+  justify-content: center;
+  background: hsl(0, 0%, 20%);
+}
+.divider {
+  height: 2px;
+  width: 80%;
+  background: blue;
+  background: linear-gradient(90deg, hsl(0, 0%, 20%), hsl(0, 0%, 70%), hsl(0, 0%, 20%));
+}
