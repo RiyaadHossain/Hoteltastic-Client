@@ -57,7 +57,7 @@ const CustomBarChart = () => {
         <Box sx={{
             height: '60vh',
             maxWidth: '100%',
-            backgroundColor: '#fff',
+            // backgroundColor: '#fff',
             paddingTop: '50px',
             borderTop: "2px solid #e5e7ec",
             marginTop: "3px",
