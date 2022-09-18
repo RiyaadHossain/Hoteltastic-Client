@@ -62,7 +62,7 @@ function UpdateRoomModal({ openUpdate, setOpenUpdate }) {
           >
             Update Room Info
           </Typography>
-          <Button onClick={() => setOpenUpdate(false)}>
+          <Button sx={{color: 'darkred'}} onClick={() => setOpenUpdate(false)}>
             <CancelIcon sx={{ fontSize: 30 }} />
           </Button>
         </Box>
