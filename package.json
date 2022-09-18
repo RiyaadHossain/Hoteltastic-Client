@@ -26,6 +26,7 @@
     "react-scripts": "5.0.1",
     "recharts": "^2.1.14",
     "styled-components": "^5.3.5",
+    "sweetalert2": "^11.4.33",
     "swiper": "^8.3.2",
     "web-vitals": "^2.1.0"
   },
