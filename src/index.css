@@ -115,3 +115,9 @@ a {
   transform: translateY(10px);
   transition: 100ms;
  }
+
+
+ /* for the chart dibugging */
+ .css-152irm5 {
+  padding: 0!important
+}

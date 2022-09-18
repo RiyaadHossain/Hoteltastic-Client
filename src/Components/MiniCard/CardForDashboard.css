@@ -14,6 +14,7 @@
     place-items: center; */
     overflow: hidden;
     border-radius: 20px;
+    transition: all 0.3s ease-in-out;
   }
   
   
@@ -54,13 +55,17 @@
   }  
   .card:hover:after{
     background: #000;
-    transition: all 0.3s linear;
+    /* transition: all 0.3s linear; */
   }
 
   .card:hover p{
     color: #fff
   }
-  
+  .card:hover {
+    transform: translateY(-15%);
+    
+    /* box-shadow: rgba(226, 196, 63, 0.25) 0px 13px 47px -5px, rgba(180, 71, 71, 0.3) 0px 8px 16px -8px; */
+  }
 
   /* .card:hover:before {
     background-image: linear-gradient(180deg, rgb(81, 255, 0), purple);

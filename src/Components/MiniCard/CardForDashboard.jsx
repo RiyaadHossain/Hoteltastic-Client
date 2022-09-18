@@ -23,7 +23,7 @@ const CardForDashboard = () => {
                     }}>$14,20,100.00</Typography>
                     <Typography >Revenue</Typography>
                 </Box>
-                <LocalLibraryIcon sx={{fontSize: 50,color:'#64b5f6',zIndex:1}}/>
+                <LocalLibraryIcon sx={{fontSize: 40,color:'#64b5f6',zIndex:1}}/>
             </Box>
             </Box>  
         </>
