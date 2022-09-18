@@ -14,7 +14,7 @@ import AddAdminModal from "./AddAdminModal";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 
 const columns = [
-  { id: "img", label: "Image", minWidth: 170 },
+  { id: "img", label: "Image", minWidth: 70 },
   { id: "name", label: "Name", minWidth: 170 },
   { id: "price", label: "Email\u00a0", minWidth: 100 },
   {
@@ -25,7 +25,7 @@ const columns = [
   },
   {
     id: "size",
-    label: "Edit",
+    label: "Action",
     minWidth: 170,
     align: "right",
   },
@@ -67,7 +67,7 @@ export default function AllAdmin() {
   const chip = <Chip size="small" label="active" color="success" />;
   const BanIconButton = (
     <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block">
-      <IconButton aria-label="delete" color="error" onClick={banUnbane}>
+      <IconButton aria-label="delete" title='Ban User' color="error" onClick={banUnbane}>
         <RemoveCircleIcon />
       </IconButton>
     </Box>
@@ -87,19 +87,19 @@ export default function AllAdmin() {
 
   const rows = [
     createData("Riyad", "riyad@gmail.com", chip, BanIconButton, image),
-    createData("China", "CN", chip, BanIconButton),
-    createData("Italy", "IT", chip, BanIconButton),
-    createData("United States", "US", chip, BanIconButton),
-    createData("Canada", "CA", chip, BanIconButton),
-    createData("Australia", "AU", chip, BanIconButton),
-    createData("Germany", "DE", chip, BanIconButton),
-    createData("Ireland", "IE", chip, BanIconButton),
-    createData("Mexico", "MX", chip, BanIconButton),
-    createData("Japan", "JP", chip, BanIconButton),
-    createData("France", "FR", chip, BanIconButton),
-    createData("India", "IN", chip, BanIconButton),
-    createData("China", "CN", chip, BanIconButton),
-    createData("Italy", "IT", chip, BanIconButton),
+    createData("China", "CN", chip, BanIconButton, image),
+    createData("Italy", "IT", chip, BanIconButton, image),
+    createData("United States", "US", chip, BanIconButton, image),
+    createData("Canada", "CA", chip, BanIconButton, image),
+    createData("Australia", "AU", chip, BanIconButton, image),
+    createData("Germany", "DE", chip, BanIconButton, image),
+    createData("Ireland", "IE", chip, BanIconButton, image),
+    createData("Mexico", "MX", chip, BanIconButton, image),
+    createData("Japan", "JP", chip, BanIconButton, image),
+    createData("France", "FR", chip, BanIconButton, image),
+    createData("India", "IN", chip, BanIconButton, image),
+    createData("China", "CN", chip, BanIconButton, image),
+    createData("Italy", "IT", chip, BanIconButton, image),
   ];
 
   return (

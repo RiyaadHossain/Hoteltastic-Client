@@ -1,10 +1,4 @@
-import {
-  Box,
-  Button,
-  Modal,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Modal, TextField, Typography } from "@mui/material";
 import React from "react";
 import CancelIcon from "@mui/icons-material/Cancel";
 
@@ -35,7 +29,11 @@ function AddAdminModal({ open, setOpen }) {
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
-      <Box display="flex" justifyContent="space-between" alignItems="flex-start">
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          alignItems="flex-start"
+        >
           <Typography
             id="modal-modal-title"
             variant="h5"
@@ -45,7 +43,7 @@ function AddAdminModal({ open, setOpen }) {
           >
             Add New Admin
           </Typography>
-          <Button onClick={() => setOpen(false)}>
+          <Button sx={{ bgcolor: "darkred" }} onClick={() => setOpen(false)}>
             <CancelIcon sx={{ fontSize: 30 }} />
           </Button>
         </Box>
