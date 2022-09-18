@@ -75,7 +75,7 @@ function AdminLayout(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex" }} bgcolor="#e8ebed">
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -133,7 +133,7 @@ function AdminLayout(props) {
               boxSizing: "border-box",
               width: drawerWidth,
             },
-            position: 'sticky' // Rakib Vaiya ----------------------------------------------------------------------------------- Here ------------------------------------- 
+            position: 'sticky' 
           }}
           open
         >

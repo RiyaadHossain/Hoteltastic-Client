@@ -8,64 +8,40 @@ import { styled } from "@mui/material/styles";
 import TableContainer from "@mui/material/TableContainer";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import { Box } from "@mui/system";
-import { Button, Typography } from "@mui/material";
+import { Button, Chip, IconButton, Typography } from "@mui/material";
 import { AddCircle } from "@mui/icons-material";
+import BorderColorIcon from "@mui/icons-material/BorderColor";
+import AddRoomModal from "./AddRoomModal";
+import UpdateRoomModal from "./UpdateRoomModal";
 
 const columns = [
+  {
+    id: "img",
+    label: "Image",
+    minWidth: 170,
+  },
   { id: "name", label: "Name", minWidth: 170 },
-  { id: "code", label: "ISO\u00a0Code", minWidth: 100 },
+  { id: "price", label: "Price\u00a0", minWidth: 100 },
   {
     id: "population",
-    label: "Population",
-    minWidth: 170,
+    label: "Status",
+    minWidth: 150,
     align: "right",
-    format: (value) => value.toLocaleString("en-US"),
   },
   {
     id: "size",
-    label: "Size\u00a0(km\u00b2)",
+    label: "Edit",
     minWidth: 170,
     align: "right",
-    format: (value) => value.toLocaleString("en-US"),
-  },
-  {
-    id: "density",
-    label: "Density",
-    minWidth: 170,
-    align: "right",
-    format: (value) => value.toFixed(2),
   },
 ];
 
-function createData(name, code, population, size) {
-  const density = population / size;
-  return { name, code, population, size, density };
-}
-
-const rows = [
-  createData("India", "IN", 1324171354, 3287263),
-  createData("China", "CN", 1403500365, 9596961),
-  createData("Italy", "IT", 60483973, 301340),
-  createData("United States", "US", 327167434, 9833520),
-  createData("Canada", "CA", 37602103, 9984670),
-  createData("Australia", "AU", 25475400, 7692024),
-  createData("Germany", "DE", 83019200, 357578),
-  createData("Ireland", "IE", 4857000, 70273),
-  createData("Mexico", "MX", 126577691, 1972550),
-  createData("Japan", "JP", 126317000, 377973),
-  createData("France", "FR", 67022000, 640679),
-  createData("India", "IN", 1324171354, 3287263),
-  createData("China", "CN", 1403500365, 9596961),
-  createData("Italy", "IT", 60483973, 301340),
-  createData("United States", "US", 327167434, 9833520),
-  createData("Canada", "CA", 37602103, 9984670),
-  createData("Australia", "AU", 25475400, 7692024),
-  createData("Germany", "DE", 83019200, 357578),
-  createData("Ireland", "IE", 4857000, 70273),
-  createData("Mexico", "MX", 126577691, 1972550),
-  createData("Japan", "JP", 126317000, 377973),
-  createData("France", "FR", 67022000, 640679),
-];
+const imageStyle = {
+  width: 60,
+  height: 60,
+  objectFit: 'cover',
+  borderRadius: '50%'
+};
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -87,6 +63,52 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 export default function AdminRooms() {
+  const [open, setOpen] = React.useState(false);
+  const [openUpdate, setOpenUpdate] = React.useState(false);
+
+  const updateRoom = () => {
+    console.log("hello");
+    setOpenUpdate(true);
+  };
+
+  const chip = <Chip size="small" label="available" color="success" />;
+  const iconButton = (
+    <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block">
+      <IconButton aria-label="delete" color="info" onClick={updateRoom}>
+        <BorderColorIcon />
+      </IconButton>
+    </Box>
+  );
+
+  function createData(name, price, population, size, img) {
+    return { name, price, population, size, img };
+  }
+
+  const image = (
+    <img
+      style={imageStyle}
+      alt=""
+      src="https://images.unsplash.com/photo-1551963831-b3b1ca40c98e"
+    />
+  );
+
+  const rows = [
+    createData("India", "IN", chip, iconButton, image),
+    createData("China", "CN", chip, iconButton),
+    createData("Italy", "IT", chip, iconButton),
+    createData("United States", "US", chip, iconButton),
+    createData("Canada", "CA", chip, iconButton),
+    createData("Australia", "AU", chip, iconButton),
+    createData("Germany", "DE", chip, iconButton),
+    createData("Ireland", "IE", chip, iconButton),
+    createData("Mexico", "MX", chip, iconButton),
+    createData("Japan", "JP", chip, iconButton),
+    createData("France", "FR", chip, iconButton),
+    createData("India", "IN", chip, iconButton),
+    createData("China", "CN", chip, iconButton),
+    createData("Italy", "IT", chip, iconButton),
+  ];
+
   return (
     <>
       <Box
@@ -99,9 +121,14 @@ export default function AdminRooms() {
         <Typography variant="h3" color="#2FDD92">
           Total Rooms: 25
         </Typography>
-        <Button variant="contained" startIcon={<AddCircle />}>
+        <Button
+          variant="contained"
+          startIcon={<AddCircle />}
+          onClick={() => setOpen(true)}
+        >
           Add Room
         </Button>
+        <AddRoomModal open={open} setOpen={setOpen} />
       </Box>
       <Paper sx={{ width: "100%", overflow: "hidden" }}>
         <TableContainer>
@@ -120,21 +147,19 @@ export default function AdminRooms() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row, i) => {
+              {rows.map((row) => {
                 return (
                   <StyledTableRow
                     hover
                     role="checkbox"
                     tabIndex={-1}
-                    key={row.code}
+                    key={row.price}
                   >
                     {columns.map((column) => {
                       const value = row[column.id];
                       return (
                         <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === "number"
-                            ? column.format(value)
-                            : value}
+                          {value}
                         </TableCell>
                       );
                     })}
@@ -145,6 +170,7 @@ export default function AdminRooms() {
           </Table>
         </TableContainer>
       </Paper>
+      <UpdateRoomModal openUpdate={openUpdate} setOpenUpdate={setOpenUpdate} />
     </>
   );
 }
