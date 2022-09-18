@@ -39,8 +39,8 @@ const columns = [
 const imageStyle = {
   width: 60,
   height: 60,
-  objectFit: 'cover',
-  borderRadius: '50%'
+  objectFit: "cover",
+  borderRadius: "50%",
 };
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -135,9 +135,9 @@ export default function AdminRooms() {
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
-                {columns.map((column) => (
+                {columns.map((column, i) => (
                   <StyledTableCell
-                    key={column.id}
+                    key={i}
                     align={column.align}
                     style={{ minWidth: column.minWidth }}
                   >
@@ -147,18 +147,13 @@ export default function AdminRooms() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row) => {
+              {rows.map((row, i) => {
                 return (
-                  <StyledTableRow
-                    hover
-                    role="checkbox"
-                    tabIndex={-1}
-                    key={row.price}
-                  >
-                    {columns.map((column) => {
+                  <StyledTableRow hover role="checkbox" tabIndex={-1} key={i}>
+                    {columns.map((column, i) => {
                       const value = row[column.id];
                       return (
-                        <TableCell key={column.id} align={column.align}>
+                        <TableCell key={i} align={column.align}>
                           {value}
                         </TableCell>
                       );

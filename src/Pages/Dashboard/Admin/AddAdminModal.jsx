@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  MenuItem,
   Modal,
   TextField,
   Typography,
@@ -22,26 +21,10 @@ const style = {
   borderRadius: 3,
 };
 
-const currencies = [
-  {
-    value: "Two Room",
-    label: "Two Room",
-  },
-  {
-    value: "Separate Bathroom",
-    label: "Separate Bathroom",
-  },
-  {
-    value: "Single Room",
-    label: "Single Room",
-  },
-];
-
-function AddRoomModal({ open, setOpen }) {
-  const [currency, setCurrency] = React.useState("Two Room");
+function AddAdminModal({ open, setOpen }) {
   const submitForm = (e) => {
     e.preventDefault();
-    setOpen(false);
+    // setOpen(false);
   };
 
   return (
@@ -52,7 +35,7 @@ function AddRoomModal({ open, setOpen }) {
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
-        <Box display="flex" justifyContent="space-between" alignItems="flex-start">
+      <Box display="flex" justifyContent="space-between" alignItems="flex-start">
           <Typography
             id="modal-modal-title"
             variant="h5"
@@ -60,7 +43,7 @@ function AddRoomModal({ open, setOpen }) {
             component="h2"
             mb={3}
           >
-            Add New Room
+            Add New Admin
           </Typography>
           <Button onClick={() => setOpen(false)}>
             <CancelIcon sx={{ fontSize: 30 }} />
@@ -71,29 +54,14 @@ function AddRoomModal({ open, setOpen }) {
             <TextField
               fullWidth
               id="outlined-basic"
-              label="Room Name"
+              label="Name"
               variant="outlined"
               sx={{ mb: 2 }}
             />
             <TextField
-              id="outlined-select-currency"
-              select
-              fullWidth
-              label="Category"
-              value={currency}
-              onChange={(e) => setCurrency(e.target.value)}
-              sx={{ mb: 2 }}
-            >
-              {currencies.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
-                </MenuItem>
-              ))}
-            </TextField>
-            <TextField
               fullWidth
               id="outlined-basic"
-              label="Price"
+              label="Email"
               variant="outlined"
               sx={{ mb: 2 }}
             />
@@ -103,13 +71,6 @@ function AddRoomModal({ open, setOpen }) {
               variant="outlined"
               type="file"
               sx={{ mb: 2 }}
-            />
-            <TextField
-              fullWidth
-              id="outlined-multiline-static"
-              label="Description"
-              multiline
-              rows={4}
             />
             <Box textAlign="center" mt={2}>
               <Button type="submit" variant="contained">
@@ -123,4 +84,4 @@ function AddRoomModal({ open, setOpen }) {
   );
 }
 
-export default AddRoomModal;
+export default AddAdminModal;
