@@ -120,6 +120,7 @@ function AdminLayout(props) {
               boxSizing: "border-box",
               width: drawerWidth,
             },
+            position: 'sticky' // Rakib Vaiya ----------------------------------------------------------------------------------- Here -------------------------------------
           }}
         >
           {drawer}
@@ -132,6 +133,7 @@ function AdminLayout(props) {
               boxSizing: "border-box",
               width: drawerWidth,
             },
+            position: 'sticky' // Rakib Vaiya ----------------------------------------------------------------------------------- Here ------------------------------------- 
           }}
           open
         >
