@@ -20,6 +20,12 @@ import UserLayout from './Pages/Dashboard/User/UserLayout'
 import MyProfile from './Pages/MyProfile/MyProfile'
 import AdminLayout from './Pages/Dashboard/Admin/AdminLayout'
 import AdminHome from './Pages/Dashboard/Admin/AdminHome'
+import AdminRooms from './Pages/Dashboard/Admin/AdminRooms'
+import AdminUser from './Pages/Dashboard/Admin/AdminUser'
+import AllAdmin from './Pages/Dashboard/Admin/AllAdmin'
+import UserHome from './Pages/Dashboard/User/UserHome'
+import UserRooms from './Pages/Dashboard/User/UserRooms'
+import FavouriteRoom from './Pages/Dashboard/User/FavouriteRoom'
 
 function App() {
 	const dispatch = useDispatch()
@@ -69,15 +75,18 @@ function App() {
 							<Route element={<Contact />} path="/contact" />
 							<Route element={<UserLayout />} path='/Userdashboard' />
 							<Route element={<MyProfile />} path='/profile' />
-							<Route element path='' />
-							<Route element path='' />
 							<Route element={<MyProfile />} path='/myprofile' />
 						</Route>
 						<Route element={<AdminLayout />} path="/admin/">
-							<Route element={<AdminHome/>} path='dashboard' />
+							<Route element={<AdminHome />} path='dashboard' />
+							<Route element={<AdminRooms />} path='allRoom' />
+							<Route element={<AdminUser />} path='user' />
+							<Route element={<AllAdmin />} path='admin' />
 						</Route>
 						<Route element={<UserLayout />} path="/user/">
-							<Route element={<AdminHome/>} path='dashboard' />
+							<Route element={<UserHome />} path='dashboard' />
+							<Route element={<UserRooms />} path='allRoom' />
+							<Route element={<FavouriteRoom />} path='favourite' />
 						</Route>
 						<Route element={<NotFound />} path="*" />
 					</Routes>

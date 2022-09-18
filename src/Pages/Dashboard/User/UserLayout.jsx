@@ -5,21 +5,23 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
+import FolderSpecialIcon from '@mui/icons-material/FolderSpecial';
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import { Outlet } from "react-router-dom";
+import Logo from "../../../Assets/Logo/logo.png";
+import { Outlet, useNavigate } from "react-router-dom";
+import BedroomChildIcon from "@mui/icons-material/BedroomChild";
+import HomeIcon from "@mui/icons-material/Home";
 
 const drawerWidth = 230;
 
 function UserLayout(props) {
+  const navigate = useNavigate()
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -27,18 +29,32 @@ function UserLayout(props) {
     setMobileOpen(!mobileOpen);
   };
 
+  const sideMenu = [
+    { name: "Home", icon: <HomeIcon />, path: "/user/dashboard" },
+    {
+      name: "All Rooms",
+      icon: <BedroomChildIcon />,
+      path: "allRoom",
+    },
+    {
+      name: "Favourite",
+      icon: <FolderSpecialIcon />,
+      path: "favourite",
+    }
+  ];
+
   const drawer = (
     <div>
       <Toolbar />
       <Divider />
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding>
+        {sideMenu.map((menu, index) => (
+          <ListItem key={index} disablePadding onClick={() => navigate(`${menu.path}`)}>
             <ListItemButton>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {menu.icon}
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={menu.name} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -66,9 +82,13 @@ function UserLayout(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Clipped drawer
-          </Typography>
+          <img
+            src={Logo}
+            alt=""
+            width={150}
+            onClick={() => navigate("/")}
+            style={{ cursor: "pointer" }}
+          />
         </Toolbar>
       </AppBar>
       <Box
@@ -118,22 +138,7 @@ function UserLayout(props) {
         }}
       >
         <Toolbar />
-        <Outlet/>
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
-          dolor purus non enim praesent elementum facilisis leo vel. Risus at
-          ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum
-          quisque non tellus. Convallis convallis tellus id interdum velit
-          laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed
-          adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
-          integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
-          eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
-          quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat
-          vivamus at augue. At augue eget arcu dictum varius duis at consectetur
-          lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
-          faucibus et molestie ac.
-        </Typography>
+        <Outlet />
       </Box>
     </Box>
   );
