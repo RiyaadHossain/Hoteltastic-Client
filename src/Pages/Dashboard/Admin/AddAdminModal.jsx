@@ -43,7 +43,7 @@ function AddAdminModal({ open, setOpen }) {
           >
             Add New Admin
           </Typography>
-          <Button sx={{ bgcolor: "darkred" }} onClick={() => setOpen(false)}>
+          <Button sx={{ color: "darkred" }} onClick={() => setOpen(false)}>
             <CancelIcon sx={{ fontSize: 30 }} />
           </Button>
         </Box>
