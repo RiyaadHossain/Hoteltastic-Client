@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
+import Technology from "./Technology";
 
 const TechnologyUsed = () => {
   return (
@@ -36,9 +37,7 @@ const TechnologyUsed = () => {
             }}
           ></Box>
         </Typography>
-        <Box>
-            
-        </Box>
+        <Technology></Technology>
       </Box>
     </>
   );
