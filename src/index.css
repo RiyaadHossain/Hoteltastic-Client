@@ -81,16 +81,6 @@ a {
   filter: brightness(.8);
 }
 
-.css-h41q8n {
-  position: fixed !important;
-  top: 0;
-}
-@media (min-width: 900px){
-  .css-ru0y81 {
-    margin-left: 230px;
-  }
-}
-
 /* profile update button css  */
 /* From uiverse.io by @barisdogansutcu */
 .profileUpdateBtn {
@@ -123,10 +113,23 @@ a {
   box-shadow: rgb(24, 220, 171) 0px 0px 0px 0px;
   transform: translateY(10px);
   transition: 100ms;
- }
+}
 
 
- /* for the chart dibugging */
- .css-152irm5 {
-  padding: 0!important
+/* for the chart dibugging */
+.css-152irm5 {
+  padding: 0 !important
+}
+
+
+.css-h41q8n {
+  position: fixed !important;
+  top: 0;
+}
+
+@media (min-width: 900px) {
+  .css-y4kpq {
+    /* width: calc(100% - 230px); */
+    margin-left: 230px;
+  }
 }
