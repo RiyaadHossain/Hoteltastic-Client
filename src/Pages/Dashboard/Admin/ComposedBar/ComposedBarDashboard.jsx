@@ -30,8 +30,8 @@ const ComposedBarDashboard = ({data}) => {
         }}>
              <ResponsiveContainer width="100%" height="100%">
         <ComposedChart
-          width={500}
-          height={400}
+          width={'100%'}
+          height={'100%'}
           data={data}
           margin={{
             top: 20,
