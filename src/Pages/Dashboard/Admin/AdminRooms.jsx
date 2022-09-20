@@ -13,6 +13,31 @@ import { AddCircle } from "@mui/icons-material";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import AddRoomModal from "./AddRoomModal";
 import UpdateRoomModal from "./UpdateRoomModal";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import CancelIcon from "@mui/icons-material/Cancel";
+import Swal from "sweetalert2";
+import { useSelector } from "react-redux";
+import roomSlice from "../../../Store/room/roomSlice";
+
+let activateRoom = () => {
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#3085d6",
+    confirmButtonText: "Yes, Deactivate it!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire(
+        "Deactivated!",
+        "Room status has been set to deactivate.",
+        "success"
+      );
+    }
+  });
+};
 
 const columns = [
   {
@@ -26,13 +51,13 @@ const columns = [
     id: "population",
     label: "Status",
     minWidth: 150,
-    align: "right",
+    align: "center",
   },
   {
     id: "size",
-    label: "Edit",
+    label: "Actions",
     minWidth: 170,
-    align: "right",
+    align: "center",
   },
 ];
 
@@ -65,6 +90,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export default function AdminRooms() {
   const [open, setOpen] = React.useState(false);
   const [openUpdate, setOpenUpdate] = React.useState(false);
+  const room = useSelector((state) => state.room);
+  console.log(room);
 
   const updateRoom = () => {
     console.log("hello");
@@ -73,16 +100,19 @@ export default function AdminRooms() {
 
   const chip = <Chip size="small" label="available" color="success" />;
   const iconButton = (
-    <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block">
-      <IconButton aria-label="delete" color="info" onClick={updateRoom}>
-        <BorderColorIcon />
-      </IconButton>
-    </Box>
+    <>
+      <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block">
+        <IconButton aria-label="delete" color="info" onClick={updateRoom}>
+          <BorderColorIcon />
+        </IconButton>
+      </Box>
+      <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block" ml={2}>
+        <IconButton aria-label="Active" color="success" onClick={activateRoom}>
+          <CheckCircleIcon />
+        </IconButton>
+      </Box>
+    </>
   );
-
-  function createData(name, price, population, size, img) {
-    return { name, price, population, size, img };
-  }
 
   const image = (
     <img
@@ -91,23 +121,6 @@ export default function AdminRooms() {
       src="https://images.unsplash.com/photo-1551963831-b3b1ca40c98e"
     />
   );
-
-  const rows = [
-    createData("India", "IN", chip, iconButton, image),
-    createData("China", "CN", chip, iconButton, image),
-    createData("Italy", "IT", chip, iconButton, image),
-    createData("United States", "US", chip, iconButton, image),
-    createData("Canada", "CA", chip, iconButton, image),
-    createData("Australia", "AU", chip, iconButton, image),
-    createData("Germany", "DE", chip, iconButton, image),
-    createData("Ireland", "IE", chip, iconButton, image),
-    createData("Mexico", "MX", chip, iconButton, image),
-    createData("Japan", "JP", chip, iconButton, image),
-    createData("France", "FR", chip, iconButton, image),
-    createData("India", "IN", chip, iconButton, image),
-    createData("China", "CN", chip, iconButton, image),
-    createData("Italy", "IT", chip, iconButton, image),
-  ];
 
   return (
     <>
@@ -147,20 +160,18 @@ export default function AdminRooms() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row, i) => {
-                return (
-                  <StyledTableRow hover role="checkbox" tabIndex={-1} key={i}>
-                    {columns.map((column, i) => {
-                      const value = row[column.id];
-                      return (
-                        <TableCell key={i} align={column.align}>
-                          {value}
-                        </TableCell>
-                      );
-                    })}
-                  </StyledTableRow>
-                );
-              })}
+              {room.rooms.map((row, i) => (
+                <TableRow
+                  key={row.name}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell align="left">{image}</TableCell>
+                  <TableCell align="left">{row.name}</TableCell>
+                  <TableCell align="left">{row.price}</TableCell>
+                  <TableCell align="left">{row.carbs}</TableCell>
+                  <TableCell align="center">{iconButton}</TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
         </TableContainer>
