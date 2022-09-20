@@ -77,6 +77,7 @@ const Technology = ({size}) => {
         <Marquee key={key} velocity={25}>
           {times(7, Number).map((id) => (
             <Photo
+              width={"100px"}
               src={photos[id + 7]}
               alt=""
               key={`marquee-example-people-${id + 7}`}
