@@ -1,132 +1,93 @@
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import times from "lodash/times";
+import Marquee from "react-marquee-slider";
+import { withSize } from "react-sizeme";
+import { nanoid } from "nanoid";
 
-import React from "react";
-import { Avatar, Box, Container, Grid, Paper, Typography } from "@mui/material";
 
-import EmojiTransportationIcon from "@mui/icons-material/EmojiTransportation";
-import BusinessIcon from "@mui/icons-material/Business";
-import GitHubIcon from '@mui/icons-material/GitHub';
-import JavascriptIcon from '@mui/icons-material/Javascript';
-import { blue, green, grey, purple, red } from "@mui/material/colors";
+const FullWidth = styled.div`
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+`;
 
-const Technology = () => {
+const Photo = styled.img`
+  width: ${(props) => props.scale * 368}px;
+  height: ${(props) => props.scale * 200}px;
+  border-radius: 4px;
+  box-shadow: 0 7px 20px 0 rgba(0, 0, 0, 0.12);
+  object-fit: cover;
+  object-position: top;
+  margin-left: ${(props) => (props.offset === "true" ? props.scale * 7 : props.scale * 87)}px;
+  margin-right: ${(props) => (props.offset === "true" ? props.scale * 80 : 0)}px;
+`;
+
+const photos = [
+    // "../../Assets/Image/aboutproject/js.png",
+    "https://abusaid.netlify.app/static/media/react.2b6a0717.svg",
+    "https://abusaid.netlify.app/static/media/react.2b6a0717.svg",
+    "https://abusaid.netlify.app/static/media/react.2b6a0717.svg",
+    "https://abusaid.netlify.app/static/media/react.2b6a0717.svg",
+    "https://abusaid.netlify.app/static/media/react.2b6a0717.svg",
+    "https://abusaid.netlify.app/static/media/react.2b6a0717.svg",
+    "https://abusaid.netlify.app/static/media/react.2b6a0717.svg",
+    "https://abusaid.netlify.app/static/media/react.2b6a0717.svg",
+    
+];
+
+const Technology = ({size}) => {
+
+    const [key, setKey] = useState(nanoid());
+
+    useEffect(() => {
+      setKey(nanoid());
+    }, [size, size.width]);
+  
+    let scale = 0.5;
+  
+    if (size && size.width > 800) {
+      scale = 0.65;
+    }
+  
+    if (size && size.width > 1100) {
+      scale = 0.8;
+    }
+  
+    if (size && size.width > 1400) {
+      scale = 1;
+    }
+  
   return (
-    <Box p="100px 15px">
-      <Container maxWidth="xl">
-        <Grid container textAlign="center" spacing={4}>
-          {/* ================ Card 1 ================ */}
-          <Grid item xs={12} sm={6} md={4} lg={3}>
-            <Paper
-              sx={{
-                py: 4,
-                transition: ".5s",
-                "&:hover": {
-                  background: "rgb(7, 177, 77, 0.5)",
-                },
-              }}
-              elevation={5}
-            >
-              <EmojiTransportationIcon
-                fontSize="large"
-                sx={{ color: blue[600] }}
-              />
+    <FullWidth>
+      <div style={{ height: scale * 200 }}>
+        <Marquee key={key} velocity={25}>
+          {times(7, Number).map((id) => (
+            <Photo src={photos[id]} alt="" key={`marquee-example-people-${id}`} scale={scale} />
+          ))}
+        </Marquee>
+      </div>
 
-              <Typography variant="h6" my={1}>
-                Residential
-              </Typography>
-              <Box>
-                <Avatar
-                  sx={{ m: "0 auto", bgcolor: grey[300], color: blue[600] }}
-                >
-                  12
-                </Avatar>
-              </Box>
-            </Paper>
-          </Grid>
+      <div style={{ height: scale * 60 }} />
 
-          {/* ================ Card 2 ================ */}
-          <Grid item xs={12} sm={6} md={4} lg={3}>
-            <Paper
-              sx={{
-                py: 4,
-                transition: ".5s",
-                "&:hover": {
-                  background: "rgb(7, 177, 77, 0.5)",
-                },
-              }}
-              elevation={5}
-            >
-              <BusinessIcon fontSize="large" sx={{ color: green[600] }} />
-
-              <Typography variant="h6" my={1}>
-                Business
-              </Typography>
-              <Box>
-                <Avatar
-                  sx={{ m: "0 auto", bgcolor: grey[300], color: green[600] }}
-                >
-                  8
-                </Avatar>
-              </Box>
-            </Paper>
-          </Grid>
-
-          {/* ================ Card 3 ================ */}
-          <Grid item xs={12} sm={6} md={4} lg={3}>
-            <Paper
-              sx={{
-                py: 4,
-                transition: ".5s",
-                "&:hover": {
-                  background: "rgb(7, 177, 77, 0.5)",
-                },
-              }}
-              elevation={5}
-            >
-              <JavascriptIcon fontSize="large" sx={{ color: red[600] }} />
-
-              <Typography variant="h6" my={1}>
-                Store
-              </Typography>
-              <Box>
-                <Avatar
-                  sx={{ m: "0 auto", bgcolor: grey[300], color: red[600] }}
-                >
-                  32
-                </Avatar>
-              </Box>
-            </Paper>
-          </Grid>
-
-          {/* ================ Card 4 ================ */}
-          <Grid item xs={12} sm={6} md={4} lg={3}>
-            <Paper
-              sx={{
-                py: 4,
-                transition: ".5s",
-                "&:hover": {
-                  background: "rgb(7, 177, 77, 0.5)",
-                },
-              }}
-              elevation={5}
-            >
-              <GitHubIcon fontSize="large" sx={{ color: purple[600] }} />
-
-              <Typography variant="h6" my={1}>
-                Apartment
-              </Typography>
-              <Box>
-                <Avatar
-                  sx={{ m: "0 auto", bgcolor: grey[300], color: purple[600] }}
-                >
-                  18
-                </Avatar>
-              </Box>
-            </Paper>
-          </Grid>
-        </Grid>
-      </Container>
-    </Box>
+      <div style={{ height: scale * 200 }}>
+        <Marquee key={key} velocity={25}>
+          {times(7, Number).map((id) => (
+            <Photo
+              src={photos[id + 7]}
+              alt=""
+              key={`marquee-example-people-${id + 7}`}
+              offset="true"
+              scale={scale}
+            />
+          ))}
+        </Marquee>
+      </div>
+    </FullWidth>
   );
 };
 
-export default Technology;
+export default withSize() (Technology);
