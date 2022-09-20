@@ -1,10 +1,11 @@
+import { Box } from '@mui/material';
 import React from 'react';
 
 const Technology = () => {
     return (
-        <div>
+        <Box>
             
-        </div>
+        </Box>
     );
 };
 

@@ -12,12 +12,13 @@ a {
   text-decoration: none;
   scroll-behavior: smooth;
 }
-.css-12i7wg6-MuiPaper-root-MuiDrawer-paper{
+
+.css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
   position: inherit !important
 }
 
 .css-1u2w381-MuiModal-root-MuiDrawer-root {
-  z-index: inherit!important
+  z-index: inherit !important
 }
 
 /* From uiverse.io by @nikk7007 */
@@ -40,9 +41,10 @@ a {
   text-transform: uppercase;
   color: var(--color);
   z-index: 1;
- }
- 
- .signInBtn::before, .signInBtn::after {
+}
+
+.signInBtn::before,
+.signInBtn::after {
   content: '';
   display: block;
   width: 50px;
@@ -53,61 +55,58 @@ a {
   z-index: -1;
   background-color: var(--color);
   transition: 1s ease;
- }
- 
- .signInBtn::before {
+}
+
+.signInBtn::before {
   top: -1em;
   left: -1em;
- }
- 
- .signInBtn::after {
+}
+
+.signInBtn::after {
   left: calc(100% + 1em);
   top: calc(100% + 1em);
- }
- 
- .signInBtn:hover::before, .signInBtn:hover::after {
+}
+
+.signInBtn:hover::before,
+.signInBtn:hover::after {
   height: 410px;
   width: 800px;
- }
- 
- .signInBtn:hover {
+}
+
+.signInBtn:hover {
   color: #ffffff;
- }
- 
- .signInBtn:active {
+}
+
+.signInBtn:active {
   filter: brightness(.8);
- }
+}
 
- .css-12i7wg6-MuiPaper-root-MuiDrawer-paper{
-  position: static !important;
- }
-
- /* profile update button css  */
- /* From uiverse.io by @barisdogansutcu */
- .profileUpdateBtn{
+/* profile update button css  */
+/* From uiverse.io by @barisdogansutcu */
+.profileUpdateBtn {
   width: 100%;
   padding: 1em 0em;
   border-radius: 10px;
   border: 0;
   font-weight: 700;
-  margin: 20px 0px ;
+  margin: 20px 0px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.425) 0 0 8px;
   letter-spacing: 1px;
   text-transform: uppercase;
   font-size: 15px;
   transition: all .5s ease;
- }
- 
- .profileUpdateBtn:hover {
+}
+
+.profileUpdateBtn:hover {
   letter-spacing: 3px;
   cursor: pointer;
   background-color: rgb(17, 219, 142);
   color: hsl(0, 0%, 0%);
   box-shadow: rgb(37, 202, 153) 0px 7px 29px 0px;
- }
- 
- .profileUpdateBtn:active {
+}
+
+.profileUpdateBtn:active {
   letter-spacing: 2px;
   background-color: rgb(24, 220, 155);
   color: hsl(0, 0%, 100%);
@@ -128,4 +127,23 @@ a {
   width: 80%;
   background: blue;
   background: linear-gradient(90deg, hsl(0, 0%, 20%), hsl(0, 0%, 70%), hsl(0, 0%, 20%));
+}
+
+
+/* for the chart dibugging */
+.css-152irm5 {
+  padding: 0 !important
+}
+
+
+.css-h41q8n {
+  position: fixed !important;
+  top: 0;
+}
+
+@media (min-width: 900px) {
+  .css-y4kpq {
+    /* width: calc(100% - 230px); */
+    margin-left: 230px;
+  }
 }

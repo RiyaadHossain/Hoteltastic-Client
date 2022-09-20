@@ -9,7 +9,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import { Box } from "@mui/system";
 import { Button, Chip, IconButton, Typography } from "@mui/material";
-import { AddCircle } from "@mui/icons-material";
+import SearchIcon from '@mui/icons-material/Search';
 import AddAdminModal from "./AddAdminModal";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
@@ -18,7 +18,7 @@ import Swal from "sweetalert2";
 
 
 const columns = [
-  { id: "img", label: "Image", minWidth: 170 },
+  { id: "img", label: "Image", minWidth: 120 },
   { id: "name", label: "Name", minWidth: 170 },
   { id: "email", label: "Email", minWidth: 100 },
   {
@@ -64,10 +64,10 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 
 function AdminUser() {
-  // const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
 
   const banUnbane = (action) => {
-    if (action=== "Ban") {
+    if (action === "Ban") {
       Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
@@ -86,7 +86,7 @@ function AdminUser() {
         }
       })
     }
-    if (action=== "UnBan") {
+    if (action === "UnBan") {
       Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
@@ -110,18 +110,21 @@ function AdminUser() {
 
   const BanIconButton = (
     <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block">
-      <IconButton aria-label="delete" color="error" onClick={()=>banUnbane("Ban")}>
+      <IconButton aria-label="delete" color="error" onClick={() => banUnbane("Ban")}>
         <RemoveCircleIcon />
       </IconButton>
     </Box>
   );
   const UnBanIconButton = (
     <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block">
-      <IconButton aria-label="delete" color="success" onClick={()=>banUnbane("UnBan")}>
+      <IconButton aria-label="delete" color="success" onClick={() => banUnbane("UnBan")}>
         <VerifiedUserIcon />
       </IconButton>
     </Box>
   );
+
+  const UnBanChip = <Chip size="small" label="Valid User" color="success" />
+  const banChip = <Chip size="small" label="Ban" color="error" />
 
   function createData(name, email, status, action, img) {
     return { name, email, status, action, img };
@@ -136,21 +139,38 @@ function AdminUser() {
   );
 
   const users = [
-    createData("Riyad", "riyad@gmail.com", "", BanIconButton, image),
-    createData("Tajul islam", "tajulislam601@gmail.com", "Ban", BanIconButton, image),
-    createData("Sultan", "sultan@gmail.com", "Ban", BanIconButton, image),
-    createData("Rahatul", "rahatul@gmail.com", "", BanIconButton, image),
-    createData("Shariful", "shariful@gmail.com", "", BanIconButton, image),
-    createData("Sadikul", "sadikul@gmail.com", "Ban", BanIconButton, image),
-    createData("Taosif", "taosif@gmail.com", "", BanIconButton, image),
-    createData("Alamin", "alamin@gmail.com", "", BanIconButton, image),
-    createData("Anisa", "anisa@gmail.com", "", BanIconButton, image),
-    createData("Japan", "jobayed@gmail.com", "Ban", BanIconButton, image),
-    createData("France", "dadfdsf@gmail.com", "", BanIconButton, image)
+    createData("Riyad", "riyad@gmail.com", UnBanChip, BanIconButton, image),
+    createData("Tajul islam", "tajulislam601@gmail.com", UnBanChip, BanIconButton, image),
+    createData("Sultan", "sultan@gmail.com", UnBanChip, BanIconButton, image),
+    createData("Rahatul", "rahatul@gmail.com", banChip, BanIconButton, image),
+    createData("Shariful", "shariful@gmail.com", UnBanChip, BanIconButton, image),
+    createData("Sadikul", "sadikul@gmail.com", UnBanChip, BanIconButton, image),
+    createData("Taosif", "taosif@gmail.com", banChip, BanIconButton, image),
+    createData("Alamin", "alamin@gmail.com", UnBanChip, BanIconButton, image),
+    createData("Anisa", "anisa@gmail.com", banChip, BanIconButton, image),
+    createData("Japan", "jobayed@gmail.com", UnBanChip, BanIconButton, image),
+    createData("France", "dadfdsf@gmail.com", UnBanChip, BanIconButton, image)
   ];
 
   return (
     <>
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        mt={2}
+        mb={3}
+      >
+        <Typography variant="h4" color="#2FDD92">
+          Total User: {users.length}
+        </Typography>
+        <Button
+          startIcon={<SearchIcon />}
+          variant="contained"
+        >
+          Search User
+        </Button>
+      </Box>
       <Paper sx={{ width: "100%", overflow: "hidden" }}>
         <TableContainer>
           <Table stickyHeader aria-label="sticky table">
@@ -169,9 +189,7 @@ function AdminUser() {
             </TableHead>
             <TableBody>
               {users.map((user, i) => {
-                if(user.status === "Ban"){
-                  user.action = UnBanIconButton
-                }
+                if (user.status.props.label === "Ban") user.action = UnBanIconButton;
                 return (
                   <StyledTableRow
                     hover

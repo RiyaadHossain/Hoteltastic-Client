@@ -1,12 +1,9 @@
-import {
-  Box,
-  Button,
-  Modal,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Modal, TextField, Typography } from "@mui/material";
 import React from "react";
 import CancelIcon from "@mui/icons-material/Cancel";
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import Swal from "sweetalert2";
 
 const style = {
   position: "absolute",
@@ -22,9 +19,27 @@ const style = {
 };
 
 function AddAdminModal({ open, setOpen }) {
-  const submitForm = (e) => {
-    e.preventDefault();
-    // setOpen(false);
+  const dispatch = useDispatch();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset
+  } = useForm();
+
+  const onSubmit = (data) => {
+    const picture = data.picture[0];
+    console.log(picture,'picture');
+    console.log(data,'data');
+    setOpen(false);
+    reset();
+  Swal.fire(
+  'Congratulations!',
+  'Admin has been added successfully!',
+  'success'
+)
+
+    // dispatch(postRoom({ ...data, picture }));
   };
 
   return (
@@ -35,7 +50,11 @@ function AddAdminModal({ open, setOpen }) {
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
-      <Box display="flex" justifyContent="space-between" alignItems="flex-start">
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          alignItems="flex-start"
+        >
           <Typography
             id="modal-modal-title"
             variant="h5"
@@ -45,33 +64,51 @@ function AddAdminModal({ open, setOpen }) {
           >
             Add New Admin
           </Typography>
-          <Button onClick={() => setOpen(false)}>
+          <Button sx={{ color: "darkred" }} onClick={() => setOpen(false)}>
             <CancelIcon sx={{ fontSize: 30 }} />
           </Button>
         </Box>
         <Box>
-          <form onSubmit={submitForm}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <TextField
               fullWidth
               id="outlined-basic"
               label="Name"
               variant="outlined"
               sx={{ mb: 2 }}
+              {...register("name", {
+                required: true,
+              })}
             />
+            {errors.name && (
+              <Typography color="error">Room Name is required</Typography>
+            )}
             <TextField
               fullWidth
               id="outlined-basic"
               label="Email"
               variant="outlined"
               sx={{ mb: 2 }}
+              {...register("email",{
+                required: true,
+              })}
             />
+             {errors.name && (
+              <Typography color="error">Email is required</Typography>
+            )}
             <TextField
               fullWidth
               id="outlined-basic"
               variant="outlined"
               type="file"
               sx={{ mb: 2 }}
+              {...register("picture", {
+                required: true,
+              })}
             />
+            {errors.picture && (
+              <Typography color="error">Picture is required</Typography>
+            )}
             <Box textAlign="center" mt={2}>
               <Button type="submit" variant="contained">
                 Add

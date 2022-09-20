@@ -14,7 +14,10 @@ function SignIn() {
   const auth = useSelector((state) => state.auth);
 
   const googleSignIn = () => {
-    window.open(`http://localhost:5001/auth/google/callback`, "_self");
+    window.open(
+      `https://hoteltastic-server.vercel.app/auth/google/callback`,
+      "_self"
+    );
   };
 
   const {
@@ -38,7 +41,7 @@ function SignIn() {
       <CustomHeader>Sign In</CustomHeader>
 
       <Box
-        sx={{ 
+        sx={{
           textAlign: "center",
           fontFamily: "'Rubik', sans-serif",
           padding: "80px 0px 120px 0px",
@@ -180,7 +183,6 @@ function SignIn() {
                 Have not any account?
                 <Button onClick={() => navigate("/signup")}>
                   <Typography
-                   
                     sx={{
                       cursor: "pointer",
                       fontSize: {
