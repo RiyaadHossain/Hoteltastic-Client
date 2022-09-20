@@ -27,7 +27,7 @@ const columns = [
     id: "size",
     label: "Action",
     minWidth: 170,
-    align: "right",
+    align: "center",
   },
 ];
 

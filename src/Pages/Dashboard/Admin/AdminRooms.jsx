@@ -13,6 +13,25 @@ import { AddCircle } from "@mui/icons-material";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import AddRoomModal from "./AddRoomModal";
 import UpdateRoomModal from "./UpdateRoomModal";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import CancelIcon from "@mui/icons-material/Cancel";
+import Swal from "sweetalert2";
+
+let activateRoom = () => {
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#3085d6",
+    confirmButtonText: "Yes, Deactivate it!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire("Deactivated!", "Room status has been set to deactivate.", "success");
+    }
+  });
+};
 
 const columns = [
   {
@@ -30,9 +49,9 @@ const columns = [
   },
   {
     id: "size",
-    label: "Edit",
+    label: "Actions",
     minWidth: 170,
-    align: "right",
+    align: "center",
   },
 ];
 
@@ -73,11 +92,18 @@ export default function AdminRooms() {
 
   const chip = <Chip size="small" label="available" color="success" />;
   const iconButton = (
-    <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block">
-      <IconButton aria-label="delete" color="info" onClick={updateRoom}>
-        <BorderColorIcon />
-      </IconButton>
-    </Box>
+    <>
+      <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block">
+        <IconButton aria-label="delete" color="info" onClick={updateRoom}>
+          <BorderColorIcon />
+        </IconButton>
+      </Box>
+      <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block" ml={2}>
+        <IconButton aria-label="Active" color="success" onClick={activateRoom}>
+          <CheckCircleIcon />
+        </IconButton>
+      </Box>
+    </>
   );
 
   function createData(name, price, population, size, img) {
