@@ -8,6 +8,13 @@ import {
 } from "@mui/material";
 import React from "react";
 import CancelIcon from "@mui/icons-material/Cancel";
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { postRoom } from "../../../Store/room/roomAction";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { useState } from "react";
+import Spinner from '../../../Components/Loaders/Spinner/Spinner.jsx'
 
 const style = {
   position: "absolute",
@@ -38,21 +45,74 @@ const currencies = [
 ];
 
 function AddRoomModal({ open, setOpen }) {
+  const [loading,setLoading] = useState(false)
   const [currency, setCurrency] = React.useState("Two Room");
-  const submitForm = (e) => {
-    e.preventDefault();
-    setOpen(false);
+  const dispatch = useDispatch();
+
+   // imgStorage api for image upload
+   const imgStorage_key = `75bc4682c9291f359647ab98df5f76de`;
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset
+  } = useForm();
+
+  const onSubmit = async (fulldata) => {
+    setLoading(true)
+    const picture = fulldata.picture[0];
+
+    const formData = new FormData();
+    formData.append("image", picture);
+    const url = `https://api.imgbb.com/1/upload?key=${imgStorage_key}`;
+
+    const {data} = await axios.post(url,formData)
+    if(data.success){
+      const imgUrl = data.data.url
+      const dataToSend = {...fulldata,picture:imgUrl}
+
+
+      // ----------------------riad vai you just need to dispatch----------------------------//
+      // dispatch(postRoom({ ...data, picture }));
+
+
+
+      setLoading(false)
+      Swal.fire(
+        'Good job!',
+        'You clicked the button!',
+        'success'
+      )
+      setOpen(false);
+      reset()
+      // -------------------------------see the data from console--------------------//
+      console.log(dataToSend);
+    }
+    else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Image upload failed!',
+      })
+    }
   };
 
   return (
-    <Modal
+    <>
+      <Modal
       open={open}
       onClose={() => setOpen(false)}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
+     
       <Box sx={style}>
-        <Box display="flex" justifyContent="space-between" alignItems="flex-start">
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          alignItems="flex-start"
+        >
           <Typography
             id="modal-modal-title"
             variant="h5"
@@ -62,19 +122,26 @@ function AddRoomModal({ open, setOpen }) {
           >
             Add New Room
           </Typography>
-          <Button onClick={() => setOpen(false)}>
+          <Button sx={{ color: "darkred" }} onClick={() => setOpen(false)}>
             <CancelIcon sx={{ fontSize: 30 }} />
           </Button>
         </Box>
         <Box>
-          <form onSubmit={submitForm}>
+          {
+             loading ? <Spinner/> : 
+             <form onSubmit={handleSubmit(onSubmit)}>
             <TextField
               fullWidth
               id="outlined-basic"
               label="Room Name"
               variant="outlined"
-              sx={{ mb: 2 }}
+              {...register("name", {
+                required: true,
+              })}
             />
+            {errors.name && (
+              <Typography color="error">Room Name is required</Typography>
+            )}
             <TextField
               id="outlined-select-currency"
               select
@@ -82,7 +149,8 @@ function AddRoomModal({ open, setOpen }) {
               label="Category"
               value={currency}
               onChange={(e) => setCurrency(e.target.value)}
-              sx={{ mb: 2 }}
+              sx={{ mt: 2 }}
+              {...register("category")}
             >
               {currencies.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
@@ -95,31 +163,54 @@ function AddRoomModal({ open, setOpen }) {
               id="outlined-basic"
               label="Price"
               variant="outlined"
-              sx={{ mb: 2 }}
+              sx={{ mt: 2 }}
+              {...register("price", {
+                required: true,
+              })}
             />
+            {errors.price && (
+              <Typography color="error">Room Price is required</Typography>
+            )}
             <TextField
               fullWidth
               id="outlined-basic"
               variant="outlined"
               type="file"
-              sx={{ mb: 2 }}
+              sx={{ mt: 2 }}
+              {...register("picture", {
+                required: true,
+              })}
             />
+            {errors.picture && (
+              <Typography color="error">Room Picture is required</Typography>
+            )}
             <TextField
               fullWidth
               id="outlined-multiline-static"
               label="Description"
               multiline
               rows={4}
+              sx={{ mt: 2 }}
+              {...register("description", {
+                required: true,
+              })}
             />
+            {errors.description && (
+              <Typography color="error">
+                Room Description is required
+              </Typography>
+            )}
             <Box textAlign="center" mt={2}>
               <Button type="submit" variant="contained">
                 Add
               </Button>
             </Box>
           </form>
+          }
         </Box>
       </Box>
     </Modal>
+    </>
   );
 }
 

@@ -94,19 +94,19 @@ export default function AdminRooms() {
 
   const rows = [
     createData("India", "IN", chip, iconButton, image),
-    createData("China", "CN", chip, iconButton),
-    createData("Italy", "IT", chip, iconButton),
-    createData("United States", "US", chip, iconButton),
-    createData("Canada", "CA", chip, iconButton),
-    createData("Australia", "AU", chip, iconButton),
-    createData("Germany", "DE", chip, iconButton),
-    createData("Ireland", "IE", chip, iconButton),
-    createData("Mexico", "MX", chip, iconButton),
-    createData("Japan", "JP", chip, iconButton),
-    createData("France", "FR", chip, iconButton),
-    createData("India", "IN", chip, iconButton),
-    createData("China", "CN", chip, iconButton),
-    createData("Italy", "IT", chip, iconButton),
+    createData("China", "CN", chip, iconButton, image),
+    createData("Italy", "IT", chip, iconButton, image),
+    createData("United States", "US", chip, iconButton, image),
+    createData("Canada", "CA", chip, iconButton, image),
+    createData("Australia", "AU", chip, iconButton, image),
+    createData("Germany", "DE", chip, iconButton, image),
+    createData("Ireland", "IE", chip, iconButton, image),
+    createData("Mexico", "MX", chip, iconButton, image),
+    createData("Japan", "JP", chip, iconButton, image),
+    createData("France", "FR", chip, iconButton, image),
+    createData("India", "IN", chip, iconButton, image),
+    createData("China", "CN", chip, iconButton, image),
+    createData("Italy", "IT", chip, iconButton, image),
   ];
 
   return (

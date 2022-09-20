@@ -18,7 +18,7 @@ import Swal from "sweetalert2";
 
 
 const columns = [
-  { id: "img", label: "Image", minWidth: 170 },
+  { id: "img", label: "Image", minWidth: 120 },
   { id: "name", label: "Name", minWidth: 170 },
   { id: "email", label: "Email", minWidth: 100 },
   {
