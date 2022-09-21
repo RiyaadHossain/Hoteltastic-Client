@@ -12,6 +12,9 @@ import { Button, Chip, IconButton, Typography } from "@mui/material";
 import { AddCircle } from "@mui/icons-material";
 import AddAdminModal from "./AddAdminModal";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+import { useDispatch, useSelector } from "react-redux";
+import Swal from "sweetalert2";
+import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 
 const columns = [
   { id: "img", label: "Image", minWidth: 70 },
@@ -59,9 +62,54 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 export default function AllAdmin() {
   const [open, setOpen] = React.useState(false);
+  // const userStore = useSelector((state) => state.user)
+  // const dispatch = useDispatch()
 
-  const banUnbane = () => {
+  const banUnbane = (action,id) => {
     console.log("ban admin");
+
+    if (action === "Ban") {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Yes, Ban it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // dispatch(updateUser({ id, status: "BanUser" }));
+          Swal.fire(
+            'Banned!',
+            'User has been Banned.',
+            'success'
+          )
+        }
+      })
+    }
+
+    if (action === "UnBan") {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, UnBan it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // dispatch(updateUser({ id, status: "ValidUser" }));
+          Swal.fire(
+            'Unbanned!',
+            'User has been Unbanned.',
+            'success'
+          )
+        }
+      })
+    }
+
   };
 
   const chip = <Chip size="small" label="active" color="success" />;
@@ -141,22 +189,57 @@ export default function AllAdmin() {
             </TableHead>
             <TableBody>
               {rows.map((row, i) => {
+                // if (user.status.props.label === "Ban") user.action = UnBanIconButton;
                 return (
-                  <StyledTableRow
+                  <TableRow
                     hover
                     role="checkbox"
                     tabIndex={-1}
                     key={i}
                   >
-                    {columns.map((column, i) => {
+
+
+                    <TableCell align="left">{image}</TableCell>
+                    <TableCell align="left">{row?.name}</TableCell>
+                    <TableCell align="left">{row?.email}</TableCell>
+                    <TableCell align="center">
+                      <Chip
+                        size="small"
+                        label={row.status === "BanUser" ? "Banned User" : "Valid User"}
+                        color={row.status === "BanUser" ? "error" : "success"}
+                      />
+                    </TableCell>
+                    <TableCell align="center">
+                      {
+                        row.status === "BanUser" ?
+
+                          <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block">
+                            <IconButton aria-label="delete" color="success"
+                              onClick={() => banUnbane("UnBan", row._id)}
+                            >
+                              <VerifiedUserIcon />
+                            </IconButton>
+                          </Box>
+                          :
+                          <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block">
+                            <IconButton aria-label="delete" color="error" onClick={() => banUnbane("Ban",row._id)}>
+                              <RemoveCircleIcon />
+                            </IconButton>
+                          </Box>
+
+                      }
+
+
+                    {/* {columns.map((column, i) => {
                       const value = row[column.id];
                       return (
                         <TableCell key={i} align={column.align}>
                           {value}
                         </TableCell>
                       );
-                    })}
-                  </StyledTableRow>
+                    })} */}
+                    </TableCell>
+                  </TableRow>
                 );
               })}
             </TableBody>

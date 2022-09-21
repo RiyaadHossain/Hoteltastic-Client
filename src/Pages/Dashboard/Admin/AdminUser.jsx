@@ -148,7 +148,16 @@ function AdminUser() {
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
+              <StyledTableCell
+                  //  key={column.id}
+                  //  align={column.align}
+                  //  style={{ minWidth: column.minWidth }}
+                 >
+                   Sl No
+                 </StyledTableCell>
                 {columns.map((column) => (
+                   <>
+                   
                   <StyledTableCell
                     key={column.id}
                     align={column.align}
@@ -156,6 +165,7 @@ function AdminUser() {
                   >
                     {column.label}
                   </StyledTableCell>
+                   </>
                 ))}
               </TableRow>
             </TableHead>
@@ -167,6 +177,7 @@ function AdminUser() {
                     key={user._id}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
+                    <TableCell align="left">{i+1}.</TableCell>
                     <TableCell align="left">{image}</TableCell>
                     <TableCell align="left">{user.name}</TableCell>
                     <TableCell align="left">{user.email}</TableCell>
