@@ -4,7 +4,6 @@ import { roomActions } from "./roomSlice"
 const getRooms = () => {
     return async dispatch => {
         try {
-
             const { data } = await client.get("/api/room/allRooms")
             if (data) {
                 dispatch(roomActions.getRooms(data.rooms))
