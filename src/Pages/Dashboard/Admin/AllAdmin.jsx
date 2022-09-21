@@ -176,6 +176,13 @@ export default function AllAdmin() {
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
+              <StyledTableCell
+                  //  key={column.id}
+                  //  align={column.align}
+                  //  style={{ minWidth: column.minWidth }}
+                 >
+                   Sl No
+                 </StyledTableCell>
                 {columns.map((column) => (
                   <StyledTableCell
                     key={column.id}
@@ -198,7 +205,7 @@ export default function AllAdmin() {
                     key={i}
                   >
 
-
+                    <TableCell align="left">{i+1}.</TableCell>
                     <TableCell align="left">{image}</TableCell>
                     <TableCell align="left">{row?.name}</TableCell>
                     <TableCell align="left">{row?.email}</TableCell>
