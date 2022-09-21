@@ -17,7 +17,7 @@ import Swal from "sweetalert2";
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import { useEffect } from "react";
 // import { getAdmins } from "../../Store/user/getAdmins";
-import {getAdmins}  from "../../../Store/user/userAction"
+import {getAdmins, updateUser}  from "../../../Store/user/userAction"
  
 
 const columns = [
@@ -67,12 +67,12 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export default function AllAdmin() {
   const dispatch = useDispatch();
   const { admins } = useSelector((state) => state.user);
-  console.log(admins);
+  console.log(admins,'admins');
 
  
   useEffect(()=>{
     dispatch(getAdmins())
-  },[dispatch])
+  },[dispatch,admins])
 
 
   const [open, setOpen] = React.useState(false);
@@ -94,7 +94,7 @@ export default function AllAdmin() {
         buttonsStyling: true
       }).then((result) => {
         if (result.isConfirmed) {
-          // dispatch(updateUser({ id, status: "BanUser" }));
+          dispatch(updateUser({ id, status: "BanUser" }));
           Swal.fire(
             'Banned!',
             'User has been Banned.',
@@ -116,7 +116,7 @@ export default function AllAdmin() {
         buttonsStyling: true
       }).then((result) => {
         if (result.isConfirmed) {
-          // dispatch(updateUser({ id, status: "ValidUser" }));
+          dispatch(updateUser({ id, status: "ValidUser" }));
           Swal.fire(
             'Unbanned!',
             'User has been Unbanned.',
@@ -176,7 +176,7 @@ export default function AllAdmin() {
         mb={3}
       >
         <Typography variant="h3" color="#2FDD92">
-          Total Admin: 25
+          Total Admin: {admins.length}
         </Typography>
         <Button
           variant="contained"
@@ -193,9 +193,6 @@ export default function AllAdmin() {
             <TableHead>
               <TableRow>
               <StyledTableCell
-                  //  key={column.id}
-                  //  align={column.align}
-                  //  style={{ minWidth: column.minWidth }}
                  >
                    Sl No
                  </StyledTableCell>
@@ -211,7 +208,7 @@ export default function AllAdmin() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row, i) => {
+              {admins.map((admin, i) => {
                 // if (user.status.props.label === "Ban") user.action = UnBanIconButton;
                 return (
                   <TableRow
@@ -223,29 +220,29 @@ export default function AllAdmin() {
 
                     <TableCell align="left">{i+1}.</TableCell>
                     <TableCell align="left">{image}</TableCell>
-                    <TableCell align="left">{row?.name}</TableCell>
-                    <TableCell align="left">{row?.email}</TableCell>
+                    <TableCell align="left">{admin.name}</TableCell>
+                    <TableCell align="left">{admin.email}</TableCell>
                     <TableCell align="center">
                       <Chip
                         size="small"
-                        label={row.status === "BanUser" ? "Banned User" : "Valid User"}
-                        color={row.status === "BanUser" ? "error" : "success"}
+                        label={admin.status === "BanUser" ? "Banned User" : "Admin"}
+                        color={admin.status === "BanUser" ? "error" : "success"}
                       />
                     </TableCell>
                     <TableCell align="center">
                       {
-                        row.status === "BanUser" ?
+                          admin.status === "BanUser" ?
 
                           <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block">
                             <IconButton aria-label="delete" color="success"
-                              onClick={() => banUnbane("UnBan", row._id)}
+                              onClick={() => banUnbane("UnBan", admin._id)}
                             >
                               <VerifiedUserIcon />
                             </IconButton>
                           </Box>
                           :
                           <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block">
-                            <IconButton aria-label="delete" color="error" onClick={() => banUnbane("Ban",row._id)}>
+                            <IconButton aria-label="delete" color="error" onClick={() => banUnbane("Ban",admin._id)}>
                               <RemoveCircleIcon />
                             </IconButton>
                           </Box>

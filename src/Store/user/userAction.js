@@ -32,9 +32,8 @@ export const getAdmins = () => {
 	return async dispatch => {
 		try {
 			const { data } = await client.get('/api/admin/admins')
-			console.log(data)
 			if (data) {
-				dispatch(getAdmins(data?.admins))
+				dispatch(userActions.getAdmins(data?.admins))
 			}
 		} catch (error) {
 			console.log(error)
