@@ -79,7 +79,7 @@ function AddRoomModal({ open, setOpen }) {
       setLoading(false)
       Swal.fire(
         'Good job!',
-        'You clicked the button!',
+        'New room data has been added!',
         'success'
       )
       setOpen(false);
