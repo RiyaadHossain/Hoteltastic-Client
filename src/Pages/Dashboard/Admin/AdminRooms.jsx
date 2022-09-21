@@ -16,28 +16,8 @@ import UpdateRoomModal from "./UpdateRoomModal";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CancelIcon from "@mui/icons-material/Cancel";
 import Swal from "sweetalert2";
-import { useSelector } from "react-redux";
-import roomSlice from "../../../Store/room/roomSlice";
-
-let activateRoom = () => {
-  Swal.fire({
-    title: "Are you sure?",
-    text: "You won't be able to revert this!",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#d33",
-    cancelButtonColor: "#3085d6",
-    confirmButtonText: "Yes, Deactivate it!",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire(
-        "Deactivated!",
-        "Room status has been set to deactivate.",
-        "success"
-      );
-    }
-  });
-};
+import { useDispatch, useSelector } from "react-redux";
+import { updateRoom } from "../../../Store/room/roomAction";
 
 const columns = [
   {
@@ -78,41 +58,82 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
 }));
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  "&:nth-of-type(odd)": {
-    backgroundColor: theme.palette.action.hover,
-  },
-  // hide last border
-  "&:last-child td, &:last-child th": {
-    border: 0,
-  },
-}));
 export default function AdminRooms() {
   const [open, setOpen] = React.useState(false);
   const [openUpdate, setOpenUpdate] = React.useState(false);
   const room = useSelector((state) => state.room);
+  const dispatch = useDispatch();
   console.log(room);
 
-  const updateRoom = () => {
-    console.log("hello");
-    setOpenUpdate(true);
+  let closeRoom = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, Deactivate it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(updateRoom({ id, status: "Close" }));
+        Swal.fire(
+          "Deactivated!",
+          "Room status has been set to deactivate.",
+          "success"
+        );
+      }
+    });
   };
 
-  const chip = <Chip size="small" label="available" color="success" />;
-  const iconButton = (
-    <>
-      <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block">
-        <IconButton aria-label="delete" color="info" onClick={updateRoom}>
-          <BorderColorIcon />
+  let openRoom = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, Activate it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(updateRoom({ id, status: "Open" }));
+        Swal.fire(
+          "Activated!",
+          "Room status has been set to Activate.",
+          "success"
+        );
+      }
+    });
+  };
+
+  const closeButton = (id) => {
+    return (
+      <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block" ml={2}>
+        <IconButton
+          aria-label="Active"
+          color="error"
+          onClick={() => closeRoom(id)}
+        >
+          <CancelIcon />
         </IconButton>
       </Box>
+    );
+  };
+
+  const openButton = (id) => {
+    return (
       <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block" ml={2}>
-        <IconButton aria-label="Active" color="success" onClick={activateRoom}>
+        <IconButton
+          aria-label="Active"
+          color="success"
+          onClick={() => openRoom(id)}
+        >
           <CheckCircleIcon />
         </IconButton>
       </Box>
-    </>
-  );
+    );
+  };
 
   const image = (
     <img
@@ -168,8 +189,33 @@ export default function AdminRooms() {
                   <TableCell align="left">{image}</TableCell>
                   <TableCell align="left">{row.name}</TableCell>
                   <TableCell align="left">{row.price}</TableCell>
-                  <TableCell align="left">{row.carbs}</TableCell>
-                  <TableCell align="center">{iconButton}</TableCell>
+                  <TableCell align="center">
+                    <Chip
+                      size="small"
+                      label={row.status === "Open" ? "Open" : "Close"}
+                      color={row.status === "Open" ? "success" : "error"}
+                    />
+                  </TableCell>
+                  <TableCell align="center">
+                    <>
+                      <Box
+                        bgcolor="#c4cbcb"
+                        borderRadius="50%"
+                        display="inline-block"
+                      >
+                        <IconButton
+                          aria-label="delete"
+                          color="info"
+                          onClick={() => setOpenUpdate(true)}
+                        >
+                          <BorderColorIcon />
+                        </IconButton>
+                      </Box>
+                      {row.status === "Open"
+                        ? closeButton(row._id)
+                        : openButton(row._id)} 
+                    </>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
