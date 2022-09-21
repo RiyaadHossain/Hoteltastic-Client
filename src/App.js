@@ -15,7 +15,7 @@ import NotFound from './Pages/NotFound404/NotFound'
 import Properties from './Pages/Property/Properties'
 import { initialUser } from './Store/auth/authAction'
 import getRooms from './Store/room/roomAction'
-import { socialSignIn } from "./Store/auth/authAction";
+import { socialSignIn } from './Store/auth/authAction'
 import UserLayout from './Pages/Dashboard/User/UserLayout'
 import MyProfile from './Pages/MyProfile/MyProfile'
 import AdminLayout from './Pages/Dashboard/Admin/AdminLayout'
@@ -24,7 +24,7 @@ import AdminRooms from './Pages/Dashboard/Admin/AdminRooms'
 import AdminUser from './Pages/Dashboard/Admin/AdminUser'
 import AllAdmin from './Pages/Dashboard/Admin/AllAdmin'
 import UserHome from './Pages/Dashboard/User/UserHome'
-import UserRooms from './Pages/Dashboard/User/UserRooms'
+import MyOrders from './Pages/Dashboard/User/MyOrders'
 import FavouriteRoom from './Pages/Dashboard/User/FavouriteRoom'
 import AboutProject from './Pages/AboutProject/AboutProject'
 import getUsers from './Store/user/userAction'
@@ -41,17 +41,18 @@ function App() {
 	useEffect(() => {
 		const user = async () => {
 			try {
-				const URL = "https://hoteltastic-server.vercel.app/auth/login/success";
-				const { data } = await client.get(URL, { withCredentials: true });
+				const URL =
+					'https://hoteltastic-server.vercel.app/auth/login/success'
+				const { data } = await client.get(URL, { withCredentials: true })
 				if (data) {
-					dispatch(socialSignIn(data.user._json.email));
+					dispatch(socialSignIn(data.user._json.email))
 				}
 			} catch (error) {
-				console.log(error);
+				console.log(error)
 			}
-		};
+		}
 		user()
-	}, [dispatch]);
+	}, [dispatch])
 
 	// ----------------preloader----------------//
 	useEffect(() => {
@@ -60,7 +61,6 @@ function App() {
 		}, 1000)
 	}, [])
 
-
 	return (
 		<>
 			{loading ? (
@@ -68,28 +68,28 @@ function App() {
 			) : (
 				<>
 					<Routes>
-						<Route element={<Layout />} path="/" >
+						<Route element={<Layout />} path="/">
 							<Route index element={<LandingPage />} path="" />
 							<Route element={<AllRooms />} path="allRooms" />
 							<Route element={<Properties />} path="property" />
 							<Route element={<SignIn />} path="signin" />
 							<Route element={<SignUp />} path="signup" />
-							<Route element={<AboutProject/>} path="aboutproject"/>
+							<Route element={<AboutProject />} path="aboutproject" />
 							<Route element={<Contact />} path="/contact" />
-							<Route element={<UserLayout />} path='/Userdashboard' />
-							<Route element={<MyProfile />} path='/profile' />
-							<Route element={<MyProfile />} path='/myprofile' />
+							<Route element={<UserLayout />} path="/Userdashboard" />
+							<Route element={<MyProfile />} path="/profile" />
+							<Route element={<MyProfile />} path="/myprofile" />
 						</Route>
 						<Route element={<AdminLayout />} path="/admin/">
-							<Route element={<AdminHome />} path='dashboard' />
-							<Route element={<AdminRooms />} path='allRoom' />
-							<Route element={<AdminUser />} path='user' />
-							<Route element={<AllAdmin />} path='admin' />
+							<Route element={<AdminHome />} path="dashboard" />
+							<Route element={<AdminRooms />} path="allRoom" />
+							<Route element={<AdminUser />} path="user" />
+							<Route element={<AllAdmin />} path="admin" />
 						</Route>
 						<Route element={<UserLayout />} path="/user/">
-							<Route element={<UserHome />} path='dashboard' />
-							<Route element={<UserRooms />} path='allRoom' />
-							<Route element={<FavouriteRoom />} path='favourite' />
+							<Route element={<UserHome />} path="dashboard" />
+							<Route element={<MyOrders />} path="myOrders" />
+							<Route element={<FavouriteRoom />} path="favourite" />
 						</Route>
 						<Route element={<NotFound />} path="*" />
 					</Routes>
@@ -97,7 +97,6 @@ function App() {
 			)}
 		</>
 	)
-
 }
 
-export default App;
+export default App
