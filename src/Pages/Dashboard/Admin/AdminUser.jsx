@@ -15,6 +15,7 @@ import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
+import { updateUser } from "../../../Store/user/userAction";
 
 
 
@@ -68,7 +69,7 @@ function AdminUser() {
   const [open, setOpen] = React.useState(false);
   const userStore = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  console.log(userStore);
+  // console.log(userStore);
 
   const banUnbane = (action, id) => {
     // console.log(action, id);
@@ -83,8 +84,7 @@ function AdminUser() {
         confirmButtonText: 'Yes, Ban it!'
       }).then((result) => {
         if (result.isConfirmed) {
-
-          // dispatch(updateRoom({ id, status: "Close" }));
+          dispatch(updateUser({ id, status: "BanUser" }));
           Swal.fire(
             'Banned!',
             'User has been Banned.',
@@ -105,6 +105,7 @@ function AdminUser() {
         confirmButtonText: 'Yes, UnBan it!'
       }).then((result) => {
         if (result.isConfirmed) {
+          dispatch(updateUser({ id, status: "ValidUser" }));
           Swal.fire(
             'Unbanned!',
             'User has been Unbanned.',
@@ -172,13 +173,13 @@ function AdminUser() {
                     <TableCell align="center">
                       <Chip
                         size="small"
-                        label={user.status}
-                        color={user.status === "Ban" ? "error" : "success"}
+                        label={user.status === "BanUser" ? "Banned User" : "Valid User"}
+                        color={user.status === "BanUser" ? "error" : "success"}
                       />
                     </TableCell>
                     <TableCell align="center">
                       {
-                        user.status === "Ban" ?
+                        user.status === "BanUser" ?
 
                           <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block">
                             <IconButton aria-label="delete" color="success"

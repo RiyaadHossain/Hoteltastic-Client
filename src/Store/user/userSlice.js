@@ -14,15 +14,9 @@ const userSlice = createSlice({
         getUsers: (state, actions) => {
             state.users = actions.payload
         },
-        // postUser: state => {
-        //     state.message = 'New user added Successfully'
-        // },
-        // updateUser: state => {
-        //     state.message = "user Details updated Successfully"
-        // },
-        // deleteUser: state => {
-        //     state.message = "user deleted Successfully"
-        // }
+        updateUser: state => {
+            state.message = "user Details updated Successfully"
+        }
     }
 })
 
