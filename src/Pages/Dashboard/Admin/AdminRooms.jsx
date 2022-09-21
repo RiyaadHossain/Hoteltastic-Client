@@ -206,7 +206,7 @@ export default function AdminRooms() {
                         <IconButton
                           aria-label="delete"
                           color="info"
-                          onClick={() => setOpenUpdate(true)}
+                          onClick={() => setOpenUpdate(row)}
                         >
                           <BorderColorIcon />
                         </IconButton>
