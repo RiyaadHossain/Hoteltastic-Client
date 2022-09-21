@@ -16,7 +16,8 @@ import UpdateRoomModal from "./UpdateRoomModal";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CancelIcon from "@mui/icons-material/Cancel";
 import Swal from "sweetalert2";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { updateRoom } from "../../../Store/room/roomAction";
 
 const columns = [
   {
@@ -61,9 +62,10 @@ export default function AdminRooms() {
   const [open, setOpen] = React.useState(false);
   const [openUpdate, setOpenUpdate] = React.useState(false);
   const room = useSelector((state) => state.room);
+  const dispatch = useDispatch();
   console.log(room);
 
-  let closeRoom = () => {
+  let closeRoom = (id) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -74,6 +76,7 @@ export default function AdminRooms() {
       confirmButtonText: "Yes, Deactivate it!",
     }).then((result) => {
       if (result.isConfirmed) {
+        dispatch(updateRoom({ id, status: "Close" }));
         Swal.fire(
           "Deactivated!",
           "Room status has been set to deactivate.",
@@ -83,7 +86,7 @@ export default function AdminRooms() {
     });
   };
 
-  let openRoom = () => {
+  let openRoom = (id) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -94,6 +97,7 @@ export default function AdminRooms() {
       confirmButtonText: "Yes, Activate it!",
     }).then((result) => {
       if (result.isConfirmed) {
+        dispatch(updateRoom({ id, status: "Open" }));
         Swal.fire(
           "Activated!",
           "Room status has been set to Activate.",
@@ -101,10 +105,6 @@ export default function AdminRooms() {
         );
       }
     });
-  };
-
-  const updateRoom = () => {
-    setOpenUpdate(true);
   };
 
   const closeButton = (id) => {
@@ -206,14 +206,14 @@ export default function AdminRooms() {
                         <IconButton
                           aria-label="delete"
                           color="info"
-                          onClick={updateRoom}
+                          onClick={() => setOpenUpdate(true)}
                         >
                           <BorderColorIcon />
                         </IconButton>
                       </Box>
                       {row.status === "Open"
-                        ? closeButton(row.id)
-                        : openButton(row.id)}
+                        ? closeButton(row._id)
+                        : openButton(row._id)} 
                     </>
                   </TableCell>
                 </TableRow>
