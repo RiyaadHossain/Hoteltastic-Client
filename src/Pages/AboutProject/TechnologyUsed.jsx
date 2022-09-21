@@ -11,12 +11,13 @@ const TechnologyUsed = () => {
           padding: "64px 70px 63px 70px",
           color: "#000",
           width: "90%",
-          margin: "0 auto",
+          margin: "40 auto",
         }}
       >
         <Typography
           sx={{
             fontWeight: "500",
+            margin: "40px",
             fontFamily: "'Rubik', sans-serif",
             fontSize: {
               xs: "28px",
