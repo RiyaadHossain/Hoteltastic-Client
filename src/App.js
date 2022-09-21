@@ -27,6 +27,7 @@ import UserHome from './Pages/Dashboard/User/UserHome'
 import UserRooms from './Pages/Dashboard/User/UserRooms'
 import FavouriteRoom from './Pages/Dashboard/User/FavouriteRoom'
 import AboutProject from './Pages/AboutProject/AboutProject'
+import getUsers from './Store/user/userAction'
 
 function App() {
 	const dispatch = useDispatch()
@@ -34,6 +35,7 @@ function App() {
 	useEffect(() => {
 		dispatch(initialUser())
 		dispatch(getRooms())
+		dispatch(getUsers())
 	}, [dispatch])
 
 	useEffect(() => {
