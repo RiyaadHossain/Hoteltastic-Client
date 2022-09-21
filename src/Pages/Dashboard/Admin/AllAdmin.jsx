@@ -15,6 +15,10 @@ import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
+import { useEffect } from "react";
+// import { getAdmins } from "../../Store/user/getAdmins";
+import {getAdmins}  from "../../../Store/user/userAction"
+ 
 
 const columns = [
   { id: "img", label: "Image", minWidth: 70 },
@@ -24,7 +28,7 @@ const columns = [
     id: "population",
     label: "Status",
     minWidth: 150,
-    align: "right",
+    align: "center",
   },
   {
     id: "size",
@@ -61,6 +65,16 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 export default function AllAdmin() {
+  const dispatch = useDispatch();
+  const { admins } = useSelector((state) => state.user);
+  console.log(admins);
+
+ 
+  useEffect(()=>{
+    dispatch(getAdmins())
+  },[dispatch])
+
+
   const [open, setOpen] = React.useState(false);
   // const userStore = useSelector((state) => state.user)
   // const dispatch = useDispatch()
@@ -76,7 +90,8 @@ export default function AllAdmin() {
         showCancelButton: true,
         confirmButtonColor: '#d33',
         cancelButtonColor: '#3085d6',
-        confirmButtonText: 'Yes, Ban it!'
+        confirmButtonText: 'Yes, Ban it!',
+        buttonsStyling: true
       }).then((result) => {
         if (result.isConfirmed) {
           // dispatch(updateUser({ id, status: "BanUser" }));
@@ -97,7 +112,8 @@ export default function AllAdmin() {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, UnBan it!'
+        confirmButtonText: 'Yes, UnBan it!',
+        buttonsStyling: true
       }).then((result) => {
         if (result.isConfirmed) {
           // dispatch(updateUser({ id, status: "ValidUser" }));
