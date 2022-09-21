@@ -14,6 +14,8 @@ import AddAdminModal from "./AddAdminModal";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import Swal from "sweetalert2";
+import { useDispatch, useSelector } from "react-redux";
+import { updateUser } from "../../../Store/user/userAction";
 
 
 
@@ -65,8 +67,12 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 function AdminUser() {
   const [open, setOpen] = React.useState(false);
+  const userStore = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  // console.log(userStore);
 
-  const banUnbane = (action) => {
+  const banUnbane = (action, id) => {
+    // console.log(action, id);
     if (action === "Ban") {
       Swal.fire({
         title: 'Are you sure?',
@@ -78,6 +84,7 @@ function AdminUser() {
         confirmButtonText: 'Yes, Ban it!'
       }).then((result) => {
         if (result.isConfirmed) {
+          dispatch(updateUser({ id, status: "BanUser" }));
           Swal.fire(
             'Banned!',
             'User has been Banned.',
@@ -86,6 +93,7 @@ function AdminUser() {
         }
       })
     }
+
     if (action === "UnBan") {
       Swal.fire({
         title: 'Are you sure?',
@@ -97,6 +105,7 @@ function AdminUser() {
         confirmButtonText: 'Yes, UnBan it!'
       }).then((result) => {
         if (result.isConfirmed) {
+          dispatch(updateUser({ id, status: "ValidUser" }));
           Swal.fire(
             'Unbanned!',
             'User has been Unbanned.',
@@ -107,29 +116,6 @@ function AdminUser() {
     }
   };
 
-
-  const BanIconButton = (
-    <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block">
-      <IconButton aria-label="delete" color="error" onClick={() => banUnbane("Ban")}>
-        <RemoveCircleIcon />
-      </IconButton>
-    </Box>
-  );
-  const UnBanIconButton = (
-    <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block">
-      <IconButton aria-label="delete" color="success" onClick={() => banUnbane("UnBan")}>
-        <VerifiedUserIcon />
-      </IconButton>
-    </Box>
-  );
-
-  const UnBanChip = <Chip size="small" label="Valid User" color="success" />
-  const banChip = <Chip size="small" label="Ban" color="error" />
-
-  function createData(name, email, status, action, img) {
-    return { name, email, status, action, img };
-  }
-
   const image = (
     <img
       style={imageStyle}
@@ -137,20 +123,6 @@ function AdminUser() {
       src="http://themes.iamabdus.com/dealsy/1.0/img/user/user-thumb.jpg"
     />
   );
-
-  const users = [
-    createData("Riyad", "riyad@gmail.com", UnBanChip, BanIconButton, image),
-    createData("Tajul islam", "tajulislam601@gmail.com", UnBanChip, BanIconButton, image),
-    createData("Sultan", "sultan@gmail.com", UnBanChip, BanIconButton, image),
-    createData("Rahatul", "rahatul@gmail.com", banChip, BanIconButton, image),
-    createData("Shariful", "shariful@gmail.com", UnBanChip, BanIconButton, image),
-    createData("Sadikul", "sadikul@gmail.com", UnBanChip, BanIconButton, image),
-    createData("Taosif", "taosif@gmail.com", banChip, BanIconButton, image),
-    createData("Alamin", "alamin@gmail.com", UnBanChip, BanIconButton, image),
-    createData("Anisa", "anisa@gmail.com", banChip, BanIconButton, image),
-    createData("Japan", "jobayed@gmail.com", UnBanChip, BanIconButton, image),
-    createData("France", "dadfdsf@gmail.com", UnBanChip, BanIconButton, image)
-  ];
 
   return (
     <>
@@ -162,7 +134,7 @@ function AdminUser() {
         mb={3}
       >
         <Typography variant="h4" color="#2FDD92">
-          Total User: {users.length}
+          Total User: {userStore.users.length}
         </Typography>
         <Button
           startIcon={<SearchIcon />}
@@ -188,24 +160,62 @@ function AdminUser() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {users.map((user, i) => {
-                if (user.status.props.label === "Ban") user.action = UnBanIconButton;
+              {userStore.users.map((user, i) => {
+                // if (user.status.props.label === "Ban") user.action = UnBanIconButton;
                 return (
-                  <StyledTableRow
-                    hover
-                    role="checkbox"
-                    tabIndex={-1}
-                    key={i}
+                  <TableRow
+                    key={user._id}
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
-                    {columns.map((column, i) => {
-                      const value = user[column.id];
-                      return (
-                        <TableCell key={i} align={column.align}>
-                          {value}
-                        </TableCell>
-                      );
-                    })}
-                  </StyledTableRow>
+                    <TableCell align="left">{image}</TableCell>
+                    <TableCell align="left">{user.name}</TableCell>
+                    <TableCell align="left">{user.email}</TableCell>
+                    <TableCell align="center">
+                      <Chip
+                        size="small"
+                        label={user.status === "BanUser" ? "Banned User" : "Valid User"}
+                        color={user.status === "BanUser" ? "error" : "success"}
+                      />
+                    </TableCell>
+                    <TableCell align="center">
+                      {
+                        user.status === "BanUser" ?
+
+                          <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block">
+                            <IconButton aria-label="delete" color="success"
+                              onClick={() => banUnbane("UnBan", user._id)}
+                            >
+                              <VerifiedUserIcon />
+                            </IconButton>
+                          </Box>
+                          :
+                          <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block">
+                            <IconButton aria-label="delete" color="error" onClick={() => banUnbane("Ban", user._id)}>
+                              <RemoveCircleIcon />
+                            </IconButton>
+                          </Box>
+
+                      }
+
+                      {/* <Box
+                          bgcolor="#c4cbcb"
+                          borderRadius="50%"
+                          display="inline-block"
+                        >
+                          <IconButton
+                            aria-label="delete"
+                            color="info"
+                            onClick={() => setOpenUpdate(true)}
+                          >
+                            <BorderColorIcon />
+                          </IconButton>
+                        </Box>
+                        {user.status === "Open"
+                          ? closeButton(user._id)
+                          : openButton(user._id)} */}
+
+                    </TableCell>
+                  </TableRow>
                 );
               })}
             </TableBody>
