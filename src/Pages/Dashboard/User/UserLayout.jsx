@@ -32,9 +32,9 @@ function UserLayout(props) {
   const sideMenu = [
     { name: "Home", icon: <HomeIcon />, path: "/user/dashboard" },
     {
-      name: "All Rooms",
+      name: "My Orders",
       icon: <BedroomChildIcon />,
-      path: "allRoom",
+      path: "myOrders",
     },
     {
       name: "Favourite",

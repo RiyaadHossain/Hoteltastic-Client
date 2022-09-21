@@ -69,7 +69,7 @@ function AdminUser() {
   const [open, setOpen] = React.useState(false);
   const userStore = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  // console.log(userStore);
+  console.log(userStore);
 
   const banUnbane = (action, id) => {
     // console.log(action, id);

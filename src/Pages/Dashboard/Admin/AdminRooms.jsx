@@ -193,7 +193,7 @@ export default function AdminRooms() {
                   key={row.name}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                   <TableCell align="left">{i+1}.</TableCell>
+                  <TableCell align="left">{i+1}.</TableCell>
                   <TableCell align="left">{image}</TableCell>
                   <TableCell align="left">{row.name}</TableCell>
                   <TableCell align="left">{row.price}</TableCell>
