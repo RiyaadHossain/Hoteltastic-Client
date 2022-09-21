@@ -72,9 +72,7 @@ function AddRoomModal({ open, setOpen }) {
       const imgUrl = data.data.url
       const dataToSend = {...fulldata,picture:imgUrl}
 
-
-      // ----------------------riad vai you just need to dispatch----------------------------//
-      // dispatch(postRoom({ ...data, picture }));
+      dispatch(postRoom({ ...dataToSend }));
 
 
 
@@ -86,8 +84,6 @@ function AddRoomModal({ open, setOpen }) {
       )
       setOpen(false);
       reset()
-      // -------------------------------see the data from console--------------------//
-      console.log(dataToSend);
     }
     else{
       Swal.fire({
