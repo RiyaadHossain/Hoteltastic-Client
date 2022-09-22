@@ -7,7 +7,7 @@ if (localData) { token = JSON.parse(localData) }
 const client = axios.create({
     baseURL: URL,
     headers: {
-        authorization: `Bearer ${token.token}`
+        authorization: `Bearer ${token && token.token}`
     }
 })
 
