@@ -136,13 +136,7 @@ export default function AdminRooms() {
     );
   };
 
-  const image = (
-    <img
-      style={imageStyle}
-      alt=""
-      src="https://images.unsplash.com/photo-1551963831-b3b1ca40c98e"
-    />
-  );
+  const image = (url) => <img style={imageStyle} alt="" src={url} />;
 
   return (
     <>
@@ -154,7 +148,7 @@ export default function AdminRooms() {
         mb={3}
       >
         <Typography variant="h3" color="#2FDD92">
-          Total Rooms: 25
+          Total Rooms: {room.rooms.length}
         </Typography>
         <Button
           variant="contained"
@@ -170,11 +164,7 @@ export default function AdminRooms() {
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
-                <StyledTableCell
-                //  key={column.id}
-                //  align={column.align}
-                //  style={{ minWidth: column.minWidth }}
-                >
+                <StyledTableCell>
                   Sl No
                 </StyledTableCell>
                 {columns.map((column, i) => (
@@ -195,9 +185,9 @@ export default function AdminRooms() {
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell align="left">{i + 1}.</TableCell>
-                  <TableCell align="left">{image}</TableCell>
-                  <TableCell align="left">{row.name}</TableCell>
-                  <TableCell align="left">{row.price}</TableCell>
+                  <TableCell align="left">{image(row.propertyImage)}</TableCell>
+                  <TableCell align="left">{row.propertyName}</TableCell>
+                  <TableCell align="left">{row.startFrom}</TableCell>
                   <TableCell align="center">
                     <Chip
                       size="small"

@@ -18,6 +18,13 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
 import { updateRoom } from "../../../Store/room/roomAction";
+import { useEffect } from "react";
+import {
+  deleteFavourites,
+  getFavourites,
+} from "../../../Store/user/userAction";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const columns = [
   {
@@ -61,9 +68,12 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 function FavouriteRoom() {
   const [open, setOpen] = React.useState(false);
   const [openUpdate, setOpenUpdate] = React.useState(false);
-  const room = useSelector((state) => state.room);
+  const favourites = useSelector((state) => state.user?.favourites);
   const dispatch = useDispatch();
-  console.log(room);
+
+  useEffect(() => {
+    dispatch(getFavourites());
+  }, [dispatch]);
 
   let closeRoom = (id) => {
     Swal.fire({
@@ -97,7 +107,8 @@ function FavouriteRoom() {
       confirmButtonText: "Yes, Activate it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch(updateRoom({ id, status: "Open" }));
+        console.log(id)
+        dispatch(deleteFavourites({ id }));
         Swal.fire(
           "Activated!",
           "Room status has been set to Activate.",
@@ -107,7 +118,7 @@ function FavouriteRoom() {
     });
   };
 
-  const closeButton = (id) => {
+  /*   const closeButton = (id) => {
     return (
       <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block" ml={2}>
         <IconButton
@@ -126,22 +137,16 @@ function FavouriteRoom() {
       <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block" ml={2}>
         <IconButton
           aria-label="Active"
-          color="success"
+          color="error"
           onClick={() => openRoom(id)}
         >
-          <CheckCircleIcon />
+          <FavoriteIcon />
         </IconButton>
       </Box>
     );
-  };
+  }; */
 
-  const image = (
-    <img
-      style={imageStyle}
-      alt=""
-      src="https://images.unsplash.com/photo-1551963831-b3b1ca40c98e"
-    />
-  );
+  const image = (url) => <img style={imageStyle} alt="" src={url} />;
 
   return (
     <>
@@ -153,29 +158,15 @@ function FavouriteRoom() {
         mt={5}
       >
         <Typography variant="h3" color="#2FDD92">
-          Total Rooms: 25
+          Total Favourites: {favourites?.length}
         </Typography>
-        <Button
-          variant="contained"
-          startIcon={<AddCircle />}
-          onClick={() => setOpen(true)}
-        >
-          Add Room
-        </Button>
-        <AddRoomModal open={open} setOpen={setOpen} />
       </Box>
       <Paper sx={{ width: "100%", overflow: "hidden" }}>
         <TableContainer>
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
-                <StyledTableCell
-                //  key={column.id}
-                //  align={column.align}
-                //  style={{ minWidth: column.minWidth }}
-                >
-                  Sl No
-                </StyledTableCell>
+                <StyledTableCell>Sl No</StyledTableCell>
                 {columns.map((column, i) => (
                   <StyledTableCell
                     key={i}
@@ -188,15 +179,17 @@ function FavouriteRoom() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {room.rooms.map((row, i) => (
+              {favourites?.map((row, i) => (
                 <TableRow
                   key={row.name}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell align="left">{i + 1}.</TableCell>
-                  <TableCell align="left">{image}</TableCell>
-                  <TableCell align="left">{row.name}</TableCell>
-                  <TableCell align="left">{row.price}</TableCell>
+                  <TableCell align="left">
+                    {image(row?.room?.propertyImage)}
+                  </TableCell>
+                  <TableCell align="left">{row?.room?.propertyName}</TableCell>
+                  <TableCell align="left">{row?.room?.startFrom}</TableCell>
                   <TableCell align="center">
                     <Chip
                       size="small"
@@ -210,18 +203,16 @@ function FavouriteRoom() {
                         bgcolor="#c4cbcb"
                         borderRadius="50%"
                         display="inline-block"
+                        ml={2}
                       >
                         <IconButton
-                          aria-label="delete"
-                          color="info"
-                          onClick={() => setOpenUpdate(row)}
+                          aria-label="Active"
+                          color="error"
+                          onClick={() => openRoom(row._id)}
                         >
-                          <BorderColorIcon />
+                          <FavoriteIcon />
                         </IconButton>
                       </Box>
-                      {row.status === "Open"
-                        ? closeButton(row._id)
-                        : openButton(row._id)}
                     </>
                   </TableCell>
                 </TableRow>
