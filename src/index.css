@@ -149,118 +149,89 @@ a {
 }
 /* ====================About project team card ================================= */
 
-/* From uiverse.io by @abrahamcalsin */
-.card-client {
-  background: #2cb5a0;
-  width: 13rem;
-  margin : "40px 0";
-  padding-top: 25px;
-  padding-bottom: 25px;
-  padding-left: 20px;
-  padding-right: 20px;
-  border: 4px solid #7cdacc;
-  box-shadow: 0 6px 10px rgba(207, 212, 222, 1);
+/* From uiverse.io by @gagan-gv */
+.teamCard{
+  width: 190px;
+  height: 254px;
+  background: #f0f0f0;
   border-radius: 10px;
   text-align: center;
-  color: #fff;
-  font-family: "Poppins", sans-serif;
-  transition: all 0.3s ease;
-}
-
-.card-client:hover {
-  transform: translateY(-10px);
-}
-
-.user-picture {
-  overflow: hidden;
-  object-fit: cover;
-  width: 5rem;
-  height: 5rem;
-  border: 4px solid #7cdacc;
-  border-radius: 999px;
+  transition: all 0.5s;
+ }
+ 
+ .teamCard:hover {
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.623);
+  background-color: #4bb8ff;
+ }
+ 
+ .teamCard .blob {
+  height: 10px;
+  width: 75%;
+  border-radius: 0 0 30px 30px;
+  margin: 0 auto;
+  background-color: #4bb8ff;
+  visibility: visible;
+  transition: all 0.3s;
+ }
+ 
+ .teamCard:hover .blob {
+  height: 0;
+ }
+ 
+ .teamCard .img {
   display: flex;
+  margin: 30px auto 10px auto;
+  width: 70px;
+  height: 70px;
+  background-color: #4bb8ff;
+  border-radius: 50%;
+  font-size: 11px;
   justify-content: center;
   align-items: center;
-  margin: auto;
-}
-
-.user-picture svg {
-  width: 2.5rem;
-  fill: currentColor;
-}
-
-.name-client {
-  margin: 0;
-  margin-top: 20px;
-  font-weight: 600;
-  font-size: 18px;
-}
-
-.name-client span {
-  display: block;
-  font-weight: 200;
-  font-size: 16px;
-}
-
-.social-media:before {
-  content: " ";
-  display: block;
+  transition: all 0.5s;
+ }
+ 
+ .teamCard:hover .img {
   width: 100%;
-  height: 2px;
-  margin: 20px 0;
-  background: #7cdacc;
-}
-
-.social-media a {
-  position: relative;
-  margin-right: 15px;
-  text-decoration: none;
-  color: inherit;
-}
-
-.social-media a:last-child {
-  margin-right: 0;
-}
-
-.social-media a svg {
-  width: 1.1rem;
-  fill: currentColor;
-}
-
-/*-- Tooltip Social Media --*/
-.tooltip-social {
-  background: #262626;
-  display: block;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  padding: 0.5rem 0.4rem;
-  border-radius: 5px;
-  font-size: 0.8rem;
-  font-weight: 600;
+  height: 70%;
+  border-radius: 10px 0 0;
+  margin: 0 auto;
+  background-color: #f0f0f0;
+  z-index: 99999;
+ }
+ 
+ .teamCard h2 {
+  padding: 15px 10px;
+  font-size: 25px;
+  transition: all 0.1s;
+  z-index: -99;
+  line-height: 17px;
+ }
+ 
+ .teamCard span {
+  font-size: 18px;
+ }
+ 
+ .teamCard:hover h2 {
   opacity: 0;
-  pointer-events: none;
-  transform: translate(-50%, -90%);
-  transition: all 0.2s ease;
-  z-index: 1;
-}
-
-.tooltip-social:after {
-  content: " ";
+  width: 100%;
   position: absolute;
-  bottom: 1px;
-  left: 50%;
-  border: solid;
-  border-width: 10px 10px 0 10px;
-  border-color: transparent;
-  transform: translate(-50%, 100%);
-}
-
-.social-media a .tooltip-social:after {
-  border-top-color: #262626;
-}
-
-.social-media a:hover .tooltip-social {
+  transition: all 0.5s;
+ }
+ 
+ .teamCard>p {
+  opacity: 0;
+  transition: all 0.75s;
+ }
+ 
+ .teamCard>p>svg {
+  padding: 5px;
+ }
+ 
+ .teamCard:hover>p {
+  position: absolute;
+  bottom: 15px;
+  left: 35px;
   opacity: 1;
-  transform: translate(-50%, -130%);
-}
+  transition: all 0.1s;
+ }
