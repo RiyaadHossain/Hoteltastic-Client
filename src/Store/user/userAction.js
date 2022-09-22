@@ -19,7 +19,7 @@ export const updateUser = ({ id, ...rest }) => {
 		try {
 			const { data } = await client.patch(`/api/user/updateUser/${id}`, rest)
 			if (data) {
-				dispatch(userActions.updateUser)
+				dispatch(userActions.updateUser())
 				dispatch(getUsers())
 			}
 		} catch (error) {
@@ -41,4 +41,47 @@ export const getAdmins = () => {
 	}
 }
 
+const getFavourites = () => {
+	return async dispatch => {
+		try {
+			const { data } = await client.get('/api/user/favourite-room')
+			if (data) {
+				dispatch(userActions.getFavourites(data?.favouriteRoom))
+			}
+		} catch (error) {
+			console.log(error)
+		}
+	}
+}
+
+export const postFavourites = (body) => {
+	return async dispatch => {
+		try {
+			const { data } = await client.post(`/api/user/favourite-room/`, body)
+			if (data) {
+				dispatch(getFavourites())
+				dispatch(userActions.updateFavaourite())
+			}
+		} catch (error) {
+			console.log(error)
+		}
+	}
+}
+
+export const deleteFavourites = ({ id }) => {
+	return async dispatch => {
+		try {
+			console.log({ id })
+			const { data } = await client.delete(`/api/user/favourite-room/${id}`)
+			if (data) {
+				dispatch(getFavourites())
+				dispatch(userActions.deleteFavaourite())
+			}
+		} catch (error) {
+			console.log(error)
+		}
+	}
+}
+
 export default getUsers
+export { getFavourites }
