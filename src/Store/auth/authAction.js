@@ -11,6 +11,7 @@ export const signIn = userData => {
 					email: data.user.email,
 				})
 				localStorage.setItem('user', user)
+				localStorage.setItem('token', data.token)
 				dispatch(authAction.signIn(data))
 			}
 		} catch (error) {
