@@ -69,7 +69,6 @@ function AdminUser() {
   const [open, setOpen] = React.useState(false);
   const userStore = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  console.log(userStore);
 
   const banUnbane = (action, id) => {
     // console.log(action, id);
@@ -149,15 +148,10 @@ function AdminUser() {
             <TableHead>
               <TableRow>
               <StyledTableCell
-                  //  key={column.id}
-                  //  align={column.align}
-                  //  style={{ minWidth: column.minWidth }}
                  >
                    Sl No
                  </StyledTableCell>
                 {columns.map((column) => (
-                   <>
-                   
                   <StyledTableCell
                     key={column.id}
                     align={column.align}
@@ -165,7 +159,6 @@ function AdminUser() {
                   >
                     {column.label}
                   </StyledTableCell>
-                   </>
                 ))}
               </TableRow>
             </TableHead>
