@@ -10,18 +10,19 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import FolderSpecialIcon from '@mui/icons-material/FolderSpecial';
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Logo from "../../../Assets/Logo/logo.png";
 import { Outlet, useNavigate } from "react-router-dom";
-import BedroomChildIcon from "@mui/icons-material/BedroomChild";
+import { blue } from "@mui/material/colors";
 import HomeIcon from "@mui/icons-material/Home";
+import BedroomChildIcon from "@mui/icons-material/BedroomChild";
+import FolderSpecialIcon from '@mui/icons-material/FolderSpecial';
 
 const drawerWidth = 230;
 
 function UserLayout(props) {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -34,7 +35,7 @@ function UserLayout(props) {
     {
       name: "All Rooms",
       icon: <BedroomChildIcon />,
-      path: "allRoom",
+      path: "myOrders",
     },
     {
       name: "Favourite",
@@ -49,11 +50,13 @@ function UserLayout(props) {
       <Divider />
       <List>
         {sideMenu.map((menu, index) => (
-          <ListItem key={index} disablePadding onClick={() => navigate(`${menu.path}`)}>
+          <ListItem
+            key={index}
+            disablePadding
+            onClick={() => navigate(`${menu.path}`)}
+          >
             <ListItemButton>
-              <ListItemIcon>
-                {menu.icon}
-              </ListItemIcon>
+              <ListItemIcon> {menu.icon} </ListItemIcon>
               <ListItemText primary={menu.name} />
             </ListItemButton>
           </ListItem>
@@ -66,11 +69,11 @@ function UserLayout(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex" }} bgcolor="#e8ebed">
       <CssBaseline />
       <AppBar
         position="fixed"
-        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, bgcolor: blue[300] }}
       >
         <Toolbar>
           <IconButton
@@ -111,6 +114,7 @@ function UserLayout(props) {
               boxSizing: "border-box",
               width: drawerWidth,
             },
+            position: "sticky",
           }}
         >
           {drawer}
@@ -123,6 +127,7 @@ function UserLayout(props) {
               boxSizing: "border-box",
               width: drawerWidth,
             },
+            position: "sticky",
           }}
           open
         >
@@ -135,8 +140,10 @@ function UserLayout(props) {
           flexGrow: 1,
           p: 3,
           width: { md: `calc(100% - ${drawerWidth}px)` },
+          background: `linear-gradient(to right, #085078, #85d8ce)`,
         }}
       >
+        {/* ---------------------just added the background here------------------------- */}
         <Toolbar />
         <Outlet />
       </Box>

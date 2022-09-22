@@ -11,6 +11,10 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { postRoom } from "../../../Store/room/roomAction";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { useState } from "react";
+import Spinner from '../../../Components/Loaders/Spinner/Spinner.jsx'
 
 const style = {
   position: "absolute",
@@ -41,28 +45,64 @@ const currencies = [
 ];
 
 function AddRoomModal({ open, setOpen }) {
+  const [loading,setLoading] = useState(false)
   const [currency, setCurrency] = React.useState("Two Room");
   const dispatch = useDispatch();
+
+   // imgStorage api for image upload
+   const imgStorage_key = `75bc4682c9291f359647ab98df5f76de`;
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm();
 
-  const onSubmit = (data) => {
-    const picture = data.picture[0];
+  const onSubmit = async (fulldata) => {
+    setLoading(true)
+    const picture = fulldata.picture[0];
 
-    dispatch(postRoom({ ...data, picture }));
+    const formData = new FormData();
+    formData.append("image", picture);
+    const url = `https://api.imgbb.com/1/upload?key=${imgStorage_key}`;
+
+    const {data} = await axios.post(url,formData)
+    if(data.success){
+      const imgUrl = data.data.url
+      const dataToSend = {...fulldata,picture:imgUrl}
+
+      dispatch(postRoom({ ...dataToSend }));
+
+
+
+      setLoading(false)
+      Swal.fire(
+        'Good job!',
+        'New room data has been added!',
+        'success'
+      )
+      setOpen(false);
+      reset()
+    }
+    else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Image upload failed!',
+      })
+    }
   };
 
   return (
-    <Modal
+    <>
+      <Modal
       open={open}
       onClose={() => setOpen(false)}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
+     
       <Box sx={style}>
         <Box
           display="flex"
@@ -83,7 +123,9 @@ function AddRoomModal({ open, setOpen }) {
           </Button>
         </Box>
         <Box>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          {
+             loading ? <Spinner/> : 
+             <form onSubmit={handleSubmit(onSubmit)}>
             <TextField
               fullWidth
               id="outlined-basic"
@@ -160,9 +202,11 @@ function AddRoomModal({ open, setOpen }) {
               </Button>
             </Box>
           </form>
+          }
         </Box>
       </Box>
     </Modal>
+    </>
   );
 }
 

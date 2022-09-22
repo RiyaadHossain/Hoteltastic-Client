@@ -4,7 +4,6 @@ import { roomActions } from "./roomSlice"
 const getRooms = () => {
     return async dispatch => {
         try {
-
             const { data } = await client.get("/api/room/allRooms")
             if (data) {
                 dispatch(roomActions.getRooms(data.rooms))
@@ -30,11 +29,12 @@ export const postRoom = (roomData) => {
     }
 }
 
-export const updateRoom = ({ id, roomData }) => {
+export const updateRoom = ({ id, ...rest }) => {
+    console.log(id, rest)
     return async dispatch => {
         try {
 
-            const { data } = await client.patch(`/api/room/updateRoom/${id}`, roomData)
+            const { data } = await client.patch(`/api/room/updateRoom/${id}`, rest)
             if (data) {
                 dispatch(roomActions.updateRoom)
                 dispatch(getRooms())

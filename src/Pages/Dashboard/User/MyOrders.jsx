@@ -8,11 +8,10 @@ import { styled } from "@mui/material/styles";
 import TableContainer from "@mui/material/TableContainer";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import { Box } from "@mui/system";
-import { Button, Chip, IconButton, Typography } from "@mui/material";
-import { AddCircle } from "@mui/icons-material";
+import { Chip, IconButton, Typography } from "@mui/material";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
-import AddRoomModal from "./AddRoomModal";
-import UpdateRoomModal from "./UpdateRoomModal";
+import AddRoomModal from "../Admin/AddRoomModal";
+import UpdateRoomModal from "../Admin/UpdateRoomModal";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CancelIcon from "@mui/icons-material/Cancel";
 import Swal from "sweetalert2";
@@ -58,7 +57,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
 }));
 
-export default function AdminRooms() {
+function MyOrders() {
   const [open, setOpen] = React.useState(false);
   const [openUpdate, setOpenUpdate] = React.useState(false);
   const room = useSelector((state) => state.room);
@@ -98,7 +97,6 @@ export default function AdminRooms() {
     }).then((result) => {
       if (result.isConfirmed) {
         dispatch(updateRoom({ id, status: "Open" }));
-        console.log(dispatch(updateRoom({ id, status: "Open" })));
         Swal.fire(
           "Activated!",
           "Room status has been set to Activate.",
@@ -146,25 +144,10 @@ export default function AdminRooms() {
 
   return (
     <>
-      <Box
-        display="flex"
-        justifyContent="space-between"
-        alignItems="center"
-        mt={6}
-        mb={3}
-      >
-        <Typography variant="h3" color="#2FDD92">
-          Total Rooms: 25
-        </Typography>
-        <Button
-          variant="contained"
-          startIcon={<AddCircle />}
-          onClick={() => setOpen(true)}
-        >
-          Add Room
-        </Button>
-        <AddRoomModal open={open} setOpen={setOpen} />
-      </Box>
+      <Typography variant="h3" color="#2FDD92" my={3} mt={5}>
+        Total Bookings: 25
+      </Typography>
+      <AddRoomModal open={open} setOpen={setOpen} />
       <Paper sx={{ width: "100%", overflow: "hidden" }}>
         <TableContainer>
           <Table stickyHeader aria-label="sticky table">
@@ -235,3 +218,5 @@ export default function AdminRooms() {
     </>
   );
 }
+
+export default MyOrders;

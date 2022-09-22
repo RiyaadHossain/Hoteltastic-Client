@@ -21,7 +21,7 @@ import { deepOrange } from "@mui/material/colors";
 const pages = [
   { name: "Home", path: "/" },
   { name: "Rooms", path: "/allRooms" },
-  { name: "About ", path: "/about" },
+  { name: "About ", path: "/aboutproject" },
   { name: "Contact", path: "/contact" },
 ];
 
@@ -35,8 +35,6 @@ function Navbar() {
   }
   const profileImg = auth.user.user?.avatar;
   const userName = auth.user.user?.name?.slice(0, 1)?.toUpperCase();
-  console.log(userName);
-  console.log(profileImg);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);

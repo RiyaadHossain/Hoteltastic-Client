@@ -9,11 +9,13 @@ import TableContainer from "@mui/material/TableContainer";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import { Box } from "@mui/system";
 import { Button, Chip, IconButton, Typography } from "@mui/material";
-import { AddCircle } from "@mui/icons-material";
+import SearchIcon from '@mui/icons-material/Search';
 import AddAdminModal from "./AddAdminModal";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import Swal from "sweetalert2";
+import { useDispatch, useSelector } from "react-redux";
+import { updateUser } from "../../../Store/user/userAction";
 
 
 
@@ -64,10 +66,14 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 
 function AdminUser() {
-  // const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
+  const userStore = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  console.log(userStore);
 
-  const banUnbane = (action) => {
-    if (action=== "Ban") {
+  const banUnbane = (action, id) => {
+    // console.log(action, id);
+    if (action === "Ban") {
       Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
@@ -78,6 +84,7 @@ function AdminUser() {
         confirmButtonText: 'Yes, Ban it!'
       }).then((result) => {
         if (result.isConfirmed) {
+          dispatch(updateUser({ id, status: "BanUser" }));
           Swal.fire(
             'Banned!',
             'User has been Banned.',
@@ -86,7 +93,8 @@ function AdminUser() {
         }
       })
     }
-    if (action=== "UnBan") {
+
+    if (action === "UnBan") {
       Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
@@ -97,6 +105,7 @@ function AdminUser() {
         confirmButtonText: 'Yes, UnBan it!'
       }).then((result) => {
         if (result.isConfirmed) {
+          dispatch(updateUser({ id, status: "ValidUser" }));
           Swal.fire(
             'Unbanned!',
             'User has been Unbanned.',
@@ -107,26 +116,6 @@ function AdminUser() {
     }
   };
 
-
-  const BanIconButton = (
-    <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block">
-      <IconButton aria-label="delete" color="error" onClick={()=>banUnbane("Ban")}>
-        <RemoveCircleIcon />
-      </IconButton>
-    </Box>
-  );
-  const UnBanIconButton = (
-    <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block">
-      <IconButton aria-label="delete" color="success" onClick={()=>banUnbane("UnBan")}>
-        <VerifiedUserIcon />
-      </IconButton>
-    </Box>
-  );
-
-  function createData(name, email, status, action, img) {
-    return { name, email, status, action, img };
-  }
-
   const image = (
     <img
       style={imageStyle}
@@ -135,28 +124,40 @@ function AdminUser() {
     />
   );
 
-  const users = [
-    createData("Riyad", "riyad@gmail.com", "", BanIconButton, image),
-    createData("Tajul islam", "tajulislam601@gmail.com", "Ban", BanIconButton, image),
-    createData("Sultan", "sultan@gmail.com", "Ban", BanIconButton, image),
-    createData("Rahatul", "rahatul@gmail.com", "", BanIconButton, image),
-    createData("Shariful", "shariful@gmail.com", "", BanIconButton, image),
-    createData("Sadikul", "sadikul@gmail.com", "Ban", BanIconButton, image),
-    createData("Taosif", "taosif@gmail.com", "", BanIconButton, image),
-    createData("Alamin", "alamin@gmail.com", "", BanIconButton, image),
-    createData("Anisa", "anisa@gmail.com", "", BanIconButton, image),
-    createData("Japan", "jobayed@gmail.com", "Ban", BanIconButton, image),
-    createData("France", "dadfdsf@gmail.com", "", BanIconButton, image)
-  ];
-
   return (
     <>
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        mt={2}
+        mb={3}
+      >
+        <Typography variant="h4" color="#2FDD92">
+          Total User: {userStore.users.length}
+        </Typography>
+        <Button
+          startIcon={<SearchIcon />}
+          variant="contained"
+        >
+          Search User
+        </Button>
+      </Box>
       <Paper sx={{ width: "100%", overflow: "hidden" }}>
         <TableContainer>
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
+              <StyledTableCell
+                  //  key={column.id}
+                  //  align={column.align}
+                  //  style={{ minWidth: column.minWidth }}
+                 >
+                   Sl No
+                 </StyledTableCell>
                 {columns.map((column) => (
+                   <>
+                   
                   <StyledTableCell
                     key={column.id}
                     align={column.align}
@@ -164,30 +165,68 @@ function AdminUser() {
                   >
                     {column.label}
                   </StyledTableCell>
+                   </>
                 ))}
               </TableRow>
             </TableHead>
             <TableBody>
-              {users.map((user, i) => {
-                if(user.status === "Ban"){
-                  user.action = UnBanIconButton
-                }
+              {userStore.users.map((user, i) => {
+                // if (user.status.props.label === "Ban") user.action = UnBanIconButton;
                 return (
-                  <StyledTableRow
-                    hover
-                    role="checkbox"
-                    tabIndex={-1}
-                    key={i}
+                  <TableRow
+                    key={user._id}
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
-                    {columns.map((column, i) => {
-                      const value = user[column.id];
-                      return (
-                        <TableCell key={i} align={column.align}>
-                          {value}
-                        </TableCell>
-                      );
-                    })}
-                  </StyledTableRow>
+                    <TableCell align="left">{i+1}.</TableCell>
+                    <TableCell align="left">{image}</TableCell>
+                    <TableCell align="left">{user.name}</TableCell>
+                    <TableCell align="left">{user.email}</TableCell>
+                    <TableCell align="center">
+                      <Chip
+                        size="small"
+                        label={user.status === "BanUser" ? "Banned User" : "Valid User"}
+                        color={user.status === "BanUser" ? "error" : "success"}
+                      />
+                    </TableCell>
+                    <TableCell align="center">
+                      {
+                        user.status === "BanUser" ?
+
+                          <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block">
+                            <IconButton aria-label="delete" color="success"
+                              onClick={() => banUnbane("UnBan", user._id)}
+                            >
+                              <VerifiedUserIcon />
+                            </IconButton>
+                          </Box>
+                          :
+                          <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block">
+                            <IconButton aria-label="delete" color="error" onClick={() => banUnbane("Ban", user._id)}>
+                              <RemoveCircleIcon />
+                            </IconButton>
+                          </Box>
+
+                      }
+
+                      {/* <Box
+                          bgcolor="#c4cbcb"
+                          borderRadius="50%"
+                          display="inline-block"
+                        >
+                          <IconButton
+                            aria-label="delete"
+                            color="info"
+                            onClick={() => setOpenUpdate(true)}
+                          >
+                            <BorderColorIcon />
+                          </IconButton>
+                        </Box>
+                        {user.status === "Open"
+                          ? closeButton(user._id)
+                          : openButton(user._id)} */}
+
+                    </TableCell>
+                  </TableRow>
                 );
               })}
             </TableBody>

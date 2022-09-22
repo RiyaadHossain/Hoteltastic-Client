@@ -12,6 +12,13 @@ import { Button, Chip, IconButton, Typography } from "@mui/material";
 import { AddCircle } from "@mui/icons-material";
 import AddAdminModal from "./AddAdminModal";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+import { useDispatch, useSelector } from "react-redux";
+import Swal from "sweetalert2";
+import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
+import { useEffect } from "react";
+// import { getAdmins } from "../../Store/user/getAdmins";
+import {getAdmins, updateUser}  from "../../../Store/user/userAction"
+ 
 
 const columns = [
   { id: "img", label: "Image", minWidth: 70 },
@@ -21,13 +28,13 @@ const columns = [
     id: "population",
     label: "Status",
     minWidth: 150,
-    align: "right",
+    align: "center",
   },
   {
     id: "size",
     label: "Action",
     minWidth: 170,
-    align: "right",
+    align: "center",
   },
 ];
 
@@ -58,10 +65,67 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 export default function AllAdmin() {
-  const [open, setOpen] = React.useState(false);
+  const dispatch = useDispatch();
+  const { admins } = useSelector((state) => state.user);
+  console.log(admins,'admins');
 
-  const banUnbane = () => {
+ 
+  useEffect(()=>{
+    dispatch(getAdmins())
+  },[dispatch,admins])
+
+
+  const [open, setOpen] = React.useState(false);
+  // const userStore = useSelector((state) => state.user)
+  // const dispatch = useDispatch()
+
+  const banUnbane = (action,id) => {
     console.log("ban admin");
+
+    if (action === "Ban") {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Yes, Ban it!',
+        buttonsStyling: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          dispatch(updateUser({ id, status: "BanUser" }));
+          Swal.fire(
+            'Banned!',
+            'User has been Banned.',
+            'success'
+          )
+        }
+      })
+    }
+
+    if (action === "UnBan") {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, UnBan it!',
+        buttonsStyling: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          dispatch(updateUser({ id, status: "ValidUser" }));
+          Swal.fire(
+            'Unbanned!',
+            'User has been Unbanned.',
+            'success'
+          )
+        }
+      })
+    }
+
   };
 
   const chip = <Chip size="small" label="active" color="success" />;
@@ -112,7 +176,7 @@ export default function AllAdmin() {
         mb={3}
       >
         <Typography variant="h3" color="#2FDD92">
-          Total Admin: 25
+          Total Admin: {admins.length}
         </Typography>
         <Button
           variant="contained"
@@ -128,6 +192,10 @@ export default function AllAdmin() {
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
+              <StyledTableCell
+                 >
+                   Sl No
+                 </StyledTableCell>
                 {columns.map((column) => (
                   <StyledTableCell
                     key={column.id}
@@ -140,23 +208,58 @@ export default function AllAdmin() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row, i) => {
+              {admins.map((admin, i) => {
+                // if (user.status.props.label === "Ban") user.action = UnBanIconButton;
                 return (
-                  <StyledTableRow
+                  <TableRow
                     hover
                     role="checkbox"
                     tabIndex={-1}
                     key={i}
                   >
-                    {columns.map((column, i) => {
+
+                    <TableCell align="left">{i+1}.</TableCell>
+                    <TableCell align="left">{image}</TableCell>
+                    <TableCell align="left">{admin.name}</TableCell>
+                    <TableCell align="left">{admin.email}</TableCell>
+                    <TableCell align="center">
+                      <Chip
+                        size="small"
+                        label={admin.status === "BanUser" ? "Banned User" : "Admin"}
+                        color={admin.status === "BanUser" ? "error" : "success"}
+                      />
+                    </TableCell>
+                    <TableCell align="center">
+                      {
+                          admin.status === "BanUser" ?
+
+                          <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block">
+                            <IconButton aria-label="delete" color="success"
+                              onClick={() => banUnbane("UnBan", admin._id)}
+                            >
+                              <VerifiedUserIcon />
+                            </IconButton>
+                          </Box>
+                          :
+                          <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block">
+                            <IconButton aria-label="delete" color="error" onClick={() => banUnbane("Ban",admin._id)}>
+                              <RemoveCircleIcon />
+                            </IconButton>
+                          </Box>
+
+                      }
+
+
+                    {/* {columns.map((column, i) => {
                       const value = row[column.id];
                       return (
                         <TableCell key={i} align={column.align}>
                           {value}
                         </TableCell>
                       );
-                    })}
-                  </StyledTableRow>
+                    })} */}
+                    </TableCell>
+                  </TableRow>
                 );
               })}
             </TableBody>

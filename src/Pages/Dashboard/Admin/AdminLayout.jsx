@@ -120,7 +120,7 @@ function AdminLayout(props) {
               boxSizing: "border-box",
               width: drawerWidth,
             },
-            position: 'sticky' // Rakib Vaiya ----------------------------------------------------------------------------------- Here -------------------------------------
+            position: 'sticky'
           }}
         >
           {drawer}
@@ -133,7 +133,7 @@ function AdminLayout(props) {
               boxSizing: "border-box",
               width: drawerWidth,
             },
-            position: 'sticky' 
+            position: 'sticky' ,
           }}
           open
         >
@@ -146,8 +146,10 @@ function AdminLayout(props) {
           flexGrow: 1,
           p: 3,
           width: { md: `calc(100% - ${drawerWidth}px)` },
+          background: `linear-gradient(to right, #085078, #85d8ce)`
         }}
       >
+        {/* ---------------------just added the background here------------------------- */}
         <Toolbar />
         <Outlet />
       </Box>
