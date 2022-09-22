@@ -71,8 +71,7 @@ const CheckoutForm = () => {
   
     return (
         <>
-        {
-        !success ? 
+        {!success ? 
             <form onSubmit={handleSubmit}>
                 <fieldset className="FormGroup">
                     <div className="FormRow">

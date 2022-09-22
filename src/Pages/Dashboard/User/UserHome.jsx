@@ -1,6 +1,7 @@
 import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
 import CardForDashboard from "../../../Components/MiniCard/CardForDashboard";
+import PaymentContainer from "../../../Components/Payment/PaymentContainer";
 import CustomBarChart from "../../Property/Chart/CustomBarChart";
 import AreaChartDashboard from "../Admin/AreaChart/AreaChartDashboard";
 import ComposedBarDashboard from "../Admin/ComposedBar/ComposedBarDashboard";
@@ -175,6 +176,7 @@ function UserHome() {
           </Grid>
         </Grid>
       </Box>
+      <PaymentContainer></PaymentContainer>
     </Box>
   );
 }
