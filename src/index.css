@@ -153,6 +153,7 @@ a {
 .card-client {
   background: #2cb5a0;
   width: 13rem;
+  margin : "40px 0";
   padding-top: 25px;
   padding-bottom: 25px;
   padding-left: 20px;
