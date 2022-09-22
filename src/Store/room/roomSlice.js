@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    loading: false,
+    loading: true,
     success: false,
     message: '',
-    rooms: []
+    rooms: [],
+    singleRoom: {},
 }
 
 const roomSlice = createSlice({
@@ -13,6 +14,10 @@ const roomSlice = createSlice({
     reducers: {
         getRooms: (state, actions) => {
             state.rooms = actions.payload
+        },
+        getSRoom: (state, actions) => {
+            state.singleRoom = actions.payload;
+            state.loading = false;
         },
         postRoom: state => {
             state.message = 'New Room added Successfully'

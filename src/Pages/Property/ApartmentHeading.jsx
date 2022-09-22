@@ -6,7 +6,7 @@ import PrintIcon from "@mui/icons-material/Print";
 import SyncAltIcon from "@mui/icons-material/SyncAlt";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
-const ApartmentHeading = () => {
+const ApartmentHeading = ({room}) => {
   const value = 4.5;
   return (
     // main container
@@ -53,7 +53,7 @@ const ApartmentHeading = () => {
               },
             }}
           >
-            The Citizen Apartment
+            {room.propertyName}
           </Typography>
           <Box sx={{ display: "flex" }}>
             <Button
@@ -105,7 +105,7 @@ const ApartmentHeading = () => {
               fontWeight: "bold",
             }}
           >
-            $30,000.00
+            ${room.startFrom}
           </Typography>
         </Box>
       </Box>
