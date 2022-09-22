@@ -16,14 +16,17 @@ import SyncAltIcon from "@mui/icons-material/SyncAlt";
 import SquareTwoToneIcon from "@mui/icons-material/SquareTwoTone";
 import BathroomTwoToneIcon from "@mui/icons-material/BathroomTwoTone";
 import BedTwoToneIcon from "@mui/icons-material/BedTwoTone";
+import { useNavigate } from "react-router-dom";
 
-function Room({ room}) {
+function Room({ room }) {
+  const navigate = useNavigate()
+
   return (
     <Card
       sx={{
         display: "flex",
         maxWidth: 680,
-        minHeight: 350,
+        height: 370,
         margin: "0 auto",
         mt: 4,
         flexDirection: { xs: "column", md: "row" },
@@ -32,11 +35,10 @@ function Room({ room}) {
       <CardMedia
         component="img"
         sx={{
-          maxWidth: { xs: "100%" },
+          maxWidth: { md: "317px" },
           height: { xs: "350px", md: "inherit" },
         }}
-        image="http://azim.commonsupport.com/Realshed/assets/images/resource/deals-4.jpg"
-        alt="Live from space album cover"
+        image={room.propertyImage}
       />
       <Box sx={{ display: "flex", flexDirection: "column" }}>
         <CardContent
@@ -55,7 +57,7 @@ function Room({ room}) {
             }}
             fontWeight="500"
           >
-            {room.title || "Family Home For Sale"}
+            {room.propertyName || "Family Home For Sale"}
           </Typography>
           <Box
             sx={{
@@ -82,7 +84,7 @@ function Room({ room}) {
                   },
                 }}
               >
-                {room.price || "$ 977"}
+                {room.startFrom || "$ 977"}
               </Typography>
             </Box>
             <Tooltip
@@ -113,7 +115,7 @@ function Room({ room}) {
                 sx={{ textTransform: "capitalize" }}
                 startIcon={<BedTwoToneIcon />}
               >
-                3 Beds
+                {room.beds} Beds
               </Button>
             </Box>
             <Divider orientation="vertical" flexItem />
@@ -131,7 +133,7 @@ function Room({ room}) {
                 sx={{ textTransform: "lowercase" }}
                 startIcon={<SquareTwoToneIcon />}
               >
-                1200 sq
+                {room.sqFt} sq
               </Button>
             </Box>
           </Box>
@@ -139,6 +141,7 @@ function Room({ room}) {
 
           <Box display="flex" alignItems="center" mt={3}>
             <Button
+            onClick={() => navigate(`/property/${room._id}`)}
               sx={{
                 color: "#93959e",
                 border: "1px solid #e5e7ec",

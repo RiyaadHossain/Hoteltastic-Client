@@ -40,7 +40,7 @@ const PropertyDetails = () => {
 
                     }}
                     >
-                         Property ID: <Typography color="#808288"> ZOP251C</Typography>
+                         Property ID: <Typography color="#808288">ZOP251C</Typography>
                     </Typography>
                     <Typography sx={{
                          display: "flex",

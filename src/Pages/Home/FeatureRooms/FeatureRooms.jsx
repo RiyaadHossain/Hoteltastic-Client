@@ -1,19 +1,20 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import FeatureRoom from './FeatureRoom';
 
 const FeatureRooms = () => {
-     const [features, setFeatures] = useState([])
-     useEffect(() => {
-          axios.get(`features.json`).then(data => setFeatures(data.data))
-     }, [])
+     const roomStore = useSelector((state) => state.room).rooms;
+     const rooms = [...roomStore]
+     const navigate = useNavigate()
      return (
           <Box sx={{
                backgroundColor: "#e5f8ed",
                textAlign: "center",
                fontFamily: "'Rubik', sans-serif",
-               padding: "80px 0px 120px 0px "
+               padding: "80px 0px 80px 0px "
           }}>
                <Typography
                     sx={{
@@ -42,7 +43,7 @@ const FeatureRooms = () => {
                     }}
                     fontWeight="bold"
                >
-                    Featured Property
+                    Featured Room
                </Typography>
 
                <Typography
@@ -54,7 +55,7 @@ const FeatureRooms = () => {
                          },
                          margin: "0 auto"
                     }}
-                    color="#93959e"     
+                    color="#93959e"
                >
                     Lorem ipsum dolor sit amet consectetur adipisicing sed do eiusmod tempor incididunt
                     labore dolore magna aliqua enim.
@@ -67,14 +68,32 @@ const FeatureRooms = () => {
                     marginTop: "30px"
                }}>
                     {
-                         features.map(feature => <FeatureRoom
-                              key={feature.id}
-                              feature={feature}
+                         rooms.reverse().slice(0, 3).map(room => <FeatureRoom
+                              key={room.id}
+                              room={room}
                          />)
                     }
                </Box>
 
+               <Button
+                    onClick={() => navigate(`/allRooms`)}
+                    sx={{
+                         color: "white",
+                         border: "1px solid #2dbe6c",
+                         background: "#2dbe6c",
+                         mt: 1,
+                         padding: "9px 0px",
+                         fontSize: "15px",
+                         width: "160px",
+                         boxShadow: "inset 0 0 0 0 white",
+                         transition: "ease-out 0.5s",
+                         "&:hover": {
+                              color: "#2dbe6c",
+                              boxShadow: "inset 160px 0 0 0 white",
+                         }
 
+                    }} >See All Rooms
+               </Button>
           </Box>
      );
 };
