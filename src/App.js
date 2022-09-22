@@ -48,7 +48,7 @@ function App() {
 					dispatch(socialSignIn(data.user._json.email))
 				}
 			} catch (error) {
-				console.log(error)
+				// console.log(error)
 			}
 		}
 		user()
@@ -71,7 +71,7 @@ function App() {
 						<Route element={<Layout />} path="/">
 							<Route index element={<LandingPage />} path="" />
 							<Route element={<AllRooms />} path="allRooms" />
-							<Route element={<Properties />} path="property" />
+							<Route element={<Properties />} path="property/:id" />
 							<Route element={<SignIn />} path="signin" />
 							<Route element={<SignUp />} path="signup" />
 							<Route element={<AboutProject />} path="aboutproject" />

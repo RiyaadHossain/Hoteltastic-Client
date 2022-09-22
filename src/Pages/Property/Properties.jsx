@@ -14,18 +14,28 @@ import PropertyRating from './PropertyRating/PropertyRating';
 import PageStatistics from './Chart/PageStatistics';
 import CustomHeader from '../../Components/CustomHeader';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import getReviews from '../../Store/review/reviewAction';
+import { useParams } from 'react-router-dom';
+import { getSingleRoom } from '../../Store/room/roomAction';
+import FullScreenSpinner from '../../Components/Loaders/Spinner/FullScreenSpinner';
 
 const Properties = () => {
+    const { id } = useParams();
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getReviews())
+        dispatch(getSingleRoom(id))
     }, [dispatch])
+    const roomStore = useSelector((state) => state.room);
+    if (roomStore.loading) return <FullScreenSpinner />
+    // const { featured, authorThumb, authorName, status, beds, baths, sqFt, saved, _id, propertyName, propertyImage, propertyDesciption, startFrom } = roomStore?.singleRoom;
+    // console.log(roomStore.singleRoom);
+
     return (
         <Box sx={{ fontFamily: "'Rubik', sans-serif", }}>
             {/* header part */}
-           <CustomHeader nested>Property Detials 01</CustomHeader>
+            <CustomHeader nested>Property Detials 01</CustomHeader>
             {/* all other components are showing here */}
             <Box sx={{
                 padding: {
@@ -40,7 +50,7 @@ const Properties = () => {
                 },
                 mx: 'auto',
             }}>
-                <ApartmentHeading />
+                <ApartmentHeading room={roomStore?.singleRoom} />
 
                 <Box sx={{
                     display: "flex",
@@ -59,7 +69,7 @@ const Properties = () => {
                         <PropertyDetails />
                         <Location />
                         <PropertyRating />
-                        <PageStatistics/>
+                        <PageStatistics />
                     </Box>
 
                     {/* Property Side Bar */}

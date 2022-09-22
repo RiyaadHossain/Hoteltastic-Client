@@ -37,10 +37,13 @@ const CheckoutForm = () => {
     const stripe = useStripe();
     const elements = useElements();
 
+    console.log(success)
+
 
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        console.log('payment problem');
         const {error, paymentMethod} = await stripe.createPaymentMethod({
             type: "card",
             card: elements.getElement(CardElement)
@@ -49,9 +52,10 @@ const CheckoutForm = () => {
         if(!error) {
             try {
                 const {id} = paymentMethod
-                const response = await axios.post("http://localhost:5000/payment", {
+                const response = await axios.post("http://localhost:5001/api/payment", {
                     amount: 1000,
-                    id
+                    userId:id,
+                    payment:true
                 })
     
                 if(response.data.success) {
@@ -78,7 +82,7 @@ const CheckoutForm = () => {
                         <CardElement options={CARD_OPTIONS}/>
                     </div>
                 </fieldset>
-                <button>Pay</button>
+                <button style={{cursor:'pointer'}}>Pay</button>
             </form>
         :
             <div>
