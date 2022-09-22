@@ -10,6 +10,7 @@ import axios from "axios";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 const style = {
   position: "absolute",
@@ -26,16 +27,20 @@ const PropertyRating = () => {
   useEffect(() => {
     axios.get(`userReviews.json`).then((data) => setReviews(data.data));
   }, []);
-  // console.log(reviews);
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
   return (
     <Box
       sx={{
         padding: "22px 30px",
-        // marginBottom: "30px",
         backgroundColor: "#ffffff",
         boxShadow: "0 10px 30px 0px rgb(0 0 0 / 10%)",
         borderRadius: "10px",
@@ -83,7 +88,9 @@ const PropertyRating = () => {
                 label="Name"
                 variant="outlined"
                 multiline
+
               />
+
               <TextField
                 sx={{
                   background: "none",
@@ -104,6 +111,7 @@ const PropertyRating = () => {
               />
 
               <Button
+                type="submit"
                 variant="outlined"
                 sx={{
                   background: "#2dbe6c",

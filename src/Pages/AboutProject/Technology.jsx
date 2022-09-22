@@ -20,14 +20,13 @@ const Photo = styled.img`
   height: ${(props) => props.scale * 200}px;
   border-radius: 4px;
   box-shadow: 0 7px 20px 0 rgba(0, 0, 0, 0.12);
-  object-fit: cover;
+  object-fit: contain;
   object-position: top;
   margin-left: ${(props) => (props.offset === "true" ? props.scale * 7 : props.scale * 87)}px;
   margin-right: ${(props) => (props.offset === "true" ? props.scale * 80 : 0)}px;
 `;
 
 const photos = [
-    // "../../Assets/Image/aboutproject/js.png",
     "https://abusaid.netlify.app/static/media/react.2b6a0717.svg",
     "https://abusaid.netlify.app/static/media/react.2b6a0717.svg",
     "https://abusaid.netlify.app/static/media/react.2b6a0717.svg",

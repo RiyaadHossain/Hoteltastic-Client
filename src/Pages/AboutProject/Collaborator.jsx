@@ -51,12 +51,7 @@ const news = [
 
 const Collaborator = () => {
   return (
-    <Box
-      xs={{
-        margin: "40px 0",
-        display: " flex",
-      }}
-    >
+    <Box sx={{ margin: "40px auto", display: " flex", justifyContent: 'center'}}>
       <Box class="card-client">
         <div class="user-picture">
           <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
