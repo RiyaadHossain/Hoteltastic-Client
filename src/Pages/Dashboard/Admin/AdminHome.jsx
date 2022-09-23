@@ -12,6 +12,7 @@ import PaidIcon from '@mui/icons-material/Paid';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import LittleChart from './LittleChart/LittleChart'
 import LittleChartBar from './LittleChart/LittleChartBar'
+import PieChartLittle from './LittleChart/PieChartLittle'
 
 
 
@@ -238,7 +239,29 @@ function AdminHome() {
                     </Box>
                     </Box>
                   </Grid>
-                  <Grid item xs={12} sm={12}>big littel</Grid>
+
+                  <Grid item xs={12} sm={12}>
+                    <Box sx={{
+                      display:'flex',
+                      justifyContent:'space-between',
+                      alignItems:'center',
+                      border:'1px solid #ccc',
+                      borderRadius:'5px',
+                      boxShadow: '2px 2px 10px 1px rgba(0, 0, 0, 0.2)',
+                      padding:2
+                    }}>
+                      <Box>
+                        <Typography>Earnings</Typography>
+                        <Typography>This Month</Typography>
+                        <Typography>$4056.56</Typography>
+                        <Typography>68.2% more earnings than last month.</Typography>
+                      </Box>
+                      <Box sx={{height:'100%',width:'50%'}}>
+                        <PieChartDashboard/>
+                      </Box>
+                    </Box>
+
+                  </Grid>
                 </Grid>
             </Grid>
             
