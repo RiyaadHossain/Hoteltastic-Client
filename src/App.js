@@ -75,10 +75,8 @@ function App() {
 							<Route element={<SignIn />} path="signin" />
 							<Route element={<SignUp />} path="signup" />
 							<Route element={<AboutProject />} path="aboutproject" />
-							<Route element={<Contact />} path="/contact" />
-							<Route element={<UserLayout />} path="/Userdashboard" />
-							<Route element={<MyProfile />} path="/profile" />
-							<Route element={<MyProfile />} path="/myprofile" />
+							<Route element={<Contact />} path="contact" />
+							<Route element={<MyProfile />} path="profile" />
 						</Route>
 						<Route element={<AdminLayout />} path="/admin/">
 							<Route element={<AdminHome />} path="dashboard" />

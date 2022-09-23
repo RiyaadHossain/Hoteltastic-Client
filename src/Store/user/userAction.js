@@ -1,4 +1,5 @@
 import client from '../../Helper/axios'
+import { initialUser } from '../auth/authAction'
 import { userActions } from './userSlice'
 
 const getUsers = () => {
@@ -18,9 +19,11 @@ export const updateUser = ({ id, ...rest }) => {
 	return async dispatch => {
 		try {
 			const { data } = await client.patch(`/api/user/updateUser/${id}`, rest)
+			console.log({id, rest});
+			console.log(data);
 			if (data) {
 				dispatch(userActions.updateUser())
-				dispatch(getUsers())
+				dispatch(initialUser())
 			}
 		} catch (error) {
 			console.log(error)

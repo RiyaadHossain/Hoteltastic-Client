@@ -20,7 +20,7 @@ function Setting({ userName, profileImg, auth }) {
 
   return (
     <>
-      <MenuItem>
+      <MenuItem onClick={() => navigate('/profile')}>
         <Avatar src={profileImg} sx={{ bgcolor: deepOrange[500] }}>
           {!profileImg && userName}
         </Avatar>

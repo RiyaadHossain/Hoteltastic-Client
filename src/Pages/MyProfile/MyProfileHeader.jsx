@@ -1,13 +1,27 @@
-import { Button, Divider, Typography } from "@mui/material";
+import { Avatar, Button, Divider, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
-import SquareTwoToneIcon from "@mui/icons-material/SquareTwoTone";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import { useDispatch, useSelector } from "react-redux";
+import { authAction } from "../../Store/auth/authSlice";
+import { useNavigate } from "react-router-dom";
+import { deepOrange } from "@mui/material/colors";
 
 const MyProfileHeader = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const auth = useSelector((state) => state.auth.user.user);
+
+  const signOut = () => {
+    window.open(`https://hoteltastic-server.vercel.app/auth/logout`, "_self");
+    dispatch(authAction.signOut());
+    navigate("/");
+    window.location.reload();
+  };
+
   return (
     <Box
       sx={{
@@ -23,18 +37,18 @@ const MyProfileHeader = () => {
           mt: "-100px",
         }}
       >
-        <img
-          style={{
+        <Avatar
+          sx={{
             width: "200px",
             height: "200px",
-            padding: "5px",
-            background: "#fff",
-            borderRadius: "50%",
-            boxShadow: "rgba(0, 0, 0, 0.25) 0px 25px 50px -12px",
+            bgcolor: deepOrange[500],
           }}
-          src="https://i.ibb.co/TtcvWfH/profile-Photo.jpg"
-          alt=""
-        />
+          src={auth.avatar}
+        >
+          <Typography variant="h1" fontWeight="bold">
+            R
+          </Typography>
+        </Avatar>
       </Box>
       <Box
         sx={{
@@ -42,7 +56,7 @@ const MyProfileHeader = () => {
           mx: "auto",
           display: "flex",
           alignItems: "center",
-          justifyContent:"space-between"
+          justifyContent: "space-between",
         }}
       >
         <Box>
@@ -59,10 +73,10 @@ const MyProfileHeader = () => {
             }}
             fontWeight="bold"
           >
-            Daniyal Bhatti
+            {auth.name}
           </Typography>
           <Typography variant="body2" color="#93959e" margin="10px 0">
-            Traveler || Businessman || Programmer
+            {auth.title ? auth.title : "Not Provided"}
           </Typography>
 
           <Box
@@ -77,7 +91,7 @@ const MyProfileHeader = () => {
                 sx={{ textTransform: "capitalize", color: "#888" }}
                 startIcon={<LocationOnOutlinedIcon />}
               >
-                Multan, Punjab, Pakistan
+                {auth.address ? auth.address : "Not Provided"}
               </Button>
             </Box>
             <Divider orientation="vertical" flexItem />
@@ -89,8 +103,10 @@ const MyProfileHeader = () => {
               <Button
                 sx={{ textTransform: "lowercase", color: "#888" }}
                 startIcon={<FacebookOutlinedIcon />}
+                href={auth.facebook}
+                target="_blank"
               >
-                daniyalbhatti.28
+                {auth.facebook ? "Facebook" : "N/A"}
               </Button>
             </Box>
             <Divider orientation="vertical" flexItem />
@@ -102,8 +118,10 @@ const MyProfileHeader = () => {
               <Button
                 sx={{ textTransform: "lowercase", color: "#888" }}
                 startIcon={<LinkedInIcon />}
+                href={auth.linkedIn}
+                target="_blank"
               >
-                daniyal_bhatti
+                {auth.linkedIn ? "LinkedIn" : "N/A"}
               </Button>
             </Box>
             <Divider orientation="vertical" flexItem />
@@ -115,14 +133,17 @@ const MyProfileHeader = () => {
               <Button
                 sx={{ textTransform: "lowercase", color: "#888" }}
                 startIcon={<TwitterIcon />}
+                href={auth.twitter}
+                target="_blank"
               >
-                daniyal_bhatti
+                {auth.twitter ? "Twitter" : "N/A"}
               </Button>
             </Box>
           </Box>
         </Box>
         <Box>
           <Button
+            onClick={signOut}
             sx={{
               color: "#93959e",
               border: "1px solid #e5e7ec",
