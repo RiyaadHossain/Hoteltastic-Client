@@ -9,18 +9,19 @@ import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
 
-const FeatureRoom = ({ feature }) => {
-     const { /* id, featured, authorThumb, authorName, status, beds, baths, sqFt, saved, */ propertyName, propertyImage, propertyDesciption, startFrom, } = feature;
+const FeatureRoom = ({ room }) => {
+     const { /*  featured, authorThumb, authorName, status, beds, baths, sqFt, saved, */
+          _id, propertyName, propertyImage, propertyDesciption, startFrom, } = room;
      const navigate = useNavigate();
      return (
           <Card sx={{
                maxWidth: {
-                    xs:"80%",
-                    sm:300,
+                    xs: "80%",
+                    sm: 300,
                     md: 370
                },
                margin: "15px 15px",
-               borderRadius:"10px"
+               borderRadius: "10px"
           }}
                fontFamily="'Rubik', sans-serif"
           >
@@ -79,7 +80,7 @@ const FeatureRoom = ({ feature }) => {
                                         borderRadius: "4px",
                                         transition: "ease-out 0.2s",
                                         "&:hover": {
-                                             color:"#fff",
+                                             color: "#fff",
                                              background: "#2dbe6c",
                                              cursor: "pointer"
                                         }
@@ -96,7 +97,7 @@ const FeatureRoom = ({ feature }) => {
                                         marginLeft: "5px",
                                         transition: "ease-out 0.2s",
                                         "&:hover": {
-                                             color:"#fff",
+                                             color: "#fff",
                                              background: "#2dbe6c",
                                              cursor: "pointer"
                                         }
@@ -108,21 +109,21 @@ const FeatureRoom = ({ feature }) => {
                          {propertyDesciption}
                     </Typography>
                     <Button
-                     onClick={()=> navigate("/property")}
-                     sx={{
-                         color: "#93959e",
-                         border: "1px solid #e5e7ec",
-                         padding: "8px 0px",
-                         width: "130px",
-                         boxShadow: "inset 0 0 0 0 #2dbe6c",
-                         transition: "ease-out 0.5s",
-                         "&:hover": {
-                              color: "white",
-                              boxShadow: "inset 130px 0 0 0 #2dbe6c",
-                              border: "1px solid #2dbe6c",
-                         }
+                         onClick={() => navigate(`/property/${_id}`)}
+                         sx={{
+                              color: "#93959e",
+                              border: "1px solid #e5e7ec",
+                              padding: "8px 0px",
+                              width: "130px",
+                              boxShadow: "inset 0 0 0 0 #2dbe6c",
+                              transition: "ease-out 0.5s",
+                              "&:hover": {
+                                   color: "white",
+                                   boxShadow: "inset 130px 0 0 0 #2dbe6c",
+                                   border: "1px solid #2dbe6c",
+                              }
 
-                    }} >See Details</Button>
+                         }} >See Details</Button>
                </CardContent>
           </Card>
      );
