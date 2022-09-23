@@ -67,7 +67,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export default function AllAdmin() {
   const dispatch = useDispatch();
   const { admins } = useSelector((state) => state.user);
-  console.log(admins,'admins');
+  // console.log(admins,'admins');
 
  
   useEffect(()=>{
