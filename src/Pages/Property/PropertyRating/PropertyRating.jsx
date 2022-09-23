@@ -18,12 +18,14 @@ import { postReview } from "../../../Store/review/reviewAction";
 const PropertyRating = () => {
   const [reviews, setReviews] = useState([]);
   const [value, setValue] = useState(1);
-  const review = useSelector(state => state.review)
+  const review = useSelector(state => state.review.reviews)
   const auth = useSelector(state => state.auth.user.user)
   const dispatch = useDispatch()
   useEffect(() => {
     axios.get(`userReviews.json`).then((data) => setReviews(data.data));
   }, []);
+
+  console.log(review)
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -141,7 +143,7 @@ const PropertyRating = () => {
         </Modal>
       </div>
 
-      {reviews.map((review) => {
+      {review.map((review) => {
         return (
           <Box
             sx={{
@@ -182,12 +184,12 @@ const PropertyRating = () => {
                     color: "#626263",
                   }}
                 >
-                  {review.userName}
+                  {review.user?.name}
                 </Typography>
                 {/* rating */}
                 <Rating
                   name="half-rating-read"
-                  defaultValue={review.rate}
+                  defaultValue={review.rattings}
                   precision={0.5}
                   size="small"
                   readOnly
@@ -198,7 +200,7 @@ const PropertyRating = () => {
                   fontFamily: "'Rubik', sans-serif",
                 }}
               >
-                {review.comment}
+                {review.review ? review.review : "No Reviews Yet!"}
               </Typography>
             </Box>
           </Box>

@@ -1,11 +1,8 @@
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import React from 'react';
-import Background from '../../Assets/Background/callToActionBg.png'
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ApartmentHeading from './ApartmentHeading';
 import PropertyDescription from './PropertyDescription';
 import PropertyDetails from './PropertyDetails';
-import Carousel from '../Home/OurAgents/Carousel/Carousel';
 import PropertyCarousel from './PropertyCarousel/PropertyCarousel';
 import Location from './Location/Location';
 import PropertyContact from './PropertySideBar/PropertyContact';
@@ -26,7 +23,7 @@ const Properties = () => {
     useEffect(() => {
         dispatch(getReviews())
         dispatch(getSingleRoom(id))
-    }, [dispatch])
+    }, [dispatch,id])
     const roomStore = useSelector((state) => state.room);
     if (roomStore.loading) return <FullScreenSpinner />
     // const { featured, authorThumb, authorName, status, beds, baths, sqFt, saved, _id, propertyName, propertyImage, propertyDesciption, startFrom } = roomStore?.singleRoom;
