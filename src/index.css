@@ -90,7 +90,7 @@ a {
   border: 0;
   font-weight: 700;
   margin: 20px 0px;
-  background-color: white;
+  background-color: rgba(17, 219, 142, .7);
   box-shadow: rgba(0, 0, 0, 0.425) 0 0 8px;
   letter-spacing: 1px;
   text-transform: uppercase;

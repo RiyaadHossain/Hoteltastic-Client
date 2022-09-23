@@ -10,39 +10,53 @@ import axios from "axios";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import { postReview } from "../../../Store/review/reviewAction";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: "50%",
-  bgcolor: "background.paper",
-  boxShadow: 24,
-  p: 4,
-};
+
 const PropertyRating = () => {
   const [reviews, setReviews] = useState([]);
+  const [value, setValue] = useState(1);
+  const review = useSelector(state => state.review)
+  const auth = useSelector(state => state.auth.user.user)
+  const dispatch = useDispatch()
   useEffect(() => {
     axios.get(`userReviews.json`).then((data) => setReviews(data.data));
   }, []);
-  // console.log(reviews);
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const submitRattings = (data) => {
+    data.rattings = value;
+    data.user = auth._id
+    data.room = ''
+    console.log(data)
+    // dispatch(postReview(data))
+  };
+
   return (
     <Box
       sx={{
         padding: "22px 30px",
-        // marginBottom: "30px",
         backgroundColor: "#ffffff",
         boxShadow: "0 10px 30px 0px rgb(0 0 0 / 10%)",
         borderRadius: "10px",
       }}
     >
       <div>
-        <Button onClick={handleOpen}>Add Review</Button>
+        <Box textAlign="right" my={2}>
+          <Button variant="contained" onClick={handleOpen}>
+            Add Review
+          </Button>
+        </Box>
         <Modal
           open={open}
           onClose={handleClose}
@@ -72,18 +86,18 @@ const PropertyRating = () => {
             >
               Review
             </Typography>
-            <form>
-              <TextField
-                sx={{
-                  background: "none",
-                  width: "100%",
-                  margin: "8px 0px 10px 0px",
+            <form onSubmit={handleSubmit(submitRattings)}>
+              <Rating
+                value={value}
+                onChange={(event, newValue) => {
+                  setValue(newValue);
                 }}
-                id="outlined-basic"
-                label="Name"
-                variant="outlined"
-                multiline
+                sx={{ my: "10px" }}
+                name="rating"
               />
+              {errors.ratting && (
+                <Typography color="error">Rattings is required</Typography>
+              )}
               <TextField
                 sx={{
                   background: "none",
@@ -94,16 +108,16 @@ const PropertyRating = () => {
                 label="Comment"
                 multiline
                 rows={4}
+                {...register("review", {
+                  required: true,
+                })}
               />
-
-              <Rating
-                sx={{ my: "10px" }}
-                name="half-rating"
-                defaultValue={0}
-                precision={0.5}
-              />
+              {errors.review && (
+                <Typography color="error">Review Text is required</Typography>
+              )}
 
               <Button
+                type="submit"
                 variant="outlined"
                 sx={{
                   background: "#2dbe6c",
