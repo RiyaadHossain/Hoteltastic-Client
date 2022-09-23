@@ -60,33 +60,7 @@ function UserHome() {
       }}
     >
       <AdminHome></AdminHome>
-      <Box
-        sx={{
-          padding: {
-            xs: "30px 20px",
-            // sm: '40px 40px',
-            // md: '100px 60px',
-            // lg: '100px 80px',
-          },
-          maxWidth: 1400,
-          overflow: "hidden",
-        }}
-      >
-        <Grid container spacing={4}>
-          <Grid item xs={12} sm={6} md={4} lg={3}>
-            <CardForDashboard />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4} lg={3}>
-            <CardForDashboard />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4} lg={3}>
-            <CardForDashboard />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4} lg={3}>
-            <CardForDashboard />
-          </Grid>
-        </Grid>
-      </Box>
+      
       {/* -------------------grid section ends here----------------- */}
 
       {/* -----------------------Chart section start----------------------- */}
