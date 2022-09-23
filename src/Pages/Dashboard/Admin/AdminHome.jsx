@@ -13,6 +13,8 @@ import InventoryIcon from '@mui/icons-material/Inventory';
 import LittleChart from './LittleChart/LittleChart'
 import LittleChartBar from './LittleChart/LittleChartBar'
 import PieChartLittle from './LittleChart/PieChartLittle'
+import MultiChart from './LittleChart/MultiChart'
+import DemoTable from './DemoTable/DemoTable'
 
 
 
@@ -62,6 +64,7 @@ function AdminHome() {
     },
   ];
   return (
+    // --------------------------------1st grid section---------------------------
     <Box sx={{
       background:'#fff',
       padding : '2rem'
@@ -203,7 +206,19 @@ function AdminHome() {
         </Grid> 
 
       </Grid>
-      <Box sx={{padding : '2.5rem',my:'2rem'}}>
+
+
+      {/* ----------------------1st grid section ends---------------------------------- */}
+
+
+
+      {/* -------------------2nd grid section starts here----------------------------- */}
+
+      <Box sx={{padding : '2.5rem',marginTop:'2rem'}}>
+
+
+
+        
 
           <Grid container spacing={5} >
             {/* ----------------Left section----------------- */}
@@ -266,76 +281,53 @@ function AdminHome() {
             </Grid>
             
             {/* ---------------------right section------------------------- */}
-            <Grid item xs={12} sm={12} md={6} lg={8}>
-                      I am 8
+            <Grid item xs={12} sm={12} md={6} lg={8} sx={{padding:'0 !important'}}>
+                  <Box sx={{width:'100%',height:'100%',
+                  border:'1px solid #ccc',
+                  borderRadius:'5px',
+                  boxShadow: '2px 2px 10px 1px rgba(0, 0, 0, 0.2)',
+                  padding:2,
+                  marginLeft:4
+                }}>
+                    <MultiChart data={{data}}/>
+                  </Box>
             </Grid>
           </Grid>
 
       </Box>
-
-      {/* <Grid container spacing={2}>
-        <Grid item xs={12} md={6} lg={3}>
-        <Grid/>
-      <Grid/> */}
+    {/* -------------------2nd grid section ends here----------------- */}
 
 
 
-
-      {/* <Box sx={{
-      fontFamily: "'Rubik', sans-serif",
-      fontSize:{
-        xs: '12px',
-        sm: '14px',
-        md: '16px',
-        lg: '20px',
-      },
-      borderRadius: '10px',
-      background : '#1c2541',
-      color : '#fff',
-      textAlign : 'center',
-      width : {
-        xs: '100%',
-        sm: '100%',
-        md: '70%',
-        lg: '50%',
-      },
-      mx : 'auto',
-      padding : '10px 0px',
-    }}>Welcome <Typography component='span' sx={{color:'#5bc0be',fontSize:20, fontWeight:600}}>Shoriful Islam</Typography> to Dashboard
-    </Box> */}
-
-    {/* ---------------------- grid section------------------------- */}
-
-
-
-
-
-    {/* <Box sx={{
-      padding:{
-        xs: '30px 20px',
-        // sm: '40px 40px',
-        // md: '100px 60px',
-        // lg: '100px 80px',
-      },
-      maxWidth:1400,
-      overflow:'hidden',
-    }}>
-      <Grid container spacing={4}>
-        <Grid item xs={12} sm={6} md={4} lg={3}>
-          <CardForDashboard />
-        </Grid>  
-        <Grid item xs={12} sm={6} md={4} lg={3}>
-          <CardForDashboard />
+    {/* -------------------3rd grid section starts-------------- */}
+    <Box sx={{padding : '2rem'}}>
+        <Grid container spacing={4} sx={{paddig: '0 !important'}}>
+            <Grid item xs={12} sm={12} md={6} lg={8} sx={{
+            padding: '0 !important'}}>
+              <Box sx={{
+                border:'1px solid #ccc',
+                borderRadius:'5px',
+                boxShadow: '2px 2px 10px 1px rgba(0, 0, 0, 0.2)',
+               padding:2
+              }}>
+                <DemoTable/>
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={12} md={6} lg={4} sx={{padding: '0 !important'}}>
+            <Box sx={{
+                border:'1px solid #ccc',
+                borderRadius:'5px',
+                boxShadow: '2px 2px 10px 1px rgba(0, 0, 0, 0.2)',
+               padding:2,
+                marginLeft:4
+              }}>
+                <CardForDashboard></CardForDashboard>
+              </Box>
+            </Grid>
         </Grid>
-        <Grid item xs={12} sm={6} md={4} lg={3}>
-          <CardForDashboard />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4} lg={3}>
-          <CardForDashboard />
-        </Grid>
-      </Grid>
-    </Box> */}
-    {/* -------------------grid section ends here----------------- */}
+    </Box>
+
+
 
 
     {/* -----------------------Chart section start----------------------- */}
