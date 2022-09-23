@@ -8,10 +8,23 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch,  useSelector } from 'react-redux';
+import { postFavourites } from '../../../Store/user/userAction';
 
 const FeatureRoom = ({ room }) => {
      const { /*  featured, authorThumb, authorName, status, beds, baths, sqFt, saved, */
           _id, propertyName, propertyImage, propertyDesciption, startFrom, } = room;
+     const user = useSelector((state) => state.auth).user.user;
+	const dispatch = useDispatch()
+
+     // console.log(user);
+     const setFavorite = (roomId) => {
+          const favoriteInfo = {
+               room: roomId,
+               user: user._id
+          }
+          dispatch(postFavourites(favoriteInfo))
+     }
      const navigate = useNavigate();
      return (
           <Card sx={{
@@ -87,6 +100,7 @@ const FeatureRoom = ({ room }) => {
                                    }}
                               />
                               <FavoriteBorderIcon
+                                   onClick={() => setFavorite(room._id)}
                                    sx={{
                                         border: "1px solid #e5e7ec",
                                         padding: "3px",
