@@ -28,6 +28,8 @@ import MyOrders from './Pages/Dashboard/User/MyOrders'
 import FavouriteRoom from './Pages/Dashboard/User/FavouriteRoom'
 import AboutProject from './Pages/AboutProject/AboutProject'
 import getUsers from './Store/user/userAction'
+import RequirUser from './RequirAuth/RequirUser'
+import RequirAdmin from './RequirAuth/RequirAdmin'
 
 function App() {
 	const dispatch = useDispatch()
@@ -70,21 +72,37 @@ function App() {
 					<Routes>
 						<Route element={<Layout />} path="/">
 							<Route index element={<LandingPage />} path="" />
-							<Route element={<AllRooms />} path="allRooms" />
-							<Route element={<Properties />} path="property/:id" />
+							<Route element={<RequirUser>
+								<AllRooms />
+							</RequirUser>} path="allRooms" />
+							<Route element={<RequirUser>
+								<Properties />
+							</RequirUser>} path="property/:id" />
 							<Route element={<SignIn />} path="signin" />
 							<Route element={<SignUp />} path="signup" />
 							<Route element={<AboutProject />} path="aboutproject" />
 							<Route element={<Contact />} path="contact" />
-							<Route element={<MyProfile />} path="profile" />
+							<Route element={<RequirUser>
+								<MyProfile />
+							</RequirUser>} path="profile" />
 						</Route>
-						<Route element={<AdminLayout />} path="/admin/">
+						<Route element={
+							<RequirUser>
+								<RequirAdmin>
+									<AdminLayout />
+								</RequirAdmin>
+							</RequirUser>
+						} path="/admin/">
 							<Route element={<AdminHome />} path="dashboard" />
 							<Route element={<AdminRooms />} path="allRoom" />
 							<Route element={<AdminUser />} path="user" />
 							<Route element={<AllAdmin />} path="admin" />
 						</Route>
-						<Route element={<UserLayout />} path="/user/">
+						<Route element={
+							<RequirUser>
+								<UserLayout />
+							</RequirUser>
+						} path="/user/">
 							<Route element={<UserHome />} path="dashboard" />
 							<Route element={<MyOrders />} path="myOrders" />
 							<Route element={<FavouriteRoom />} path="favourite" />
