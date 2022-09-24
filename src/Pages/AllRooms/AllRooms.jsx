@@ -15,7 +15,6 @@ import { makeStyles } from "@mui/styles";
 import React from "react";
 import { useSelector } from "react-redux";
 import CustomHeader from "../../Components/CustomHeader";
-// import { rooms } from "../../utils/constant";
 import Room from "../Room/Room";
 
 const useStyles = makeStyles((theme) => ({
