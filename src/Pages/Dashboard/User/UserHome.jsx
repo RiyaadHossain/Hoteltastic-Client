@@ -3,6 +3,7 @@ import React from "react";
 import CardForDashboard from "../../../Components/MiniCard/CardForDashboard";
 import PaymentContainer from "../../../Components/Payment/PaymentContainer";
 import CustomBarChart from "../../Property/Chart/CustomBarChart";
+import AdminHome from "../Admin/AdminHome";
 import AreaChartDashboard from "../Admin/AreaChart/AreaChartDashboard";
 import ComposedBarDashboard from "../Admin/ComposedBar/ComposedBarDashboard";
 import PieChartDashboard from "../Admin/PieChart/PieChartDashboard";
@@ -55,73 +56,11 @@ function UserHome() {
   return (
     <Box
       sx={{
-        // background: '#085078'
-        // background: -webkit-linear-gradient(to right, #085078, #85d8ce)
-        background: `linear-gradient(to right, #085078, #85d8ce)`,
+        background: '#fff',
       }}
     >
-      <Box
-        sx={{
-          fontFamily: "'Rubik', sans-serif",
-          fontSize: {
-            xs: "12px",
-            sm: "14px",
-            md: "16px",
-            lg: "20px",
-          },
-          borderRadius: "10px",
-          background: "#1c2541",
-          color: "#fff",
-          textAlign: "center",
-          width: {
-            xs: "100%",
-            sm: "100%",
-            md: "70%",
-            lg: "50%",
-          },
-          mx: "auto",
-          padding: "10px 0px",
-        }}
-      >
-        Welcome{" "}
-        <Typography
-          component="span"
-          sx={{ color: "#5bc0be", fontSize: 20, fontWeight: 600 }}
-        >
-          Shoriful Islam
-        </Typography>{" "}
-        to Dashboard
-      </Box>
-
-      {/* ---------------------- grid section------------------------- */}
-
-      <Box
-        sx={{
-          padding: {
-            xs: "30px 20px",
-            // sm: '40px 40px',
-            // md: '100px 60px',
-            // lg: '100px 80px',
-          },
-          maxWidth: 1400,
-          overflow: "hidden",
-        }}
-      >
-        <Grid container spacing={4}>
-          <Grid item xs={12} sm={6} md={4} lg={3}>
-            <CardForDashboard />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4} lg={3}>
-            <CardForDashboard />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4} lg={3}>
-            <CardForDashboard />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4} lg={3}>
-            <CardForDashboard />
-          </Grid>
-        </Grid>
-      </Box>
+      <AdminHome></AdminHome>
+      
       {/* -------------------grid section ends here----------------- */}
 
       {/* -----------------------Chart section start----------------------- */}
@@ -176,7 +115,6 @@ function UserHome() {
           </Grid>
         </Grid>
       </Box>
-      <PaymentContainer></PaymentContainer>
     </Box>
   );
 }
