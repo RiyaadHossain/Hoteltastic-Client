@@ -57,6 +57,7 @@ function AllRooms() {
   const [room, setRoom] = React.useState("");
   const [location, setLocation] = React.useState("");
   const rooms = useSelector((state) => state.room).rooms;
+  const openRoom = rooms.filter(room => room.status === "open")
 
 
   return (
@@ -145,7 +146,7 @@ function AllRooms() {
               </Paper>
             </Grid>
             <Grid item xs={12} lg={8}>
-              {rooms.map((room, i) => (
+              {openRoom.map((room, i) => (
                 <Room key={i} room={room} />
               ))}
             </Grid>
