@@ -1,11 +1,10 @@
 import { Typography } from "@mui/material";
+import { Box } from "@mui/system";
 import React from "react";
+import Background from "../../Assets/Background/aboutProject.png";
 import Collaborator from "./Collaborator";
 import FeatureImplement from "./FeatureImplement";
 import TechnologyUsed from "./TechnologyUsed";
-import Background from "../../Assets/Background/aboutProject.png";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import { Box } from "@mui/system";
 
 const AboutProject = () => {
   return (
