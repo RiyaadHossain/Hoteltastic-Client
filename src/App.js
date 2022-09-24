@@ -28,6 +28,7 @@ import MyOrders from './Pages/Dashboard/User/MyOrders'
 import FavouriteRoom from './Pages/Dashboard/User/FavouriteRoom'
 import AboutProject from './Pages/AboutProject/AboutProject'
 import getUsers from './Store/user/userAction'
+import PaymentContainer from './Components/Payment/PaymentContainer'
 
 function App() {
 	const dispatch = useDispatch()
@@ -77,7 +78,12 @@ function App() {
 							<Route element={<AboutProject />} path="aboutproject" />
 							<Route element={<Contact />} path="contact" />
 							<Route element={<MyProfile />} path="profile" />
+							<Route
+								element={<PaymentContainer />}
+								path="/payment/:id"
+							></Route>
 						</Route>
+
 						<Route element={<AdminLayout />} path="/admin/">
 							<Route element={<AdminHome />} path="dashboard" />
 							<Route element={<AdminRooms />} path="allRoom" />

@@ -18,7 +18,7 @@ const PropertyCalculate = () => {
 
                }}
                >
-                    Mortgage Calculator
+                    Booking Info
                </Typography>
                <form >
 
@@ -81,7 +81,7 @@ const PropertyCalculate = () => {
                               color: "#2dbe6c",
                          }
 
-                    }}>Calculate Now</Button>
+                    }}>Book Now</Button>
                </form>
           </Box>
      );
