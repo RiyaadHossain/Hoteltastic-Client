@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Box,
   Button,
   Modal,
@@ -13,19 +14,19 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { postReview } from "../../../Store/review/reviewAction";
+import SentimentDissatisfiedIcon from "@mui/icons-material/SentimentDissatisfied";
+import Spinner from "../../../Components/Loaders/Spinner/Spinner";
 
-
-const PropertyRating = () => {
-  const [reviews, setReviews] = useState([]);
+const PropertyRating = ({ roomId }) => {
   const [value, setValue] = useState(1);
-  const review = useSelector(state => state.review.reviews)
-  const auth = useSelector(state => state.auth.user.user)
-  const dispatch = useDispatch()
-  useEffect(() => {
-    axios.get(`userReviews.json`).then((data) => setReviews(data.data));
-  }, []);
+  const review = useSelector((state) => state.review.reviews);
+  const auth = useSelector((state) => state.auth.user.user);
+  const dispatch = useDispatch();
+  useEffect(() => {}, []);
 
-  console.log(review)
+  const userName = (name) => {
+    return name?.slice(0, 1)?.toUpperCase();
+  };
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -34,15 +35,21 @@ const PropertyRating = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const submitRattings = (data) => {
     data.rattings = value;
-    data.user = auth._id
-    data.room = ''
-    console.log(data)
-    // dispatch(postReview(data))
+    data.user = auth._id;
+    data.room = roomId;
+    dispatch(postReview(data));
+    reset();
+    setOpen(false);
   };
+
+  let specificReviews = []
+  review.forEach(r => r.room._id === roomId && specificReviews.push(r))
+
 
   return (
     <Box
@@ -143,69 +150,82 @@ const PropertyRating = () => {
         </Modal>
       </div>
 
-      {review.map((review) => {
-        return (
-          <Box
-            sx={{
-              display: "flex",
-              color: "#93959e",
-              py: "15px",
-              borderBottom: "1px solid #e5e7ec",
-              ":last-child": {
-                borderBottom: "none",
-              },
-            }}
-          >
-            <img
-              style={{
-                height: "40px",
-                width: "40px",
-                borderRadius: "50%",
-                marginRight: "12px",
+      {specificReviews.length ? (
+        specificReviews.map((singleReview, i) => {
+          return (
+            <Box
+              key={i}
+              sx={{
+                display: "flex",
+                color: "#93959e",
+                py: "15px",
+                borderBottom: "1px solid #e5e7ec",
+                ":last-child": {
+                  borderBottom: "none",
+                },
               }}
-              src={review.userImg}
-              alt=""
-            />
-            <Box>
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                }}
+            >
+              {console.log(
+                `${singleReview.room?._id === roomId ? "yeee" : "noo"}`
+              )}
+              <Avatar
+                sx={{ height: "40px", width: "40px", bgcolor: "skyblue" }}
+                src={singleReview.user?.avatar}
               >
-                <Typography
+                {!singleReview.user?.avatar &&
+                  userName(singleReview.user?.name)}
+              </Avatar>
+              <Box ml={3}>
+                <Box
                   sx={{
-                    fontSize: {
-                      md: "17px",
-                    },
-                    fontFamily: "'Rubik', sans-serif",
-                    // fontWeight: "500",
-                    mr: "10px",
-                    color: "#626263",
+                    display: "flex",
+                    alignItems: "center",
                   }}
                 >
-                  {review.user?.name}
+                  <Typography
+                    sx={{
+                      fontSize: {
+                        md: "18px",
+                      },
+                      fontFamily: "'Rubik', sans-serif",
+                      mr: "10px",
+                      fontWeight: 600,
+                      color: "#626263",
+                    }}
+                  >
+                    {singleReview.user?.name}
+                  </Typography>
+                  {/* rating */}
+                  <Rating
+                    name="half-rating-read"
+                    defaultValue={singleReview.rattings}
+                    precision={0.5}
+                    size="small"
+                    readOnly
+                  />
+                </Box>
+                <Typography
+                  sx={{
+                    fontFamily: "'Rubik', sans-serif",
+                  }}
+                >
+                  {singleReview.review}
                 </Typography>
-                {/* rating */}
-                <Rating
-                  name="half-rating-read"
-                  defaultValue={review.rattings}
-                  precision={0.5}
-                  size="small"
-                  readOnly
-                />
               </Box>
-              <Typography
-                sx={{
-                  fontFamily: "'Rubik', sans-serif",
-                }}
-              >
-                {review.review ? review.review : "No Reviews Yet!"}
-              </Typography>
             </Box>
-          </Box>
-        );
-      })}
+          );
+        })
+      ) : (
+        <Typography
+          sx={{
+            fontFamily: "'Rubik', sans-serif",
+          }}
+          variant="h4"
+          color="GrayText"
+        >
+          No Review Yet! <SentimentDissatisfiedIcon />
+        </Typography>
+      )}
     </Box>
   );
 };

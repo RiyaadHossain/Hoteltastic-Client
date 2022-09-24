@@ -106,6 +106,7 @@ const ApartmentHeading = ({room}) => {
             }}
           >
             ${room.startFrom}
+            {console.log(room)}
           </Typography>
         </Box>
       </Box>
