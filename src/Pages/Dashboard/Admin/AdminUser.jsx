@@ -10,7 +10,6 @@ import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import { Box } from "@mui/system";
 import { Button, Chip, IconButton, Typography } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
-import AddAdminModal from "./AddAdminModal";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import Swal from "sweetalert2";
@@ -157,11 +156,11 @@ function AdminUser() {
     }
   };
 
-  const image = (
+  const image = (src) => (
     <img
       style={imageStyle}
       alt=""
-      src="http://themes.iamabdus.com/dealsy/1.0/img/user/user-thumb.jpg"
+      src={src ? src : "https://i.pinimg.com/736x/c9/e3/e8/c9e3e810a8066b885ca4e882460785fa.jpg"}
     />
   );
 
@@ -213,7 +212,7 @@ function AdminUser() {
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
                     <TableCell align="left">{i + 1}.</TableCell>
-                    <TableCell align="left">{image}</TableCell>
+                    <TableCell align="left">{image(user.avatar)}</TableCell>
                     <TableCell align="left">{user.name}</TableCell>
                     <TableCell align="left">{user.email}</TableCell>
                     <TableCell align="center">

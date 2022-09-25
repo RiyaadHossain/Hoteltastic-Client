@@ -23,7 +23,7 @@ export const updateUser = ({ id, ...rest }) => {
 			console.log(data);
 			if (data) {
 				dispatch(userActions.updateUser())
-				dispatch(initialUser())
+				dispatch(getUsers())
 			}
 		} catch (error) {
 			console.log(error)
