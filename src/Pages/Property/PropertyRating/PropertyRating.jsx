@@ -7,7 +7,6 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import axios from "axios";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -15,7 +14,6 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import getReviews, { deleteReview, postReview } from "../../../Store/review/reviewAction";
 import SentimentDissatisfiedIcon from "@mui/icons-material/SentimentDissatisfied";
-import Spinner from "../../../Components/Loaders/Spinner/Spinner";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import Swal from "sweetalert2";
 

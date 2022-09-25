@@ -1,5 +1,4 @@
 import tokenClient from '../../Helper/axios'
-import {client} from '../../Helper/axios'
 import { userActions } from './userSlice'
 
 const getUsers = () => {
