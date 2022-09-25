@@ -78,7 +78,7 @@ const Properties = () => {
                         },
                     }}>
                         <PropertyContact />
-                        <PropertyCalculate />
+                        <PropertyCalculate room={roomStore?.singleRoom}/>
                     </Box>
                 </Box>
             </Box>

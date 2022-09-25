@@ -25,7 +25,7 @@ const PropertyRating = () => {
     axios.get(`userReviews.json`).then((data) => setReviews(data.data));
   }, []);
 
-  console.log(review)
+  // console.log(review)
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -144,6 +144,7 @@ const PropertyRating = () => {
       </div>
 
       {review.map((review) => {
+        // console.log(review);
         return (
           <Box
             sx={{

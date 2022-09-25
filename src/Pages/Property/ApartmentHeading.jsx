@@ -134,14 +134,14 @@ const ApartmentHeading = ({room}) => {
           }}
         >
           {/* <Box> */}
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+          <Avatar alt="Remy Sharp" src={room?.authorThumb} />
           {/* </Box> */}
           <Typography
             sx={{
               margin: "0px 10px",
             }}
           >
-            Jubin Nautiyal
+            {room?.authorName}
           </Typography>
           {/* <Box> */}
           <Rating
