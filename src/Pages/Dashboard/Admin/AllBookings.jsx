@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -17,17 +17,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../../../Store/user/userAction";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import { getPayment } from '../../../Store/payment/paymentAction';
 
 
 
 const columns = [
-  { id: "img", label: "Image", minWidth: 120 },
-  { id: "name", label: "Name", minWidth: 170 },
+  
+  { id: "name", label: "Name", minWidth: 100 },
   { id: "email", label: "Email", minWidth: 100 },
+  { id: "roomID", label: "Room Id", minWidth: 100 },
+  { id: "roomName", label: "Room Name", minWidth: 100 },
+  { id: "price", label: "Price", minWidth: 120 },
   {
-    id: "role",
-    label: "Role",
-    minWidth: 120,
+    id: "day",
+    label: "Day",
+    minWidth: 60,
     align: "center",
   },
   {
@@ -67,8 +71,16 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 const AllBookings = () => {
 
-    const userStore = useSelector((state) => state.user);
+  const userStore = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const bookings = useSelector((state) => state.booking.allPayments.allBooking)
+  console.log(bookings,'bokings');
+
+  useEffect(()=>{
+    dispatch(getPayment())
+  },[dispatch])
+
+
 
   const banUnbane = (action, id) => {
     if (action === "Ban") {
@@ -159,13 +171,13 @@ const AllBookings = () => {
     }
   };
 
-  const image = (src) => (
-    <img
-      style={imageStyle}
-      alt=""
-      src={src ? src : "https://i.pinimg.com/736x/c9/e3/e8/c9e3e810a8066b885ca4e882460785fa.jpg"}
-    />
-  );
+//   const image = (src) => (
+//     <img
+//       style={imageStyle}
+//       alt=""
+//       src={src ? src : "https://i.pinimg.com/736x/c9/e3/e8/c9e3e810a8066b885ca4e882460785fa.jpg"}
+//     />
+//   );
 
     return (
         <>
@@ -177,13 +189,13 @@ const AllBookings = () => {
         mb={3}
       >
         <Typography variant="h4" color="#2FDD92">
-          Total User: {userStore.users.length}
+          Total Bookings: {bookings?.length}
         </Typography>
         <Button
           startIcon={<SearchIcon />}
           variant="contained"
         >
-          Search User
+          Search Bookings
         </Button>
       </Box>
       <Paper sx={{ width: "100%", overflow: "hidden" }}>
@@ -207,34 +219,32 @@ const AllBookings = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {userStore.users.map((user, i) => {
+              {bookings?.map((booking, i) => {
                 // if (user.status.props.label === "Ban") user.action = UnBanIconButton;
                 return (
                   <TableRow
-                    key={user._id}
+                    key={booking._id}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
                     <TableCell align="left">{i + 1}.</TableCell>
-                    <TableCell align="left">{image(user.avatar)}</TableCell>
-                    <TableCell align="left">{user.name}</TableCell>
-                    <TableCell align="left">{user.email}</TableCell>
+                    
+                    <TableCell align="left">{booking.name}</TableCell>
+                    <TableCell align="left">{booking.email}</TableCell>
+                    <TableCell align="left">{booking.roomID}</TableCell>
+                    <TableCell align="left">{booking.roomName}</TableCell>
+                    <TableCell align="left">${(booking.amount)}</TableCell>
                     <TableCell align="center">
-                      {user.status !== "BanUser" &&
-                        <Chip
-                          size="small"
-                          label={user.role === "Admin" ? "Admin" : "User"}
-                          color={user.role === "Admin" ? "warning" : "info"}
-                        />}
+                        {booking.day}
                     </TableCell>
                     <TableCell align="center">
                       <Chip
                         size="small"
-                        label={user.status === "BanUser" ? "Banned User" : "Valid User"}
-                        color={user.status === "BanUser" ? "error" : "success"}
+                        // label={user.status === "BanUser" ? "Banned User" : "Valid User"}
+                        // color={user.status === "BanUser" ? "error" : "success"}
                       />
                     </TableCell>
                     <TableCell align="center">
-                      {
+                      {/* {
                         user.status === "BanUser" ?
 
                           <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block">
@@ -271,7 +281,7 @@ const AllBookings = () => {
                             </Box>
                         )
 
-                      }
+                      } */}
 
 
                     </TableCell>
