@@ -176,7 +176,7 @@ const HotProperty = () => {
                     }}
                     fontWeight="500"
                   >
-                    shoorif
+                    Shorif
                   </Typography>
                   <Box
                     sx={{
@@ -345,7 +345,7 @@ const HotProperty = () => {
                       },
                     }}
                   >
-                    See Details
+                    <a style={{textDecoration:'none',color:'#fff'}} href="https://buy.stripe.com/test_5kA4jSdvO2v27ug144">Book Now</a>
                   </Button>
                 </CardContent>
               </Card>

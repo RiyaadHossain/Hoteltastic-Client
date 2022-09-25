@@ -20,7 +20,7 @@ const FeatureRoom = ({ room }) => {
      const navigate = useNavigate();
 
      // console.log(faviourites);
-     console.log({room});
+     // console.log({room});
      useEffect(() => {
        dispatch(getFavourites());
      }, [dispatch]);
