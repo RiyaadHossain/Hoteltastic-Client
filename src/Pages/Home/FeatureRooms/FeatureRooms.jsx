@@ -10,7 +10,7 @@ const FeatureRooms = () => {
   const roomStore = useSelector((state) => state.room).rooms;
   const rooms = [...roomStore];
   const navigate = useNavigate();
-console.log({AllRooms: rooms})
+// console.log({AllRooms: rooms})
 
   return (
     <Box
