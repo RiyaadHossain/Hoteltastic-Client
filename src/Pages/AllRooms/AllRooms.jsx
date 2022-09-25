@@ -57,8 +57,8 @@ function AllRooms() {
   const [room, setRoom] = React.useState("");
   const [location, setLocation] = React.useState("");
   const rooms = useSelector((state) => state.room).rooms;
-  const openRoom = rooms.filter(room => room.status === "open")
-
+  const openRoom = rooms.filter(room => room.status !== "Close")
+  // console.log(openRoom);
 
   return (
     <Box className={classes.root}>
