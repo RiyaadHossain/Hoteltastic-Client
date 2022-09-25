@@ -16,6 +16,8 @@ import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../../../Store/user/userAction";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
 
 
@@ -24,11 +26,18 @@ const columns = [
   { id: "name", label: "Name", minWidth: 170 },
   { id: "email", label: "Email", minWidth: 100 },
   {
+    id: "role",
+    label: "Role",
+    minWidth: 120,
+    align: "center",
+  },
+  {
     id: "status",
     label: "Status",
     minWidth: 120,
     align: "center",
   },
+
   {
     id: "action",
     label: "Action",
@@ -60,7 +69,6 @@ function AdminUser() {
   const dispatch = useDispatch();
 
   const banUnbane = (action, id) => {
-    // console.log(action, id);
     if (action === "Ban") {
       Swal.fire({
         title: 'Are you sure?',
@@ -73,6 +81,7 @@ function AdminUser() {
       }).then((result) => {
         if (result.isConfirmed) {
           dispatch(updateUser({ id, status: "BanUser" }));
+          dispatch(updateUser({ id, role: "User" }));
           Swal.fire(
             'Banned!',
             'User has been Banned.',
@@ -97,6 +106,50 @@ function AdminUser() {
           Swal.fire(
             'Unbanned!',
             'User has been Unbanned.',
+            'success'
+          )
+        }
+      })
+    }
+  };
+
+  const MakeRemoveAdmin = (action, id) => {
+    if (action === "Admin") {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Yes, Make Admin!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          dispatch(updateUser({ id, role: "Admin" }));
+          Swal.fire(
+            'Maked Admin!',
+            'User has been Maked Admin.',
+            'warning'
+          )
+        }
+      })
+    }
+
+    if (action === "User") {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, Remove Admin!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          dispatch(updateUser({ id, role: "User" }));
+          Swal.fire(
+            'Removed!',
+            'User Removed From Admin.',
             'success'
           )
         }
@@ -136,10 +189,10 @@ function AdminUser() {
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
-              <StyledTableCell
-                 >
-                   Sl No
-                 </StyledTableCell>
+                <StyledTableCell
+                >
+                  Sl No
+                </StyledTableCell>
                 {columns.map((column) => (
                   <StyledTableCell
                     key={column.id}
@@ -159,10 +212,18 @@ function AdminUser() {
                     key={user._id}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
-                    <TableCell align="left">{i+1}.</TableCell>
+                    <TableCell align="left">{i + 1}.</TableCell>
                     <TableCell align="left">{image}</TableCell>
                     <TableCell align="left">{user.name}</TableCell>
                     <TableCell align="left">{user.email}</TableCell>
+                    <TableCell align="center">
+                      {user.status !== "BanUser" &&
+                        <Chip
+                          size="small"
+                          label={user.role === "Admin" ? "Admin" : "User"}
+                          color={user.role === "Admin" ? "warning" : "info"}
+                        />}
+                    </TableCell>
                     <TableCell align="center">
                       <Chip
                         size="small"
@@ -189,23 +250,27 @@ function AdminUser() {
                           </Box>
 
                       }
+                      {
+                        user.status !== "BanUser" && (
+                          user.role === "Admin" ?
 
-                      {/* <Box
-                          bgcolor="#c4cbcb"
-                          borderRadius="50%"
-                          display="inline-block"
-                        >
-                          <IconButton
-                            aria-label="delete"
-                            color="info"
-                            onClick={() => setOpenUpdate(true)}
-                          >
-                            <BorderColorIcon />
-                          </IconButton>
-                        </Box>
-                        {user.status === "Open"
-                          ? closeButton(user._id)
-                          : openButton(user._id)} */}
+                            <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block" ml={"7px"}>
+                              <IconButton aria-label="delete" color="info"
+                                onClick={() => MakeRemoveAdmin("User", user._id)}
+                              >
+                                <AccountCircleIcon />
+                              </IconButton>
+                            </Box>
+                            :
+                            <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block" ml={"7px"}>
+                              <IconButton aria-label="delete" color="warning" onClick={() => MakeRemoveAdmin("Admin", user._id)}>
+                                <AdminPanelSettingsIcon />
+                              </IconButton>
+                            </Box>
+                        )
+
+                      }
+
 
                     </TableCell>
                   </TableRow>
