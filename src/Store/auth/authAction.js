@@ -1,4 +1,5 @@
-import client from '../../Helper/axios'
+import tokenClient from '../../Helper/axios'
+import {client} from '../../Helper/axios'
 import { authAction } from './authSlice'
 
 export const signIn = userData => {
@@ -66,7 +67,7 @@ export const initialUser = () => {
 export const addAdmin = adminData => {
 	return async dispatch => {
 		try {
-			const { data } = await client.put('/api/user/socialLogin', {
+			const { data } = await tokenClient.put('/api/user/socialLogin', {
 				adminData,
 			})
 			if (data) {

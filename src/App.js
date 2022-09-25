@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Route, Routes } from 'react-router-dom'
 
 import Layout from './Components/Layout'
@@ -31,15 +31,17 @@ import getUsers from './Store/user/userAction'
 import PaymentContainer from './Components/Payment/PaymentContainer'
 import RequirUser from './RequirAuth/RequirUser'
 import RequirAdmin from './RequirAuth/RequirAdmin'
+import AllBookings from './Pages/Dashboard/Admin/AllBookings'
 
 function App() {
 	const dispatch = useDispatch()
+	const auth = useSelector(state => state.user.user)
 	const [loading, setLoading] = useState(true)
 	useEffect(() => {
 		dispatch(initialUser())
 		dispatch(getRooms())
 		dispatch(getUsers())
-	}, [dispatch])
+	}, [dispatch, auth])
 
 	useEffect(() => {
 		const user = async () => {
@@ -124,6 +126,7 @@ function App() {
 							<Route element={<AdminRooms />} path="allRoom" />
 							<Route element={<AdminUser />} path="user" />
 							<Route element={<AllAdmin />} path="admin" />
+							<Route element={<AllBookings />} path="allBookings" />
 						</Route>
 						<Route
 							element={

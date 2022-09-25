@@ -145,7 +145,7 @@ function MyOrders() {
   return (
     <>
       <Typography variant="h3" color="#2FDD92" my={3} mt={5}>
-        Total Bookings: 25
+        Total Bookings: {room?.rooms?.length}
       </Typography>
       <AddRoomModal open={open} setOpen={setOpen} />
       <Paper sx={{ width: "100%", overflow: "hidden" }}>
@@ -172,15 +172,15 @@ function MyOrders() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {room.rooms.map((row, i) => (
+              {room.rooms.map((room,i,row) => (
                 <TableRow
                   key={row.name}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell align="left">{i + 1}.</TableCell>
                   <TableCell align="left">{image}</TableCell>
-                  <TableCell align="left">{row.name}</TableCell>
-                  <TableCell align="left">{row.price}</TableCell>
+                  <TableCell align="left">{room?.propertyName}</TableCell>
+                  <TableCell align="left">{room.startFrom}</TableCell>
                   <TableCell align="center">
                     <Chip
                       size="small"
