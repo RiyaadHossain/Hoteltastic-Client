@@ -148,7 +148,7 @@ a {
   }
 }
 /* ====================About project team card ================================= */
-
+/* Slience  */
 /* From uiverse.io by @gagan-gv */
 .teamCard{
   width: 190px;
@@ -162,6 +162,7 @@ a {
  .teamCard:hover {
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.623);
   background-color: #4bb8ff;
+  
  }
  
  .teamCard .blob {
@@ -170,6 +171,7 @@ a {
   border-radius: 0 0 30px 30px;
   margin: 0 auto;
   background-color: #4bb8ff;
+
   visibility: visible;
   transition: all 0.3s;
  }
@@ -183,7 +185,10 @@ a {
   margin: 30px auto 10px auto;
   width: 70px;
   height: 70px;
-  background-color: #4bb8ff;
+  background-image: url("../src/Assets/Image/profilePhoto.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   border-radius: 50%;
   font-size: 11px;
   justify-content: center;
