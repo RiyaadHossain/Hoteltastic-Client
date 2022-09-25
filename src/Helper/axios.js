@@ -15,7 +15,7 @@ if (token) {
         }
     })
 }
-
+console.log(token);
 const client = axios.create({
     baseURL: URL,
     /* headers: {

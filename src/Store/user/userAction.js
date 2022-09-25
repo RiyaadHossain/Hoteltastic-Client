@@ -5,7 +5,7 @@ import { userActions } from './userSlice'
 const getUsers = () => {
 	return async dispatch => {
 		try {
-			const { data } = await client.get('/api/user/allUsers')
+			const { data } = await tokenClient.get('/api/user/allUsers')
 			if (data) {
 				dispatch(userActions.getUsers(data.users))
 			}
@@ -47,7 +47,7 @@ export const getAdmins = () => {
 const getFavourites = () => {
 	return async dispatch => {
 		try {
-			const { data } = await client.get('/api/user/favourite-room')
+			const { data } = await tokenClient.get('/api/user/favourite-room')
 			if (data) {
 				dispatch(userActions.getFavourites(data?.favouriteRoom))
 			}

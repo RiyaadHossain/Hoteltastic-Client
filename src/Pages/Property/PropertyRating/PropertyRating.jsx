@@ -13,7 +13,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteReview, postReview } from "../../../Store/review/reviewAction";
+import getReviews, { deleteReview, postReview } from "../../../Store/review/reviewAction";
 import SentimentDissatisfiedIcon from "@mui/icons-material/SentimentDissatisfied";
 import Spinner from "../../../Components/Loaders/Spinner/Spinner";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
@@ -24,7 +24,11 @@ const PropertyRating = ({ roomId }) => {
   const review = useSelector((state) => state.review.reviews);
   const auth = useSelector((state) => state.auth.user.user);
   const dispatch = useDispatch();
-  useEffect(() => {}, []);
+  useEffect(() => {
+    dispatch(getReviews())
+  }, [dispatch]);
+
+  console.log(review);
 
   const userName = (name) => {
     return name?.slice(0, 1)?.toUpperCase();
@@ -72,7 +76,8 @@ const PropertyRating = ({ roomId }) => {
 
   let specificReviews = [];
   review.forEach((r) => r.room?._id === roomId && specificReviews.push(r));
-
+  console.log(review)
+  console.log(specificReviews)
   return (
     <Box
       sx={{
@@ -172,8 +177,8 @@ const PropertyRating = ({ roomId }) => {
         </Modal>
       </div>
 
-      {specificReviews.length ? (
-        specificReviews.map((singleReview, i) => {
+      {review.length ? (
+        review.map((singleReview, i) => {
           return (
             <Box display='flex' justifyContent='space-between' alignItems='center' mt={3}>
 
