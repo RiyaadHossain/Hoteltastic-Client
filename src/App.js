@@ -31,6 +31,8 @@ import getUsers from './Store/user/userAction'
 import PaymentContainer from './Components/Payment/PaymentContainer'
 import RequirUser from './RequirAuth/RequirUser'
 import RequirAdmin from './RequirAuth/RequirAdmin'
+import AllBookings from './Pages/Dashboard/Admin/AllBookings'
+import MyBookings from './Pages/Dashboard/User/MyBookings'
 
 function App() {
 	const dispatch = useDispatch()
@@ -125,6 +127,7 @@ function App() {
 							<Route element={<AdminRooms />} path="allRoom" />
 							<Route element={<AdminUser />} path="user" />
 							<Route element={<AllAdmin />} path="admin" />
+							<Route element={<AllBookings />} path="allBookings" />
 						</Route>
 						<Route
 							element={
@@ -137,6 +140,7 @@ function App() {
 							<Route element={<UserHome />} path="dashboard" />
 							<Route element={<MyOrders />} path="myOrders" />
 							<Route element={<FavouriteRoom />} path="favourite" />
+							<Route element={<MyBookings />} path="myBookings" />
 						</Route>
 						<Route element={<NotFound />} path="*" />
 					</Routes>

@@ -22,7 +22,7 @@ const PaymentContainer = () => {
     console.log(rooms,'rooms',id);
     const room = rooms.find((room) => room._id === id.id)
     const {propertyImage,propertyName} = room
-    console.log(room,'pay room');
+    console.log(room.startFrom,'pay room');
 
     
     return (
