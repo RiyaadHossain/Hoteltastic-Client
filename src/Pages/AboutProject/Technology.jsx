@@ -62,10 +62,13 @@ const Technology = ({ size }) => {
 
   return (
     <FullWidth>
-      <div style={{ height: scale * 200 }}>
+      <div style={{}}>
         <Marquee key={key} velocity={25}>
           {times(7, Number).map((id) => (
             <Photo
+              style={{
+                width: "150px", height: "150px", padding: "40px 5px", borderRadius: "50%", display: "flex", alignItems: "center"
+              }}
               src={photos[id]}
               alt=""
               key={`marquee-example-people-${id}`}

@@ -40,7 +40,7 @@ const Collaborator = () => {
       <Box
         sx={{
           display: "flex",
-          justifyContent: "space-between",
+          justifyContent: "center",
         }}
       >
         <div class="teamCard">
