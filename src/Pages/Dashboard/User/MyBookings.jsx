@@ -69,13 +69,15 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 
 
-const AllBookings = () => {
 
-//   const userStore = useSelector((state) => state.user);
+const MyBookings = () => {
+  const auth = useSelector(state => state.auth.user.user);
+    console.log(auth,'auth');
   const dispatch = useDispatch();
   const bookings = useSelector((state) => state.booking.allPayments.allBooking)
   console.log(bookings,'bokings');
-
+  const myBooking =  bookings?.filter(booking => booking.email === auth.email)
+ console.log(myBooking,'myBooking');
   useEffect(()=>{
     dispatch(getPayment())
   },[dispatch])
@@ -181,7 +183,7 @@ const AllBookings = () => {
         mb={3}
       >
         <Typography variant="h4" color="#2FDD92">
-          Total Bookings: {bookings?.length}
+          My Bookings: {myBooking?.length}
         </Typography>
         <Button
           startIcon={<SearchIcon />}
@@ -211,78 +213,33 @@ const AllBookings = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {bookings?.map((booking, i) => {
+              {myBooking?.map((myBooking, i) => {
                 return (
                   <TableRow
-                    key={booking._id}
+                    key={myBooking._id}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
                     <TableCell align="left">{i + 1}.</TableCell>
                     
-                    <TableCell align="left">{booking.name}</TableCell>
-                    <TableCell align="left">{booking.email}</TableCell>
-                    <TableCell align="left">{booking.roomID}</TableCell>
-                    <TableCell align="left">{booking.roomName}</TableCell>
-                    <TableCell align="left">${(booking.amount)}</TableCell>
+                    <TableCell align="left">{myBooking.name}</TableCell>
+                    <TableCell align="left">{myBooking.email}</TableCell>
+                    <TableCell align="left">{myBooking.roomID}</TableCell>
+                    <TableCell align="left">{myBooking.roomName}</TableCell>
+                    <TableCell align="left">${(myBooking.amount)}</TableCell>
                     <TableCell align="center">
-                        {booking.day}
+                        {myBooking.day}
                     </TableCell>
 
                     <TableCell align="center">
                     <Chip label="success" color="success" size='small'/>
                     </TableCell>
                     <TableCell align="center">
-                        {booking.tnxID}
+                        {myBooking.tnxID}
                     </TableCell>
-                    <TableCell align="center">
-                      <Chip
-                        size="small"
-                        // label={user.status === "BanUser" ? "Banned User" : "Valid User"}
-                        // color={user.status === "BanUser" ? "error" : "success"}
-                      />
-                    </TableCell>
-                    <TableCell align="center">
-                      {/* {
-                        user.status === "BanUser" ?
-
-                          <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block">
-                            <IconButton aria-label="delete" color="success"
-                              onClick={() => banUnbane("UnBan", user._id)}
-                            >
-                              <VerifiedUserIcon />
-                            </IconButton>
-                          </Box>
-                          :
-                          <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block">
-                            <IconButton aria-label="delete" color="error" onClick={() => banUnbane("Ban", user._id)}>
-                              <RemoveCircleIcon />
-                            </IconButton>
-                          </Box>
-
-                      }
-                      {
-                        user.status !== "BanUser" && (
-                          user.role === "Admin" ?
-
-                            <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block" ml={"7px"}>
-                              <IconButton aria-label="delete" color="info"
-                                onClick={() => MakeRemoveAdmin("User", user._id)}
-                              >
-                                <AccountCircleIcon />
-                              </IconButton>
-                            </Box>
-                            :
-                            <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block" ml={"7px"}>
-                              <IconButton aria-label="delete" color="warning" onClick={() => MakeRemoveAdmin("Admin", user._id)}>
-                                <AdminPanelSettingsIcon />
-                              </IconButton>
-                            </Box>
-                        )
-
-                      } */}
-
-
-                    </TableCell>
+                
+                    {/* <TableCell align="center">
+                  
+                    </TableCell> */}
                   </TableRow>
                 );
               })}
@@ -294,4 +251,4 @@ const AllBookings = () => {
     );
 };
 
-export default AllBookings;
+export default MyBookings;

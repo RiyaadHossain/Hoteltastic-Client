@@ -19,6 +19,8 @@ import HomeIcon from "@mui/icons-material/Home";
 import BedroomChildIcon from "@mui/icons-material/BedroomChild";
 import FolderSpecialIcon from '@mui/icons-material/FolderSpecial';
 
+import BookmarkAddedOutlinedIcon from '@mui/icons-material/BookmarkAddedOutlined';
+
 const drawerWidth = 230;
 
 function UserLayout(props) {
@@ -41,6 +43,11 @@ function UserLayout(props) {
       name: "Favourite",
       icon: <FolderSpecialIcon />,
       path: "favourite",
+    },
+    {
+      name: "My Bookings",
+      icon: <BookmarkAddedOutlinedIcon />,
+      path: "myBookings",
     }
   ];
 
