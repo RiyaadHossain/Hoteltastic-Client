@@ -23,7 +23,7 @@ export const updateUser = ({ id, ...rest }) => {
 			console.log(data);
 			if (data) {
 				dispatch(userActions.updateUser())
-				dispatch(initialUser())
+				dispatch(getUsers())
 			}
 		} catch (error) {
 			console.log(error)
@@ -60,7 +60,7 @@ const getFavourites = () => {
 export const postFavourites = (body) => {
 	return async dispatch => {
 		try {
-			const { data } = await client.post(`/api/user/favourite-room/`, body)
+			const { data } = await client.post(`/api/user/favourite-room`, body)
 			if (data) {
 				dispatch(getFavourites())
 				dispatch(userActions.updateFavaourite())

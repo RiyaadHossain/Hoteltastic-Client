@@ -13,7 +13,7 @@ const ProfileUpdateForm = () => {
   const user = useSelector((state) => state.auth.user.user);
   const dispatch = useDispatch();
 
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset, formState: { errors }, } = useForm();
 
   // imgStorage api for image upload
   const imgStorage_key = `75bc4682c9291f359647ab98df5f76de`;
@@ -103,7 +103,7 @@ const ProfileUpdateForm = () => {
             disabled
             id="outlined-read-only-input"
             label="Email"
-            defaultValue="Hello World"
+            defaultValue={user.email}
             InputProps={{
               readOnly: true,
             }}
@@ -113,9 +113,12 @@ const ProfileUpdateForm = () => {
           <TextField
             fullWidth
             type="file"
-            {...register("avatar")}
+              {...register("avatar", { required: true})}
             sx={{ mt: 2 }}
-          />
+            />
+             {errors.avatar && (
+              <Typography color="error">Valid Email is required</Typography>
+            )}
           {/* ======Professional Title ====== */}
           <TextField
             fullWidth

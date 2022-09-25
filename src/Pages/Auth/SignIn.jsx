@@ -36,7 +36,7 @@ function SignIn() {
     if (auth.isLoggedIn) {
       navigate(from, { replace: true });
     }
-  }, [auth, navigate]);
+  }, [auth, navigate, from]);
 
   return (
     <Box sx={{ mx: { xs: 2, md: 0 } }}>
@@ -111,7 +111,7 @@ function SignIn() {
               textAlign="center"
               fontWeight="bold"
             >
-              Sign In
+              Please verify your Identity
             </Typography>
             {/* ====== Email ====== */}
             <TextField
