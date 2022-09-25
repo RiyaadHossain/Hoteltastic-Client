@@ -32,7 +32,7 @@ const Properties = () => {
     return (
         <Box sx={{ fontFamily: "'Rubik', sans-serif", }}>
             {/* header part */}
-            <CustomHeader nested>Property Detials 01</CustomHeader>
+            <CustomHeader nested>{roomStore?.singleRoom?.propertyName}</CustomHeader>
             {/* all other components are showing here */}
             <Box sx={{
                 padding: {
@@ -78,7 +78,7 @@ const Properties = () => {
                         },
                     }}>
                         <PropertyContact />
-                        <PropertyCalculate />
+                        <PropertyCalculate room={roomStore?.singleRoom}/>
                     </Box>
                 </Box>
             </Box>

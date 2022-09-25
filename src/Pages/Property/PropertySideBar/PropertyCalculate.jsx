@@ -2,8 +2,13 @@ import { Button, FormControl, InputAdornment, InputLabel, MenuItem, OutlinedInpu
 import { Box } from '@mui/system';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import React from 'react';
+import HomeIcon from '@mui/icons-material/Home';
+import PermPhoneMsgIcon from '@mui/icons-material/PermPhoneMsg';
+import { useSelector } from 'react-redux';
 
-const PropertyCalculate = () => {
+
+const PropertyCalculate = ({room}) => {
+     const auth = useSelector((state) => state.auth);
      return (
           <Box sx={{
                boxShadow: "0 15px 25px 0px rgb(0 0 0 / 8%)",
@@ -18,26 +23,43 @@ const PropertyCalculate = () => {
 
                }}
                >
-                    Mortgage Calculator
+                    Booking Info
                </Typography>
                <form >
 
                     <FormControl fullWidth sx={{ my: 1 }}>
-                         <InputLabel htmlFor="totalAmount">Total Amount</InputLabel>
+                         <InputLabel htmlFor="email">Email</InputLabel>
                          <OutlinedInput
-                              id="totalAmount"
-                              startAdornment={<InputAdornment position="start">$</InputAdornment>}
-                              label="Total Amount"
+                              id="email"
+                              startAdornment={<InputAdornment position="start">{auth?.user?.user?.email}</InputAdornment>}
+                              label="Email"
+                              disabled
                          />
                     </FormControl>
+
+
                     <FormControl fullWidth sx={{ my: 1 }}>
-                         <InputLabel htmlFor="downPayment">Down Payment</InputLabel>
+                         <InputLabel htmlFor="phone">Phone</InputLabel>
                          <OutlinedInput
-                              id="downPayment"
-                              startAdornment={<InputAdornment position="start">$</InputAdornment>}
-                              label="Down Payment"
+                              id="phone"
+                              startAdornment={<InputAdornment position="start">
+                                   <PermPhoneMsgIcon sx={{fontSize:13}} />
+                              </InputAdornment>}
+                              label="Phone"
+                              type='number'
                          />
                     </FormControl>
+
+                    <FormControl fullWidth sx={{ my: 1 }}>
+                         <InputLabel htmlFor="price">Price</InputLabel>
+                         <OutlinedInput
+                              id="price"
+                              startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                              label="Price"
+                              type='number'
+                         />
+                    </FormControl>
+                    
                     <FormControl fullWidth sx={{ my: 1 }}>
                          <InputLabel htmlFor="interest">Interest</InputLabel>
                          <OutlinedInput
@@ -46,25 +68,15 @@ const PropertyCalculate = () => {
                               label="Interest"
                          />
                     </FormControl>
-                    <FormControl fullWidth sx={{ my: 1 }}>
-                         <InputLabel htmlFor="loan-terms-year">Loan Terms Year</InputLabel>
-                         <OutlinedInput
-                              id="loan-terms-year"
-                              startAdornment={<InputAdornment position="start"><CalendarMonthIcon /></InputAdornment>}
-                              label="loan terms year"
-                         />
-                    </FormControl>
+                    
 
                     <FormControl fullWidth sx={{ my: 1 }}>
-                         <InputLabel id="demo-simple-select-label">Type</InputLabel>
-                         <Select
-                              labelId="demo-simple-select-label"
-                              id="demo-simple-select"
-                              label="Type"
-                         >
-                              <MenuItem value={10}>Monthly</MenuItem>
-                              <MenuItem value={20}>Yearly</MenuItem>
-                         </Select>
+                         <InputLabel id="days">No. Of Days</InputLabel>
+                         <OutlinedInput
+                              id="days"
+                              startAdornment={<InputAdornment position="start"><HomeIcon sx={{fontSize:13}}/></InputAdornment>}
+                              label="No. Of Days"
+                         />
                     </FormControl>
 
                     <Button variant='outlined' sx={{
@@ -81,7 +93,7 @@ const PropertyCalculate = () => {
                               color: "#2dbe6c",
                          }
 
-                    }}>Calculate Now</Button>
+                    }}>Book Now</Button>
                </form>
           </Box>
      );
