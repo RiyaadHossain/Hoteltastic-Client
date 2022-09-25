@@ -1,4 +1,5 @@
-import client from "../../Helper/axios"
+import tokenClient from "../../Helper/axios"
+import {client} from "../../Helper/axios"
 import { roomActions } from "./roomSlice"
 
 const getRooms = () => {
@@ -31,7 +32,7 @@ export const getSingleRoom = (id) => {
 export const postRoom = (roomData) => {
     return async dispatch => {
         try {
-            const { data } = await client.post("/api/room/createRoom", roomData)
+            const { data } = await tokenClient.post("/api/room/createRoom", roomData)
             if (data) {
                 dispatch(roomActions.postRoom)
                 dispatch(getRooms())
@@ -47,7 +48,7 @@ export const updateRoom = ({ id, ...rest }) => {
     return async dispatch => {
         try {
 
-            const { data } = await client.patch(`/api/room/updateRoom/${id}`, rest)
+            const { data } = await tokenClient.patch(`/api/room/updateRoom/${id}`, rest)
             if (data) {
                 dispatch(roomActions.updateRoom)
                 dispatch(getRooms())
@@ -61,7 +62,7 @@ export const updateRoom = ({ id, ...rest }) => {
 export const deleteRoom = (id) => {
     return async dispatch => {
         try {
-            const { data } = await client.delete(`/api/room/deleteRoom/${id}`)
+            const { data } = await tokenClient.delete(`/api/room/deleteRoom/${id}`)
             if (data) {
                 dispatch(roomActions.deleteRoom)
                 dispatch(getRooms())
