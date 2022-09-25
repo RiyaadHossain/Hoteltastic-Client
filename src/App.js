@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Route, Routes } from 'react-router-dom'
 
 import Layout from './Components/Layout'
@@ -34,12 +34,13 @@ import RequirAdmin from './RequirAuth/RequirAdmin'
 
 function App() {
 	const dispatch = useDispatch()
+	const auth = useSelector(state => state.user.user)
 	const [loading, setLoading] = useState(true)
 	useEffect(() => {
 		dispatch(initialUser())
 		dispatch(getRooms())
 		dispatch(getUsers())
-	}, [dispatch])
+	}, [dispatch, auth])
 
 	useEffect(() => {
 		const user = async () => {

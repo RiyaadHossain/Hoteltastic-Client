@@ -98,7 +98,6 @@ export default function AdminRooms() {
     }).then((result) => {
       if (result.isConfirmed) {
         dispatch(updateRoom({ id, status: "Open" }));
-        console.log(dispatch(updateRoom({ id, status: "Open" })));
         Swal.fire(
           "Activated!",
           "Room status has been set to Activate.",
