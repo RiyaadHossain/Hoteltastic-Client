@@ -65,7 +65,7 @@ const Properties = () => {
                         <PropertyDescription />
                         <PropertyDetails />
                         <Location />
-                        <PropertyRating />
+                        <PropertyRating roomId={id} />
                         <PageStatistics />
                     </Box>
 

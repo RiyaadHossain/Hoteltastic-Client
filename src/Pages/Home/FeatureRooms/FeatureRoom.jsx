@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Card from '@mui/material/Card';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import SyncAltIcon from '@mui/icons-material/SyncAlt';
@@ -9,15 +9,22 @@ import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch,  useSelector } from 'react-redux';
-import { postFavourites } from '../../../Store/user/userAction';
+import { getFavourites, postFavourites } from '../../../Store/user/userAction';
 
 const FeatureRoom = ({ room }) => {
      const { /*  featured, authorThumb, authorName, status, beds, baths, sqFt, saved, */
           _id, propertyName, propertyImage, propertyDesciption, startFrom, } = room;
      const user = useSelector((state) => state.auth).user.user;
+     const faviourites = useSelector((state) => state.user.favourites);
 	const dispatch = useDispatch()
+     const navigate = useNavigate();
 
-     // console.log(user);
+     // console.log(faviourites);
+     console.log({room});
+     useEffect(() => {
+       dispatch(getFavourites());
+     }, [dispatch]);
+
      const setFavorite = (roomId) => {
           const favoriteInfo = {
                room: roomId,
@@ -25,7 +32,6 @@ const FeatureRoom = ({ room }) => {
           }
           dispatch(postFavourites(favoriteInfo))
      }
-     const navigate = useNavigate();
      return (
           <Card sx={{
                maxWidth: {
@@ -99,8 +105,9 @@ const FeatureRoom = ({ room }) => {
                                         }
                                    }}
                               />
+                              {/* {console.log(`${room?._id} === ${faviourites?.room} && ${faviourites?.user} === ${user?._id}`)} */}
                               <FavoriteBorderIcon
-                                   onClick={() => setFavorite(room._id)}
+                                   onClick={() => setFavorite(room?._id)}
                                    sx={{
                                         border: "1px solid #e5e7ec",
                                         padding: "3px",

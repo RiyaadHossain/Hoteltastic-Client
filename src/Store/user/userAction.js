@@ -60,7 +60,7 @@ const getFavourites = () => {
 export const postFavourites = (body) => {
 	return async dispatch => {
 		try {
-			const { data } = await client.post(`/api/user/favourite-room/`, body)
+			const { data } = await client.post(`/api/user/favourite-room`, body)
 			if (data) {
 				dispatch(getFavourites())
 				dispatch(userActions.updateFavaourite())
