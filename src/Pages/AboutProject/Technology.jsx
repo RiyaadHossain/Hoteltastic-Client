@@ -30,10 +30,10 @@ const Photo = styled.img`
 const photos = [
   // "../../Assets/Image/aboutproject/js.png",
   "https://abusaid.netlify.app/static/media/react.2b6a0717.svg",
-  "https://abusaid.netlify.app/static/media/react.2b6a0717.svg",
-  "https://abusaid.netlify.app/static/media/react.2b6a0717.svg",
-  "https://abusaid.netlify.app/static/media/react.2b6a0717.svg",
-  "https://abusaid.netlify.app/static/media/react.2b6a0717.svg",
+  "https://www.webapparchitect.com/static/media/8.5a3a9ca294db0539884810b6e6eafedd.svg",
+  "https://www.webapparchitect.com/static/media/5.470b16769e85256575dc92ab57c844f4.svg",
+  "https://www.webapparchitect.com/static/media/10.61be078e0d449065aefaf9f506ba9283.svg",
+  "https://www.webapparchitect.com/static/media/13.4e47c3122b8d2476a02f97dcfcb28640.svg",
   "https://abusaid.netlify.app/static/media/react.2b6a0717.svg",
   "https://abusaid.netlify.app/static/media/react.2b6a0717.svg",
   "https://abusaid.netlify.app/static/media/react.2b6a0717.svg",
@@ -62,10 +62,13 @@ const Technology = ({ size }) => {
 
   return (
     <FullWidth>
-      <div style={{ height: scale * 200 }}>
+      <div style={{}}>
         <Marquee key={key} velocity={25}>
           {times(7, Number).map((id) => (
             <Photo
+              style={{
+                width: "150px", height: "150px", padding: "40px 5px", borderRadius: "50%", display: "flex", alignItems: "center"
+              }}
               src={photos[id]}
               alt=""
               key={`marquee-example-people-${id}`}
