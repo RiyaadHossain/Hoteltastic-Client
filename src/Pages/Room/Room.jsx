@@ -144,7 +144,7 @@ function Room({ room }) {
                   },
                 }}
               >
-                {room.startFrom || "$ 977"}
+                ${room.startFrom || "$ 977"}
               </Typography>
             </Box>
             <Tooltip

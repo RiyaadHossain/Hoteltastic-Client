@@ -176,6 +176,7 @@ const PropertyRating = ({ roomId }) => {
         specificReviews.map((singleReview, i) => {
           return (
             <Box display='flex' justifyContent='space-between' alignItems='center' mt={3}>
+
               <Box
                 key={i}
                 sx={{
