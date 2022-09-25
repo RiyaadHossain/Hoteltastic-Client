@@ -15,9 +15,13 @@ import CalculateIcon from "@mui/icons-material/Calculate";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const PropertyCalculate = ({ room }) => {
+  const id = room._id
+  console.log(room, "room");
   const auth = useSelector((state) => state.auth.user.user);
+  
   const {
     register,
     handleSubmit,
@@ -27,6 +31,7 @@ const PropertyCalculate = ({ room }) => {
   const onSubmit = (data) => {
     /* ------------------- Shorif Vaiya ------------------- */
     // Here is the data, do whatever you
+
     console.log(data);
   };
 
@@ -62,6 +67,7 @@ const PropertyCalculate = ({ room }) => {
             }
             id="totalAmount"
             label="Name"
+            readOnly
             defaultValue={auth?.name}
           />
           {errors.name && (
@@ -101,6 +107,8 @@ const PropertyCalculate = ({ room }) => {
             }
             id="interest"
             label="Phone"
+            defaultValue={auth.phone?auth.phone : ''}
+            readOnly={auth.phone}
           />
           {errors.phone && (
             <Typography color="error">Valid Email is required</Typography>
@@ -133,9 +141,11 @@ const PropertyCalculate = ({ room }) => {
                 <CalculateIcon />
               </InputAdornment>
             }
-            readOnly
+            defaultValue={room?.startFrom}
+            // readOnly
             label="Total"
           />
+          
         </FormControl>
 
         <Button

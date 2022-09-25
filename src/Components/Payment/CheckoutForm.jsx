@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {useStripe, useElements, CardElement} from '@stripe/react-stripe-js';
 import axios from 'axios';
 import { Button } from '@mui/material';
+import { useSelector } from 'react-redux';
 
 
 const appearance = {
@@ -25,10 +26,13 @@ const appearance = {
     }
   }
 
-const CheckoutForm = () => {
+const CheckoutForm = ({room}) => {
     const [success, setSuccess ] = useState(false)
     const stripe = useStripe();
     const elements = useElements();
+    const {startFrom} = room;
+    const {user} = useSelector((state) => state.auth);
+    console.log(user.user.email,'auth');
 
     console.log(success,'succes')
 
@@ -39,7 +43,12 @@ const CheckoutForm = () => {
         console.log('payment problem');
         const {error, paymentMethod} = await stripe.createPaymentMethod({
             type: "card",
-            card: elements.getElement(CardElement)
+            card: elements.getElement(CardElement),
+            billing_details: {
+				email: user.user.email,
+				name: user.user.name,
+				phone: user?.user?.phone,
+			}
         })
         console.log(paymentMethod,'paymentMethod');
     
@@ -48,9 +57,14 @@ const CheckoutForm = () => {
                 console.log(paymentMethod,'payment method')
                 const {id} = paymentMethod
                 const response = await axios.post("http://localhost:5001/api/payment", {
-                    amount: 1000,
-                    userId:id,
-                    payment:true
+                    email: user?.user?.email,
+                    name: user?.user?.name,
+                    amount:  startFrom,
+                    tnxID:id,
+                    day:1,
+                    roomID:room._id,
+                    roomName:room.propertyName,
+                    payment:true,
                 })
                 console.log(response,'response');
     
