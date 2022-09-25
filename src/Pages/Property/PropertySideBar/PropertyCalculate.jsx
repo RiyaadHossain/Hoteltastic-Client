@@ -3,9 +3,7 @@ import {
   FormControl,
   InputAdornment,
   InputLabel,
-  MenuItem,
   OutlinedInput,
-  Select,
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
@@ -26,12 +24,11 @@ const PropertyCalculate = ({ room }) => {
     formState: { errors },
   } = useForm();
 
-     const onSubmit = (data) => {
-          /* ------------------- Shorif Vaiya ------------------- */
-          // Here is the data, do whatever you
-       console.log(data);
+  const onSubmit = (data) => {
+    /* ------------------- Shorif Vaiya ------------------- */
+    // Here is the data, do whatever you
+    console.log(data);
   };
-
 
   return (
     <Box
@@ -126,7 +123,7 @@ const PropertyCalculate = ({ room }) => {
           {errors.day && <Typography color="error">Day is required</Typography>}
         </FormControl>
 
-                 {/* ---------- Shorif vaiya total amount ki ekhane diben naki payment page a calculate korben ---------- */}
+        {/* ---------- Shorif vaiya total amount ki ekhane diben naki payment page a calculate korben ---------- */}
         <FormControl fullWidth sx={{ my: 1 }}>
           <InputLabel htmlFor="loan-terms-year">Total</InputLabel>
           <OutlinedInput
