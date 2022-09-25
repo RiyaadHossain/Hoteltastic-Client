@@ -6,6 +6,7 @@ const initialState = {
 	message: '',
 	users: [],
 	admins: [],
+	favourites: []
 }
 
 const userSlice = createSlice({
@@ -20,6 +21,15 @@ const userSlice = createSlice({
 		},
 		getAdmins: (state, actions) => {
 			state.admins = actions.payload
+		},
+		getFavourites: (state, actions) => {
+			state.favourites = actions.payload
+		},
+		updateFavaourite: state => {
+			state.message = 'Room Added to Favourite List'
+		},
+		deleteFavaourite: state => {
+			state.message = 'Room deleted from Favourite List'
 		},
 	},
 })

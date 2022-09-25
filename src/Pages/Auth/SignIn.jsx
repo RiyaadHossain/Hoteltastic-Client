@@ -1,7 +1,7 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React from "react";
 import GoogleIcon from "@mui/icons-material/Google";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { signIn } from "../../Store/auth/authAction";
@@ -11,7 +11,9 @@ import { useEffect } from "react";
 function SignIn() {
   const dispath = useDispatch();
   const navigate = useNavigate();
+  let location = useLocation();
   const auth = useSelector((state) => state.auth);
+  let from = location.state?.from?.pathname || "/";
 
   const googleSignIn = () => {
     window.open(
@@ -32,9 +34,9 @@ function SignIn() {
 
   useEffect(() => {
     if (auth.isLoggedIn) {
-      navigate("/");
+      navigate(from, { replace: true });
     }
-  }, [auth, navigate]);
+  }, [auth, navigate, from]);
 
   return (
     <Box sx={{ mx: { xs: 2, md: 0 } }}>
@@ -109,7 +111,7 @@ function SignIn() {
               textAlign="center"
               fontWeight="bold"
             >
-              Sign In
+              Please verify your Identity
             </Typography>
             {/* ====== Email ====== */}
             <TextField

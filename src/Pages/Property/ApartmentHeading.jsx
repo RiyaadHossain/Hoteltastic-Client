@@ -5,8 +5,14 @@ import ShareIcon from "@mui/icons-material/Share";
 import PrintIcon from "@mui/icons-material/Print";
 import SyncAltIcon from "@mui/icons-material/SyncAlt";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { Link, useNavigate } from "react-router-dom";
 
-const ApartmentHeading = () => {
+const ApartmentHeading = ({room}) => {
+  const navigate = useNavigate()
+  const handleClick = () => {
+    navigate(`/payment/${room._id}`)
+  }
+  console.log(room, "room");
   const value = 4.5;
   return (
     // main container
@@ -53,7 +59,7 @@ const ApartmentHeading = () => {
               },
             }}
           >
-            The Citizen Apartment
+            {room.propertyName}
           </Typography>
           <Box sx={{ display: "flex" }}>
             <Button
@@ -71,7 +77,7 @@ const ApartmentHeading = () => {
                 },
               }}
             >
-              BUILDING
+              Available
             </Button>
             <Button
               sx={{
@@ -81,13 +87,16 @@ const ApartmentHeading = () => {
                 fontWeight: "bold",
                 borderRadius: "5px",
                 fontSize: "12px",
+                // textDecoration:'none'
                 "&:hover": {
                   background: "#7360ff",
                   color: "#fff",
                 },
               }}
+              onClick={handleClick}
             >
-              FOR BUY
+              Book Now
+              {/* <a href="https://buy.stripe.com/test_5kA4jSdvO2v27ug144">Book Now</a> */}
             </Button>
           </Box>
         </Box>
@@ -105,7 +114,8 @@ const ApartmentHeading = () => {
               fontWeight: "bold",
             }}
           >
-            $30,000.00
+            ${room.startFrom}
+            {console.log(room)}
           </Typography>
         </Box>
       </Box>
@@ -125,14 +135,14 @@ const ApartmentHeading = () => {
           }}
         >
           {/* <Box> */}
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+          <Avatar alt="Remy Sharp" src={room?.authorThumb} />
           {/* </Box> */}
           <Typography
             sx={{
               margin: "0px 10px",
             }}
           >
-            Jubin Nautiyal
+            {room?.authorName}
           </Typography>
           {/* <Box> */}
           <Rating

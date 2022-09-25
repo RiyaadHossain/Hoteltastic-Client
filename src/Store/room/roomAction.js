@@ -14,6 +14,19 @@ const getRooms = () => {
     }
 }
 
+export const getSingleRoom = (id) => {
+    return async dispatch => {
+        try {
+
+            const { data } = await client.get(`/api/room/singelRoom/${id}`)
+            if (data) {
+                dispatch(roomActions.getSRoom(data.room))
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
 
 export const postRoom = (roomData) => {
     return async dispatch => {

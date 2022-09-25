@@ -20,6 +20,7 @@ function SignUp() {
 
   const onSubmit = (data) => {
     dispath(signUp(data));
+    navigate("/signin");
   };
 
   useEffect(() => {

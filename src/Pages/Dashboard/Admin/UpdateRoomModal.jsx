@@ -58,7 +58,7 @@ function UpdateRoomModal({ openUpdate, setOpenUpdate }) {
 
   const onSubmit = async (fulldata) => {
     setLoading(true);
-    const picture = fulldata.picture[0];
+  const picture = fulldata.propertyImage[0];
 
     const formData = new FormData();
     formData.append("image", picture);
@@ -67,7 +67,7 @@ function UpdateRoomModal({ openUpdate, setOpenUpdate }) {
     const { data } = await axios.post(url, formData);
     if (data.success) {
       const imgUrl = data.data.url;
-      const dataToSend = { ...fulldata, picture: imgUrl };
+      const dataToSend = { ...fulldata, propertyImage: imgUrl };
 
       console.log(dataToSend);
       dispatch(updateRoom({ ...dataToSend, id: openUpdate._id }));
@@ -124,12 +124,12 @@ function UpdateRoomModal({ openUpdate, setOpenUpdate }) {
                 id="outlined-basic"
                 label="Room Name"
                 variant="outlined"
-                defaultValue={openUpdate?.name}
-                {...register("name", {
+                defaultValue={openUpdate?.propertyName}
+                {...register("propertyName", {
                   required: true,
                 })}
               />
-              {errors.name && (
+              {errors.propertyName && (
                 <Typography color="error">Room Name is required</Typography>
               )}
               <TextField
@@ -153,14 +153,14 @@ function UpdateRoomModal({ openUpdate, setOpenUpdate }) {
                 fullWidth
                 id="outlined-basic"
                 label="Price"
-                defaultValue={openUpdate?.price}
+                defaultValue={openUpdate?.startFrom}
                 variant="outlined"
                 sx={{ mt: 2 }}
-                {...register("price", {
+                {...register("startFrom", {
                   required: true,
                 })}
               />
-              {errors.price && (
+              {errors.startFrom && (
                 <Typography color="error">Room Price is required</Typography>
               )}
               <TextField
@@ -169,9 +169,9 @@ function UpdateRoomModal({ openUpdate, setOpenUpdate }) {
                 variant="outlined"
                 type="file"
                 sx={{ mt: 2 }}
-                {...register("picture", { required: true })}
+                {...register("propertyImage", { required: true })}
               />
-              {errors.picture && (
+              {errors.propertyImage && (
                 <Typography color="error">Room Picture is required</Typography>
               )}
               <TextField
@@ -179,14 +179,14 @@ function UpdateRoomModal({ openUpdate, setOpenUpdate }) {
                 id="outlined-multiline-static"
                 label="Description"
                 multiline
-                defaultValue={openUpdate?.description}
+                defaultValue={openUpdate?.propertyDesciption}
                 rows={4}
                 sx={{ mt: 2 }}
-                {...register("description", {
+                {...register("propertyDesciption", {
                   required: true,
                 })}
               />
-              {errors.description && (
+              {errors.propertyDesciption && (
                 <Typography color="error">
                   Room Description is required
                 </Typography>

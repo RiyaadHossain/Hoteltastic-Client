@@ -43,11 +43,6 @@ export const signUp = userData => {
 		const userSignUp = async () => {
 			const { data } = await client.post('api/user/signup', userData)
 			if (data) {
-				const user = JSON.stringify({
-					token: data.token,
-					email: data.user.email,
-				})
-				localStorage.setItem('user', user)
 				dispatch(authAction.signUp(data))
 			}
 		}

@@ -69,7 +69,7 @@ function UserLayout(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }} bgcolor="#e8ebed">
+    <Box sx={{ display: "flex" }} bgcolor="#e8ebed" minHeight='100vh'>
       <CssBaseline />
       <AppBar
         position="fixed"

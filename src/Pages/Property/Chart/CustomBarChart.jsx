@@ -1,7 +1,6 @@
 import { Box } from '@mui/material';
-// import { ResponsiveContainer } from 'recharts';
-import React, { PureComponent } from 'react';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import React from 'react';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 
 
@@ -57,7 +56,6 @@ const CustomBarChart = () => {
         <Box sx={{
             height: '60vh',
             maxWidth: '100%',
-            // backgroundColor: '#fff',
             paddingTop: '50px',
             borderTop: "2px solid #e5e7ec",
             marginTop: "3px",

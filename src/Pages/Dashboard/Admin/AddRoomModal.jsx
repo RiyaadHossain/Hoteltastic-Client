@@ -61,7 +61,7 @@ function AddRoomModal({ open, setOpen }) {
 
   const onSubmit = async (fulldata) => {
     setLoading(true)
-    const picture = fulldata.picture[0];
+    const picture = fulldata.propertyImage[0];
 
     const formData = new FormData();
     formData.append("image", picture);
@@ -70,7 +70,7 @@ function AddRoomModal({ open, setOpen }) {
     const {data} = await axios.post(url,formData)
     if(data.success){
       const imgUrl = data.data.url
-      const dataToSend = {...fulldata,picture:imgUrl}
+      const dataToSend = {...fulldata,propertyImage:imgUrl}
 
       dispatch(postRoom({ ...dataToSend }));
 
@@ -78,7 +78,7 @@ function AddRoomModal({ open, setOpen }) {
 
       setLoading(false)
       Swal.fire(
-        'Good job!',
+        'Great!',
         'New room data has been added!',
         'success'
       )
@@ -131,11 +131,11 @@ function AddRoomModal({ open, setOpen }) {
               id="outlined-basic"
               label="Room Name"
               variant="outlined"
-              {...register("name", {
+              {...register("propertyName", {
                 required: true,
               })}
             />
-            {errors.name && (
+            {errors.propertyName && (
               <Typography color="error">Room Name is required</Typography>
             )}
             <TextField
@@ -160,11 +160,11 @@ function AddRoomModal({ open, setOpen }) {
               label="Price"
               variant="outlined"
               sx={{ mt: 2 }}
-              {...register("price", {
+              {...register("startFrom", {
                 required: true,
               })}
             />
-            {errors.price && (
+            {errors.startFrom && (
               <Typography color="error">Room Price is required</Typography>
             )}
             <TextField
@@ -173,11 +173,11 @@ function AddRoomModal({ open, setOpen }) {
               variant="outlined"
               type="file"
               sx={{ mt: 2 }}
-              {...register("picture", {
+              {...register("propertyImage", {
                 required: true,
               })}
             />
-            {errors.picture && (
+            {errors.propertyImage && (
               <Typography color="error">Room Picture is required</Typography>
             )}
             <TextField
@@ -187,11 +187,11 @@ function AddRoomModal({ open, setOpen }) {
               multiline
               rows={4}
               sx={{ mt: 2 }}
-              {...register("description", {
+              {...register("propertyDesciption", {
                 required: true,
               })}
             />
-            {errors.description && (
+            {errors.propertyDesciption && (
               <Typography color="error">
                 Room Description is required
               </Typography>

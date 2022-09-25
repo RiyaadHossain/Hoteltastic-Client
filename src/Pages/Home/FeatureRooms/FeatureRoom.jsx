@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Card from '@mui/material/Card';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import SyncAltIcon from '@mui/icons-material/SyncAlt';
@@ -8,19 +8,39 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch,  useSelector } from 'react-redux';
+import { getFavourites, postFavourites } from '../../../Store/user/userAction';
 
-const FeatureRoom = ({ feature }) => {
-     const { /* id, featured, authorThumb, authorName, status, beds, baths, sqFt, saved, */ propertyName, propertyImage, propertyDesciption, startFrom, } = feature;
+const FeatureRoom = ({ room }) => {
+     const { /*  featured, authorThumb, authorName, status, beds, baths, sqFt, saved, */
+          _id, propertyName, propertyImage, propertyDesciption, startFrom, } = room;
+     const user = useSelector((state) => state.auth).user.user;
+     const faviourites = useSelector((state) => state.user.favourites);
+	const dispatch = useDispatch()
      const navigate = useNavigate();
+
+     // console.log(faviourites);
+     // console.log({room});
+     useEffect(() => {
+       dispatch(getFavourites());
+     }, [dispatch]);
+
+     const setFavorite = (roomId) => {
+          const favoriteInfo = {
+               room: roomId,
+               user: user._id
+          }
+          dispatch(postFavourites(favoriteInfo))
+     }
      return (
           <Card sx={{
                maxWidth: {
-                    xs:"80%",
-                    sm:300,
+                    xs: "80%",
+                    sm: 300,
                     md: 370
                },
                margin: "15px 15px",
-               borderRadius:"10px"
+               borderRadius: "10px"
           }}
                fontFamily="'Rubik', sans-serif"
           >
@@ -79,13 +99,15 @@ const FeatureRoom = ({ feature }) => {
                                         borderRadius: "4px",
                                         transition: "ease-out 0.2s",
                                         "&:hover": {
-                                             color:"#fff",
+                                             color: "#fff",
                                              background: "#2dbe6c",
                                              cursor: "pointer"
                                         }
                                    }}
                               />
+                              {/* {console.log(`${room?._id} === ${faviourites?.room} && ${faviourites?.user} === ${user?._id}`)} */}
                               <FavoriteBorderIcon
+                                   onClick={() => setFavorite(room?._id)}
                                    sx={{
                                         border: "1px solid #e5e7ec",
                                         padding: "3px",
@@ -96,7 +118,7 @@ const FeatureRoom = ({ feature }) => {
                                         marginLeft: "5px",
                                         transition: "ease-out 0.2s",
                                         "&:hover": {
-                                             color:"#fff",
+                                             color: "#fff",
                                              background: "#2dbe6c",
                                              cursor: "pointer"
                                         }
@@ -108,21 +130,21 @@ const FeatureRoom = ({ feature }) => {
                          {propertyDesciption}
                     </Typography>
                     <Button
-                     onClick={()=> navigate("/property")}
-                     sx={{
-                         color: "#93959e",
-                         border: "1px solid #e5e7ec",
-                         padding: "8px 0px",
-                         width: "130px",
-                         boxShadow: "inset 0 0 0 0 #2dbe6c",
-                         transition: "ease-out 0.5s",
-                         "&:hover": {
-                              color: "white",
-                              boxShadow: "inset 130px 0 0 0 #2dbe6c",
-                              border: "1px solid #2dbe6c",
-                         }
+                         onClick={() => navigate(`/property/${_id}`)}
+                         sx={{
+                              color: "#93959e",
+                              border: "1px solid #e5e7ec",
+                              padding: "8px 0px",
+                              width: "130px",
+                              boxShadow: "inset 0 0 0 0 #2dbe6c",
+                              transition: "ease-out 0.5s",
+                              "&:hover": {
+                                   color: "white",
+                                   boxShadow: "inset 130px 0 0 0 #2dbe6c",
+                                   border: "1px solid #2dbe6c",
+                              }
 
-                    }} >See Details</Button>
+                         }} >See Details</Button>
                </CardContent>
           </Card>
      );
