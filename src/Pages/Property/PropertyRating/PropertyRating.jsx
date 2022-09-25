@@ -13,9 +13,11 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { postReview } from "../../../Store/review/reviewAction";
+import { deleteReview, postReview } from "../../../Store/review/reviewAction";
 import SentimentDissatisfiedIcon from "@mui/icons-material/SentimentDissatisfied";
 import Spinner from "../../../Components/Loaders/Spinner/Spinner";
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import Swal from "sweetalert2";
 
 const PropertyRating = ({ roomId }) => {
   const [value, setValue] = useState(1);
@@ -47,9 +49,29 @@ const PropertyRating = ({ roomId }) => {
     setOpen(false);
   };
 
-  let specificReviews = []
-  review.forEach(r => r.room._id === roomId && specificReviews.push(r))
+  const handleDeleteReview = id => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, Delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(deleteReview(id));
+        Swal.fire(
+          "Deleted!",
+          "Your Review has been deleted.",
+          "success"
+        );
+      }
+    });
+  }
 
+  let specificReviews = [];
+  review.forEach((r) => r.room?._id === roomId && specificReviews.push(r));
 
   return (
     <Box
@@ -153,65 +175,65 @@ const PropertyRating = ({ roomId }) => {
       {specificReviews.length ? (
         specificReviews.map((singleReview, i) => {
           return (
-            <Box
-              key={i}
-              sx={{
-                display: "flex",
-                color: "#93959e",
-                py: "15px",
-                borderBottom: "1px solid #e5e7ec",
-                ":last-child": {
-                  borderBottom: "none",
-                },
-              }}
-            >
-              {console.log(
-                `${singleReview.room?._id === roomId ? "yeee" : "noo"}`
-              )}
-              <Avatar
-                sx={{ height: "40px", width: "40px", bgcolor: "skyblue" }}
-                src={singleReview.user?.avatar}
+            <Box display='flex' justifyContent='space-between' alignItems='center' mt={3}>
+              <Box
+                key={i}
+                sx={{
+                  display: "flex",
+                  color: "#93959e",
+                  py: "15px",
+                }}
               >
-                {!singleReview.user?.avatar &&
-                  userName(singleReview.user?.name)}
-              </Avatar>
-              <Box ml={3}>
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                  }}
+                <Avatar
+                  sx={{ height: "40px", width: "40px", bgcolor: "skyblue" }}
+                  src={singleReview.user?.avatar}
                 >
-                  <Typography
+                  {!singleReview.user?.avatar &&
+                    userName(singleReview.user?.name)}
+                </Avatar>
+                <Box ml={3}>
+                  <Box
                     sx={{
-                      fontSize: {
-                        md: "18px",
-                      },
-                      fontFamily: "'Rubik', sans-serif",
-                      mr: "10px",
-                      fontWeight: 600,
-                      color: "#626263",
+                      display: "flex",
+                      alignItems: "center",
                     }}
                   >
-                    {singleReview.user?.name}
+                    <Typography
+                      sx={{
+                        fontSize: {
+                          md: "18px",
+                        },
+                        fontFamily: "'Rubik', sans-serif",
+                        mr: "10px",
+                        fontWeight: 600,
+                        color: "#626263",
+                      }}
+                    >
+                      {singleReview.user?.name}
+                    </Typography>
+                    {/* rating */}
+                    <Rating
+                      name="half-rating-read"
+                      defaultValue={singleReview.rattings}
+                      precision={0.5}
+                      size="small"
+                      readOnly
+                    />
+                  </Box>
+                  <Typography
+                    sx={{
+                      fontFamily: "'Rubik', sans-serif",
+                    }}
+                  >
+                    {singleReview.review}
                   </Typography>
-                  {/* rating */}
-                  <Rating
-                    name="half-rating-read"
-                    defaultValue={singleReview.rattings}
-                    precision={0.5}
-                    size="small"
-                    readOnly
-                  />
                 </Box>
-                <Typography
-                  sx={{
-                    fontFamily: "'Rubik', sans-serif",
-                  }}
-                >
-                  {singleReview.review}
-                </Typography>
               </Box>
+             {auth?._id === singleReview?.user?._id && <Box>
+                <Avatar sx={{bgcolor: 'red', width: 30, height: 30}} onClick={() => handleDeleteReview(singleReview._id)}>
+                <DeleteForeverIcon/>
+                </Avatar>
+              </Box>}
             </Box>
           );
         })

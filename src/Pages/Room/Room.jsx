@@ -10,16 +10,76 @@ import {
   Typography,
   Zoom,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import SyncAltIcon from "@mui/icons-material/SyncAlt";
 import SquareTwoToneIcon from "@mui/icons-material/SquareTwoTone";
 import BathroomTwoToneIcon from "@mui/icons-material/BathroomTwoTone";
 import BedTwoToneIcon from "@mui/icons-material/BedTwoTone";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getFavourites, postFavourites } from "../../Store/user/userAction";
 
 function Room({ room }) {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const auth = useSelector(state => state.auth.user.user)
+  const favourite = useSelector(state => state.user.favourites)
+  console.log(favourite);
+
+  useEffect(() => {
+    dispatch(getFavourites())
+  }, [dispatch])
+
+  const addFav = id => {
+    const data = {user: auth._id, room: id}
+    dispatch(postFavourites(data))
+  }
+
+  const removeFav = id => {
+
+  }
+
+  const heart = (id) => (
+    <FavoriteBorderIcon
+      onClick={() => addFav(id)}
+      sx={{
+        border: "1px solid #e5e7ec",
+        padding: "3px",
+        height: "33px",
+        width: "33px",
+        color: "#a6a7af",
+        borderRadius: "4px",
+        marginLeft: "5px",
+        "&:hover": {
+          color: "#fff",
+          background: "#2dbe6c",
+          cursor: "pointer",
+        },
+      }}
+    />
+  );
+
+  const heartFilled = (id) => (
+    <FavoriteIcon
+    onClick={() => removeFav(id)}
+      sx={{
+        border: "1px solid #e5e7ec",
+        padding: "3px",
+        height: "33px",
+        width: "33px",
+        color: "#a6a7af",
+        borderRadius: "4px",
+        marginLeft: "5px",
+        "&:hover": {
+          color: "#fff",
+          background: "#2dbe6c",
+          cursor: "pointer",
+        },
+      }}
+    />
+  );
 
   return (
     <Card
@@ -141,7 +201,7 @@ function Room({ room }) {
 
           <Box display="flex" alignItems="center" mt={3}>
             <Button
-            onClick={() => navigate(`/property/${room._id}`)}
+              onClick={() => navigate(`/property/${room._id}`)}
               sx={{
                 color: "#93959e",
                 border: "1px solid #e5e7ec",
@@ -167,19 +227,15 @@ function Room({ room }) {
                   width: "33px",
                   color: "#a6a7af",
                   borderRadius: "4px",
+                  "&:hover": {
+                    color: "#fff",
+                    background: "#2dbe6c",
+                    cursor: "pointer",
+                  },
                 }}
               />
-              <FavoriteBorderIcon
-                sx={{
-                  border: "1px solid #e5e7ec",
-                  padding: "3px",
-                  height: "33px",
-                  width: "33px",
-                  color: "#a6a7af",
-                  borderRadius: "4px",
-                  marginLeft: "5px",
-                }}
-              />
+              {/* {favourite.map(fav => console.log(fav))} */}
+              {heart(room._id)}
             </Box>
           </Box>
         </CardContent>

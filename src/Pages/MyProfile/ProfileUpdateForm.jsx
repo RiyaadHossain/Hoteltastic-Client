@@ -103,7 +103,7 @@ const ProfileUpdateForm = () => {
             disabled
             id="outlined-read-only-input"
             label="Email"
-            defaultValue="Hello World"
+            defaultValue={user.email}
             InputProps={{
               readOnly: true,
             }}
@@ -113,7 +113,7 @@ const ProfileUpdateForm = () => {
           <TextField
             fullWidth
             type="file"
-            {...register("avatar")}
+              {...register("avatar", { required: true})}
             sx={{ mt: 2 }}
           />
           {/* ======Professional Title ====== */}
