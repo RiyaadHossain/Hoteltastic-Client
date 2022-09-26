@@ -3,6 +3,7 @@ import {useStripe, useElements, CardElement} from '@stripe/react-stripe-js';
 import axios from 'axios';
 import { Button } from '@mui/material';
 import { useSelector } from 'react-redux';
+// import './Payment.css'
 
 
 const appearance = {
