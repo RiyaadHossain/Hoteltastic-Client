@@ -5,8 +5,6 @@ import CheckoutForm from './CheckoutForm'
 import { Box, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import PropertyCalculate from '../../Pages/Property/PropertySideBar/PropertyCalculate';
-import userEvent from '@testing-library/user-event';
 
 
 
@@ -77,7 +75,6 @@ const PaymentContainer = () => {
                 },
                 justifyContent: 'space-around',
                 alignItems: 'center',
-                // minHeight: '80vh',
                 height: {
                   md:'100vh'
                 },
@@ -148,9 +145,6 @@ const PaymentContainer = () => {
                         md:'50%',
                         lg:'50%',
                     },
-                    // minHeight:{
-                    //   md:'580px'
-                    // },
                     height:'100%',
                     padding:5,
                     background:'#fff',
@@ -159,7 +153,6 @@ const PaymentContainer = () => {
                     boxShadow: '2px 2px 10px 1px rgba(0, 0, 0, 0.2)',
                 }}>
                     <Box>
-                    {/* <Typography sx={{marginBottom:5,fontSize:20}}>Please Pay Here To Confirm the Booking</Typography> */}
                     <Elements stripe={stripePromise} options={options}>
                         <CheckoutForm room={room}/>
                     </Elements>
@@ -167,7 +160,6 @@ const PaymentContainer = () => {
                 </Box>
 
                 </Box>
-            {/* </Box> */}
             
         </>
     );

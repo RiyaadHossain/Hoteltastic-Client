@@ -1,33 +1,13 @@
 import React, { useState } from 'react';
 import {useStripe, useElements, CardElement} from '@stripe/react-stripe-js';
 import axios from 'axios';
-import { Box, Button, TextField, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 import './Payment.css'
 import Swal from 'sweetalert2';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { Link } from 'react-router-dom';
 
-// const appearance = {
-//     theme: 'stripe',
-//     variables: {
-//       fontWeightNormal: '600',
-//       borderRadius: '2px',
-//       colorBackground: 'red',
-//       colorPrimary: '#DF1B41',
-//       colorPrimaryText: 'black',
-//       spacingGridRow: '40px !important',
-//     },
-//     rules: {
-//       '.Label': {
-//         marginBottom: '20px'
-//       },
-//       '.Tab, .Input, .Block': {
-//         boxShadow: '0px 3px 10px rgba(18, 42, 66, 0.08)',
-//         padding: '12px'
-//       }
-//     }
-//   }
 
 const CheckoutForm = ({room}) => {
     const [success, setSuccess ] = useState(false)
@@ -108,7 +88,6 @@ const CheckoutForm = ({room}) => {
                 <label htmlFor="card">Card Info</label>
                 <fieldset name='card' className="FormGroup">
                     <div className="FormRow">
-                    {/* options={appearance} */}
                         <CardElement/>
                     </div>
                 </fieldset>
