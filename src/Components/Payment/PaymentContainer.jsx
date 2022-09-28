@@ -9,6 +9,7 @@ import PropertyCalculate from '../../Pages/Property/PropertySideBar/PropertyCalc
 import userEvent from '@testing-library/user-event';
 
 
+
 const stripePromise = loadStripe('pk_test_51L1DNCDSQhYM6brtwNmSUwREJfOaTnI8RVEu5U7tRoLvCbvvPhH2BsKB07x5SJzT2UJCsYvXF6GsofraA93lunJJ00c5Oqj7Dy')
 
 
@@ -76,7 +77,10 @@ const PaymentContainer = () => {
                 },
                 justifyContent: 'space-around',
                 alignItems: 'center',
-                minHeight: '80vh',
+                // minHeight: '80vh',
+                height: {
+                  md:'100vh'
+                },
                 maxWidth:'1000px',
                 margin:'20px auto',
                 padding:'20px'
@@ -89,12 +93,14 @@ const PaymentContainer = () => {
                         md:'50%',
                         lg:'50%',
                     },
+                    height:'100%',
                     background:'#fff',
                     border:'1px solid #ccc',
                     borderRadius:'5px',
                     boxShadow: '2px 2px 10px 1px rgba(0, 0, 0, 0.2)',
                     margin:'20px',
-                    padding:5
+                    padding:5,
+                    overflowY:'scroll',
                     }}>
                 <Typography>Check the booking info <span style={{color:'#2dbe6c',fontWeight:600,fontSize:'20px'}}>{user.user.name}</span> !</Typography>
                 <Box sx={{width:'100%'}}>
@@ -142,9 +148,10 @@ const PaymentContainer = () => {
                         md:'50%',
                         lg:'50%',
                     },
-                    minHeight:{
-                      md:'580px'
-                    },
+                    // minHeight:{
+                    //   md:'580px'
+                    // },
+                    height:'100%',
                     padding:5,
                     background:'#fff',
                     border:'1px solid #ccc',
@@ -152,7 +159,7 @@ const PaymentContainer = () => {
                     boxShadow: '2px 2px 10px 1px rgba(0, 0, 0, 0.2)',
                 }}>
                     <Box>
-                    <Typography sx={{marginBottom:5,fontSize:20}}>Please Pay Here To Confirm the Booking</Typography>
+                    {/* <Typography sx={{marginBottom:5,fontSize:20}}>Please Pay Here To Confirm the Booking</Typography> */}
                     <Elements stripe={stripePromise} options={options}>
                         <CheckoutForm room={room}/>
                     </Elements>
