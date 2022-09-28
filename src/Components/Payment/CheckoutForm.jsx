@@ -47,7 +47,7 @@ const CheckoutForm = ({room}) => {
             billing_details: {
 				email: user.user.email,
 				name: user.user.name,
-				phone: user?.user?.phone,
+				phone: event.target.phone.value,
 			}
         })
     
