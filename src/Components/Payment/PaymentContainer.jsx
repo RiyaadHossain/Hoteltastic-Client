@@ -5,7 +5,7 @@ import CheckoutForm from './CheckoutForm'
 import { Box, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import PropertyCalculate from '../../Pages/Property/PropertySideBar/PropertyCalculate';
+
 
 
 const stripePromise = loadStripe('pk_test_51L1DNCDSQhYM6brtwNmSUwREJfOaTnI8RVEu5U7tRoLvCbvvPhH2BsKB07x5SJzT2UJCsYvXF6GsofraA93lunJJ00c5Oqj7Dy')
@@ -21,7 +21,8 @@ const PaymentContainer = () => {
     const id = useParams()
     console.log(rooms,'rooms',id);
     const room = rooms.find((room) => room._id === id.id)
-    const {propertyImage,propertyName} = room
+    const {propertyImage,propertyName,propertyDesciption,startFrom} = room
+    const {user} = useSelector((state) => state.auth);
     console.log(room.startFrom,'pay room');
 
     
@@ -68,45 +69,97 @@ const PaymentContainer = () => {
 
             <Box sx={{
                 display: 'flex',
+                flexDirection: {
+                    xs: 'column',
+                    md: 'row',
+                },
                 justifyContent: 'space-around',
                 alignItems: 'center',
-                minHeight: '80vh',
-                maxWidth:'1400px',
+                height: {
+                  md:'100vh'
+                },
+                maxWidth:'1000px',
                 margin:'20px auto',
                 padding:'20px'
             }}>
                 {/* ----------------Room Data Card----------------*/}
                 <Box sx={{
-                    width:'50%',
+                    width:{
+                        xs:'100%',
+                        sm:'100%',
+                        md:'50%',
+                        lg:'50%',
+                    },
+                    height:'100%',
                     background:'#fff',
                     border:'1px solid #ccc',
                     borderRadius:'5px',
                     boxShadow: '2px 2px 10px 1px rgba(0, 0, 0, 0.2)',
-                    margin:'20px'
+                    margin:'20px',
+                    padding:5,
+                    overflowY:'scroll',
                     }}>
-                <PropertyCalculate room={{room}}/>
+                <Typography>Check the booking info <span style={{color:'#2dbe6c',fontWeight:600,fontSize:'20px'}}>{user.user.name}</span> !</Typography>
+                <Box sx={{width:'100%'}}>
+                  <img width='100%' src={propertyImage} alt="RoomImage" />
+                  <Box sx={{
+                    display:'flex',
+                    justifyContent:'space-between',
+                  }}>
+                  <Typography sx={{fontWeight:600}}>{propertyName}</Typography>
+                  <Typography sx={{fontWeight:600}}>${startFrom}.00</Typography>
+                  </Box>
+                  <Typography>{propertyDesciption?.slice(0,50)}...</Typography>
+                  <Box sx={{
+                    display:'flex',
+                    justifyContent:'space-between',
+                    marginTop:'20px',
+                    borderBottom:'1px solid #ccc',
+                    paddingBottom:'20px',
+                  }}>
+                  <Typography sx={{fontWeight:600}}>Subtotal</Typography>
+                  <Typography sx={{fontWeight:600}}>${startFrom}.00</Typography>
+                  </Box>
+                  <Box sx={{
+                    display:'flex',
+                    justifyContent:'space-between',
+                    marginTop:'20px',
+                    borderBottom:'1px solid #ccc',
+                    paddingBottom:'20px',
+                  }}>
+                  <Typography sx={{fontWeight:600}}>Total</Typography>
+                  <Typography sx={{fontWeight:600}}>${startFrom}.00</Typography>
+                  </Box>
                 </Box>
+                </Box>
+                {/* ------------------------room card section ends here---------------------- */}
 
                 {/* ----------------payment card----------------- */}
             {/* <Box> */}
 
                 
                 <Box sx={{
-                    width:'50%',
-                    padding:10,
+                    width:{
+                        xs:'100%',
+                        sm:'100%',
+                        md:'50%',
+                        lg:'50%',
+                    },
+                    height:'100%',
+                    padding:5,
                     background:'#fff',
                     border:'1px solid #ccc',
                     borderRadius:'5px',
                     boxShadow: '2px 2px 10px 1px rgba(0, 0, 0, 0.2)',
                 }}>
-                    <Typography sx={{marginBottom:10,fontSize:20}}>Please Pay Here To Confirm the Booking</Typography>
+                    <Box>
                     <Elements stripe={stripePromise} options={options}>
                         <CheckoutForm room={room}/>
                     </Elements>
+                    </Box>
                 </Box>
 
                 </Box>
-            {/* </Box> */}
             
         </>
     );
