@@ -99,7 +99,7 @@ const PaymentContainer = () => {
                     borderRadius:'5px',
                     boxShadow: '2px 2px 10px 1px rgba(0, 0, 0, 0.2)',
                 }}>
-                    <Typography sx={{marginBottom:10,fontSize:20}}>Please Pay Here To Confirm the Booking</Typography>
+                    <Typography sx={{marginBottom:5,fontSize:20}}>Please Pay Here To Confirm the Booking</Typography>
                     <Elements stripe={stripePromise} options={options}>
                         <CheckoutForm room={room}/>
                     </Elements>

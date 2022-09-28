@@ -1,31 +1,32 @@
 import React, { useState } from 'react';
 import {useStripe, useElements, CardElement} from '@stripe/react-stripe-js';
 import axios from 'axios';
-import { Button } from '@mui/material';
+import { Box, Button, TextField } from '@mui/material';
 import { useSelector } from 'react-redux';
-// import './Payment.css'
+import './Payment.css'
+import Swal from 'sweetalert2';
 
 
-const appearance = {
-    theme: 'stripe',
-    variables: {
-      fontWeightNormal: '600',
-      borderRadius: '2px',
-      colorBackground: 'red',
-      colorPrimary: '#DF1B41',
-      colorPrimaryText: 'black',
-      spacingGridRow: '40px !important',
-    },
-    rules: {
-      '.Label': {
-        marginBottom: '20px'
-      },
-      '.Tab, .Input, .Block': {
-        boxShadow: '0px 3px 10px rgba(18, 42, 66, 0.08)',
-        padding: '12px'
-      }
-    }
-  }
+// const appearance = {
+//     theme: 'stripe',
+//     variables: {
+//       fontWeightNormal: '600',
+//       borderRadius: '2px',
+//       colorBackground: 'red',
+//       colorPrimary: '#DF1B41',
+//       colorPrimaryText: 'black',
+//       spacingGridRow: '40px !important',
+//     },
+//     rules: {
+//       '.Label': {
+//         marginBottom: '20px'
+//       },
+//       '.Tab, .Input, .Block': {
+//         boxShadow: '0px 3px 10px rgba(18, 42, 66, 0.08)',
+//         padding: '12px'
+//       }
+//     }
+//   }
 
 const CheckoutForm = ({room}) => {
     const [success, setSuccess ] = useState(false)
@@ -33,15 +34,13 @@ const CheckoutForm = ({room}) => {
     const elements = useElements();
     const {startFrom} = room;
     const {user} = useSelector((state) => state.auth);
-    console.log(user.user.email,'auth');
-
-    console.log(success,'succes')
+    console.log(user);
 
 
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log('payment problem');
+        console.log(event.target.phone.value);
         const {error, paymentMethod} = await stripe.createPaymentMethod({
             type: "card",
             card: elements.getElement(CardElement),
@@ -51,11 +50,9 @@ const CheckoutForm = ({room}) => {
 				phone: user?.user?.phone,
 			}
         })
-        console.log(paymentMethod,'paymentMethod');
     
         if(!error) {
             try {
-                console.log(paymentMethod,'payment method')
                 const {id} = paymentMethod
                 const response = await axios.post("http://localhost:5001/api/payment", {
                     email: user?.user?.email,
@@ -67,7 +64,6 @@ const CheckoutForm = ({room}) => {
                     roomName:room.propertyName,
                     payment:true,
                 })
-                console.log(response,'response');
     
                 if(response.data.success) {
                     console.log("Successful payment")
@@ -75,10 +71,19 @@ const CheckoutForm = ({room}) => {
                 }
     
             } catch (error) {
-                console.log("Error", error)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `${error.message}. Please try again!`,
+                  })
+
             }
         } else {
-            console.log(error.message,'errror')
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: `${error.message}. Please try again!`,
+              })
         }
       };
 
@@ -88,17 +93,35 @@ const CheckoutForm = ({room}) => {
         <>
         {!success ? 
             <form onSubmit={handleSubmit}>
-                <fieldset className="FormGroup">
+                <label htmlFor="email">Email</label>
+                <input name='email' required style={{padding:15,width:'100%',marginBottom:4}} defaultValue={user?.user?.email} readOnly/>
+                <label htmlFor="phone">Phone</label>
+                <input name='phone' required style={{padding:15,width:'100%',marginBottom:5}} type='number'/>
+                <label htmlFor="card">Card Info</label>
+                <fieldset name='card' className="FormGroup">
                     <div className="FormRow">
-                        <CardElement options={appearance}/>
+                    {/* options={appearance} */}
+                        <CardElement/>
                     </div>
                 </fieldset>
-                <button sx={{cursor:'pointer',marginTop:20,padding:10}}>Pay</button>
+                <div className='pay-button'>
+                <button style={{
+                    width:'100%',
+                    cursor:'pointer',
+                    padding:'15px 6px',
+                    borderRadius:5,
+                    backgroundColor:'#2dbe6c',
+                    border:'1px solid #2dbe6c',
+                    color:'white',
+                    fontWeight:'bold',
+                    marginTop:'20px',
+                }}>PAY</button>
+                </div>
             </form>
         :
-            <div>
+            <Box>
                 <h2>You just bought a sweet spatula congrats this is the best decision of you're life</h2>
-            </div> 
+            </Box> 
         }
         </>
     );
