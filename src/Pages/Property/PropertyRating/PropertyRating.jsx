@@ -75,7 +75,7 @@ const PropertyRating = ({ roomId }) => {
   let specificReviews = [];
   review.forEach((r) => r.room?._id === roomId && specificReviews.push(r));
   console.log(review)
-  console.log(specificReviews)
+  // console.log(specificReviews)
   return (
     <Box
       sx={{
@@ -175,8 +175,8 @@ const PropertyRating = ({ roomId }) => {
         </Modal>
       </div>
 
-      {review.length ? (
-        review.map((singleReview, i) => {
+      {specificReviews.length ? (
+        specificReviews.map((singleReview, i) => {
           return (
             <Box display='flex' justifyContent='space-between' alignItems='center' mt={3}>
 

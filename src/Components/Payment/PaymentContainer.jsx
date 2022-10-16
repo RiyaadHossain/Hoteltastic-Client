@@ -6,6 +6,8 @@ import { Box, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import PropertyCalculate from '../../Pages/Property/PropertySideBar/PropertyCalculate';
+import { makeStyles } from '@mui/styles';
+import stripe from "@stripe/react-stripe-js"
 
 
 const stripePromise = loadStripe('pk_test_51L1DNCDSQhYM6brtwNmSUwREJfOaTnI8RVEu5U7tRoLvCbvvPhH2BsKB07x5SJzT2UJCsYvXF6GsofraA93lunJJ00c5Oqj7Dy')
@@ -13,8 +15,21 @@ const stripePromise = loadStripe('pk_test_51L1DNCDSQhYM6brtwNmSUwREJfOaTnI8RVEu5
 
   const options = {
     stripePromise,
-  };
+};
+  
+const useStyles = makeStyles((theme) => ({
+  root: {
+    padding: "20px", 
+    backgroundColor: "red"
+  },
+}));
 
+const appearance = {
+  theme: 'stripe'
+};
+
+// Pass the appearance object to the Elements instance
+// const elements = stripe.elements({clientSecret, appearance});
 
 const PaymentContainer = () => {
     const rooms = useSelector((state) => state.room).rooms;
@@ -23,7 +38,7 @@ const PaymentContainer = () => {
     const room = rooms.find((room) => room._id === id.id)
     const {propertyImage,propertyName} = room
     console.log(room.startFrom,'pay room');
-
+    const classes = useStyles();
     
     return (
         <>
@@ -100,7 +115,7 @@ const PaymentContainer = () => {
                     boxShadow: '2px 2px 10px 1px rgba(0, 0, 0, 0.2)',
                 }}>
                     <Typography sx={{marginBottom:10,fontSize:20}}>Please Pay Here To Confirm the Booking</Typography>
-                    <Elements stripe={stripePromise} options={options}>
+                    <Elements appearance={appearance} stripe={stripePromise} options={options}>
                         <CheckoutForm room={room}/>
                     </Elements>
                 </Box>

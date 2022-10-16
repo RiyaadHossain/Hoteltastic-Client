@@ -46,13 +46,7 @@ const columns = [
     label: "Transaction ID",
     minWidth: 150,
     align: "center",
-  },
-  {
-    id: "action",
-    label: "Action",
-    minWidth: 100,
-    align: "center",
-  },
+  }
 ];
 
 
@@ -234,14 +228,14 @@ const AllBookings = () => {
                     <TableCell align="center">
                         {booking.tnxID}
                     </TableCell>
-                    <TableCell align="center">
+                    {/* <TableCell align="center">
                       <Chip
                         size="small"
                         // label={user.status === "BanUser" ? "Banned User" : "Valid User"}
                         // color={user.status === "BanUser" ? "error" : "success"}
                       />
-                    </TableCell>
-                    <TableCell align="center">
+                    </TableCell> */}
+                    {/* <TableCell align="center"> */}
                       {/* {
                         user.status === "BanUser" ?
 
@@ -282,7 +276,7 @@ const AllBookings = () => {
                       } */}
 
 
-                    </TableCell>
+                    {/* </TableCell> */}
                   </TableRow>
                 );
               })}
