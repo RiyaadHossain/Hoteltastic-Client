@@ -8,22 +8,22 @@ import { styled } from "@mui/material/styles";
 import TableContainer from "@mui/material/TableContainer";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import { Box } from "@mui/system";
-import { Button, Chip, IconButton, Typography } from "@mui/material";
-import { AddCircle } from "@mui/icons-material";
-import BorderColorIcon from "@mui/icons-material/BorderColor";
-import AddRoomModal from "../Admin/AddRoomModal";
+import { Chip, IconButton, Typography } from "@mui/material";
+// import { AddCircle } from "@mui/icons-material";
+// import BorderColorIcon from "@mui/icons-material/BorderColor";
+// import AddRoomModal from "../Admin/AddRoomModal";
 import UpdateRoomModal from "../Admin/UpdateRoomModal";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import CancelIcon from "@mui/icons-material/Cancel";
+// import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+// import CancelIcon from "@mui/icons-material/Cancel";
 import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
-import { updateRoom } from "../../../Store/room/roomAction";
+// import { updateRoom } from "../../../Store/room/roomAction";
 import { useEffect } from "react";
 import {
   deleteFavourites,
   getFavourites,
 } from "../../../Store/user/userAction";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+// import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const columns = [
@@ -66,7 +66,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }));
 
 function FavouriteRoom() {
-  const [open, setOpen] = React.useState(false);
+  // const [open, setOpen] = React.useState(false);
   const [openUpdate, setOpenUpdate] = React.useState(false);
   const favourites = useSelector((state) => state.user?.favourites);
   const dispatch = useDispatch();
@@ -75,26 +75,26 @@ function FavouriteRoom() {
     dispatch(getFavourites());
   }, [dispatch]);
 
-  let closeRoom = (id) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
-      confirmButtonText: "Yes, Deactivate it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        dispatch(updateRoom({ id, status: "Close" }));
-        Swal.fire(
-          "Deactivated!",
-          "Room status has been set to deactivate.",
-          "success"
-        );
-      }
-    });
-  };
+  // let closeRoom = (id) => {
+  //   Swal.fire({
+  //     title: "Are you sure?",
+  //     text: "You won't be able to revert this!",
+  //     icon: "warning",
+  //     showCancelButton: true,
+  //     confirmButtonColor: "#d33",
+  //     cancelButtonColor: "#3085d6",
+  //     confirmButtonText: "Yes, Deactivate it!",
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       dispatch(updateRoom({ id, status: "Close" }));
+  //       Swal.fire(
+  //         "Deactivated!",
+  //         "Room status has been set to deactivate.",
+  //         "success"
+  //       );
+  //     }
+  //   });
+  // };
 
   let openRoom = (id) => {
     Swal.fire({

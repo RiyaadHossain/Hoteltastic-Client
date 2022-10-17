@@ -4,6 +4,13 @@ import times from "lodash/times";
 import Marquee from "react-marquee-slider";
 import { withSize } from "react-sizeme";
 import { nanoid } from "nanoid";
+import redux from "../../Assets/tech/redux.png"
+import mongodb from "../../Assets/tech/mongodb.png"
+import reactRouter from "../../Assets/tech/react-router.png"
+import express from "../../Assets/tech/express.jpg"
+import jwt from "../../Assets/tech/jst.png"
+import reactForm from "../../Assets/tech/reacthook.png"
+import axios from "../../Assets/tech/axios.png"
 
 const FullWidth = styled.div`
   width: 100vw;
@@ -28,15 +35,16 @@ const Photo = styled.img`
 `;
 
 const photos = [
-  // "../../Assets/Image/aboutproject/js.png",
   "https://abusaid.netlify.app/static/media/react.2b6a0717.svg",
   "https://www.webapparchitect.com/static/media/8.5a3a9ca294db0539884810b6e6eafedd.svg",
-  "https://www.webapparchitect.com/static/media/5.470b16769e85256575dc92ab57c844f4.svg",
-  "https://www.webapparchitect.com/static/media/10.61be078e0d449065aefaf9f506ba9283.svg",
-  "https://www.webapparchitect.com/static/media/13.4e47c3122b8d2476a02f97dcfcb28640.svg",
-  "https://abusaid.netlify.app/static/media/react.2b6a0717.svg",
-  "https://abusaid.netlify.app/static/media/react.2b6a0717.svg",
-  "https://abusaid.netlify.app/static/media/react.2b6a0717.svg",
+  "https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/mongoose/mongoose.png", 
+  reactRouter,
+  reactForm,
+  mongodb,
+  express,
+  redux,
+  axios,
+  jwt,
 ];
 
 const Technology = ({ size }) => {
@@ -64,7 +72,7 @@ const Technology = ({ size }) => {
     <FullWidth>
       <div style={{}}>
         <Marquee key={key} velocity={25}>
-          {times(7, Number).map((id) => (
+          {times(9, Number).map((id) => (
             <Photo
               style={{
                 width: "150px", height: "150px", padding: "40px 5px", borderRadius: "50%", display: "flex", alignItems: "center"

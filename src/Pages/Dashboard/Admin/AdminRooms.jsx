@@ -63,7 +63,7 @@ export default function AdminRooms() {
   const [openUpdate, setOpenUpdate] = React.useState(false);
   const room = useSelector((state) => state.room);
   const dispatch = useDispatch();
-  console.log(room);
+  // console.log(room);
 
   let closeRoom = (id) => {
     Swal.fire({
@@ -180,9 +180,10 @@ export default function AdminRooms() {
             <TableBody>
               {room.rooms.map((row, i) => (
                 <TableRow
-                  key={row.name}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                key={row.name}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
+                  {console.log(row)}
                   <TableCell align="left">{i + 1}.</TableCell>
                   <TableCell align="left">{image(row.propertyImage)}</TableCell>
                   <TableCell align="left">{row.propertyName}</TableCell>

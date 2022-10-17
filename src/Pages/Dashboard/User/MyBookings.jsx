@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -8,21 +8,18 @@ import { styled } from "@mui/material/styles";
 import TableContainer from "@mui/material/TableContainer";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import { Box } from "@mui/system";
-import { Button, Chip, IconButton, Typography } from "@mui/material";
-import SearchIcon from '@mui/icons-material/Search';
-import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
-import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
-import Swal from "sweetalert2";
+import { Button, Chip, Typography } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+// import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+// import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
+// import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
-import { updateUser } from "../../../Store/user/userAction";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
-import { getPayment } from '../../../Store/payment/paymentAction';
-
-
+// import { updateUser } from "../../../Store/user/userAction";
+// import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+// import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
+import { getPayment } from "../../../Store/payment/paymentAction";
 
 const columns = [
-  
   { id: "name", label: "Name", minWidth: 100 },
   { id: "email", label: "Email", minWidth: 100 },
   { id: "roomID", label: "Room Id", minWidth: 100 },
@@ -55,7 +52,6 @@ const columns = [
   },
 ];
 
-
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -66,116 +62,91 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
 }));
 
-
-
-
-
 const MyBookings = () => {
-  const auth = useSelector(state => state.auth.user.user);
-    console.log(auth,'auth');
+  const auth = useSelector((state) => state.auth.user.user);
   const dispatch = useDispatch();
-  const bookings = useSelector((state) => state.booking.allPayments.allBooking)
-  console.log(bookings,'bokings');
-  const myBooking =  bookings?.filter(booking => booking.email === auth.email)
- console.log(myBooking,'myBooking');
-  useEffect(()=>{
-    dispatch(getPayment())
-  },[dispatch])
+  const bookings = useSelector((state) => state.booking.allPayments.allBooking);
+  const myBooking = bookings?.filter((booking) => booking.email === auth.email);
+  useEffect(() => {
+    dispatch(getPayment());
+  }, [dispatch]);
 
+  // const banUnbane = (action, id) => {
+  //   if (action === "Ban") {
+  //     Swal.fire({
+  //       title: "Are you sure?",
+  //       text: "You won't be able to revert this!",
+  //       icon: "warning",
+  //       showCancelButton: true,
+  //       confirmButtonColor: "#d33",
+  //       cancelButtonColor: "#3085d6",
+  //       confirmButtonText: "Yes, Ban it!",
+  //     }).then((result) => {
+  //       if (result.isConfirmed) {
+  //         dispatch(updateUser({ id, status: "BanUser" }));
+  //         dispatch(updateUser({ id, role: "User" }));
+  //         Swal.fire("Banned!", "User has been Banned.", "success");
+  //       }
+  //     });
+  //   }
 
+  //   if (action === "UnBan") {
+  //     Swal.fire({
+  //       title: "Are you sure?",
+  //       text: "You won't be able to revert this!",
+  //       icon: "warning",
+  //       showCancelButton: true,
+  //       confirmButtonColor: "#3085d6",
+  //       cancelButtonColor: "#d33",
+  //       confirmButtonText: "Yes, UnBan it!",
+  //     }).then((result) => {
+  //       if (result.isConfirmed) {
+  //         dispatch(updateUser({ id, status: "ValidUser" }));
+  //         Swal.fire("Unbanned!", "User has been Unbanned.", "success");
+  //       }
+  //     });
+  //   }
+  // };
 
-  const banUnbane = (action, id) => {
-    if (action === "Ban") {
-      Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#3085d6',
-        confirmButtonText: 'Yes, Ban it!'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          dispatch(updateUser({ id, status: "BanUser" }));
-          dispatch(updateUser({ id, role: "User" }));
-          Swal.fire(
-            'Banned!',
-            'User has been Banned.',
-            'success'
-          )
-        }
-      })
-    }
+  // const MakeRemoveAdmin = (action, id) => {
+  //   if (action === "Admin") {
+  //     Swal.fire({
+  //       title: "Are you sure?",
+  //       text: "You won't be able to revert this!",
+  //       icon: "warning",
+  //       showCancelButton: true,
+  //       confirmButtonColor: "#d33",
+  //       cancelButtonColor: "#3085d6",
+  //       confirmButtonText: "Yes, Make Admin!",
+  //     }).then((result) => {
+  //       if (result.isConfirmed) {
+  //         dispatch(updateUser({ id, role: "Admin" }));
+  //         Swal.fire("Maked Admin!", "User has been Maked Admin.", "warning");
+  //       }
+  //     });
+  //   }
 
-    if (action === "UnBan") {
-      Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, UnBan it!'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          dispatch(updateUser({ id, status: "ValidUser" }));
-          Swal.fire(
-            'Unbanned!',
-            'User has been Unbanned.',
-            'success'
-          )
-        }
-      })
-    }
-  };
+  //   if (action === "User") {
+  //     Swal.fire({
+  //       title: "Are you sure?",
+  //       text: "You won't be able to revert this!",
+  //       icon: "warning",
+  //       showCancelButton: true,
+  //       confirmButtonColor: "#3085d6",
+  //       cancelButtonColor: "#d33",
+  //       confirmButtonText: "Yes, Remove Admin!",
+  //     }).then((result) => {
+  //       if (result.isConfirmed) {
+  //         dispatch(updateUser({ id, role: "User" }));
+  //         Swal.fire("Removed!", "User Removed From Admin.", "success");
+  //       }
+  //     });
+  //   }
+  // };
 
-  const MakeRemoveAdmin = (action, id) => {
-    if (action === "Admin") {
-      Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#3085d6',
-        confirmButtonText: 'Yes, Make Admin!'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          dispatch(updateUser({ id, role: "Admin" }));
-          Swal.fire(
-            'Maked Admin!',
-            'User has been Maked Admin.',
-            'warning'
-          )
-        }
-      })
-    }
-
-    if (action === "User") {
-      Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, Remove Admin!'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          dispatch(updateUser({ id, role: "User" }));
-          Swal.fire(
-            'Removed!',
-            'User Removed From Admin.',
-            'success'
-          )
-        }
-      })
-    }
-  };
-
-    return (
-        <>
-            <Box
+  return (
+    <>
+      <Box
         display="flex"
         justifyContent="space-between"
         alignItems="center"
@@ -185,10 +156,7 @@ const MyBookings = () => {
         <Typography variant="h4" color="#2FDD92">
           My Bookings: {myBooking?.length}
         </Typography>
-        <Button
-          startIcon={<SearchIcon />}
-          variant="contained"
-        >
+        <Button startIcon={<SearchIcon />} variant="contained">
           Search Bookings
         </Button>
       </Box>
@@ -197,10 +165,7 @@ const MyBookings = () => {
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
-                <StyledTableCell
-                >
-                  Sl No
-                </StyledTableCell>
+                <StyledTableCell>Sl No</StyledTableCell>
                 {columns.map((column) => (
                   <StyledTableCell
                     key={column.id}
@@ -220,23 +185,19 @@ const MyBookings = () => {
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
                     <TableCell align="left">{i + 1}.</TableCell>
-                    
+
                     <TableCell align="left">{myBooking.name}</TableCell>
                     <TableCell align="left">{myBooking.email}</TableCell>
                     <TableCell align="left">{myBooking.roomID}</TableCell>
                     <TableCell align="left">{myBooking.roomName}</TableCell>
-                    <TableCell align="left">${(myBooking.amount)}</TableCell>
-                    <TableCell align="center">
-                        {myBooking.day}
-                    </TableCell>
+                    <TableCell align="left">${myBooking.amount}</TableCell>
+                    <TableCell align="center">{myBooking.day}</TableCell>
 
                     <TableCell align="center">
-                    <Chip label="success" color="success" size='small'/>
+                      <Chip label="success" color="success" size="small" />
                     </TableCell>
-                    <TableCell align="center">
-                        {myBooking.tnxID}
-                    </TableCell>
-                
+                    <TableCell align="center">{myBooking.tnxID}</TableCell>
+
                     {/* <TableCell align="center">
                   
                     </TableCell> */}
@@ -247,8 +208,8 @@ const MyBookings = () => {
           </Table>
         </TableContainer>
       </Paper>
-        </>
-    );
+    </>
+  );
 };
 
 export default MyBookings;
