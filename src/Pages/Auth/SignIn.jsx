@@ -16,7 +16,10 @@ function SignIn() {
   let from = location.state?.from?.pathname || "/";
 
   const googleSignIn = () => {
-    window.open(`http://localhost:5001/auth/google/callback`, "_self");
+    window.open(
+      `https://hoteltastic-server.vercel.app/auth/google/callback`,
+      "_self"
+    );
   };
 
   const {

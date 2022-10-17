@@ -48,7 +48,7 @@ function App() {
 		const user = async () => {
 			try {
 				const URL =
-					'http://localhost:5001/auth/login/success'
+					'https://hoteltastic-server.vercel.app/auth/login/success'
 				const { data } = await client.get(URL, { withCredentials: true })
 				if (data) {
 					dispatch(socialSignIn(data.user._json.email))

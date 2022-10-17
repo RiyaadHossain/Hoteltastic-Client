@@ -34,16 +34,19 @@ const CheckoutForm = ({ room }) => {
       try {
         const { id } = paymentMethod;
         setTnxID(id);
-        const response = await axios.post("http://localhost:5001/api/payment", {
-          email: user?.user?.email,
-          name: user?.user?.name,
-          amount: startFrom,
-          tnxID: id,
-          day: 1,
-          roomID: room._id,
-          roomName: room.propertyName,
-          payment: true,
-        });
+        const response = await axios.post(
+          "https://hoteltastic-server.vercel.app/api/payment",
+          {
+            email: user?.user?.email,
+            name: user?.user?.name,
+            amount: startFrom,
+            tnxID: id,
+            day: 1,
+            roomID: room._id,
+            roomName: room.propertyName,
+            payment: true,
+          }
+        );
 
         if (response.data.success) {
           console.log("Successful payment");

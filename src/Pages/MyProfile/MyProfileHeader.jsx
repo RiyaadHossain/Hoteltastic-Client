@@ -16,7 +16,7 @@ const MyProfileHeader = () => {
   const auth = useSelector((state) => state.auth.user.user);
 
   const signOut = () => {
-    window.open(`http://localhost:5001/auth/logout`, "_self");
+    window.open(`https://hoteltastic-server.vercel.app/auth/logout`, "_self");
     dispatch(authAction.signOut());
     navigate("/");
     window.location.reload();

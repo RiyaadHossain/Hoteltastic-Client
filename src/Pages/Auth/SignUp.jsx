@@ -30,7 +30,10 @@ function SignUp() {
   }, [auth, navigate]);
 
   const googleSignIn = () => {
-    window.open(`http://localhost:5001/auth/google/callback`, "_self");
+    window.open(
+      `https://hoteltastic-server.vercel.app/auth/google/callback`,
+      "_self"
+    );
   };
 
   return (
