@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 
-const URL = 'https://hoteltastic-server.vercel.app'
+const URL = 'http://localhost:5001'
 
 
 
