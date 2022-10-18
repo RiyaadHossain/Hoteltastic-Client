@@ -37,7 +37,7 @@ const FeatureImplement = () => {
         ></Box>
       </Typography>
       <Box ml={5}>
-        <Typography maxWidth={880} mb={4}>
+        <Typography maxWidth={880} mb={4} className='rubik'>
           Hoteltastic is a hotel management site where user can visit and book
           any exsiting room after successfully log in. Also, admin can track
           their user authorities, add-update-delete any exsiting room. Moreover,
@@ -47,10 +47,14 @@ const FeatureImplement = () => {
           <span style={{ fontWeight: "bold", fontSize: 22 }}>
             Key Features:
           </span>
-          <ul style={{ marginLeft: 35, marginTop: 5 }}>
-            <li>Design the file structure following MVC Architechture Pattern</li>
+          <ul style={{ marginLeft: 35, marginTop: 5 }} className="custom-font">
+            <li>
+              Design the file structure following MVC Architechture Pattern
+            </li>
             <li>Authenticate user implementing JWT Based Authentication</li>
-            <li>After Authentication, user can pay and book any desired room</li>
+            <li>
+              After Authentication, user can pay and book any desired room
+            </li>
             <li>For Authorization, implemented Role Based Authorization</li>
             <li>Have protected routes which can be navigated by admin only</li>
             <li>Moreover, admin can make admin any user and even can ban</li>
@@ -59,14 +63,34 @@ const FeatureImplement = () => {
             <li>Admin can post room photo using Multer </li>
           </ul>
         </Typography>
-        <Box display='flex' flexWrap='wrap' gap={1} >
+        <Box display="flex" flexWrap="wrap" gap={1} className='ubontu'>
           <Chip label="HTML" variant="outlined" color="info" size="small" />
           <Chip label="CSS" variant="outlined" color="info" size="small" />
-          <Chip label="JavaScript" variant="outlined" color="info" size="small" />
+          <Chip
+            label="JavaScript"
+            variant="outlined"
+            color="info"
+            size="small"
+          />
           <Chip label="React" variant="outlined" color="info" size="small" />
-          <Chip label="React Hook" variant="outlined" color="info" size="small" />
-          <Chip label="Fucntinal Component" variant="outlined" color="info" size="small" />
-          <Chip label="React Hook Form" variant="outlined" color="info" size="small" />
+          <Chip
+            label="React Hook"
+            variant="outlined"
+            color="info"
+            size="small"
+          />
+          <Chip
+            label="Fucntinal Component"
+            variant="outlined"
+            color="info"
+            size="small"
+          />
+          <Chip
+            label="React Hook Form"
+            variant="outlined"
+            color="info"
+            size="small"
+          />
           <Chip label="Redux" variant="outlined" color="info" size="small" />
           <Chip label="Axios" variant="outlined" color="info" size="small" />
           <Chip label="MUI" variant="outlined" color="info" size="small" />

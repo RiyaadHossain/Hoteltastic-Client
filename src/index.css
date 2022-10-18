@@ -1,3 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,500;0,600;1,400&display=swap');
+
 * {
   padding: 0;
   margin: 0;
@@ -14,11 +18,11 @@ a {
 }
 
 .css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
-  position: inherit !important
+  position: inherit !important;
 }
 
 .css-1u2w381-MuiModal-root-MuiDrawer-root {
-  z-index: inherit !important
+  z-index: inherit !important;
 }
 
 /* From uiverse.io by @nikk7007 */
@@ -33,7 +37,7 @@ a {
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  transition: .5s;
+  transition: 0.5s;
   font-weight: 400;
   font-size: 17px;
   border: 1px solid;
@@ -45,7 +49,7 @@ a {
 
 .signInBtn::before,
 .signInBtn::after {
-  content: '';
+  content: "";
   display: block;
   width: 50px;
   height: 50px;
@@ -78,7 +82,7 @@ a {
 }
 
 .signInBtn:active {
-  filter: brightness(.8);
+  filter: brightness(0.8);
 }
 
 /* profile update button css  */
@@ -90,12 +94,12 @@ a {
   border: 0;
   font-weight: 700;
   margin: 20px 0px;
-  background-color: rgba(17, 219, 142, .7);
+  background-color: rgba(17, 219, 142, 0.7);
   box-shadow: rgba(0, 0, 0, 0.425) 0 0 8px;
   letter-spacing: 1px;
   text-transform: uppercase;
   font-size: 15px;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .profileUpdateBtn:hover {
@@ -127,15 +131,30 @@ a {
   height: 2px;
   width: 80%;
   background: blue;
-  background: linear-gradient(90deg, hsl(0, 0%, 20%), hsl(0, 0%, 70%), hsl(0, 0%, 20%));
+  background: linear-gradient(
+    90deg,
+    hsl(0, 0%, 20%),
+    hsl(0, 0%, 70%),
+    hsl(0, 0%, 20%)
+  );
 }
 
+.custom-font {
+  font-family: "Poppins", sans-serif;
+}
+
+.ubontu {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.rubik {
+  font-family: 'Rubik', sans-serif;
+}
 
 /* for the chart dibugging */
 .css-152irm5 {
-  padding: 0 !important
+  padding: 0 !important;
 }
-
 
 .css-h41q8n {
   position: fixed !important;
@@ -148,8 +167,6 @@ a {
     margin-left: 230px;
   }
 }
-
-
 
 /* usess technology */
 /* .jqQFxb{
@@ -173,7 +190,6 @@ a {
 .teamCard:hover {
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.623);
   background-color: #2dbe6c;
-
 }
 
 .teamCard .blob {
@@ -206,19 +222,19 @@ a {
   transition: all 0.5s;
 }
 
-.riyad{
+.riyad {
   background-image: url("../src/Assets/Image/team/96947874.png");
 }
 
-.shorif{
+.shorif {
   background-image: url("../src/Assets/Image/team/shorif.jpg");
 }
 
-.rakib{
+.rakib {
   background-image: url("../src/Assets/Image/team/rakib.jpg");
 }
 
-.nishat{
+.nishat {
   background-image: url("../src/Assets/Image/team/nishat.jpg");
 }
 
@@ -266,19 +282,16 @@ a {
   font-size: 18px;
 }
 
-
-.teamCard>p {
+.teamCard > p {
   opacity: 0;
   transition: all 0.75s;
-  
 }
 
-.teamCard>p svg {
+.teamCard > p svg {
   padding: 0px 3px;
-
 }
 
-.teamCard:hover>p {
+.teamCard:hover > p {
   position: absolute;
   bottom: 15px;
   left: 20%;
@@ -287,4 +300,3 @@ a {
   transition: all 0.1s;
   color: white;
 }
-
