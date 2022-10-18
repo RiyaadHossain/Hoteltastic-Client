@@ -74,6 +74,8 @@ function AdminUser() {
     return <Spinner/>
   }
 
+  console.log({userStore});
+
   const banUnbane = (action, id) => {
     if (action === "Ban") {
       Swal.fire({
