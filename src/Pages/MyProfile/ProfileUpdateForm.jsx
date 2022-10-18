@@ -39,7 +39,7 @@ const ProfileUpdateForm = () => {
       dispatch(updateUser({ ...exactData, id: user._id }));
 
       setLoading(false);
-      Swal.fire("Great!", "New room data has been added!", "success");
+      Swal.fire("Great!", "Profile Updated!", "success");
 
       reset();
     } else {

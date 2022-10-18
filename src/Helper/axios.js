@@ -1,19 +1,27 @@
 const axios = require('axios');
 
 
-const URL = 'http://localhost:5001'
+const URL = 'https://hoteltastic-server.vercel.app'
 
 
 
 let token = localStorage.getItem("token")
-
-console.log(token)
-
+let tokenClient
+if (token) {
+    tokenClient = axios.create({
+        baseURL: URL,
+        headers: {
+            authorization: `Bearer ${token}`
+        }
+    })
+}
+console.log(token);
 const client = axios.create({
     baseURL: URL,
-    headers: {
+    /* headers: {
         authorization: `Bearer ${token}`
-    }
+    } */
 })
 
-export default client;
+export default tokenClient;
+export { client }

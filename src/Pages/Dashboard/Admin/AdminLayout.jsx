@@ -19,6 +19,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import BedroomChildIcon from "@mui/icons-material/BedroomChild";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import BookmarkAddedOutlinedIcon from '@mui/icons-material/BookmarkAddedOutlined';
 
 const drawerWidth = 230;
 
@@ -47,6 +48,11 @@ function AdminLayout(props) {
       name: "Users",
       icon: <AccountCircleIcon />,
       path: "user",
+    },
+    {
+      name: "All Bookings",
+      icon: <BookmarkAddedOutlinedIcon />,
+      path: "allBookings",
     },
   ];
 

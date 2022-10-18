@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from 'react';
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -14,44 +14,41 @@ import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
-import getUsers, { updateUser } from "../../../Store/user/userAction";
+import { updateUser } from "../../../Store/user/userAction";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
-import Spinner from "../../../Components/Loaders/Spinner/Spinner";
+import { getPayment } from '../../../Store/payment/paymentAction';
 
 
 
 const columns = [
-  { id: "img", label: "Image", minWidth: 120 },
-  { id: "name", label: "Name", minWidth: 170 },
+  
+  { id: "name", label: "Name", minWidth: 100 },
   { id: "email", label: "Email", minWidth: 100 },
+  { id: "roomID", label: "Room Id", minWidth: 100 },
+  { id: "roomName", label: "Room Name", minWidth: 100 },
+  { id: "price", label: "Price", minWidth: 120 },
   {
-    id: "role",
-    label: "Role",
-    minWidth: 120,
+    id: "day",
+    label: "Day",
+    minWidth: 60,
     align: "center",
   },
   {
-    id: "status",
-    label: "Status",
-    minWidth: 120,
+    id: "payment",
+    label: "Payment",
+    minWidth: 100,
     align: "center",
   },
 
   {
-    id: "action",
-    label: "Action",
-    minWidth: 170,
+    id: "tnxID",
+    label: "Transaction ID",
+    minWidth: 150,
     align: "center",
-  },
+  }
 ];
 
-const imageStyle = {
-  width: 60,
-  height: 60,
-  objectFit: "cover",
-  borderRadius: "50%",
-};
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -64,15 +61,20 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }));
 
 
-function AdminUser() {
+
+
+const AllBookings = () => {
+
+//   const userStore = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  React.useEffect(() => {
-    dispatch(getUsers())
-   },[dispatch])
-  const userStore = useSelector((state) => state.user);
-  if (!userStore) {
-    return <Spinner/>
-  }
+  const bookings = useSelector((state) => state.booking.allPayments.allBooking)
+  console.log(bookings,'bokings');
+
+  useEffect(()=>{
+    dispatch(getPayment())
+  },[dispatch])
+
+
 
   const banUnbane = (action, id) => {
     if (action === "Ban") {
@@ -163,17 +165,9 @@ function AdminUser() {
     }
   };
 
-  const image = (src) => (
-    <img
-      style={imageStyle}
-      alt=""
-      src={src ? src : "https://i.pinimg.com/736x/c9/e3/e8/c9e3e810a8066b885ca4e882460785fa.jpg"}
-    />
-  );
-
-  return (
-    <>
-      <Box
+    return (
+        <>
+            <Box
         display="flex"
         justifyContent="space-between"
         alignItems="center"
@@ -181,13 +175,13 @@ function AdminUser() {
         mb={3}
       >
         <Typography variant="h4" color="#2FDD92">
-          Total User: {userStore.users.length}
+          Total Bookings: {bookings?.length}
         </Typography>
         <Button
           startIcon={<SearchIcon />}
           variant="contained"
         >
-          Search User
+          Search Bookings
         </Button>
       </Box>
       <Paper sx={{ width: "100%", overflow: "hidden" }}>
@@ -211,34 +205,38 @@ function AdminUser() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {userStore.users.map((user, i) => {
-                // if (user.status.props.label === "Ban") user.action = UnBanIconButton;
+              {bookings?.map((booking, i) => {
                 return (
                   <TableRow
-                    key={user._id}
+                    key={booking._id}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
                     <TableCell align="left">{i + 1}.</TableCell>
-                    <TableCell align="left">{image(user.avatar)}</TableCell>
-                    <TableCell align="left">{user.name}</TableCell>
-                    <TableCell align="left">{user.email}</TableCell>
+                    
+                    <TableCell align="left">{booking.name}</TableCell>
+                    <TableCell align="left">{booking.email}</TableCell>
+                    <TableCell align="left">{booking.roomID}</TableCell>
+                    <TableCell align="left">{booking.roomName}</TableCell>
+                    <TableCell align="left">${(booking.amount)}</TableCell>
                     <TableCell align="center">
-                      {user.status !== "BanUser" &&
-                        <Chip
-                          size="small"
-                          label={user.role === "Admin" ? "Admin" : "User"}
-                          color={user.role === "Admin" ? "warning" : "info"}
-                        />}
+                        {booking.day}
+                    </TableCell>
+
+                    <TableCell align="center">
+                    <Chip label="success" color="success" size='small'/>
                     </TableCell>
                     <TableCell align="center">
+                        {booking.tnxID}
+                    </TableCell>
+                    {/* <TableCell align="center">
                       <Chip
                         size="small"
-                        label={user.status === "BanUser" ? "Banned User" : "Valid User"}
-                        color={user.status === "BanUser" ? "error" : "success"}
+                        // label={user.status === "BanUser" ? "Banned User" : "Valid User"}
+                        // color={user.status === "BanUser" ? "error" : "success"}
                       />
-                    </TableCell>
-                    <TableCell align="center">
-                      {
+                    </TableCell> */}
+                    {/* <TableCell align="center"> */}
+                      {/* {
                         user.status === "BanUser" ?
 
                           <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block">
@@ -275,10 +273,10 @@ function AdminUser() {
                             </Box>
                         )
 
-                      }
+                      } */}
 
 
-                    </TableCell>
+                    {/* </TableCell> */}
                   </TableRow>
                 );
               })}
@@ -286,8 +284,8 @@ function AdminUser() {
           </Table>
         </TableContainer>
       </Paper>
-    </>
-  );
-}
+        </>
+    );
+};
 
-export default AdminUser
+export default AllBookings;

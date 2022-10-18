@@ -55,15 +55,6 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
 }));
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  "&:nth-of-type(odd)": {
-    backgroundColor: theme.palette.action.hover,
-  },
-  // hide last border
-  "&:last-child td, &:last-child th": {
-    border: 0,
-  },
-}));
 export default function AllAdmin() {
   const dispatch = useDispatch();
   const { admins } = useSelector((state) => state.user);
@@ -128,43 +119,14 @@ export default function AllAdmin() {
 
   };
 
-  const chip = <Chip size="small" label="active" color="success" />;
-  const BanIconButton = (
-    <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block">
-      <IconButton aria-label="delete" title='Ban User' color="error" onClick={banUnbane}>
-        <RemoveCircleIcon />
-      </IconButton>
-    </Box>
-  );
-
-  function createData(name, price, population, size, img) {
-    return { name, price, population, size, img };
-  }
-
-  const image = (
+  const image = url => (
     <img
       style={imageStyle}
       alt=""
-      src="https://images.unsplash.com/photo-1551963831-b3b1ca40c98e"
+      src={url ? url : "https://i.pinimg.com/736x/c9/e3/e8/c9e3e810a8066b885ca4e882460785fa.jpg"}
     />
   );
 
-  const rows = [
-    createData("Riyad", "riyad@gmail.com", chip, BanIconButton, image),
-    createData("China", "CN", chip, BanIconButton, image),
-    createData("Italy", "IT", chip, BanIconButton, image),
-    createData("United States", "US", chip, BanIconButton, image),
-    createData("Canada", "CA", chip, BanIconButton, image),
-    createData("Australia", "AU", chip, BanIconButton, image),
-    createData("Germany", "DE", chip, BanIconButton, image),
-    createData("Ireland", "IE", chip, BanIconButton, image),
-    createData("Mexico", "MX", chip, BanIconButton, image),
-    createData("Japan", "JP", chip, BanIconButton, image),
-    createData("France", "FR", chip, BanIconButton, image),
-    createData("India", "IN", chip, BanIconButton, image),
-    createData("China", "CN", chip, BanIconButton, image),
-    createData("Italy", "IT", chip, BanIconButton, image),
-  ];
 
   return (
     <>
@@ -219,7 +181,7 @@ export default function AllAdmin() {
                   >
 
                     <TableCell align="left">{i+1}.</TableCell>
-                    <TableCell align="left">{image}</TableCell>
+                    <TableCell align="left">{image(admin.avatar)}</TableCell>
                     <TableCell align="left">{admin.name}</TableCell>
                     <TableCell align="left">{admin.email}</TableCell>
                     <TableCell align="center">
@@ -249,15 +211,6 @@ export default function AllAdmin() {
 
                       }
 
-
-                    {/* {columns.map((column, i) => {
-                      const value = row[column.id];
-                      return (
-                        <TableCell key={i} align={column.align}>
-                          {value}
-                        </TableCell>
-                      );
-                    })} */}
                     </TableCell>
                   </TableRow>
                 );

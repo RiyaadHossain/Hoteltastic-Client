@@ -8,15 +8,24 @@ import { styled } from "@mui/material/styles";
 import TableContainer from "@mui/material/TableContainer";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import { Box } from "@mui/system";
-import { Chip, IconButton, Typography } from "@mui/material";
-import BorderColorIcon from "@mui/icons-material/BorderColor";
+import {
+  Button,
+  Chip,
+  IconButton,
+  Tooltip,
+  Typography,
+  Zoom,
+} from "@mui/material";
+// import BorderColorIcon from "@mui/icons-material/BorderColor";
 import AddRoomModal from "../Admin/AddRoomModal";
 import UpdateRoomModal from "../Admin/UpdateRoomModal";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import CancelIcon from "@mui/icons-material/Cancel";
-import Swal from "sweetalert2";
-import { useDispatch, useSelector } from "react-redux";
-import { updateRoom } from "../../../Store/room/roomAction";
+// import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+// import CancelIcon from "@mui/icons-material/Cancel";
+// import Swal from "sweetalert2";
+import { useSelector } from "react-redux";
+// import { updateRoom } from "../../../Store/room/roomAction";
+import EmojiEmotionsSharpIcon from "@mui/icons-material/EmojiEmotionsSharp";
+import { useNavigate } from "react-router-dom";
 
 const columns = [
   {
@@ -59,161 +68,103 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 function MyOrders() {
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
   const [openUpdate, setOpenUpdate] = React.useState(false);
   const room = useSelector((state) => state.room);
-  const dispatch = useDispatch();
-  console.log(room);
+  const auth = useSelector((state) => state.auth.user.user);
+  console.log(auth);
 
-  let closeRoom = (id) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
-      confirmButtonText: "Yes, Deactivate it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        dispatch(updateRoom({ id, status: "Close" }));
-        Swal.fire(
-          "Deactivated!",
-          "Room status has been set to deactivate.",
-          "success"
-        );
-      }
-    });
-  };
+  const userRoom = room.rooms.filter((ro) => ro._id === auth._id);
+  console.log(userRoom);
 
-  let openRoom = (id) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
-      confirmButtonText: "Yes, Activate it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        dispatch(updateRoom({ id, status: "Open" }));
-        Swal.fire(
-          "Activated!",
-          "Room status has been set to Activate.",
-          "success"
-        );
-      }
-    });
-  };
-
-  const closeButton = (id) => {
-    return (
-      <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block" ml={2}>
-        <IconButton
-          aria-label="Active"
-          color="error"
-          onClick={() => closeRoom(id)}
-        >
-          <CancelIcon />
-        </IconButton>
-      </Box>
-    );
-  };
-
-  const openButton = (id) => {
-    return (
-      <Box bgcolor="#c4cbcb" borderRadius="50%" display="inline-block" ml={2}>
-        <IconButton
-          aria-label="Active"
-          color="success"
-          onClick={() => openRoom(id)}
-        >
-          <CheckCircleIcon />
-        </IconButton>
-      </Box>
-    );
-  };
-
-  const image = (
+  const image = (url) => (
     <img
       style={imageStyle}
       alt=""
-      src="https://images.unsplash.com/photo-1551963831-b3b1ca40c98e"
+      src={
+        url ? url : "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e"
+      }
     />
   );
 
   return (
     <>
-      <Typography variant="h3" color="#2FDD92" my={3} mt={5}>
-        Total Bookings: 25
-      </Typography>
-      <AddRoomModal open={open} setOpen={setOpen} />
-      <Paper sx={{ width: "100%", overflow: "hidden" }}>
-        <TableContainer>
-          <Table stickyHeader aria-label="sticky table">
-            <TableHead>
-              <TableRow>
-                <StyledTableCell
-                //  key={column.id}
-                //  align={column.align}
-                //  style={{ minWidth: column.minWidth }}
-                >
-                  Sl No
-                </StyledTableCell>
-                {columns.map((column, i) => (
-                  <StyledTableCell
-                    key={i}
-                    align={column.align}
-                    style={{ minWidth: column.minWidth }}
-                  >
-                    {column.label}
-                  </StyledTableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {room.rooms.map((row, i) => (
-                <TableRow
-                  key={row.name}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <TableCell align="left">{i + 1}.</TableCell>
-                  <TableCell align="left">{image}</TableCell>
-                  <TableCell align="left">{row.name}</TableCell>
-                  <TableCell align="left">{row.price}</TableCell>
-                  <TableCell align="center">
-                    <Chip
-                      size="small"
-                      label={row.status === "Open" ? "Open" : "Close"}
-                      color={row.status === "Open" ? "success" : "error"}
-                    />
-                  </TableCell>
-                  <TableCell align="center">
-                    <>
-                      <Box
-                        bgcolor="#c4cbcb"
-                        borderRadius="50%"
-                        display="inline-block"
+      {userRoom.length ? (
+        <>
+          <Typography variant="h3" color="#2FDD92" my={3} mt={5}>
+            Total Bookings: {userRoom.length}
+          </Typography>
+          <AddRoomModal open={open} setOpen={setOpen} />
+          <Paper sx={{ width: "100%", overflow: "hidden" }}>
+            <TableContainer>
+              <Table stickyHeader aria-label="sticky table">
+                <TableHead>
+                  <TableRow>
+                    <StyledTableCell>Sl No</StyledTableCell>
+                    {columns.map((column, i) => (
+                      <StyledTableCell
+                        key={i}
+                        align={column.align}
+                        style={{ minWidth: column.minWidth }}
                       >
-                        <IconButton
-                          aria-label="delete"
-                          color="info"
-                          onClick={() => setOpenUpdate(row)}
-                        >
-                          <BorderColorIcon />
-                        </IconButton>
-                      </Box>
-                      {row.status === "Open"
-                        ? closeButton(row._id)
-                        : openButton(row._id)}
-                    </>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Paper>
+                        {column.label}
+                      </StyledTableCell>
+                    ))}
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {userRoom.map((room, i, row) => (
+                    <TableRow
+                      key={row.name}
+                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                    >
+                      <TableCell align="left">{i + 1}.</TableCell>
+                      <TableCell align="left">
+                        {image(room.propertyImage)}
+                      </TableCell>
+                      <TableCell align="left">{room?.propertyName}</TableCell>
+                      <TableCell align="left">{room.startFrom}</TableCell>
+                      <TableCell align="center">
+                        <Chip
+                          size="small"
+                          label={row.status === "Open" ? "Enjoyed" : "Enjoyed"}
+                          color={row.status === "Open" ? "success" : "success"}
+                        />
+                      </TableCell>
+                      <TableCell align="center">
+                        <>
+                          <Box
+                            bgcolor="#c4cbcb"
+                            borderRadius="50%"
+                            display="inline-block"
+                          >
+                            <Tooltip
+                              TransitionComponent={Zoom}
+                              title="Be Happy with what you've"
+                              arrow
+                            >
+                              <IconButton aria-label="delete" color="info">
+                                <EmojiEmotionsSharpIcon />
+                              </IconButton>
+                            </Tooltip>
+                          </Box>
+                        </>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Paper>
+        </>
+      ) : (
+        <>
+          <Typography variant="h3" color="#2FDD92" my={3} mt={5}>
+            No Room Booked yet.
+          </Typography>
+          <Button variant="contained" onClick={() => navigate("/allRooms")}>Book Now</Button>
+        </>
+      )}
       <UpdateRoomModal openUpdate={openUpdate} setOpenUpdate={setOpenUpdate} />
     </>
   );

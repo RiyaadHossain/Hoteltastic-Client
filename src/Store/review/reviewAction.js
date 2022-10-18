@@ -1,4 +1,5 @@
-import client from "../../Helper/axios"
+import tokenClient from "../../Helper/axios"
+import {client} from "../../Helper/axios"
 import { reviewActions } from "./reviewSlice"
 
 const getReviews = () => {
@@ -15,7 +16,7 @@ const getReviews = () => {
 export const postReview = (reviewData) => {
     return async dispatch => {
         try {
-            const { data } = await client.post("/api/review/addReview", reviewData)
+            const { data } = await tokenClient.post("/api/review/addReview", reviewData)
             if (data) {
                 dispatch(reviewActions.postReview())
                 dispatch(getReviews())
@@ -29,7 +30,7 @@ export const postReview = (reviewData) => {
 export const updateReview = ({ reviewData, id }) => {
     return async dispatch => {
         try {
-            const { data } = await client.patch(`/api/review/updateReview/${id}`, reviewData)
+            const { data } = await tokenClient.patch(`/api/review/updateReview/${id}`, reviewData)
             if (data) {
                 dispatch(reviewActions.updateReview())
                 dispatch(getReviews())
@@ -43,7 +44,7 @@ export const updateReview = ({ reviewData, id }) => {
 export const deleteReview = (id) => {
     return async dispatch => {
         try {
-            const { data } = await client.delete(`/api/review/deleteReview/${id}`)
+            const { data } = await tokenClient.delete(`/api/review/deleteReview/${id}`)
             if (data) {
                 dispatch(reviewActions.deleteReview())
                 dispatch(getReviews())

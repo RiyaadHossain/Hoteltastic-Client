@@ -23,47 +23,62 @@ import { getFavourites, postFavourites } from "../../Store/user/userAction";
 
 function Room({ room }) {
   const navigate = useNavigate();
-  const dispatch = useDispatch()
-  const auth = useSelector(state => state.auth.user.user)
-  const favourite = useSelector(state => state.user.favourites)
-  console.log(favourite);
+  const dispatch = useDispatch();
+  const auth = useSelector((state) => state.auth.user.user);
 
   useEffect(() => {
-    dispatch(getFavourites())
-  }, [dispatch])
+    dispatch(getFavourites());
+  }, [dispatch]);
 
-  const addFav = id => {
-    const data = {user: auth._id, room: id}
-    dispatch(postFavourites(data))
-  }
+  const addFav = (id) => {
+    const data = { user: auth._id, room: id };
+    dispatch(postFavourites(data));
+  };
 
-  const removeFav = id => {
+  // const removeFav = (id) => {};
 
-  }
+  const heart = (id) =>
+    room._id !== auth._id ? (
+      <FavoriteBorderIcon
+        onClick={() => addFav(id)}
+        sx={{
+          border: "1px solid #e5e7ec",
+          padding: "3px",
+          height: "33px",
+          width: "33px",
+          color: "#a6a7af",
+          borderRadius: "4px",
+          marginLeft: "5px",
+          "&:hover": {
+            color: "#fff",
+            background: "#2dbe6c",
+            cursor: "pointer",
+          },
+        }}
+      />
+    ) : (
+      <FavoriteIcon
+        // onClick={() => removeFav(id)}
+        sx={{
+          border: "1px solid #e5e7ec",
+          padding: "3px",
+          height: "33px",
+          width: "33px",
+          color: "#a6a7af",
+          borderRadius: "4px",
+          marginLeft: "5px",
+          "&:hover": {
+            color: "#fff",
+            background: "#2dbe6c",
+            cursor: "pointer",
+          },
+        }}
+      />
+    );
 
-  const heart = (id) => (
-    <FavoriteBorderIcon
-      onClick={() => addFav(id)}
-      sx={{
-        border: "1px solid #e5e7ec",
-        padding: "3px",
-        height: "33px",
-        width: "33px",
-        color: "#a6a7af",
-        borderRadius: "4px",
-        marginLeft: "5px",
-        "&:hover": {
-          color: "#fff",
-          background: "#2dbe6c",
-          cursor: "pointer",
-        },
-      }}
-    />
-  );
-
-  const heartFilled = (id) => (
+/*   const heartFilled = (id) => (
     <FavoriteIcon
-    onClick={() => removeFav(id)}
+      onClick={() => removeFav(id)}
       sx={{
         border: "1px solid #e5e7ec",
         padding: "3px",
@@ -79,7 +94,7 @@ function Room({ room }) {
         },
       }}
     />
-  );
+  ); */
 
   return (
     <Card
@@ -234,7 +249,7 @@ function Room({ room }) {
                   },
                 }}
               />
-              {/* {favourite.map(fav => console.log(fav))} */}
+
               {heart(room._id)}
             </Box>
           </Box>
