@@ -37,6 +37,14 @@ const Collaborator = () => {
       portfolio: "",
       imageTeam: "nishat",
     },
+    {
+      name: "Sadik Hossain",
+      title: "Backend Master",
+      linkedIn: "https://linkedin.com/in/sadik-hossain-siam/",
+      github: "https://github.com/Sadik-Hossain",
+      portfolio: "https://sadik-hossain-siam.netlify.app/",
+      imageTeam: "sadik",
+    },
   ];
 
   return (

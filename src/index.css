@@ -238,6 +238,10 @@ a {
   background-image: url("../src/Assets/Image/team/nishat.jpg");
 }
 
+.sadik {
+  background-image: url("../src/Assets/Image/team/sadik.jpg");
+}
+
 .teamCard:hover .img {
   width: 100%;
   height: 70%;
