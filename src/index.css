@@ -196,7 +196,6 @@ a {
   margin: 30px auto 10px auto;
   width: 70px;
   height: 70px;
-  background-image: url("../src/Assets/Image/team/96947874.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -205,6 +204,22 @@ a {
   justify-content: center;
   align-items: center;
   transition: all 0.5s;
+}
+
+.riyad{
+  background-image: url("../src/Assets/Image/team/96947874.png");
+}
+
+.shorif{
+  background-image: url("../src/Assets/Image/team/shorif.jpg");
+}
+
+.rakib{
+  background-image: url("../src/Assets/Image/team/rakib.jpg");
+}
+
+.nishat{
+  background-image: url("../src/Assets/Image/team/nishat.jpg");
 }
 
 .teamCard:hover .img {
@@ -223,6 +238,7 @@ a {
   transition: all 0.1s;
   z-index: -99;
   line-height: 17px;
+  color: #2dbe6c;
 }
 .teamCard:hover h2 {
   opacity: 0;

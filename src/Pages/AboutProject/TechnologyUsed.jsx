@@ -10,7 +10,7 @@ const TechnologyUsed = () => {
           fontFamily: "'Rubik', sans-serif",
           padding: "64px 70px 30px 70px",
           color: "#000",
-          width: "90%",
+          width: "100%",
           margin: "40 auto",
         }}
       >
@@ -28,7 +28,7 @@ const TechnologyUsed = () => {
           }}
           fontWeight="bold"
         >
-          Used Technology
+          Technology
           <Box
             sx={{
               width: "25%",

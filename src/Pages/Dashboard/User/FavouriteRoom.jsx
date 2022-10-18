@@ -183,7 +183,7 @@ function FavouriteRoom() {
                 <TableRow
                   key={row.name}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
+                >{console.log(row.room.status)}
                   <TableCell align="left">{i + 1}.</TableCell>
                   <TableCell align="left">
                     {image(row?.room?.propertyImage)}
@@ -193,8 +193,8 @@ function FavouriteRoom() {
                   <TableCell align="center">
                     <Chip
                       size="small"
-                      label={row.status === "Open" ? "Open" : "Close"}
-                      color={row.status === "Open" ? "success" : "error"}
+                      label={row.room?.status === "Open" ? "Open" : "Close"}
+                      color={row.room?.status === "Open" ? "success" : "error"}
                     />
                   </TableCell>
                   <TableCell align="center">

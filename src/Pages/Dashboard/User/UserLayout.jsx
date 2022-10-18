@@ -37,17 +37,12 @@ function UserLayout(props) {
     {
       name: "Booked Rooms",
       icon: <BedroomChildIcon />,
-      path: "myOrders",
+      path: "myBookings",
     },
     {
       name: "Favourite",
       icon: <FolderSpecialIcon />,
       path: "favourite",
-    },
-    {
-      name: "My Bookings",
-      icon: <BookmarkAddedOutlinedIcon />,
-      path: "myBookings",
     }
   ];
 
