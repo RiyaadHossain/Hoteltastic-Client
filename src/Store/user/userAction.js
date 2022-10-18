@@ -1,11 +1,11 @@
-import tokenClient from '../../Helper/axios'
+import tokenClient, { client } from '../../Helper/axios'
 import { initialUser } from '../auth/authAction'
 import { userActions } from './userSlice'
 
 const getUsers = () => {
 	return async dispatch => {
 		try {
-			const { data } = await tokenClient.get('/api/user/allUsers')
+			const { data } = await client?.get('/api/user/allUsers')
 			if (data) {
 				dispatch(userActions.getUsers(data.users))
 			}
@@ -18,7 +18,7 @@ const getUsers = () => {
 export const updateUser = ({ id, ...rest }) => {
 	return async dispatch => {
 		try {
-			const { data } = await tokenClient.patch(`/api/user/updateUser/${id}`, rest)
+			const { data } = await tokenClient?.patch(`/api/user/updateUser/${id}`, rest)
 
 			if (data) {
 				dispatch(userActions.updateUser())
@@ -33,7 +33,7 @@ export const updateUser = ({ id, ...rest }) => {
 export const getAdmins = () => {
 	return async dispatch => {
 		try {
-			const { data } = await tokenClient.get('/api/admin/admins')
+			const { data } = await client?.get('/api/admin/admins')
 			if (data) {
 				dispatch(userActions.getAdmins(data?.admins))
 			}
@@ -46,7 +46,7 @@ export const getAdmins = () => {
 const getFavourites = () => {
 	return async dispatch => {
 		try {
-			const { data } = await tokenClient.get('/api/user/favourite-room')
+			const { data } = await tokenClient?.get('/api/user/favourite-room')
 			if (data) {
 				dispatch(userActions.getFavourites(data?.favouriteRoom))
 			}
@@ -59,7 +59,7 @@ const getFavourites = () => {
 export const postFavourites = (body) => {
 	return async dispatch => {
 		try {
-			const { data } = await tokenClient.post(`/api/user/favourite-room`, body)
+			const { data } = await tokenClient?.post(`/api/user/favourite-room`, body)
 			if (data) {
 				dispatch(getFavourites())
 				dispatch(userActions.updateFavaourite())
@@ -74,7 +74,7 @@ export const deleteFavourites = ({ id }) => {
 	return async dispatch => {
 		try {
 			console.log({ id })
-			const { data } = await tokenClient.delete(`/api/user/favourite-room/${id}`)
+			const { data } = await tokenClient?.delete(`/api/user/favourite-room/${id}`)
 			if (data) {
 				dispatch(getFavourites())
 				dispatch(userActions.deleteFavaourite())
