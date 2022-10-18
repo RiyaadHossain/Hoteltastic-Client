@@ -43,8 +43,8 @@ const AboutProject = () => {
         </Typography>
       </Box>
       <TechnologyUsed></TechnologyUsed>
-      <FeatureImplement></FeatureImplement>
       <Collaborator></Collaborator>
+      <FeatureImplement></FeatureImplement>
     </>
   );
 };

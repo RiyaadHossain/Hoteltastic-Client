@@ -15,6 +15,7 @@ import { makeStyles } from "@mui/styles";
 import React from "react";
 import { useSelector } from "react-redux";
 import CustomHeader from "../../Components/CustomHeader";
+import Spinner from "../../Components/Loaders/Spinner/Spinner";
 import Room from "../Room/Room";
 
 const useStyles = makeStyles((theme) => ({
@@ -56,8 +57,11 @@ function AllRooms() {
   const classes = useStyles();
   const [room, setRoom] = React.useState("");
   const [location, setLocation] = React.useState("");
-  const rooms = useSelector((state) => state.room).rooms;
+  const rooms = useSelector((state) => state.room.rooms);
   const openRoom = rooms.filter(room => room.status !== "Close")
+  if (!openRoom) {
+    return <Spinner/>
+  }
   // console.log(openRoom);
 
   return (

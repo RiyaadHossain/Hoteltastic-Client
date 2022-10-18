@@ -2,7 +2,7 @@ import tokenClient from '../../Helper/axios'
 import {client} from '../../Helper/axios'
 import { authAction } from './authSlice'
 
-export const signIn = userData => {
+const signIn = userData => {
 	return async dispatch => {
 		try {
 			const { data } = await client.post('/api/user/signin', userData)
@@ -42,9 +42,12 @@ export const socialSignIn = email => {
 export const signUp = userData => {
 	return async dispatch => {
 		const userSignUp = async () => {
+
 			const { data } = await client.post('api/user/signup', userData)
 			if (data) {
 				dispatch(authAction.signUp(data))
+				const {email, password} = userData
+				dispatch(signIn({email, password}))
 			}
 		}
 
@@ -83,3 +86,5 @@ export const addAdmin = adminData => {
 		}
 	}
 }
+
+export { signIn}

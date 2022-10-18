@@ -15,13 +15,13 @@ function Setting({ userName, profileImg, auth }) {
   const signOut = () => {
     window.open(`https://hoteltastic-server.vercel.app/auth/logout`, "_self");
     dispatch(authAction.signOut());
-    navigate('/')
+    navigate("/");
     window.location.reload();
   };
 
   return (
     <>
-      <MenuItem onClick={() => navigate('/profile')}>
+      <MenuItem onClick={() => navigate("/profile")}>
         <Avatar src={profileImg} sx={{ bgcolor: deepOrange[500] }}>
           {!profileImg && userName}
         </Avatar>

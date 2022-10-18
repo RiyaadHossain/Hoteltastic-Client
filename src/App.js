@@ -138,7 +138,7 @@ function App() {
 							path="/user/"
 						>
 							<Route element={<UserHome />} path="dashboard" />
-							<Route element={<MyOrders />} path="myOrders" />
+							<Route element={<MyBookings />} path="myBookings" />
 							<Route element={<FavouriteRoom />} path="favourite" />
 							<Route element={<MyBookings />} path="myBookings" />
 						</Route>

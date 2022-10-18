@@ -14,9 +14,10 @@ import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
-import { updateUser } from "../../../Store/user/userAction";
+import getUsers, { updateUser } from "../../../Store/user/userAction";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import Spinner from "../../../Components/Loaders/Spinner/Spinner";
 
 
 
@@ -64,8 +65,14 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 
 function AdminUser() {
-  const userStore = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  React.useEffect(() => {
+    dispatch(getUsers())
+   },[dispatch])
+  const userStore = useSelector((state) => state.user);
+  if (!userStore) {
+    return <Spinner/>
+  }
 
   const banUnbane = (action, id) => {
     if (action === "Ban") {
