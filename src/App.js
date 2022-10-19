@@ -26,12 +26,12 @@ import AllAdmin from './Pages/Dashboard/Admin/AllAdmin'
 import UserHome from './Pages/Dashboard/User/UserHome'
 import FavouriteRoom from './Pages/Dashboard/User/FavouriteRoom'
 import AboutProject from './Pages/AboutProject/AboutProject'
-import getUsers from './Store/user/userAction'
 import PaymentContainer from './Components/Payment/PaymentContainer'
 import RequirUser from './RequirAuth/RequirUser'
 import RequirAdmin from './RequirAuth/RequirAdmin'
 import AllBookings from './Pages/Dashboard/Admin/AllBookings'
 import MyBookings from './Pages/Dashboard/User/MyBookings'
+import getUsers from './Store/user/userAction'
 
 function App() {
 	const dispatch = useDispatch()
