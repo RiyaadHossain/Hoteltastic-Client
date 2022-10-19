@@ -22,6 +22,7 @@ export const updateUser = ({ id, ...rest }) => {
 
 			if (data) {
 				dispatch(userActions.updateUser())
+				dispatch(getUsers())
 				dispatch(initialUser())
 			}
 		} catch (error) {

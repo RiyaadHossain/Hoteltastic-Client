@@ -43,13 +43,7 @@ const columns = [
     label: "Transaction ID",
     minWidth: 150,
     align: "center",
-  },
-  {
-    id: "action",
-    label: "Action",
-    minWidth: 100,
-    align: "center",
-  },
+  }
 ];
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -71,78 +65,6 @@ const MyBookings = () => {
     dispatch(getPayment());
   }, [dispatch]);
 
-  // const banUnbane = (action, id) => {
-  //   if (action === "Ban") {
-  //     Swal.fire({
-  //       title: "Are you sure?",
-  //       text: "You won't be able to revert this!",
-  //       icon: "warning",
-  //       showCancelButton: true,
-  //       confirmButtonColor: "#d33",
-  //       cancelButtonColor: "#3085d6",
-  //       confirmButtonText: "Yes, Ban it!",
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         dispatch(updateUser({ id, status: "BanUser" }));
-  //         dispatch(updateUser({ id, role: "User" }));
-  //         Swal.fire("Banned!", "User has been Banned.", "success");
-  //       }
-  //     });
-  //   }
-
-  //   if (action === "UnBan") {
-  //     Swal.fire({
-  //       title: "Are you sure?",
-  //       text: "You won't be able to revert this!",
-  //       icon: "warning",
-  //       showCancelButton: true,
-  //       confirmButtonColor: "#3085d6",
-  //       cancelButtonColor: "#d33",
-  //       confirmButtonText: "Yes, UnBan it!",
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         dispatch(updateUser({ id, status: "ValidUser" }));
-  //         Swal.fire("Unbanned!", "User has been Unbanned.", "success");
-  //       }
-  //     });
-  //   }
-  // };
-
-  // const MakeRemoveAdmin = (action, id) => {
-  //   if (action === "Admin") {
-  //     Swal.fire({
-  //       title: "Are you sure?",
-  //       text: "You won't be able to revert this!",
-  //       icon: "warning",
-  //       showCancelButton: true,
-  //       confirmButtonColor: "#d33",
-  //       cancelButtonColor: "#3085d6",
-  //       confirmButtonText: "Yes, Make Admin!",
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         dispatch(updateUser({ id, role: "Admin" }));
-  //         Swal.fire("Maked Admin!", "User has been Maked Admin.", "warning");
-  //       }
-  //     });
-  //   }
-
-  //   if (action === "User") {
-  //     Swal.fire({
-  //       title: "Are you sure?",
-  //       text: "You won't be able to revert this!",
-  //       icon: "warning",
-  //       showCancelButton: true,
-  //       confirmButtonColor: "#3085d6",
-  //       cancelButtonColor: "#d33",
-  //       confirmButtonText: "Yes, Remove Admin!",
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         dispatch(updateUser({ id, role: "User" }));
-  //         Swal.fire("Removed!", "User Removed From Admin.", "success");
-  //       }
-  //     });
-  //   }
-  // };
 
   return (
     <>
@@ -198,9 +120,6 @@ const MyBookings = () => {
                     </TableCell>
                     <TableCell align="center">{myBooking.tnxID}</TableCell>
 
-                    {/* <TableCell align="center">
-                  
-                    </TableCell> */}
                   </TableRow>
                 );
               })}
